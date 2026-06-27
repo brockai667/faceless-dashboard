@@ -28,6 +28,7 @@ h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow
 .tab.on{background:var(--panel);border-color:var(--bd2);color:var(--tx)}
 .grid{display:grid;gap:14px}
 .k4{grid-template-columns:repeat(4,1fr)} .k3{grid-template-columns:repeat(3,1fr)} .k2{grid-template-columns:repeat(2,1fr)}
+.wsplit{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
 @media(max-width:900px){.k4,.k3{grid-template-columns:repeat(2,1fr)}.k2,.wsplit{grid-template-columns:1fr}}
 @media(max-width:600px){
   .wrap{padding:16px 13px 50px}
@@ -76,7 +77,6 @@ select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acc)}
 .cm .t{font-size:13px}
 .reply{display:flex;gap:7px;margin-top:6px;width:100%;flex-wrap:wrap}
 .reply input{flex:1;min-width:160px}
-.wsplit{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
 .hide-tab{display:none}
 .empty{color:var(--mut);text-align:center;padding:30px;border:1px dashed var(--bd2);border-radius:12px}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
