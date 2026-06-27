@@ -1,0 +1,13 @@
+# TAJOMSTVA — nikdy do gitu (do cloudu idu ako ENV premenne)
+settings.json
+ig_tokens.json
+tiktok_tokens.json
+
+# generovane / docasne
+data.json
+history.json
+dashboard.html
+__pycache__/
+*.pyc
+_check.js
+_c.js

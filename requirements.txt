@@ -1,0 +1,2 @@
+# Ziadne externe zavislosti - dashboard pouziva len Python standardnu kniznicu.
+# Subor existuje aby Render/cloud detegoval Python projekt.

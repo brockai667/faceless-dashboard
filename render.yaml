@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: facelessfactory-dashboard
+    runtime: python
+    plan: free
+    buildCommand: ""
+    startCommand: python server.py
+    envVars:
+      - key: DASH_PASS          # heslo do dashboardu (vlozis v Render UI)
+        sync: false
+      - key: SETTINGS_JSON      # obsah settings.json (vlozis v Render UI)
+        sync: false
+      - key: IG_TOKENS_JSON     # obsah ig_tokens.json (vlozis v Render UI)
+        sync: false
+      - key: TIKTOK_TOKENS_JSON # obsah tiktok_tokens.json (vlozis v Render UI)
+        sync: false
+      - key: REFRESH_HOURS      # ako casto sam obnovi data
+        value: "3"

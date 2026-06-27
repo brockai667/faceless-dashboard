@@ -1,0 +1,396 @@
+<!doctype html><html lang="sk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FacelessFactory — Centrála</title>
+<style>
+:root{
+  --bg:#0a0d14; --bg2:#0d1119; --panel:#11161f; --panel2:#141b26;
+  --bd:#1e2733; --bd2:#283342; --tx:#e6edf3; --mut:#8b97a8; --mut2:#5b6675;
+  --acc:#3b82f6; --yt:#ff4d4f; --tk:#fe2c55; --ig:#e1306c; --ok:#22c55e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 70% -10%,#13203a22,transparent),var(--bg);
+  color:var(--tx);font:16px/1.55 'Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1340px;margin:0 auto;padding:26px 26px 70px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+h1{font-size:25px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.sub{color:var(--mut);font-size:14px}
+.spacer{flex:1}
+.btn{background:var(--panel2);border:1px solid var(--bd2);color:var(--tx);border-radius:9px;
+  padding:10px 16px;font-size:14.5px;font-weight:600;cursor:pointer;display:inline-flex;gap:7px;align-items:center;transition:.15s}
+.btn:hover{background:#1b2433;border-color:#39465a}
+.btn.acc{background:var(--acc);border-color:var(--acc)} .btn.acc:hover{background:#2f6fd8}
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.tab{background:transparent;border:1px solid var(--bd);color:var(--mut);border-radius:10px;
+  padding:11px 20px;font-size:15.5px;font-weight:600;cursor:pointer;transition:.15s}
+.tab:hover{color:var(--tx);border-color:var(--bd2)}
+.tab.on{background:var(--panel);border-color:var(--bd2);color:var(--tx)}
+.grid{display:grid;gap:14px}
+.k4{grid-template-columns:repeat(4,1fr)} .k3{grid-template-columns:repeat(3,1fr)} .k2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.k4,.k3{grid-template-columns:repeat(2,1fr)}.k2,.wsplit{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .wrap{padding:16px 13px 50px}
+  .k4,.k3,.k2,.wsplit{grid-template-columns:1fr}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:5px;margin-bottom:16px}
+  .tab{flex:0 0 auto}
+  header{gap:10px}
+  h1{font-size:21px}
+  .kpi .big{font-size:42px}
+  .card{overflow-x:auto}
+  .bars .row{grid-template-columns:92px 1fr 50px;gap:8px}
+  #refresh{padding:9px 13px}
+}
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--bd);border-radius:14px;padding:18px}
+.kpi .lab{color:var(--mut);font-size:13.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.kpi .big{font-size:48px;font-weight:800;letter-spacing:-1.5px;margin-top:6px;line-height:1.05}
+.kpi .sm{color:var(--mut);font-size:14px;margin-top:7px}
+.dl{font-size:14.5px;font-weight:700;margin-top:6px}
+.dl.dlu{color:var(--ok)} .dl.dld{color:#ef4444} .dl.dl0{color:var(--mut2);font-weight:600}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
+h2{font-size:17px;font-weight:700;margin-bottom:13px;display:flex;align-items:center;gap:8px}
+h2 small{color:var(--mut);font-weight:500;font-size:13.5px}
+.bars .row{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:10px;margin:9px 0}
+.bars .nm{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .track{height:11px;background:#0c1018;border-radius:6px;overflow:hidden}
+.bars .fill{height:100%;border-radius:6px;transition:width .6s}
+.bars .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--mut);font-size:13.5px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;color:var(--mut2);font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding:8px 9px;border-bottom:1px solid var(--bd)}
+td{padding:11px 9px;border-bottom:1px solid #131a25}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:hover td{background:#0e1520}
+.rk{color:var(--mut2);width:24px}
+.tag{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--bd2);cursor:pointer;color:var(--mut)}
+.chip.on{color:#fff;border-color:transparent}
+.muted{color:var(--mut)}
+select,input,textarea{background:var(--bg2);border:1px solid var(--bd2);color:var(--tx);border-radius:9px;padding:9px 11px;font:inherit;font-size:13px}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acc)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.post{border:1px solid var(--bd);border-radius:12px;padding:13px;margin-bottom:12px;background:var(--panel)}
+.post .cap{font-size:13px;margin-bottom:8px}
+.cm{border-top:1px solid #131a25;padding:9px 0;display:flex;gap:9px;flex-wrap:wrap;align-items:flex-start}
+.cm .u{font-weight:700;font-size:12.5px;color:var(--ig)}
+.cm .t{font-size:13px}
+.reply{display:flex;gap:7px;margin-top:6px;width:100%;flex-wrap:wrap}
+.reply input{flex:1;min-width:160px}
+.wsplit{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.hide-tab{display:none}
+.empty{color:var(--mut);text-align:center;padding:30px;border:1px dashed var(--bd2);border-radius:12px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+svg .gl{stroke:#1a2330;stroke-width:1}
+svg text{fill:var(--mut2);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<header>
+  <h1><span class="dot"></span>FacelessFactory <span style="color:var(--mut);font-weight:500">Centrála</span></h1>
+  <div class="spacer"></div>
+  <span class="sub" id="updated">—</span>
+  <button class="btn acc" id="refresh" onclick="refresh()">↻ Obnoviť dáta</button>
+</header>
+
+<div class="tabs">
+  <button class="tab on" data-t="overview">📊 Prehľad</button>
+  <button class="tab" data-t="platforms">📱 Platformy</button>
+  <button class="tab" data-t="winners">🏆 Víťazi</button>
+  <button class="tab" data-t="factories">🏭 Fabriky</button>
+  <button class="tab" data-t="comments">💬 Komentáre</button>
+  <button class="tab" data-t="docs">🎬 Dokumenty</button>
+</div>
+
+<section id="overview"></section>
+<section id="factories" class="hide-tab"></section>
+<section id="winners" class="hide-tab"></section>
+<section id="platforms" class="hide-tab"></section>
+<section id="docs" class="hide-tab"></section>
+<section id="comments" class="hide-tab"></section>
+
+</div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const PC={youtube:'#ff4d4f',tiktok:'#fe2c55',instagram:'#e1306c'};
+const PN={youtube:'YouTube',tiktok:'TikTok',instagram:'Instagram'};
+const PI={youtube:'📺',tiktok:'🎵',instagram:'📸'};
+let DATA=null, HIST=[];
+const fmt=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':(''+Math.round(n));
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+(''+x).padStart(2,'0');};
+function delta(cur,prev){
+  if(prev==null||cur==null)return '';
+  const d=cur-prev;
+  if(d===0)return '<div class="dl dl0">— bez zmeny od posledného obnovenia</div>';
+  const up=d>0;
+  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} od posledného obnovenia</div>`;
+}
+const userFac=u=>{const p=DATA.projects.find(p=>p.instagram&&p.instagram.handle===u);return p?{name:p.name,color:p.color}:{name:u,color:'#888'};};
+function barChart(items,h=190){
+  const W=760,H=h,pad={l:46,r:14,t:12,b:34},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
+  const mx=Math.max(1,...items.map(i=>i.v)),n=items.length;
+  const bw=Math.min(120,iw/n*0.55),gap=iw/n;
+  let g='';for(let k=0;k<=4;k++){const y=pad.t+ih*k/4;g+=`<line class="gl" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/><text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(mx*(4-k)/4)}</text>`;}
+  let bars=items.map((it,i)=>{const x=pad.l+gap*i+gap/2-bw/2,bh=ih*(it.v/mx),y=pad.t+ih-bh;
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2,bh).toFixed(1)}" rx="5" fill="${it.c}"/>`+
+      `<text x="${(x+bw/2).toFixed(1)}" y="${y-5}" text-anchor="middle" fill="#cdd7e6" style="font-size:11px;font-weight:700">${fmt(it.v)}</text>`+
+      `<text x="${(x+bw/2).toFixed(1)}" y="${H-12}" text-anchor="middle">${it.n}</text>`;}).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${bars}</svg>`;
+}
+
+function allVids(){return DATA.projects.flatMap(p=>p.videos);}
+function pViews(p,plat){return p.videos.filter(v=>(v.platform||'').toLowerCase()===plat).reduce((s,v)=>s+(v.views||0),0);}
+function facViews(p){return p.videos.reduce((s,v)=>s+(v.views||0),0);}
+function facFollowers(p){return (p.yt?.subs||0)+(p.tiktok?.followers||0)+(p.instagram?.followers||0);}
+
+/* ---- jednoduchy SVG ciarovy graf (viac serii, auto-scale) ---- */
+function lineChart(series, dates, h=170){
+  const W=760, H=h, pad={l:40,r:14,t:12,b:22};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const n=dates.length;
+  const maxY=Math.max(1,...series.flatMap(s=>s.pts));
+  const X=i=>pad.l+(n<=1?iw/2:iw*i/(n-1));
+  const Y=v=>pad.t+ih-ih*(v/maxY);
+  let g='';
+  for(let k=0;k<=4;k++){const y=pad.t+ih*k/4;g+=`<line class="gl" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`+
+    `<text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(maxY*(4-k)/4)}</text>`;}
+  let paths=series.map(s=>{
+    if(n===1){return `<circle cx="${X(0)}" cy="${Y(s.pts[0])}" r="3.5" fill="${s.c}"/>`;}
+    const d=s.pts.map((v,i)=>`${i?'L':'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+    return `<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2.2" stroke-linejoin="round"/>`+
+      `<circle cx="${X(n-1)}" cy="${Y(s.pts[n-1])}" r="3" fill="${s.c}"/>`;
+  }).join('');
+  const xl=n?`<text x="${X(0)}" y="${H-6}" text-anchor="start">${dates[0]?.slice(5)||''}</text>`+
+    (n>1?`<text x="${X(n-1)}" y="${H-6}" text-anchor="end">${dates[n-1].slice(5)}</text>`:''):'';
+  const leg=`<div class="legend">`+series.map(s=>`<span><i style="background:${s.c}"></i>${s.name}</span>`).join('')+`</div>`;
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${paths}${xl}</svg>${leg}`;
+}
+
+/* ---------------- PREHLAD ---------------- */
+function renderOverview(){
+  const t=DATA.totals;
+  const foll=t.yt_subs+t.tk_foll+t.ig_foll;
+  const views=t.yt_views+t.tk_views+t.ig_views;
+  const vids=allVids().length;
+  const P=DATA.prev||{}, hasP=P&&Object.keys(P).length;
+  const Pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0), Pv=(P.yt_views||0)+(P.tk_views||0)+(P.ig_views||0);
+  const kpis=[
+    ['Fabriky',t.factories,'8 automatických kanálov',t.factories,P.factories],
+    ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,foll,hasP?Pf:null],
+    ['Zhliadnutia',fmt(views),`YT ${fmt(t.yt_views)} · TT ${fmt(t.tk_views)} · IG ${fmt(t.ig_views)}`,views,hasP?Pv:null],
+    ['Videá / príspevky',vids,'naprieč platformami',vids,P.videos],
+  ];
+  const dates=HIST.map(h=>h.date);
+  const trend=HIST.length>=2;   // ciarovy graf az ked mame aspon 2 dni historie
+  const followChart=trend?lineChart([
+      {name:'YouTube',c:PC.youtube,pts:HIST.map(h=>h.yt_subs||0)},
+      {name:'TikTok',c:PC.tiktok,pts:HIST.map(h=>h.tk_foll||0)},
+      {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_foll||0)},],dates)
+    :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_subs},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_foll},{n:'📸 Instagram',c:PC.instagram,v:t.ig_foll}]);
+  const viewChart=trend?lineChart([
+      {name:'YouTube',c:PC.youtube,pts:HIST.map(h=>h.yt_views||0)},
+      {name:'TikTok',c:PC.tiktok,pts:HIST.map(h=>h.tk_views||0)},
+      {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_views||0)},],dates)
+    :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
+  const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
+  $('#overview').innerHTML=`
+    <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
+      <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
+        ${delta(k[3],k[4])}<div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="grid k2">
+      <div class="card"><h2>👥 Sledovatelia <small>${trend?'rast v čase':'podľa platformy'}</small></h2>${followChart}${note}</div>
+      <div class="card"><h2>👁️ Zhliadnutia <small>${trend?'rast v čase':'podľa platformy'}</small></h2>${viewChart}</div>
+    </div>`;
+}
+
+/* ---------------- VITAZI ---------------- */
+let winFilter='all';
+function renderWinners(){
+  let vids=allVids();
+  if(winFilter!=='all') vids=vids.filter(v=>(v.platform||'').toLowerCase()===winFilter);
+  vids=vids.slice().sort((a,b)=>(b.views||0)-(a.views||0));
+  const facs=DATA.projects.map(p=>({name:p.name,color:p.color,
+    views:winFilter==='all'?facViews(p):pViews(p,winFilter)})).sort((a,b)=>b.views-a.views);
+  const mx=Math.max(1,...facs.map(f=>f.views));
+  const chips=['all','youtube','tiktok','instagram'].map(f=>
+    `<span class="chip ${winFilter===f?'on':''}" style="${winFilter===f?`background:${f==='all'?'var(--acc)':PC[f]}`:''}" onclick="winFilter='${f}';renderWinners()">${f==='all'?'🌐 Všetky':PI[f]+' '+PN[f]}</span>`).join('');
+  const rows=vids.slice(0,20).map((v,i)=>`<tr>
+    <td class="rk">${i+1}</td>
+    <td><a href="${v.link||'#'}" target="_blank">${esc((v.title||'').slice(0,64))||'(bez názvu)'}</a></td>
+    <td><span class="tag" style="background:${v.color}22;color:${v.color}">${v.factory}</span></td>
+    <td><span class="muted">${PI[(v.platform||'').toLowerCase()]||''} ${v.platform}</span></td>
+    <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
+  </tr>`).join('')||`<tr><td colspan="7" class="muted" style="text-align:center;padding:24px">Žiadne videá s dátami zatiaľ.</td></tr>`;
+  $('#winners').innerHTML=`
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">${chips}</div>
+    <div class="wsplit">
+      <div class="card"><h2>🎬 Najlepšie videá <small>podľa zhliadnutí</small></h2>
+        <table><thead><tr><th>#</th><th>Video</th><th>Fabrika</th><th>Platforma</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Kom.</th></tr></thead>
+        <tbody>${rows}</tbody></table></div>
+      <div class="card bars"><h2>🏭 Rebríček fabrík <small>zhliadnutia</small></h2>
+        ${facs.map(f=>`<div class="row"><span class="nm" style="color:${f.color}">${f.name}</span>
+          <div class="track"><div class="fill" style="width:${f.views/mx*100}%;background:${f.color}"></div></div>
+          <span class="val">${fmt(f.views)}</span></div>`).join('')}</div>
+    </div>`;
+}
+
+/* ---------------- PLATFORMY ---------------- */
+function renderPlatforms(){
+  const t=DATA.totals;
+  const cols=[
+    {k:'youtube',foll:t.yt_subs,views:t.yt_views,extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí`},
+    {k:'tiktok',foll:t.tk_foll,views:t.tk_views,extra:`${fmt(t.tk_likes)} lajkov`},
+    {k:'instagram',foll:t.ig_foll,views:t.ig_views,extra:`${t.ig_posts} príspevkov`},
+  ];
+  $('#platforms').innerHTML=`<div class="grid k3">${cols.map(c=>{
+    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,v:pViews(p,c.k),
+      f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
+      .sort((a,b)=>b.v-a.v);
+    const mx=Math.max(1,...fac.map(f=>f.v));
+    return `<div class="card">
+      <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span></h2>
+      <div style="display:flex;gap:18px;margin:6px 0 14px">
+        <div><div class="muted" style="font-size:11px">SLEDOVATELIA</div><div style="font-size:22px;font-weight:800">${fmt(c.foll)}</div></div>
+        <div><div class="muted" style="font-size:11px">ZHLIADNUTIA</div><div style="font-size:22px;font-weight:800">${fmt(c.views)}</div></div>
+      </div>
+      <div class="muted" style="font-size:11.5px;margin-bottom:8px">${c.extra}</div>
+      <div class="bars">${fac.map(f=>`<div class="row" style="grid-template-columns:110px 1fr 50px">
+        <span class="nm" style="color:${f.color};font-size:12px">${f.name}</span>
+        <div class="track"><div class="fill" style="width:${f.v/mx*100}%;background:${f.color}"></div></div>
+        <span class="val">${fmt(f.v)}</span></div>`).join('')}</div>
+    </div>`;}).join('')}</div>`;
+}
+
+/* ---------------- FABRIKY ---------------- */
+function renderFactories(){
+  const cards=DATA.projects.map(p=>{
+    const L=p.links||{};
+    const pubs=p.videos.map(v=>v.published).filter(Boolean).sort();
+    const last=pubs.length?pubs[pubs.length-1]:null;
+    const days=last?Math.floor((Date.now()-new Date(last))/864e5):999;
+    const dot=last&&days<=3?'🟢':'⚪';
+    const row=(ic,name,col,stat,link)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #131a25">
+      <span style="width:74px;font-weight:700;color:${col}">${ic} ${name}</span>
+      <span class="muted" style="flex:1;font-size:12.5px">${stat}</span>
+      ${link?`<a class="btn" style="padding:5px 11px" href="${link}" target="_blank">Otvoriť ↗</a>`:'<span class="muted" style="font-size:12px">—</span>'}</div>`;
+    const yt=p.yt, tk=p.tiktok, ig=p.instagram;
+    return `<div class="card" style="border-top:3px solid ${p.color}">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+        <span style="font-size:16px;font-weight:800">${p.name}</span>
+        <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
+      <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${last||'—'}</div>
+      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber. · ${fmt(pViews(p,'youtube'))} zhliad. · ${yt.videos} videí`:'nepripojené', L.youtube)}
+      ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov. · ${fmt(pViews(p,'tiktok'))} zhliad. · ${tk.videos} videí`:'nepripojené', L.tiktok)}
+      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov. · ${fmt(pViews(p,'instagram'))} zhliad. · ${ig.media} prísp.`:'nepripojené', L.instagram)}
+    </div>`;}).join('');
+  $('#factories').innerHTML=`<div class="grid k2">${cards}</div>`;
+}
+
+/* ---------------- DOKUMENTY (dlhe YT videa) ---------------- */
+function renderDocs(){
+  const docs=allVids().filter(v=>(v.platform||'').toLowerCase()==='youtube'&&v.is_long)
+    .sort((a,b)=>(b.views||0)-(a.views||0));
+  if(!docs.length){
+    $('#docs').innerHTML=`<div class="card"><h2>🎬 Dlhé dokumenty</h2>
+      <div class="empty">Zatiaľ žiadne dlhé videá (>10 min). Dokumenty z ColdCaseLong sa tu objavia po nahratí na YouTube.</div></div>`;return;}
+  const tot=docs.reduce((s,v)=>s+(v.views||0),0);
+  const avg=docs.reduce((s,v)=>s+(v.duration||0),0)/docs.length;
+  const kp=[['Dokumentov',docs.length,''],['Zhliadnutia',fmt(tot),'spolu'],['Priem. dĺžka',dur(avg),'min:sek']];
+  const rows=docs.map((v,i)=>`<tr>
+    <td class="rk">${i+1}</td>
+    <td><a href="${v.link}" target="_blank">${esc((v.title||'').slice(0,70))}</a></td>
+    <td><span class="tag" style="background:${v.color}22;color:${v.color}">${v.factory}</span></td>
+    <td class="n">${dur(v.duration)}</td>
+    <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
+    <td class="muted" style="font-size:12px">${v.published||''}</td></tr>`).join('');
+  $('#docs').innerHTML=`
+    <div class="grid k3" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card"><h2>🎬 Dlhé dokumenty <small>YouTube · samostatná analýza</small></h2>
+      <table><thead><tr><th>#</th><th>Video</th><th>Kanál</th><th class="n">Dĺžka</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Kom.</th><th>Dátum</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+
+/* ---------------- KOMENTARE ---------------- */
+function renderComments(){
+  $('#comments').innerHTML=`
+    <div class="card" style="margin-bottom:14px">
+      <h2>💬 Správa Instagram komentárov <small>všetky účty naraz</small></h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn acc" onclick="loadComments()">↻ Načítať komentáre zo všetkých účtov</button>
+        <span class="muted" style="font-size:12px">ℹ️ IG API umožňuje odpoveď a skrytie — lajkovanie komentárov API nepodporuje.</span>
+      </div>
+    </div>
+    <div id="cbody"><div class="empty">Klikni „Načítať komentáre zo všetkých účtov".</div></div>`;
+}
+async function loadComments(){
+  $('#cbody').innerHTML=`<div class="empty"><span class="spin"></span> Načítavam komentáre zo všetkých 8 účtov…</div>`;
+  try{
+    const r=await fetch('/api/all_comments');
+    const d=await r.json();
+    if(d.error){$('#cbody').innerHTML=`<div class="empty">Chyba: ${esc(d.error)}</div>`;return;}
+    // zobraz len NEVYBAVENE: komentar s lajkom (like_count>0) = vybaveny -> automaticky preč
+    const posts=(d.media||[]).map(m=>({...m,open:(m.comments||[]).filter(c=>!(c.like_count>0))}))
+                             .filter(m=>m.open.length);
+    if(!posts.length){$('#cbody').innerHTML=`<div class="empty">Žiadne nevybavené komentáre. 🎉<br><span style="font-size:12px">(Lajknuté komentáre sa odtiaľto automaticky stratia. Účty sú zatiaľ nové — keď prídu komentáre, objavia sa tu.)</span></div>`;return;}
+    $('#cbody').innerHTML=posts.map(m=>{
+      const f=userFac(m.user);
+      return `<div class="post" id="post_${m.id}" style="border-left:3px solid ${f.color}">
+        <div class="cap">
+          <span class="tag" style="background:${f.color}22;color:${f.color}">${f.name}</span>
+          <span class="muted">@${esc(m.user)}</span> ·
+          <a href="${m.permalink}" target="_blank">${esc(m.caption)||'(príspevok)'}</a></div>
+        ${m.open.map(c=>`<div class="cm" id="cm_${c.id}">
+          <div style="flex:1">
+            <span class="u">@${esc(c.username||'?')}</span> <span class="t">${esc(c.text||'')}</span>
+            <div class="reply">
+              <input placeholder="Odpoveď…" id="r_${c.id}">
+              <button class="btn" onclick="sendReply('${m.user}','${c.id}','${m.id}')">Odpovedať</button>
+              <button class="btn" onclick="hideC('${m.user}','${c.id}','${m.id}')">Skryť</button>
+            </div>
+          </div></div>`).join('')}
+      </div>`;}).join('');
+  }catch(e){$('#cbody').innerHTML=`<div class="empty">Chyba spojenia: ${esc(''+e)}</div>`;}
+}
+function dropComment(cid,pid){            // odstrani komentar; ak je prispevok prazdny, odstrani aj prispevok
+  const el=$('#cm_'+cid); if(el)el.remove();
+  const post=$('#post_'+pid); if(post&&!post.querySelector('.cm'))post.remove();
+  if(!$('#cbody').querySelector('.post'))$('#cbody').innerHTML='<div class="empty">Žiadne nevybavené komentáre. 🎉</div>';
+}
+async function sendReply(user,cid,pid){
+  const inp=$('#r_'+cid); const msg=inp.value.trim(); if(!msg)return;
+  inp.disabled=true; inp.placeholder='…';
+  const r=await fetch('/api/reply',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({user,comment_id:cid,message:msg})});
+  const d=await r.json();
+  if(d.ok){dropComment(cid,pid);}                 // odpovedané -> automaticky preč
+  else{inp.disabled=false;inp.placeholder='Odpoveď…';alert('Chyba: '+(d.error||'?'));}
+}
+async function hideC(user,cid,pid){
+  const r=await fetch('/api/hide',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({user,comment_id:cid,hide:true})});
+  const d=await r.json();
+  if(d.ok){dropComment(cid,pid);} else alert('Chyba: '+(d.error||'?'));
+}
+
+/* ---------------- INFRA ---------------- */
+function show(t){
+  $$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  ['overview','factories','winners','platforms','docs','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
+  if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='comments')renderComments();
+}
+$$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
+async function refresh(){
+  const b=$('#refresh'); b.innerHTML='<span class="spin"></span> Obnovujem…'; b.disabled=true;
+  try{await fetch('/api/refresh');}catch(e){}
+  await load(); b.innerHTML='↻ Obnoviť dáta'; b.disabled=false;
+}
+async function load(){
+  DATA=await (await fetch('/data.json?'+Date.now())).json();
+  HIST=await (await fetch('/history.json?'+Date.now())).json();
+  $('#updated').textContent='aktualizované '+DATA.gen_at;
+  renderOverview();
+  const on=$('.tab.on')?.dataset.t||'overview'; if(on!=='overview')show(on);
+}
+load();
+</script></body></html>

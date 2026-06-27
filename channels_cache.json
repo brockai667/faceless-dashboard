@@ -1,0 +1,195 @@
+{
+  "MindBlownDaily": {
+    "org": "6a3cd3b44c38a4933ff2c124",
+    "channels": [
+      {
+        "service": "instagram",
+        "name": "th.erealspark",
+        "displayName": "th.erealspark",
+        "serviceId": "17841471538117054",
+        "externalLink": "https://instagram.com/th.erealspark"
+      },
+      {
+        "service": "youtube",
+        "name": "JoeRogeanShorts",
+        "displayName": "JoeRogeanShorts",
+        "serviceId": "UCtSLinO4I6R9T7qyY9TNgoA",
+        "externalLink": "https://www.youtube.com/channel/UCtSLinO4I6R9T7qyY9TNgoA"
+      },
+      {
+        "service": "tiktok",
+        "name": "insideyourmind007",
+        "displayName": "insideyourmind007",
+        "serviceId": "_000sgeHPgxDbkVKxiMo8rEHeSzUTg_GgVoF",
+        "externalLink": "https://tiktok.com/@insideyourmind007"
+      }
+    ],
+    "status": {
+      "sent": 10,
+      "scheduled": 10,
+      "errors": 0,
+      "last_sent": "2026-06-27T13:04:36.664Z",
+      "next_due": "2026-06-27T18:00:00.000Z",
+      "alive": true
+    }
+  },
+  "WealthMindset": {
+    "org": "6a3d9d3bfc73a538c548a907",
+    "channels": [
+      {
+        "service": "instagram",
+        "name": "thewealthmindset.yt667",
+        "displayName": "thewealthmindset.yt667",
+        "serviceId": "17841419482471283",
+        "externalLink": "https://instagram.com/thewealthmindset.yt667"
+      },
+      {
+        "service": "youtube",
+        "name": "WealthMindset",
+        "displayName": "WealthMindset",
+        "serviceId": "UCoFCurtPMDdJTDUsea9iCMQ",
+        "externalLink": "https://www.youtube.com/channel/UCoFCurtPMDdJTDUsea9iCMQ"
+      },
+      {
+        "service": "tiktok",
+        "name": "wealth_mindset34",
+        "displayName": "wealth_mindset34",
+        "serviceId": "_0004jZp1y2ZXUiUUYPB0-SmWsXeYESCM6bz",
+        "externalLink": "https://tiktok.com/@wealth_mindset34"
+      }
+    ],
+    "status": {
+      "sent": 10,
+      "scheduled": 10,
+      "errors": 0,
+      "last_sent": "2026-06-27T13:09:14.221Z",
+      "next_due": "2026-06-27T18:00:00.000Z",
+      "alive": true
+    }
+  },
+  "VitalityDaily": {
+    "org": "6a3e8dc2999ba86be8b6c948",
+    "channels": [
+      {
+        "service": "instagram",
+        "name": "vitalitydaily667",
+        "displayName": "vitalitydaily667",
+        "serviceId": "17841423015937015",
+        "externalLink": "https://instagram.com/vitalitydaily667"
+      },
+      {
+        "service": "tiktok",
+        "name": "vitalitydaily667",
+        "displayName": "vitalitydaily667",
+        "serviceId": "_000zEAB-qkBOeMCZ93auX-Ks8fLqE_yiChu",
+        "externalLink": "https://tiktok.com/@vitalitydaily667"
+      },
+      {
+        "service": "youtube",
+        "name": "VitalityDaily",
+        "displayName": "VitalityDaily",
+        "serviceId": "UCkaYdBJOa1i2PwWd_hHiuKQ",
+        "externalLink": "https://www.youtube.com/channel/UCkaYdBJOa1i2PwWd_hHiuKQ"
+      }
+    ],
+    "status": {
+      "sent": 9,
+      "scheduled": 0,
+      "errors": 0,
+      "last_sent": "2026-06-27T13:05:08.053Z",
+      "next_due": null,
+      "alive": true
+    }
+  },
+  "HiddenEarth": [
+    {
+      "service": "youtube",
+      "name": "HiddenEarth667",
+      "displayName": "HiddenEarth667",
+      "serviceId": "UCdjrqPNF0jq6yE5y_UZWxNw",
+      "externalLink": "https://www.youtube.com/channel/UCdjrqPNF0jq6yE5y_UZWxNw"
+    },
+    {
+      "service": "instagram",
+      "name": "hiddenearth667",
+      "displayName": "hiddenearth667",
+      "serviceId": "17841413366869715",
+      "externalLink": "https://instagram.com/hiddenearth667"
+    },
+    {
+      "service": "tiktok",
+      "name": "hiddenearth667",
+      "displayName": "hiddenearth667",
+      "serviceId": "_000mmnFVW33ULk5mJ77WLTfrSHy-buHyR-3",
+      "externalLink": "https://tiktok.com/@hiddenearth667"
+    }
+  ],
+  "UnexplainedDaily": {
+    "org": "6a3e2be90a8504f745d7170d",
+    "channels": [
+      {
+        "service": "instagram",
+        "name": "unex.plaineddaily",
+        "displayName": "unex.plaineddaily",
+        "serviceId": "17841415384344242",
+        "externalLink": "https://instagram.com/unex.plaineddaily"
+      },
+      {
+        "service": "tiktok",
+        "name": "unexplained_daily",
+        "displayName": "unexplained_daily",
+        "serviceId": "_000Dykchz9cfZUmE7-_V_ZuOU7TC0ynbMzi",
+        "externalLink": "https://tiktok.com/@unexplained_daily"
+      },
+      {
+        "service": "youtube",
+        "name": "UnexplainedDaily",
+        "displayName": "UnexplainedDaily",
+        "serviceId": "UCBPgjmP9s1daq5b_0w1CRlQ",
+        "externalLink": "https://www.youtube.com/channel/UCBPgjmP9s1daq5b_0w1CRlQ"
+      }
+    ],
+    "status": {
+      "sent": 10,
+      "scheduled": 10,
+      "errors": 0,
+      "last_sent": "2026-06-27T13:03:59.709Z",
+      "next_due": "2026-06-27T18:00:00.000Z",
+      "alive": true
+    }
+  },
+  "DisciplineDaily": {
+    "org": "6a3e6e03999ba86be8b6a50a",
+    "channels": [
+      {
+        "service": "instagram",
+        "name": "disciplinedaily667",
+        "displayName": "disciplinedaily667",
+        "serviceId": "17841419021941493",
+        "externalLink": "https://instagram.com/disciplinedaily667"
+      },
+      {
+        "service": "tiktok",
+        "name": "disciplinedaily667",
+        "displayName": "disciplinedaily667",
+        "serviceId": "_0007ykRmJCyJ4OMncYxCDDNYeVs-uq1_mBd",
+        "externalLink": "https://tiktok.com/@disciplinedaily667"
+      },
+      {
+        "service": "youtube",
+        "name": "DisciplineDaily",
+        "displayName": "DisciplineDaily",
+        "serviceId": "UC4ZZ2gFL4JSNgTZOPPR16Ng",
+        "externalLink": "https://www.youtube.com/channel/UC4ZZ2gFL4JSNgTZOPPR16Ng"
+      }
+    ],
+    "status": {
+      "sent": 10,
+      "scheduled": 0,
+      "errors": 0,
+      "last_sent": "2026-06-27T13:05:46.419Z",
+      "next_due": null,
+      "alive": true
+    }
+  }
+}

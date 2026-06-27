@@ -1,0 +1,6 @@
+@echo off
+cd /d "%~dp0"
+echo Zbieram cerstve data...
+python generate.py
+echo Spustam dashboard na http://localhost:8765 (Ctrl+C ukonci)...
+python server.py
