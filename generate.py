@@ -376,14 +376,23 @@ def main():
     json.dump({"projects": projects, "totals": totals, "prev": _prev, "gen_at": gen_at},
               open(os.path.join(ROOT, "data.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
-    # --- history.json: jeden snapshot za den (pre grafy trendov) ---
+    # --- history.json: jeden snapshot za den (pre grafy trendov + delty oproti vceru) ---
+    import store
     hpath = os.path.join(ROOT, "history.json")
-    hist = json.load(open(hpath, encoding="utf-8")) if os.path.exists(hpath) else []
+    hist = store.load_history()                       # cloud: trvale z Gistu
+    if hist is None:
+        hist = json.load(open(hpath, encoding="utf-8")) if os.path.exists(hpath) else []
     today = datetime.date.today().isoformat()
-    snap = {"date": today, **totals}
+    fac_snap = {p["name"]: {
+        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _vv(p, "youtube"),
+        "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _vv(p, "tiktok"),
+        "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _vv(p, "instagram"),
+    } for p in projects}
+    snap = {"date": today, **totals, "fac": fac_snap}
     hist = [h for h in hist if h.get("date") != today] + [snap]   # nahrad dnesny
     hist = hist[-180:]                                            # drz max 180 dni
     json.dump(hist, open(hpath, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    store.save_history(hist)                           # cloud: zapis spat do Gistu
 
     html = build_html(projects, gen_at, bool(yt_key))
     open(os.path.join(ROOT, "dashboard.html"), "w", encoding="utf-8").write(html)
