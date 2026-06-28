@@ -319,12 +319,32 @@ def main():
             p["yt_recent_views"] += sum(int(v.get("view_count", 0) or 0) for v in d.get("videos", []))
 
     # --- Instagram (per-prispevok + sledovatelia) cez Instagram Graph API ---
+    # IG API setrime: stiahneme MAX 1x za den (cache). Caste volanie 8 uctov Meta flagne
+    # ako "unusual activity" a appku zablokuje. Ostatne obnovenia pouziju dnesny cache.
     ig = {}
     if _instagram:
-        try:
-            ig = _instagram.fetch_all(ROOT)
-        except Exception as e:
-            print("  [IG] fetch chyba:", e); ig = {}
+        _igc = os.path.join(ROOT, "ig_cache.json")
+        _today_iso = datetime.date.today().isoformat()
+        _c = {}
+        if os.path.exists(_igc):
+            try:
+                _c = json.load(open(_igc, encoding="utf-8"))
+            except Exception:
+                _c = {}
+        if _c.get("date") == _today_iso and _c.get("data"):
+            ig = _c["data"]
+            print("  [IG] pouzivam dnesny cache (1x/den - setrim IG API)")
+        else:
+            try:
+                ig = _instagram.fetch_all(ROOT)
+            except Exception as e:
+                print("  [IG] fetch chyba:", e); ig = {}
+            if ig:
+                try:
+                    json.dump({"date": _today_iso, "data": ig},
+                              open(_igc, "w", encoding="utf-8"), ensure_ascii=False)
+                except Exception:
+                    pass
         for uname, d in ig.items():
             fac = IG_TO_FACTORY.get(uname)
             p = by_name.get(fac)
