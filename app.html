@@ -203,7 +203,9 @@ function renderOverview(){
       {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_views||0)},],dates)
     :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
   const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
+  const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14.5px;line-height:1.5">⚠️ <b>Instagram analytika dočasne nedostupná</b> — Meta zablokovala API prístup aplikácie. IG čísla nižšie sú <b>posledné známe</b> (nie live), preto sa "nehýbu". Príspevky na IG idú ďalej cez Buffer a účty sú v poriadku — týka sa to len čítania štatistík.</div>`:'';
   $('#overview').innerHTML=`
+    ${igBanner}
     <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
         ${delta(k[3],k[4])}<div class="sm">${k[2]}</div></div>`).join('')}</div>

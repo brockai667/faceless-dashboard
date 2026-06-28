@@ -319,6 +319,7 @@ def main():
             p["yt_recent_views"] += sum(int(v.get("view_count", 0) or 0) for v in d.get("videos", []))
 
     # --- Instagram (per-prispevok + sledovatelia) cez Instagram Graph API ---
+    ig = {}
     if _instagram:
         try:
             ig = _instagram.fetch_all(ROOT)
@@ -375,6 +376,20 @@ def main():
             _prev = json.load(open(_dp0, encoding="utf-8")).get("totals", {})
         except Exception:
             _prev = {}
+
+    # IG analytika moze byt blokovana Metou ("API access blocked") -> NEUKAZUJ falosny pokles:
+    # podrz posledne zname IG cisla z minuleho behu, oznac ig_blocked pre UI.
+    totals["ig_videos"] = sum(1 for p in projects for v in p["videos"]
+                              if (v.get("platform") or "").lower() == "instagram")
+    totals["ig_blocked"] = not bool(ig)
+    if totals["ig_blocked"] and _prev:
+        for k in ("ig_foll", "ig_views", "ig_posts"):
+            totals[k] = _prev.get(k, 0)
+        prev_ig_vids = _prev.get("ig_videos", _prev.get("ig_posts", 0))
+        totals["videos"] = totals["videos"] + prev_ig_vids
+        totals["ig_videos"] = prev_ig_vids
+        print("  [IG] API blokovane Metou -> drzim posledne zname IG cisla (ziadny falosny pokles)")
+
     for p in projects:    # profilove linky per platforma (pre karty fabrik)
         p["links"] = {
             "youtube": f"https://www.youtube.com/channel/{YT_CHANNELS[p['name']]}" if p["name"] in YT_CHANNELS else None,
