@@ -378,17 +378,34 @@ def main():
             _prev = {}
 
     # IG analytika moze byt blokovana Metou ("API access blocked") -> NEUKAZUJ falosny pokles:
-    # podrz posledne zname IG cisla z minuleho behu, oznac ig_blocked pre UI.
+    # vezmi posledne ZNAME (nenulove, neblokovane) IG cisla z historie (Gist/lokal), oznac ig_blocked.
     totals["ig_videos"] = sum(1 for p in projects for v in p["videos"]
                               if (v.get("platform") or "").lower() == "instagram")
     totals["ig_blocked"] = not bool(ig)
-    if totals["ig_blocked"] and _prev:
-        for k in ("ig_foll", "ig_views", "ig_posts"):
-            totals[k] = _prev.get(k, 0)
-        prev_ig_vids = _prev.get("ig_videos", _prev.get("ig_posts", 0))
-        totals["videos"] = totals["videos"] + prev_ig_vids
-        totals["ig_videos"] = prev_ig_vids
-        print("  [IG] API blokovane Metou -> drzim posledne zname IG cisla (ziadny falosny pokles)")
+    if totals["ig_blocked"]:
+        _hist_ig = []
+        try:
+            import store as _st
+            _hist_ig = _st.load_history() or []
+        except Exception:
+            _hist_ig = []
+        if not _hist_ig:
+            _hp = os.path.join(ROOT, "history.json")
+            if os.path.exists(_hp):
+                try:
+                    _hist_ig = json.load(open(_hp, encoding="utf-8"))
+                except Exception:
+                    _hist_ig = []
+        last_ig = next((s for s in reversed(_hist_ig)
+                        if (s.get("ig_foll", 0) or 0) > 0), None)
+        if last_ig:
+            totals["ig_foll"] = last_ig.get("ig_foll", 0)
+            totals["ig_views"] = last_ig.get("ig_views", 0)
+            totals["ig_posts"] = last_ig.get("ig_posts", 0)
+            prev_ig_vids = last_ig.get("ig_videos", last_ig.get("ig_posts", 0))
+            totals["videos"] = totals["videos"] + prev_ig_vids
+            totals["ig_videos"] = prev_ig_vids
+            print("  [IG] API blokovane Metou -> drzim posledne zname IG z historie (ziadny falosny pokles)")
 
     for p in projects:    # profilove linky per platforma (pre karty fabrik)
         p["links"] = {
