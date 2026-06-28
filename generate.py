@@ -19,6 +19,7 @@ FACTORIES = [
     ("HiddenEarth",      "CESTOVANIE", "#06b6d4", r"C:\Users\damia\TravelFactory"),
     ("HistoryUntold",    "HISTÓRIA",   "#c08a3e", r"C:\Users\damia\HistoryFactory"),
     ("ColdCaseDaily",    "TRUE CRIME", "#7c92ad", r"C:\Users\damia\ColdCaseFactory"),
+    ("Curio",            "VEDA & TECH","#00c8ff", r"C:\Users\damia\ScienceFactory"),
 ]
 
 # YouTube channel ID per fabrika (natvrdo — nezavisle od Buffera)
@@ -31,6 +32,7 @@ YT_CHANNELS = {
     "HiddenEarth":      "UCdjrqPNF0jq6yE5y_UZWxNw",
     "HistoryUntold":    "UC54Qa6hJiAA18ls7qUf-6qA",
     "ColdCaseDaily":    "UCngv0ibjtidFdY5ZCmRTUxQ",
+    "Curio":            "UCmRfvAQKGLBRxpAF4A0b2Kw",
 }
 
 # TikTok handle (display_name) -> fabrika
@@ -56,6 +58,7 @@ IG_HANDLE = {
     "HiddenEarth":      "hiddenearth667",
     "HistoryUntold":    "historyuntold667",
     "ColdCaseDaily":    "coldcasedaily667",
+    "Curio":            "curi.o667",
 }
 
 try:
@@ -343,7 +346,12 @@ def main():
                     "published": (m.get("timestamp", "")[:10] if m.get("timestamp") else ""),
                 })
 
-    gen_at = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
+    try:
+        from zoneinfo import ZoneInfo
+        _now = datetime.datetime.now(ZoneInfo("Europe/Bratislava"))
+    except Exception:
+        _now = datetime.datetime.utcnow() + datetime.timedelta(hours=2)
+    gen_at = _now.strftime("%d.%m.%Y %H:%M")
 
     # --- data.json pre novy dashboard (app.html / server.py) ---
     def _vv(p, plat):
