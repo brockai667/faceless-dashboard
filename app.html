@@ -70,8 +70,8 @@ tr:hover td{background:#0e1520}
 .muted{color:var(--mut)}
 select,input,textarea{background:var(--bg2);border:1px solid var(--bd2);color:var(--tx);border-radius:9px;padding:9px 11px;font:inherit;font-size:13px}
 select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acc)}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:8px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:600;color:var(--tx);margin-top:12px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:7px;vertical-align:middle}
 .post{border:1px solid var(--bd);border-radius:12px;padding:13px;margin-bottom:12px;background:var(--panel)}
 .post .cap{font-size:13px;margin-bottom:8px}
 .cm{border-top:1px solid #131a25;padding:9px 0;display:flex;gap:9px;flex-wrap:wrap;align-items:flex-start}
@@ -84,7 +84,7 @@ select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acc)}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 svg .gl{stroke:#1a2330;stroke-width:1}
-svg text{fill:var(--mut2);font-size:12.5px}
+svg text{fill:var(--mut);font-size:15px}
 </style></head>
 <body><div class="wrap">
 <header>
@@ -121,13 +121,13 @@ const fmt=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+(''+x).padStart(2,'0');};
 function prevDay(){return HIST.length>=2?HIST[HIST.length-2]:null;}   // snapshot z predoslého dňa
-function delta(cur,prev){   // velka delta pod KPI cislo
+function delta(cur,prev){   // velka delta pod KPI cislo (oproti POSLEDNEMU obnoveniu, nie za den)
   if(cur==null)return '';
-  if(prev==null)return '<div class="dl dl0" style="opacity:.6">delta sa ukáže o deň</div>';
+  if(prev==null)return '<div class="dl dl0" style="opacity:.6">delta po ďalšom obnovení</div>';
   const d=cur-prev;
-  if(d===0)return '<div class="dl dl0">— bez zmeny za 1 deň</div>';
+  if(d===0)return '<div class="dl dl0">— bez zmeny od obnovenia</div>';
   const up=d>0;
-  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} za posledný deň</div>`;
+  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} od posl. obnovenia</div>`;
 }
 function dchip(cur,prev){   // maly inline odznak (platformy/fabriky)
   if(cur==null||prev==null)return '';
@@ -135,8 +135,8 @@ function dchip(cur,prev){   // maly inline odznak (platformy/fabriky)
   const up=d>0;return ` <span class="dchip ${up?'dlu':'dld'}">${up?'▲+':'▼−'}${fmt(Math.abs(d))}</span>`;
 }
 const userFac=u=>{const p=DATA.projects.find(p=>p.instagram&&p.instagram.handle===u);return p?{name:p.name,color:p.color}:{name:u,color:'#888'};};
-function barChart(items,h=190){
-  const W=760,H=h,pad={l:46,r:14,t:12,b:34},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
+function barChart(items,h=260){
+  const W=760,H=h,pad={l:52,r:14,t:16,b:40},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
   const mx=Math.max(1,...items.map(i=>i.v)),n=items.length;
   const bw=Math.min(120,iw/n*0.55),gap=iw/n;
   let g='';for(let k=0;k<=4;k++){const y=pad.t+ih*k/4;g+=`<line class="gl" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/><text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(mx*(4-k)/4)}</text>`;}
@@ -153,8 +153,8 @@ function facViews(p){return p.videos.reduce((s,v)=>s+(v.views||0),0);}
 function facFollowers(p){return (p.yt?.subs||0)+(p.tiktok?.followers||0)+(p.instagram?.followers||0);}
 
 /* ---- jednoduchy SVG ciarovy graf (viac serii, auto-scale) ---- */
-function lineChart(series, dates, h=170){
-  const W=760, H=h, pad={l:40,r:14,t:12,b:22};
+function lineChart(series, dates, h=250){
+  const W=760, H=h, pad={l:52,r:16,t:16,b:30};
   const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
   const n=dates.length;
   const maxY=Math.max(1,...series.flatMap(s=>s.pts));
@@ -181,14 +181,14 @@ function renderOverview(){
   const foll=t.yt_subs+t.tk_foll+t.ig_foll;
   const views=t.yt_views+t.tk_views+t.ig_views;
   const vids=allVids().length;
-  const PD=prevDay(), hp=PD!=null;
-  const Pf=hp?((PD.yt_subs||0)+(PD.tk_foll||0)+(PD.ig_foll||0)):null;
-  const Pv=hp?((PD.yt_views||0)+(PD.tk_views||0)+(PD.ig_views||0)):null;
+  const PV=DATA.prev||{}, hp=Object.keys(PV).length>0;   // prev = stav z POSLEDNEHO obnovenia (data.json)
+  const Pf=hp?((PV.yt_subs||0)+(PV.tk_foll||0)+(PV.ig_foll||0)):null;
+  const Pv=hp?((PV.yt_views||0)+(PV.tk_views||0)+(PV.ig_views||0)):null;
   const kpis=[
-    ['Fabriky',t.factories,'8 automatických kanálov',t.factories,hp?PD.factories:null],
+    ['Fabriky',t.factories,'8 automatických kanálov',t.factories,hp?PV.factories:null],
     ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,foll,Pf],
     ['Zhliadnutia',fmt(views),`YT ${fmt(t.yt_views)} · TT ${fmt(t.tk_views)} · IG ${fmt(t.ig_views)}`,views,Pv],
-    ['Videá / príspevky',vids,'naprieč platformami',vids,hp?PD.videos:null],
+    ['Videá / príspevky',vids,'naprieč platformami',vids,hp?PV.videos:null],
   ];
   const dates=HIST.map(h=>h.date);
   const trend=HIST.length>=2;   // ciarovy graf az ked mame aspon 2 dni historie
@@ -248,7 +248,7 @@ function renderWinners(){
 
 /* ---------------- PLATFORMY ---------------- */
 function renderPlatforms(){
-  const t=DATA.totals, PD=prevDay()||{};
+  const t=DATA.totals, PD=DATA.prev||{};   // oproti poslednému obnoveniu
   const cols=[
     {k:'youtube',foll:t.yt_subs,views:t.yt_views,pf:PD.yt_subs,pv:PD.yt_views,extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí`},
     {k:'tiktok',foll:t.tk_foll,views:t.tk_views,pf:PD.tk_foll,pv:PD.tk_views,extra:`${fmt(t.tk_likes)} lajkov`},
