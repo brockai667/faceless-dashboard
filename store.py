@@ -42,3 +42,29 @@ def save_history(hist):
         _req("PATCH", json.dumps(body).encode())
     except Exception as e:
         print("[store] save chyba:", e)
+
+
+PREV_FILE = "prev.json"   # posledne totals (delta "od posledneho obnovenia") - prezije restart cloudu
+
+
+def load_prev():
+    """Totals z PREDOSLEHO behu (alebo None ak vypnute/chyba)."""
+    if not enabled():
+        return None
+    try:
+        g = _req("GET")
+        c = g.get("files", {}).get(PREV_FILE, {}).get("content", "")
+        return json.loads(c or "{}")
+    except Exception as e:
+        print("[store] load_prev chyba:", e)
+        return None
+
+
+def save_prev(totals):
+    if not enabled():
+        return
+    try:
+        body = {"files": {PREV_FILE: {"content": json.dumps(totals, ensure_ascii=False)}}}
+        _req("PATCH", json.dumps(body).encode())
+    except Exception as e:
+        print("[store] save_prev chyba:", e)
