@@ -34,6 +34,7 @@ YT_CHANNELS = {
     "HistoryUntold":    "UC54Qa6hJiAA18ls7qUf-6qA",
     "ColdCaseDaily":    "UCngv0ibjtidFdY5ZCmRTUxQ",
     "Curio":            "UCmRfvAQKGLBRxpAF4A0b2Kw",
+    "Entropy":          "UChVJ93eD9DyXFIkz6vrT65w",
 }
 
 # TikTok handle (display_name) -> fabrika
