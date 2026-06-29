@@ -20,6 +20,7 @@ FACTORIES = [
     ("HistoryUntold",    "HISTÓRIA",   "#c08a3e", r"C:\Users\damia\HistoryFactory"),
     ("ColdCaseDaily",    "TRUE CRIME", "#7c92ad", r"C:\Users\damia\ColdCaseFactory"),
     ("Curio",            "VEDA & TECH","#00c8ff", r"C:\Users\damia\ScienceFactory"),
+    ("Entropy",          "CHAOS",      "#c026d3", r"C:\Users\damia\EntropyFactory"),
 ]
 
 # YouTube channel ID per fabrika (natvrdo — nezavisle od Buffera)
@@ -59,6 +60,7 @@ IG_HANDLE = {
     "HistoryUntold":    "historyuntold667",
     "ColdCaseDaily":    "coldcasedaily667",
     "Curio":            "curi.o667",
+    "Entropy":          "entropy667",
 }
 
 try:

@@ -185,7 +185,7 @@ function renderOverview(){
   const Pf=hp?((PV.yt_subs||0)+(PV.tk_foll||0)+(PV.ig_foll||0)):null;
   const Pv=hp?((PV.yt_views||0)+(PV.tk_views||0)+(PV.ig_views||0)):null;
   const kpis=[
-    ['Fabriky',t.factories,'8 automatických kanálov',t.factories,hp?PV.factories:null],
+    ['Fabriky',t.factories,'plne automatické v cloude',t.factories,hp?PV.factories:null],
     ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,foll,Pf],
     ['Zhliadnutia',fmt(views),`YT ${fmt(t.yt_views)} · TT ${fmt(t.tk_views)} · IG ${fmt(t.ig_views)}`,views,Pv],
     ['Videá / príspevky',vids,'naprieč platformami',vids,hp?PV.videos:null],
