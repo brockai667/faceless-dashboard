@@ -392,13 +392,22 @@ def main():
         "ig_posts": sum((p["instagram"]["media"] for p in projects if p["instagram"]), 0),
         "videos": sum(len(p["videos"]) for p in projects),
     }
-    _prev = {}            # predosle totals (z minuleho behu) -> dashboard ukaze zmenu +/-
+    # predosle totals (z minuleho behu) -> dashboard ukaze zmenu +/- "od posledneho obnovenia".
+    # V cloude (Render) je data.json docasny a po restarte zmizne -> ber prev z TRVALEHO Gistu (store).
     _dp0 = os.path.join(ROOT, "data.json")
-    if os.path.exists(_dp0):
-        try:
-            _prev = json.load(open(_dp0, encoding="utf-8")).get("totals", {})
-        except Exception:
-            _prev = {}
+    _prev = None
+    try:
+        import store as _stp
+        _prev = _stp.load_prev()
+    except Exception:
+        _prev = None
+    if _prev is None:
+        _prev = {}
+        if os.path.exists(_dp0):
+            try:
+                _prev = json.load(open(_dp0, encoding="utf-8")).get("totals", {})
+            except Exception:
+                _prev = {}
 
     # IG analytika moze byt blokovana Metou ("API access blocked") -> NEUKAZUJ falosny pokles:
     # vezmi posledne ZNAME (nenulove, neblokovane) IG cisla z historie (Gist/lokal), oznac ig_blocked.
@@ -438,6 +447,11 @@ def main():
         }
     json.dump({"projects": projects, "totals": totals, "prev": _prev, "gen_at": gen_at},
               open(os.path.join(ROOT, "data.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    try:
+        import store as _stp2
+        _stp2.save_prev(totals)   # uloz aktualne totals ako 'prev' pre dalsi beh (trvalo, prezije restart)
+    except Exception:
+        pass
 
     # --- history.json: jeden snapshot za den (pre grafy trendov + delty oproti vceru) ---
     import store
