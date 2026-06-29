@@ -106,8 +106,53 @@ def fetch_comments(user):
     return {"user": user, "media": out}
 
 
+def _settings():
+    p = os.path.join(ROOT, "settings.json")
+    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+
+
+def fetch_youtube_comments():
+    """Komentare z YouTube videi (read-only, cez ten isty API kluc co generate.py).
+    Cita video ID + pocty komentarov z data.json (uz vygenerovane)."""
+    key = _settings().get("youtube_api_key") or os.environ.get("YOUTUBE_API_KEY", "")
+    dp = os.path.join(ROOT, "data.json")
+    if not key or not os.path.exists(dp):
+        return []
+    try:
+        data = json.load(open(dp, encoding="utf-8"))
+    except Exception:
+        return []
+    out = []
+    for p in data.get("projects", []):
+        for v in p.get("videos", []):
+            if (v.get("platform") or "").lower() != "youtube":
+                continue
+            if int(v.get("comments", 0) or 0) <= 0:
+                continue
+            try:
+                url = ("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet"
+                       "&maxResults=30&order=time&textFormat=plainText&videoId=%s&key=%s"
+                       % (urllib.parse.quote(str(v.get("id"))), key))
+                items = json.loads(urllib.request.urlopen(url, timeout=30).read().decode()).get("items", [])
+            except Exception:
+                continue
+            comments = []
+            for c in items:
+                sn = c.get("snippet", {}).get("topLevelComment", {}).get("snippet", {})
+                comments.append({"id": c.get("id"), "text": sn.get("textDisplay", ""),
+                                 "username": sn.get("authorDisplayName", ""),
+                                 "timestamp": sn.get("publishedAt", ""),
+                                 "like_count": sn.get("likeCount", 0)})
+            if comments:
+                out.append({"id": v.get("id"), "caption": (v.get("title") or "")[:120],
+                            "permalink": v.get("link"), "type": "youtube",
+                            "comments_count": v.get("comments", 0), "comments": comments,
+                            "user": p.get("name"), "platform": "youtube"})
+    return out
+
+
 def fetch_all_comments():
-    """Komentare zo VSETKYCH IG uctov naraz — kazdy prispevok oznaceny uctom."""
+    """Komentare zo VSETKYCH uctov naraz — Instagram (odpoved/skrytie) + YouTube (read-only)."""
     out = []
     for user in ig_tokens().keys():
         try:
@@ -117,7 +162,12 @@ def fetch_all_comments():
         for m in r.get("media", []):
             if m.get("comments"):
                 m["user"] = user
+                m["platform"] = "instagram"
                 out.append(m)
+    try:
+        out.extend(fetch_youtube_comments())   # + YouTube komentare (napr. Entropy)
+    except Exception:
+        pass
     return {"media": out}
 
 
