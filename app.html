@@ -96,6 +96,7 @@ svg text{fill:var(--mut);font-size:15px}
 
 <div class="tabs">
   <button class="tab on" data-t="overview">📊 Prehľad</button>
+  <button class="tab" data-t="growth">📈 Rast &amp; rady</button>
   <button class="tab" data-t="platforms">📱 Platformy</button>
   <button class="tab" data-t="winners">🏆 Víťazi</button>
   <button class="tab" data-t="factories">🏭 Fabriky</button>
@@ -104,6 +105,7 @@ svg text{fill:var(--mut);font-size:15px}
 </div>
 
 <section id="overview"></section>
+<section id="growth" class="hide-tab"></section>
 <section id="factories" class="hide-tab"></section>
 <section id="winners" class="hide-tab"></section>
 <section id="platforms" class="hide-tab"></section>
@@ -212,6 +214,73 @@ function renderOverview(){
     <div class="grid k2">
       <div class="card"><h2>👥 Sledovatelia <small>${trend?'rast v čase':'podľa platformy'}</small></h2>${followChart}${note}</div>
       <div class="card"><h2>👁️ Zhliadnutia <small>${trend?'rast v čase':'podľa platformy'}</small></h2>${viewChart}</div>
+    </div>`;
+}
+
+/* ---------------- RAST & RADY ---------------- */
+function dayDelta(d,inline){
+  if(d==null)return '';
+  if(d===0)return inline?'<span class="muted">0</span>':'<div class="dl dl0">— bez zmeny za deň</div>';
+  const up=d>0;
+  if(inline)return `<span class="dchip ${up?'dlu':'dld'}">${up?'▲+':'▼−'}${fmt(Math.abs(d))}</span>`;
+  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} za posledný deň</div>`;
+}
+function tipOfDay(){
+  const ever=[
+    'Prvé 2 sekundy = všetko. Hook musí udrieť hneď, žiaden pomalý intro.',
+    'Víťazné videá ručne prepostni v appke s trending zvukom — legálny algoritmický boost.',
+    'Konzistencia > dokonalosť. 3 videá denne porazia 1 perfektné za týždeň.',
+    'Sleduj ktoré témy vyhrávajú (tab Víťazi) a rob ich varianty — algoritmus odmeňuje sériu.',
+    'Každé video nech má jasné „Follow" CTA na konci — inak views nemenia na sledovateľov.',
+    'Odpovedaj na komentáre (tab Komentáre) — zvyšuje dosah a buduje komunitu.',
+  ];
+  return ever[Math.floor(Date.now()/864e5)%ever.length];
+}
+function buildTips(t,P,dFoll,dViews){
+  const tips=[];
+  const pg=[['youtube',t.yt_views-(P.yt_views||0)],['tiktok',t.tk_views-(P.tk_views||0)],
+            ['instagram',t.ig_views-(P.ig_views||0)]].sort((a,b)=>b[1]-a[1]);
+  if(pg[0][1]>0)tips.push(`${PI[pg[0][0]]} <b>${PN[pg[0][0]]}</b> rastie najrýchlejšie (+${fmt(pg[0][1])} videní/deň) — daj tam viac, ide ti to.`);
+  const facV=DATA.projects.map(p=>({n:p.name,v:facViews(p)})).sort((a,b)=>b.v-a.v);
+  if(facV[0]&&facV[0].v>0)tips.push(`🏆 <b>${facV[0].n}</b> vedie (${fmt(facV[0].v)} videní) — pozri jeho top videá vo Víťazoch a replikuj štýl/hooky.`);
+  const weak=facV[facV.length-1];
+  if(weak&&facV[0]&&weak.v<facV[0].v*0.15)tips.push(`⚠️ <b>${weak.n}</b> zaostáva (${fmt(weak.v)}) — skús silnejší 2-sekundový hook alebo inú tému.`);
+  if(dViews>0&&dFoll<=0)tips.push('💬 Videní pribúda, sledovateľov nie — over že každé video má „Follow" CTA na konci.');
+  tips.push(tipOfDay());
+  return tips.slice(0,4);
+}
+function renderGrowth(){
+  const t=DATA.totals, P=prevDay();
+  if(!P){
+    $('#growth').innerHTML=`<div class="card"><h2>📈 Rast za posledný deň</h2>
+      <div class="empty">Porovnanie „za deň" sa zapne keď bude história aspoň 2 dni (zbiera sa každým obnovením). Zatiaľ je 1 deň — zajtra to už ukáže rozdiely.</div></div>
+      <div class="card" style="margin-top:14px"><h2>💡 Rada dňa</h2>
+      <div style="font-size:15px;line-height:1.6">${tipOfDay()}</div></div>`;
+    return;
+  }
+  const cf=t.yt_subs+t.tk_foll+t.ig_foll, pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0);
+  const cv=t.yt_views+t.tk_views+t.ig_views, pv=(P.yt_views||0)+(P.tk_views||0)+(P.ig_views||0);
+  const dFoll=cf-pf, dViews=cv-pv, dVid=(t.videos||0)-(P.videos||0);
+  const big=(lab,cur,d,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
+     <div class="big">${fmt(cur)}</div>${dayDelta(d)}<div class="sm">${sub}</div></div>`;
+  const DS={youtube:[t.yt_subs-(P.yt_subs||0),t.yt_views-(P.yt_views||0)],
+            tiktok:[t.tk_foll-(P.tk_foll||0),t.tk_views-(P.tk_views||0)],
+            instagram:[t.ig_foll-(P.ig_foll||0),t.ig_views-(P.ig_views||0)]};
+  const prow=k=>`<div class="row" style="grid-template-columns:118px 1fr 1fr;gap:10px;margin:11px 0">
+     <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
+     <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
+     <span class="muted">videní ${dayDelta(DS[k][1],true)}</span></div>`;
+  const tips=buildTips(t,P,dFoll,dViews);
+  $('#growth').innerHTML=`
+    <div class="grid k3" style="margin-bottom:14px">
+      ${big('Sledovatelia',cf,dFoll,'oproti včerajšku')}
+      ${big('Zhliadnutia',cv,dViews,'oproti včerajšku')}
+      ${big('Videá / príspevky',t.videos,dVid,'oproti včerajšku')}
+    </div>
+    <div class="grid k2">
+      <div class="card bars"><h2>📱 Za deň podľa platformy</h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
+      <div class="card"><h2>💡 Rady — čo vylepšiť</h2>
+        <ul style="margin:0;padding-left:18px;line-height:1.85;font-size:15px">${tips.map(x=>`<li>${x}</li>`).join('')}</ul></div>
     </div>`;
 }
 
@@ -388,8 +457,8 @@ async function hideC(user,cid,pid){
 /* ---------------- INFRA ---------------- */
 function show(t){
   $$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
-  ['overview','factories','winners','platforms','docs','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
-  if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
+  ['overview','growth','factories','winners','platforms','docs','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
   if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='comments')renderComments();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
