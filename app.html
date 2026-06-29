@@ -396,39 +396,42 @@ function renderDocs(){
 function renderComments(){
   $('#comments').innerHTML=`
     <div class="card" style="margin-bottom:14px">
-      <h2>💬 Správa Instagram komentárov <small>všetky účty naraz</small></h2>
+      <h2>💬 Správa komentárov <small>Instagram + YouTube · všetky účty naraz</small></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button class="btn acc" onclick="loadComments()">↻ Načítať komentáre zo všetkých účtov</button>
-        <span class="muted" style="font-size:12px">ℹ️ IG API umožňuje odpoveď a skrytie — lajkovanie komentárov API nepodporuje.</span>
+        <span class="muted" style="font-size:12px">ℹ️ IG: odpoveď + skrytie priamo tu. YouTube: zobrazené (odpoveď cez tlačidlo na YT).</span>
       </div>
     </div>
     <div id="cbody"><div class="empty">Klikni „Načítať komentáre zo všetkých účtov".</div></div>`;
 }
 async function loadComments(){
-  $('#cbody').innerHTML=`<div class="empty"><span class="spin"></span> Načítavam komentáre zo všetkých 8 účtov…</div>`;
+  $('#cbody').innerHTML=`<div class="empty"><span class="spin"></span> Načítavam komentáre (Instagram + YouTube)…</div>`;
   try{
     const r=await fetch('/api/all_comments');
     const d=await r.json();
     if(d.error){$('#cbody').innerHTML=`<div class="empty">Chyba: ${esc(d.error)}</div>`;return;}
     // zobraz len NEVYBAVENE: komentar s lajkom (like_count>0) = vybaveny -> automaticky preč
-    const posts=(d.media||[]).map(m=>({...m,open:(m.comments||[]).filter(c=>!(c.like_count>0))}))
+    // IG: komentar s lajkom (ty si lajkol) = vybaveny -> prec. YT: zobraz vsetky (read-only).
+    const posts=(d.media||[]).map(m=>({...m,open:(m.comments||[]).filter(c=> m.platform==='youtube' ? true : !(c.like_count>0))}))
                              .filter(m=>m.open.length);
-    if(!posts.length){$('#cbody').innerHTML=`<div class="empty">Žiadne nevybavené komentáre. 🎉<br><span style="font-size:12px">(Lajknuté komentáre sa odtiaľto automaticky stratia. Účty sú zatiaľ nové — keď prídu komentáre, objavia sa tu.)</span></div>`;return;}
+    if(!posts.length){$('#cbody').innerHTML=`<div class="empty">Žiadne nevybavené komentáre. 🎉<br><span style="font-size:12px">(Lajknuté IG komentáre sa odtiaľto automaticky stratia. Účty sú zatiaľ nové — keď prídu komentáre, objavia sa tu.)</span></div>`;return;}
     $('#cbody').innerHTML=posts.map(m=>{
-      const f=userFac(m.user);
+      const yt=m.platform==='youtube';
+      const f=yt?{name:m.user,color:'#ff4d4d'}:userFac(m.user);
+      const icon=yt?'📺':'📸';
       return `<div class="post" id="post_${m.id}" style="border-left:3px solid ${f.color}">
         <div class="cap">
-          <span class="tag" style="background:${f.color}22;color:${f.color}">${f.name}</span>
-          <span class="muted">@${esc(m.user)}</span> ·
+          <span class="tag" style="background:${f.color}22;color:${f.color}">${icon} ${esc(f.name)}</span>
           <a href="${m.permalink}" target="_blank">${esc(m.caption)||'(príspevok)'}</a></div>
         ${m.open.map(c=>`<div class="cm" id="cm_${c.id}">
           <div style="flex:1">
             <span class="u">@${esc(c.username||'?')}</span> <span class="t">${esc(c.text||'')}</span>
-            <div class="reply">
+            ${yt?`<div class="reply"><a class="btn" href="${m.permalink}" target="_blank">Odpovedať na YouTube ↗</a></div>`
+                :`<div class="reply">
               <input placeholder="Odpoveď…" id="r_${c.id}">
               <button class="btn" onclick="sendReply('${m.user}','${c.id}','${m.id}')">Odpovedať</button>
               <button class="btn" onclick="hideC('${m.user}','${c.id}','${m.id}')">Skryť</button>
-            </div>
+            </div>`}
           </div></div>`).join('')}
       </div>`;}).join('');
   }catch(e){$('#cbody').innerHTML=`<div class="empty">Chyba spojenia: ${esc(''+e)}</div>`;}
