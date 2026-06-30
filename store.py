@@ -68,3 +68,38 @@ def save_prev(totals):
         _req("PATCH", json.dumps(body).encode())
     except Exception as e:
         print("[store] save_prev chyba:", e)
+
+
+DONE_FILE = "done_comments.json"   # ID komentarov oznacenych ako "vybavene" -> prec z dashboardu (prezije restart)
+_LOCAL_DONE = os.path.join(os.path.dirname(os.path.abspath(__file__)), DONE_FILE)
+
+
+def load_done():
+    """Mnozina ID vybavenych komentarov. Gist ak je nastaveny, inak lokalny subor."""
+    if enabled():
+        try:
+            g = _req("GET")
+            c = g.get("files", {}).get(DONE_FILE, {}).get("content", "")
+            return set(json.loads(c or "[]"))
+        except Exception as e:
+            print("[store] load_done chyba:", e)
+            return set()
+    try:
+        return set(json.load(open(_LOCAL_DONE, encoding="utf-8"))) if os.path.exists(_LOCAL_DONE) else set()
+    except Exception:
+        return set()
+
+
+def save_done(ids):
+    ids = sorted(set(ids))
+    if enabled():
+        try:
+            body = {"files": {DONE_FILE: {"content": json.dumps(ids, ensure_ascii=False)}}}
+            _req("PATCH", json.dumps(body).encode())
+            return
+        except Exception as e:
+            print("[store] save_done chyba:", e)
+    try:
+        json.dump(ids, open(_LOCAL_DONE, "w", encoding="utf-8"), ensure_ascii=False)
+    except Exception as e:
+        print("[store] save_done lokal chyba:", e)
