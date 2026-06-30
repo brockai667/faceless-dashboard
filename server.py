@@ -12,6 +12,8 @@ import base64, json, os, socket, subprocess, sys, threading, time
 import urllib.parse, urllib.request, urllib.error, webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
+import store   # trvale ulozisko "vybavenych" komentarov (Gist / lokalny subor)
+
 
 def lan_ip():
     try:
@@ -168,7 +170,18 @@ def fetch_all_comments():
         out.extend(fetch_youtube_comments())   # + YouTube komentare (napr. Entropy)
     except Exception:
         pass
-    return {"media": out}
+    # odfiltruj komentare oznacene ako "vybavene" (tlacidlo na dashboarde) -> uz sa nezobrazia
+    try:
+        done = store.load_done()
+    except Exception:
+        done = set()
+    media = []
+    for m in out:
+        m["comments"] = [c for c in m.get("comments", []) if c.get("id") not in done]
+        if m["comments"]:
+            m["comments_count"] = len(m["comments"])
+            media.append(m)
+    return {"media": media}
 
 
 def reply_comment(user, comment_id, message):
@@ -272,6 +285,17 @@ class H(BaseHTTPRequestHandler):
         if u.path == "/api/hide":
             return self._send(200, json.dumps(hide_comment(
                 body.get("user"), body.get("comment_id"), body.get("hide", True)), ensure_ascii=False))
+        if u.path == "/api/comment_done":
+            cid = body.get("comment_id")
+            if not cid:
+                return self._send(200, json.dumps({"error": "chyba comment_id"}))
+            try:
+                done = store.load_done()
+                done.add(cid)
+                store.save_done(done)
+                return self._send(200, json.dumps({"ok": True}))
+            except Exception as e:
+                return self._send(200, json.dumps({"error": str(e)}))
         return self._send(404, json.dumps({"error": "not found"}))
 
 
