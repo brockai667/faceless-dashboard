@@ -426,11 +426,13 @@ async function loadComments(){
         ${m.open.map(c=>`<div class="cm" id="cm_${c.id}">
           <div style="flex:1">
             <span class="u">@${esc(c.username||'?')}</span> <span class="t">${esc(c.text||'')}</span>
-            ${yt?`<div class="reply"><a class="btn" href="${m.permalink}" target="_blank">Odpovedať na YouTube ↗</a></div>`
+            ${yt?`<div class="reply"><a class="btn" href="${m.permalink}" target="_blank">Odpovedať na YouTube ↗</a>
+              <button class="btn" onclick="markDone('${c.id}','${m.id}')">✓ Vybavené</button></div>`
                 :`<div class="reply">
               <input placeholder="Odpoveď…" id="r_${c.id}">
               <button class="btn" onclick="sendReply('${m.user}','${c.id}','${m.id}')">Odpovedať</button>
               <button class="btn" onclick="hideC('${m.user}','${c.id}','${m.id}')">Skryť</button>
+              <button class="btn" onclick="markDone('${c.id}','${m.id}')">✓ Vybavené</button>
             </div>`}
           </div></div>`).join('')}
       </div>`;}).join('');
@@ -440,6 +442,11 @@ function dropComment(cid,pid){            // odstrani komentar; ak je prispevok 
   const el=$('#cm_'+cid); if(el)el.remove();
   const post=$('#post_'+pid); if(post&&!post.querySelector('.cm'))post.remove();
   if(!$('#cbody').querySelector('.post'))$('#cbody').innerHTML='<div class="empty">Žiadne nevybavené komentáre. 🎉</div>';
+}
+async function markDone(cid,pid){         // "Vybavené" -> trvalo zmizne z dashboardu (aj po reload/restart)
+  try{ await fetch('/api/comment_done',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({comment_id:cid})}); }catch(e){}
+  dropComment(cid,pid);
 }
 async function sendReply(user,cid,pid){
   const inp=$('#r_'+cid); const msg=inp.value.trim(); if(!msg)return;
