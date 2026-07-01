@@ -102,6 +102,7 @@ svg text{fill:var(--mut);font-size:15px}
   <button class="tab" role="tab" aria-selected="false" aria-controls="factories" id="tabbtn_factories" data-t="factories">🏭 Fabriky</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="comments" id="tabbtn_comments" data-t="comments">💬 Komentáre</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="docs" id="tabbtn_docs" data-t="docs">🎬 Dokumenty</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="lumora" id="tabbtn_lumora" data-t="lumora">🌙 Lumora</button>
 </div>
 
 <section id="overview" role="tabpanel" aria-labelledby="tabbtn_overview"><div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam dáta…</div></section>
@@ -110,6 +111,7 @@ svg text{fill:var(--mut);font-size:15px}
 <section id="winners" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_winners"></section>
 <section id="platforms" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_platforms"></section>
 <section id="docs" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_docs"></section>
+<section id="lumora" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_lumora"></section>
 <section id="comments" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_comments"></section>
 
 </div>
@@ -408,6 +410,31 @@ function renderDocs(){
       <tbody>${rows}</tbody></table></div>`;
 }
 
+/* ---------------- LUMORA (ambient hudba - samostatna analyza) ---------------- */
+function renderLumora(){
+  const C='#7c5cff';
+  const p=(DATA.projects||[]).find(x=>x.name==='Lumora');
+  if(!p){ $('#lumora').innerHTML=`<div class="card"><h2>🌙 Lumora</h2><div class="empty">Lumora sa nenašla v dátach — spusti Obnoviť dáta.</div></div>`; return; }
+  const vids=(p.videos||[]).slice().sort((a,b)=>(b.views||0)-(a.views||0));
+  const subs=p.yt?p.yt.subs:0;
+  const tot=vids.reduce((s,v)=>s+(v.views||0),0);
+  const avg=vids.length?vids.reduce((s,v)=>s+(v.duration||0),0)/vids.length:0;
+  const kp=[['Videí',vids.length,'ambient'],['Odberatelia',fmt(subs),'YouTube'],['Zhliadnutia',fmt(tot),'spolu'],['Priem. dĺžka',dur(avg),'min:sek']];
+  const rows=vids.length?vids.map((v,i)=>`<tr>
+    <td class="rk">${i+1}</td>
+    <td><a href="${v.link}" target="_blank" rel="noopener noreferrer">${esc((v.title||'').slice(0,70))}</a></td>
+    <td class="n">${dur(v.duration)}</td>
+    <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
+    <td class="muted" style="font-size:12px">${fmtDate(v.published)}</td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Zatiaľ žiadne videá — objavia sa po nahratí na kanál Lumora.</div></td></tr>`;
+  $('#lumora').innerHTML=`
+    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:14px"><h2><span style="color:${C}">🌙 Lumora</span> <small>ambient hudba · YouTube long-form + Spotify</small></h2>
+      <div class="sm" style="color:var(--mut)">Dlhé ambient videá (focus / study / sleep) — monetizácia cez čas sledovania. Rovnaká hudba ide aj na Spotify ako krátke skladby.</div></div>
+    <div class="card"><h2>🎧 Videá Lumory</h2>
+      <table><thead><tr><th>#</th><th>Video</th><th class="n">Dĺžka</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Kom.</th><th>Dátum</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+
 /* ---------------- KOMENTARE ---------------- */
 function renderComments(){
   $('#comments').innerHTML=`
@@ -483,9 +510,9 @@ async function hideC(user,cid,pid){
 /* ---------------- INFRA ---------------- */
 function show(t){
   $$('.tab').forEach(b=>{const on=b.dataset.t===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false');});
-  ['overview','growth','factories','winners','platforms','docs','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  ['overview','growth','factories','winners','platforms','docs','lumora','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
   if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
-  if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='comments')renderComments();
+  if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='lumora')renderLumora(); if(t==='comments')renderComments();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
 async function refresh(){
