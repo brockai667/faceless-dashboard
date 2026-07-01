@@ -1,0 +1,4 @@
+# Test-only dependencies. The app itself remains stdlib-only (see requirements.txt);
+# this file is separate so production/cloud installs never need pytest.
+pytest>=8.0
+pytest-mock>=3.14
