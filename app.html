@@ -388,7 +388,7 @@ function renderFactories(){
 
 /* ---------------- DOKUMENTY (dlhe YT videa) ---------------- */
 function renderDocs(){
-  const docs=allVids().filter(v=>(v.platform||'').toLowerCase()==='youtube'&&v.is_long)
+  const docs=allVids().filter(v=>(v.platform||'').toLowerCase()==='youtube'&&v.is_long&&v.factory!=='Lumora')
     .sort((a,b)=>(b.views||0)-(a.views||0));
   if(!docs.length){
     $('#docs').innerHTML=`<div class="card"><h2>🎬 Dlhé dokumenty</h2>
