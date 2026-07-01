@@ -393,15 +393,46 @@ def main():
     # --- data.json pre novy dashboard (app.html / server.py) ---
     def _vv(p, plat):
         return sum(v["views"] for v in p["videos"] if (v.get("platform") or "").lower() == plat)
+
+    # MONOTONICKY CLAMP: kumulativne zhliadnutia (YT/TikTok/IG) NIKDY neklesaju. Ak API vrati
+    # nizsie/0 (glitch, YT quota, Meta docasne blokne IG) -> drz NAJVYSSIE kedy videne cislo
+    # per fabrika/platforma, takze grafy ("Za den podla platformy", denne stlpce) neukazu falosny pokles.
+    def _load_hist_all():
+        try:
+            import store as _s
+            _h = _s.load_history()
+            if _h is not None:
+                return _h
+        except Exception:
+            pass
+        _hp = os.path.join(ROOT, "history.json")
+        if os.path.exists(_hp):
+            try:
+                return json.load(open(_hp, encoding="utf-8"))
+            except Exception:
+                pass
+        return []
+    _max_fac = {}
+    for _snap in _load_hist_all():
+        for _nm, _d in (_snap.get("fac") or {}).items():
+            _m = _max_fac.setdefault(_nm, {})
+            for _kv in ("yv", "tv", "iv"):
+                _m[_kv] = max(_m.get(_kv, 0), _d.get(_kv, 0) or 0)
+    _KV = {"youtube": "yv", "tiktok": "tv", "instagram": "iv"}
+
+    def _held(p, plat):
+        """Zhliadnutia su kumulativne -> drz max(dnes, najvyssie kedy zname per fabrika)."""
+        return max(_vv(p, plat), (_max_fac.get(p["name"]) or {}).get(_KV[plat], 0))
+
     totals = {
         "factories": len(projects),
         "yt_subs": sum((p["yt"]["subs"] for p in projects if p["yt"]), 0),
-        "yt_views": sum(_vv(p, "youtube") for p in projects),
+        "yt_views": sum(_held(p, "youtube") for p in projects),
         "tk_foll": sum((p["tiktok"]["followers"] for p in projects if p["tiktok"]), 0),
-        "tk_views": sum(_vv(p, "tiktok") for p in projects),
+        "tk_views": sum(_held(p, "tiktok") for p in projects),
         "tk_likes": sum((p["tiktok"]["likes"] for p in projects if p["tiktok"]), 0),
         "ig_foll": sum((p["instagram"]["followers"] for p in projects if p["instagram"]), 0),
-        "ig_views": sum(_vv(p, "instagram") for p in projects),
+        "ig_views": sum(_held(p, "instagram") for p in projects),
         "ig_posts": sum((p["instagram"]["media"] for p in projects if p["instagram"]), 0),
         "videos": sum(len(p["videos"]) for p in projects),
     }
@@ -421,6 +452,11 @@ def main():
                 _prev = json.load(open(_dp0, encoding="utf-8")).get("totals", {})
             except Exception:
                 _prev = {}
+
+    # totals zhliadnut nesmu klesnut pod posledny beh (monotonicky aj pre "+X za posledny den")
+    for _k in ("yt_views", "tk_views", "ig_views"):
+        if (_prev or {}).get(_k, 0) > (totals.get(_k, 0) or 0):
+            totals[_k] = _prev[_k]
 
     # IG analytika moze byt blokovana Metou ("API access blocked") -> NEUKAZUJ falosny pokles:
     # vezmi posledne ZNAME (nenulove, neblokovane) IG cisla z historie (Gist/lokal), oznac ig_blocked.
@@ -474,9 +510,9 @@ def main():
         hist = json.load(open(hpath, encoding="utf-8")) if os.path.exists(hpath) else []
     today = datetime.date.today().isoformat()
     fac_snap = {p["name"]: {
-        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _vv(p, "youtube"),
-        "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _vv(p, "tiktok"),
-        "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _vv(p, "instagram"),
+        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _held(p, "youtube"),
+        "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _held(p, "tiktok"),
+        "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _held(p, "instagram"),
     } for p in projects}
     snap = {"date": today, **totals, "fac": fac_snap}
     hist = [h for h in hist if h.get("date") != today] + [snap]   # nahrad dnesny
