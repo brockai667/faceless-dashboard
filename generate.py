@@ -21,6 +21,7 @@ FACTORIES = [
     ("ColdCaseDaily",    "TRUE CRIME", "#7c92ad", r"C:\Users\damia\ColdCaseFactory"),
     ("Curio",            "VEDA & TECH","#00c8ff", r"C:\Users\damia\ScienceFactory"),
     ("Entropy",          "CHAOS",      "#c026d3", r"C:\Users\damia\EntropyFactory"),
+    ("Lumora",           "AMBIENT HUDBA","#7c5cff", r"C:\Users\damia\AmbientFactory"),
 ]
 
 # YouTube channel ID per fabrika (natvrdo — nezavisle od Buffera)
@@ -35,6 +36,7 @@ YT_CHANNELS = {
     "ColdCaseDaily":    "UCngv0ibjtidFdY5ZCmRTUxQ",
     "Curio":            "UCmRfvAQKGLBRxpAF4A0b2Kw",
     "Entropy":          "UChVJ93eD9DyXFIkz6vrT65w",
+    "Lumora":           "UCq8zz64h1AJaXKQuuuIWlpQ",
 }
 
 # TikTok handle (display_name) -> fabrika
