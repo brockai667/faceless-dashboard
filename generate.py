@@ -77,11 +77,22 @@ except Exception:
 # username IG -> fabrika (reverz IG_HANDLE)
 IG_TO_FACTORY = {v: k for k, v in IG_HANDLE.items()}
 
+def _load_json_safe(path, default=None):
+    """Nacita JSON subor odolne voci chybam (chybajuci/poskodeny subor nesmie
+    zhodit cely beh generate.py — vrati `default` a vypise varovanie)."""
+    if default is None:
+        default = {}
+    if not os.path.exists(path):
+        return default
+    try:
+        return json.load(open(path, encoding="utf-8"))
+    except Exception as e:
+        print(f"  [warn] poskodeny JSON '{os.path.basename(path)}': {e} — pouzivam prazdne data")
+        return default
+
+
 def load_settings():
-    p = os.path.join(ROOT, "settings.json")
-    if os.path.exists(p):
-        return json.load(open(p, encoding="utf-8"))
-    return {}
+    return _load_json_safe(os.path.join(ROOT, "settings.json"), {})
 
 def gql(token, query, tries=2):
     body = json.dumps({"query": query}).encode("utf-8")
@@ -198,7 +209,7 @@ def main():
     yt_key = settings.get("youtube_api_key") or os.environ.get("YOUTUBE_API_KEY", "")
     projects = []
     _cpath = os.path.join(ROOT, "channels_cache.json")
-    chan_cache = json.load(open(_cpath, encoding="utf-8")) if os.path.exists(_cpath) else {}
+    chan_cache = _load_json_safe(_cpath, {})
     buffer_down = False  # ak Buffer raz hodi 429, zvysok behu ho preskocime (rychlost)
     for name, niche, color, folder in FACTORIES:
         print("-", name)
@@ -209,7 +220,7 @@ def main():
         cfg_path = os.path.join(folder, "config.json")
         if not os.path.exists(cfg_path):
             projects.append(proj); continue
-        cfg = json.load(open(cfg_path, encoding="utf-8"))
+        cfg = _load_json_safe(cfg_path, {})   # poskodeny config jednej fabriky nesmie zhodit ostatne
         token = cfg.get("buffer_token")
         if not token:
             projects.append(proj); continue

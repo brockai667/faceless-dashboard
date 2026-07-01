@@ -11,6 +11,29 @@ from conftest import make_response
 
 
 # ---------------------------------------------------------------------------
+# _load_json_safe() — Phase 2 hardening: a corrupt/missing JSON file (channel
+# cache, per-factory config.json, settings.json) must never crash the whole
+# generate.py run; it should log a warning and fall back to a default value.
+# ---------------------------------------------------------------------------
+
+def test_load_json_safe_missing_file_returns_default(tmp_path):
+    assert generate._load_json_safe(str(tmp_path / "missing.json"), {"a": 1}) == {"a": 1}
+
+
+def test_load_json_safe_corrupt_file_returns_default(tmp_path, capsys):
+    p = tmp_path / "bad.json"
+    p.write_text("{not valid json!!", encoding="utf-8")
+    assert generate._load_json_safe(str(p), {}) == {}
+    assert "poskodeny" in capsys.readouterr().out
+
+
+def test_load_json_safe_valid_file_is_parsed(tmp_path):
+    p = tmp_path / "good.json"
+    p.write_text(json.dumps({"buffer_token": "abc"}), encoding="utf-8")
+    assert generate._load_json_safe(str(p), {}) == {"buffer_token": "abc"}
+
+
+# ---------------------------------------------------------------------------
 # fmt() — number formatting used everywhere in the legacy HTML + totals
 # ---------------------------------------------------------------------------
 

@@ -63,9 +63,22 @@ def auto_refresh_loop():
         run_generate()
 
 
+def _load_json_safe(path, default=None):
+    """Odolne nacitanie JSON — poskodeny/chybajuci subor nesmie zhodit request
+    (vrati `default` a vypise varovanie namiesto vyhodenia vynimky)."""
+    if default is None:
+        default = {}
+    if not os.path.exists(path):
+        return default
+    try:
+        return json.load(open(path, encoding="utf-8"))
+    except Exception as e:
+        print(f"[warn] poskodeny JSON '{os.path.basename(path)}': {e}")
+        return default
+
+
 def ig_tokens():
-    p = os.path.join(ROOT, "ig_tokens.json")
-    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    return _load_json_safe(os.path.join(ROOT, "ig_tokens.json"), {})
 
 
 def ig_get(path, params):
@@ -86,9 +99,14 @@ def fetch_comments(user):
     if not t or not t.get("access_token"):
         return {"error": f"ucet '{user}' nema token"}
     tok = t["access_token"]
-    media = ig_get("me/media", {
-        "fields": "id,caption,permalink,media_type,comments_count,timestamp",
-        "limit": "8", "access_token": tok}).get("data", [])
+    try:
+        media = ig_get("me/media", {
+            "fields": "id,caption,permalink,media_type,comments_count,timestamp",
+            "limit": "8", "access_token": tok}).get("data", [])
+    except urllib.error.HTTPError as e:
+        return {"error": f"IG API chyba {e.code} pre '{user}'"}
+    except Exception as e:
+        return {"error": f"IG API nedostupne pre '{user}': {e}"}
     out = []
     for m in media:
         comments = []
@@ -109,8 +127,7 @@ def fetch_comments(user):
 
 
 def _settings():
-    p = os.path.join(ROOT, "settings.json")
-    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+    return _load_json_safe(os.path.join(ROOT, "settings.json"), {})
 
 
 def fetch_youtube_comments():
@@ -249,11 +266,20 @@ class H(BaseHTTPRequestHandler):
     def do_GET(self):
         if not self._auth():
             return
+        try:
+            self._route_get()
+        except Exception as e:
+            print("[server] neocakavana chyba GET:", e)
+            self._send(500, json.dumps({"error": f"internal error: {e}"}))
+
+    def _route_get(self):
         u = urllib.parse.urlparse(self.path)
         q = urllib.parse.parse_qs(u.query)
         if u.path in ("/", "/index.html", "/app.html"):
             return self._file("app.html", "text/html; charset=utf-8")
         if u.path == "/data.json":
+            if not os.path.exists(os.path.join(ROOT, "data.json")):
+                return self._send(200, json.dumps({"projects": [], "totals": {}, "prev": {}, "gen_at": None}))
             return self._file("data.json", "application/json; charset=utf-8")
         if u.path == "/history.json":
             if not os.path.exists(os.path.join(ROOT, "history.json")):
@@ -276,8 +302,19 @@ class H(BaseHTTPRequestHandler):
     def do_POST(self):
         if not self._auth():
             return
+        try:
+            self._route_post()
+        except Exception as e:
+            print("[server] neocakavana chyba POST:", e)
+            self._send(500, json.dumps({"error": f"internal error: {e}"}))
+
+    def _route_post(self):
         ln = int(self.headers.get("Content-Length", 0) or 0)
-        body = json.loads(self.rfile.read(ln).decode() or "{}") if ln else {}
+        raw = self.rfile.read(ln).decode() if ln else ""
+        try:
+            body = json.loads(raw) if raw else {}
+        except Exception:
+            return self._send(400, json.dumps({"error": "neplatny JSON telo"}))
         u = urllib.parse.urlparse(self.path)
         if u.path == "/api/reply":
             return self._send(200, json.dumps(reply_comment(
