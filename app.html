@@ -88,29 +88,29 @@ svg text{fill:var(--mut);font-size:15px}
 </style></head>
 <body><div class="wrap">
 <header>
-  <h1><span class="dot"></span>FacelessFactory <span style="color:var(--mut);font-weight:500">Centrála</span></h1>
+  <h1><span class="dot" aria-hidden="true"></span>FacelessFactory <span style="color:var(--mut);font-weight:500">Centrála</span></h1>
   <div class="spacer"></div>
-  <span class="sub" id="updated">—</span>
+  <span class="sub" id="updated" role="status">Načítavam…</span>
   <button class="btn acc" id="refresh" onclick="refresh()">↻ Obnoviť dáta</button>
 </header>
 
-<div class="tabs">
-  <button class="tab on" data-t="overview">📊 Prehľad</button>
-  <button class="tab" data-t="growth">📈 Rast &amp; rady</button>
-  <button class="tab" data-t="platforms">📱 Platformy</button>
-  <button class="tab" data-t="winners">🏆 Víťazi</button>
-  <button class="tab" data-t="factories">🏭 Fabriky</button>
-  <button class="tab" data-t="comments">💬 Komentáre</button>
-  <button class="tab" data-t="docs">🎬 Dokumenty</button>
+<div class="tabs" role="tablist" aria-label="Sekcie dashboardu">
+  <button class="tab on" role="tab" aria-selected="true" aria-controls="overview" id="tabbtn_overview" data-t="overview">📊 Prehľad</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="growth" id="tabbtn_growth" data-t="growth">📈 Rast &amp; rady</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="platforms" id="tabbtn_platforms" data-t="platforms">📱 Platformy</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="winners" id="tabbtn_winners" data-t="winners">🏆 Víťazi</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="factories" id="tabbtn_factories" data-t="factories">🏭 Fabriky</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="comments" id="tabbtn_comments" data-t="comments">💬 Komentáre</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="docs" id="tabbtn_docs" data-t="docs">🎬 Dokumenty</button>
 </div>
 
-<section id="overview"></section>
-<section id="growth" class="hide-tab"></section>
-<section id="factories" class="hide-tab"></section>
-<section id="winners" class="hide-tab"></section>
-<section id="platforms" class="hide-tab"></section>
-<section id="docs" class="hide-tab"></section>
-<section id="comments" class="hide-tab"></section>
+<section id="overview" role="tabpanel" aria-labelledby="tabbtn_overview"><div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam dáta…</div></section>
+<section id="growth" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_growth"></section>
+<section id="factories" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_factories"></section>
+<section id="winners" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_winners"></section>
+<section id="platforms" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_platforms"></section>
+<section id="docs" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_docs"></section>
+<section id="comments" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_comments"></section>
 
 </div>
 <script>
@@ -122,6 +122,9 @@ let DATA=null, HIST=[];
 const fmt=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':(''+Math.round(n));
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+(''+x).padStart(2,'0');};
+// jednotny format dátumov naprieč celym dashboardom: 'YYYY-MM-DD' -> 'DD.MM.YYYY' (rovnaky styl ako gen_at zo servera)
+const fmtDate=iso=>{if(!iso)return '—';const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso);return m?`${m[3]}.${m[2]}.${m[1]}`:iso;};
+const fmtDateShort=iso=>{if(!iso)return '';const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso);return m?`${m[3]}.${m[2]}`:iso;};
 function prevDay(){return HIST.length>=2?HIST[HIST.length-2]:null;}   // snapshot z predoslého dňa
 function delta(cur,prev){   // velka delta pod KPI cislo (oproti POSLEDNEMU obnoveniu, nie za den)
   if(cur==null)return '';
@@ -171,8 +174,8 @@ function lineChart(series, dates, h=250){
     return `<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2.2" stroke-linejoin="round"/>`+
       `<circle cx="${X(n-1)}" cy="${Y(s.pts[n-1])}" r="3" fill="${s.c}"/>`;
   }).join('');
-  const xl=n?`<text x="${X(0)}" y="${H-6}" text-anchor="start">${dates[0]?.slice(5)||''}</text>`+
-    (n>1?`<text x="${X(n-1)}" y="${H-6}" text-anchor="end">${dates[n-1].slice(5)}</text>`:''):'';
+  const xl=n?`<text x="${X(0)}" y="${H-6}" text-anchor="start">${fmtDateShort(dates[0])}</text>`+
+    (n>1?`<text x="${X(n-1)}" y="${H-6}" text-anchor="end">${fmtDateShort(dates[n-1])}</text>`:''):'';
   const leg=`<div class="legend">`+series.map(s=>`<span><i style="background:${s.c}"></i>${s.name}</span>`).join('')+`</div>`;
   return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${paths}${xl}</svg>${leg}`;
 }
@@ -310,7 +313,7 @@ function renderWinners(){
     `<span class="chip ${winFilter===f?'on':''}" style="${winFilter===f?`background:${f==='all'?'var(--acc)':PC[f]}`:''}" onclick="winFilter='${f}';renderWinners()">${f==='all'?'🌐 Všetky':PI[f]+' '+PN[f]}</span>`).join('');
   const rows=vids.slice(0,20).map((v,i)=>`<tr>
     <td class="rk">${i+1}</td>
-    <td><a href="${v.link||'#'}" target="_blank">${esc((v.title||'').slice(0,64))||'(bez názvu)'}</a></td>
+    <td><a href="${v.link||'#'}" target="_blank" rel="noopener noreferrer">${esc((v.title||'').slice(0,64))||'(bez názvu)'}</a></td>
     <td><span class="tag" style="background:${v.color}22;color:${v.color}">${v.factory}</span></td>
     <td><span class="muted">${PI[(v.platform||'').toLowerCase()]||''} ${v.platform}</span></td>
     <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
@@ -366,14 +369,14 @@ function renderFactories(){
     const row=(ic,name,col,stat,link)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #131a25">
       <span style="width:74px;font-weight:700;color:${col}">${ic} ${name}</span>
       <span class="muted" style="flex:1;font-size:12.5px">${stat}</span>
-      ${link?`<a class="btn" style="padding:5px 11px" href="${link}" target="_blank">Otvoriť ↗</a>`:'<span class="muted" style="font-size:12px">—</span>'}</div>`;
+      ${link?`<a class="btn" style="padding:5px 11px" href="${link}" target="_blank" rel="noopener noreferrer">Otvoriť ↗</a>`:'<span class="muted" style="font-size:12px">—</span>'}</div>`;
     const yt=p.yt, tk=p.tiktok, ig=p.instagram;
     const pf=(prevDay()?.fac||{})[p.name]||{};   // hodnoty fabriky z predoslého dňa
     return `<div class="card" style="border-top:3px solid ${p.color}">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
         <span style="font-size:16px;font-weight:800">${p.name}</span>
         <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
-      <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${last||'—'}</div>
+      <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${fmtDate(last)}</div>
       ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pViews(p,'youtube'))} zhliad.${dchip(pViews(p,'youtube'),pf.yv)}`:'nepripojené', L.youtube)}
       ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(pViews(p,'tiktok'))} zhliad.${dchip(pViews(p,'tiktok'),pf.tv)}`:'nepripojené', L.tiktok)}
       ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pViews(p,'instagram'))} zhliad.${dchip(pViews(p,'instagram'),pf.iv)}`:'nepripojené', L.instagram)}
@@ -393,11 +396,11 @@ function renderDocs(){
   const kp=[['Dokumentov',docs.length,''],['Zhliadnutia',fmt(tot),'spolu'],['Priem. dĺžka',dur(avg),'min:sek']];
   const rows=docs.map((v,i)=>`<tr>
     <td class="rk">${i+1}</td>
-    <td><a href="${v.link}" target="_blank">${esc((v.title||'').slice(0,70))}</a></td>
+    <td><a href="${v.link}" target="_blank" rel="noopener noreferrer">${esc((v.title||'').slice(0,70))}</a></td>
     <td><span class="tag" style="background:${v.color}22;color:${v.color}">${v.factory}</span></td>
     <td class="n">${dur(v.duration)}</td>
     <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
-    <td class="muted" style="font-size:12px">${v.published||''}</td></tr>`).join('');
+    <td class="muted" style="font-size:12px">${fmtDate(v.published)}</td></tr>`).join('');
   $('#docs').innerHTML=`
     <div class="grid k3" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="card"><h2>🎬 Dlhé dokumenty <small>YouTube · samostatná analýza</small></h2>
@@ -435,14 +438,14 @@ async function loadComments(){
       return `<div class="post" id="post_${m.id}" style="border-left:3px solid ${f.color}">
         <div class="cap">
           <span class="tag" style="background:${f.color}22;color:${f.color}">${icon} ${esc(f.name)}</span>
-          <a href="${m.permalink}" target="_blank">${esc(m.caption)||'(príspevok)'}</a></div>
+          <a href="${m.permalink}" target="_blank" rel="noopener noreferrer">${esc(m.caption)||'(príspevok)'}</a></div>
         ${m.open.map(c=>`<div class="cm" id="cm_${c.id}">
           <div style="flex:1">
             <span class="u">@${esc(c.username||'?')}</span> <span class="t">${esc(c.text||'')}</span>
-            ${yt?`<div class="reply"><a class="btn" href="${m.permalink}" target="_blank">Odpovedať na YouTube ↗</a>
+            ${yt?`<div class="reply"><a class="btn" href="${m.permalink}" target="_blank" rel="noopener noreferrer">Odpovedať na YouTube ↗</a>
               <button class="btn" onclick="markDone('${c.id}','${m.id}')">✓ Vybavené</button></div>`
                 :`<div class="reply">
-              <input placeholder="Odpoveď…" id="r_${c.id}">
+              <input placeholder="Odpoveď…" aria-label="Odpoveď na komentár" id="r_${c.id}">
               <button class="btn" onclick="sendReply('${m.user}','${c.id}','${m.id}')">Odpovedať</button>
               <button class="btn" onclick="hideC('${m.user}','${c.id}','${m.id}')">Skryť</button>
               <button class="btn" onclick="markDone('${c.id}','${m.id}')">✓ Vybavené</button>
@@ -479,21 +482,45 @@ async function hideC(user,cid,pid){
 
 /* ---------------- INFRA ---------------- */
 function show(t){
-  $$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  $$('.tab').forEach(b=>{const on=b.dataset.t===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false');});
   ['overview','growth','factories','winners','platforms','docs','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
   if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
   if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='comments')renderComments();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
 async function refresh(){
-  const b=$('#refresh'); b.innerHTML='<span class="spin"></span> Obnovujem…'; b.disabled=true;
-  try{await fetch('/api/refresh');}catch(e){}
+  const b=$('#refresh'); b.innerHTML='<span class="spin" aria-hidden="true"></span> Obnovujem…'; b.disabled=true;
+  try{await fetch('/api/refresh');}catch(e){/* server nedostupny -> skus aspon nacitat existujuce data nizsie */}
   await load(); b.innerHTML='↻ Obnoviť dáta'; b.disabled=false;
 }
+// bezpecne totals so vsetkymi klucmi na 0 -> ziadne "NaN" ked su data.json prazdne (prvy beh / vypadok API)
+function normalizeData(d){
+  d=d||{};
+  d.totals=Object.assign({factories:0,yt_subs:0,yt_views:0,tk_foll:0,tk_views:0,tk_likes:0,
+    ig_foll:0,ig_views:0,ig_posts:0,ig_videos:0,videos:0,ig_blocked:false},d.totals||{});
+  d.projects=Array.isArray(d.projects)?d.projects:[];
+  d.prev=d.prev||{};
+  return d;
+}
 async function load(){
-  DATA=await (await fetch('/data.json?'+Date.now())).json();
-  HIST=await (await fetch('/history.json?'+Date.now())).json();
-  $('#updated').textContent='aktualizované '+DATA.gen_at;
+  try{
+    const [dRes,hRes]=await Promise.all([fetch('/data.json?'+Date.now()),fetch('/history.json?'+Date.now())]);
+    if(!dRes.ok)throw new Error('server vratil '+dRes.status);
+    DATA=normalizeData(await dRes.json());
+    HIST=hRes.ok?await hRes.json():[];
+    if(!Array.isArray(HIST))HIST=[];
+  }catch(e){
+    $('#updated').textContent='chyba načítania';
+    $('#overview').innerHTML=`<div class="empty">⚠️ Dáta sa nepodarilo načítať (${esc(''+e.message||e)}).<br>
+      Skontroluj či beží <code>server.py</code>, alebo skús <button class="btn" style="display:inline-flex" onclick="load()">↻ skúsiť znova</button>.</div>`;
+    return;
+  }
+  $('#updated').textContent=DATA.gen_at?('aktualizované '+DATA.gen_at):'zatiaľ žiadne dáta';
+  if(!DATA.projects.length){
+    $('#overview').innerHTML=`<div class="empty">📭 Zatiaľ žiadne fabriky/dáta. Spusti <code>python generate.py</code>
+      (alebo klikni „↻ Obnoviť dáta" hore) na prvé natiahnutie štatistík.</div>`;
+    return;
+  }
   renderOverview();
   const on=$('.tab.on')?.dataset.t||'overview'; if(on!=='overview')show(on);
 }
