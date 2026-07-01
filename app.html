@@ -177,6 +177,15 @@ function lineChart(series, dates, h=250){
   return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${paths}${xl}</svg>${leg}`;
 }
 
+/* ---- denny prirastok (bar graf po dnoch): kolko views/sledov. PRIBUDLO kazdy den ---- */
+const totViews=h=>(h.yt_views||0)+(h.tk_views||0)+(h.ig_views||0);
+const totFoll=h=>(h.yt_subs||0)+(h.tk_foll||0)+(h.ig_foll||0);
+function gainBars(totalFn,color){
+  if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
+  const items=HIST.slice(1).map((h,i)=>({n:h.date.slice(5),c:color,v:Math.max(0,totalFn(h)-totalFn(HIST[i]))}));
+  return barChart(items);
+}
+
 /* ---------------- PREHLAD ---------------- */
 function renderOverview(){
   const t=DATA.totals;
@@ -276,6 +285,10 @@ function renderGrowth(){
       ${big('Sledovatelia',cf,dFoll,'oproti včerajšku')}
       ${big('Zhliadnutia',cv,dViews,'oproti včerajšku')}
       ${big('Videá / príspevky',t.videos,dVid,'oproti včerajšku')}
+    </div>
+    <div class="grid k2" style="margin-bottom:14px">
+      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e')}</div>
+      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9')}</div>
     </div>
     <div class="grid k2">
       <div class="card bars"><h2>📱 Za deň podľa platformy</h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
