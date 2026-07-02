@@ -196,17 +196,18 @@ function gainBars(totalFn,color){
   if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
   // prirastok = kazdy zaznam vs PREDCHADZAJUCI zaznam (den po dni). Ak medzi zaznamami
   // chybaju dni (vypadok zberu), stlpec ich zahrna — oznaci sa bodkou a poznamkou.
-  // gap dni (prenesene hodnoty) NEdostanu vlastny stlpec — ich prirastok sa zaratava
-  // do najblizsieho REALNEHO dna, ktory dostane * (zahrna aj neodmerane dni).
-  const real=HIST.filter(h=>!h.gap);
-  if(real.length<2)return '<div class="empty">Zatiaľ málo reálnych dní zberu — doplní sa ďalším obnovením.</div>';
-  let anyGap=false;
-  const items=real.slice(1).map((h,i)=>{
-    const days=Math.max(1,Math.round((new Date(h.date)-new Date(real[i].date))/864e5));
-    if(days>1)anyGap=true;
-    return {n:h.date.slice(5)+(days>1?'*':''),c:color,v:Math.max(0,totalFn(h)-totalFn(real[i]))};
+  // LEN REALNE denne prirastky: stlpec iba ked su DVA susedne skutocne dni (1 den od seba,
+  // ani jeden nie je gap). Den bez merania = × (ziadny falosny skok, ziadny odhad).
+  let anyX=false;
+  const items=HIST.slice(1).map((h,i)=>{
+    const p=HIST[i];
+    const days=Math.round((new Date(h.date)-new Date(p.date))/864e5);
+    const clean=!h.gap&&!p.gap&&days===1;
+    if(!clean)anyX=true;
+    return clean?{n:h.date.slice(5),c:color,v:Math.max(0,totalFn(h)-totalFn(p))}
+                :{n:h.date.slice(5),v:0,nod:true};
   });
-  const note=anyGap?'<div class="muted" style="font-size:11px;margin-top:6px">* stĺpec zahŕňa aj predošlé dni bez zberu (výpadok) — odteraz sa zbiera a zálohuje každý deň</div>':'';
+  const note=anyX?'<div class="muted" style="font-size:11px;margin-top:6px">× = deň bez reálneho merania (výpadok zberu) — reálny denný prírastok nie je známy. Od zajtra každý deň reálny.</div>':'';
   return barChart(items)+note;
 }
 
@@ -275,9 +276,8 @@ function tipOfDay(){
   ];
   return ever[Math.floor(Date.now()/864e5)%ever.length];
 }
-function buildTips(t,P,dFoll,dViews,span){
-  span=span||1;
-  const unit=span<=1?' videní/deň':' videní od posledného zberu';
+function buildTips(t,P,dFoll,dViews,unitTxt){
+  const unit=' videní '+(unitTxt||'za deň');
   const tips=[];
   const pg=[['youtube',t.yt_views-(P.yt_views||0)],['tiktok',t.tk_views-(P.tk_views||0)],
             ['instagram',t.ig_views-(P.ig_views||0)]].sort((a,b)=>b[1]-a[1]);
@@ -292,16 +292,21 @@ function buildTips(t,P,dFoll,dViews,span){
 }
 function renderGrowth(){
   const t=DATA.totals;
-  // porovnavaj s PREDCHADZAJUCIM zaznamom (vcerajsok) — den po dni, ako v grafe
+  // Ak existuje REALNY vcerajsok (susedny den, nie gap) -> porovnaj den po dni ("oproti vcerajsku").
+  // Inak (dnesok po vypadku zberu) -> porovnaj "od posledneho obnovenia" (realny maly interval,
+  // presne ako Prehlad) namiesto klamliveho viacdnoveho skoku nalepeneho na "posledny den".
   const L=(HIST&&HIST.length)?HIST[HIST.length-1]:null;
-  const P=(HIST&&HIST.length>=2)?HIST[HIST.length-2]:null;
-  const span=(P&&L)?Math.max(1,Math.round((new Date(L.date)-new Date(P.date))/864e5)):1;
-  const fromD=P?P.date.slice(8,10)+'.'+P.date.slice(5,7)+'.':'';
-  const perTxt=span<=1?'oproti včerajšku':'od '+fromD+' (medzitým výpadok zberu)';
-  const dLbl=span<=1?'za posledný deň':'od '+fromD;
-  if(!P){
-    $('#growth').innerHTML=`<div class="card"><h2>📈 Rast za posledný deň</h2>
-      <div class="empty">Porovnanie „za deň" sa zapne keď bude história aspoň 2 dni (zbiera sa každým obnovením). Zatiaľ je 1 deň — zajtra to už ukáže rozdiely.</div></div>
+  const hy=(HIST&&HIST.length>=2)?HIST[HIST.length-2]:null;
+  const span=(hy&&L)?Math.round((new Date(L.date)-new Date(hy.date))/864e5):0;
+  const realYest=hy&&!hy.gap&&span===1;
+  const PV=DATA.prev||{};
+  const P=realYest?hy:PV;
+  const hasBase=realYest||Object.keys(PV).length>0;
+  const perTxt=realYest?'oproti včerajšku':'od posledného obnovenia';
+  const dLbl=realYest?'za posledný deň':'od obnovenia';
+  if(!hasBase){
+    $('#growth').innerHTML=`<div class="card"><h2>📈 Rast</h2>
+      <div class="empty">Porovnanie sa zapne po ďalšom obnovení dát (zbiera sa každé 3 h).</div></div>
       <div class="card" style="margin-top:14px"><h2>💡 Rada dňa</h2>
       <div style="font-size:15px;line-height:1.6">${tipOfDay()}</div></div>`;
     return;
@@ -318,7 +323,7 @@ function renderGrowth(){
      <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
      <span class="muted">videní ${dayDelta(DS[k][1],true)}</span></div>`;
-  const tips=buildTips(t,P,dFoll,dViews,span);
+  const tips=buildTips(t,P,dFoll,dViews,perTxt);
   $('#growth').innerHTML=`
     <div class="grid k3" style="margin-bottom:14px">
       ${big('Sledovatelia',cf,dFoll,perTxt)}
@@ -330,7 +335,7 @@ function renderGrowth(){
       <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9')}</div>
     </div>
     <div class="grid k2">
-      <div class="card bars"><h2>📱 ${span<=1?'Za deň podľa platformy':'Podľa platformy <small>(od '+fromD+')</small>'}</h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
+      <div class="card bars"><h2>📱 Podľa platformy <small>(${perTxt})</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
       <div class="card"><h2>💡 Rady — čo vylepšiť</h2>
         <ul style="margin:0;padding-left:18px;line-height:1.85;font-size:15px">${tips.map(x=>`<li>${x}</li>`).join('')}</ul></div>
     </div>`;
