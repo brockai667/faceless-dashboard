@@ -120,7 +120,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const PC={youtube:'#ff4d4f',tiktok:'#fe2c55',instagram:'#e1306c'};
 const PN={youtube:'YouTube',tiktok:'TikTok',instagram:'Instagram'};
 const PI={youtube:'📺',tiktok:'🎵',instagram:'📸'};
-let DATA=null, HIST=[];
+let DATA=null, HIST=[], YTDAILY=null;
 const fmt=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':(''+Math.round(n));
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+(''+x).padStart(2,'0');};
@@ -208,6 +208,23 @@ function gainBars(totalFn,color){
                 :{n:h.date.slice(5),v:0,nod:true};
   });
   const note=anyX?'<div class="muted" style="font-size:11px;margin-top:6px">× = deň bez reálneho merania (výpadok zberu) — reálny denný prírastok nie je známy. Od zajtra každý deň reálny.</div>':'';
+  return barChart(items)+note;
+}
+
+/* ---- REALNY denny prirastok z YouTube Analytics (per kanal, presne) ----
+   metric: 'views' alebo 'subs'. Fallback na snapshoty (gainBars) ak Analytics nie su. */
+function ytGainBars(metric,color,fallbackFn){
+  const D=YTDAILY&&YTDAILY.days;
+  if(!D||!Object.keys(D).length)return gainBars(fallbackFn,color);
+  const dates=Object.keys(D).sort();
+  // zahod uvodne prazdne dni (pred spustenim), ukaz poslednych max 10 s aktivitou
+  const active=dates.filter(dt=>(D[dt].views||0)>0||(D[dt].subs||0)!==0);
+  const show=(active.length?active:dates).slice(-10);
+  const items=show.map(dt=>({n:dt.slice(5),c:color,v:Math.max(0,metric==='subs'?(D[dt].subs||0):(D[dt].views||0))}));
+  const last=dates[dates.length-1];
+  const lag=Math.round((Date.now()-new Date(last))/864e5);
+  const note='<div class="muted" style="font-size:11px;margin-top:6px">✅ reálne z YouTube Analytics (per kanál). '
+    +(lag>=1?`Posledné ~${lag} dni YouTube ešte finalizuje — doplnia sa automaticky.`:'')+'</div>';
   return barChart(items)+note;
 }
 
@@ -331,8 +348,8 @@ function renderGrowth(){
       ${big('Videá / príspevky',t.videos,dVid,perTxt)}
     </div>
     <div class="grid k2" style="margin-bottom:14px">
-      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e')}</div>
-      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9')}</div>
+      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch (YouTube)</small></h2>${ytGainBars('views','#22c55e',totViews)}</div>
+      <div class="card"><h2>🚀 Odberatelia získaní <small>po dňoch (YouTube)</small></h2>${ytGainBars('subs','#0ea5e9',totFoll)}</div>
     </div>
     <div class="grid k2">
       <div class="card bars"><h2>📱 Podľa platformy <small>(${perTxt})</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
@@ -607,11 +624,12 @@ function normalizeData(d){
 }
 async function load(){
   try{
-    const [dRes,hRes]=await Promise.all([fetch('/data.json?'+Date.now()),fetch('/history.json?'+Date.now())]);
+    const [dRes,hRes,yRes]=await Promise.all([fetch('/data.json?'+Date.now()),fetch('/history.json?'+Date.now()),fetch('/yt_daily.json?'+Date.now()).catch(()=>null)]);
     if(!dRes.ok)throw new Error('server vratil '+dRes.status);
     DATA=normalizeData(await dRes.json());
     HIST=hRes.ok?await hRes.json():[];
     if(!Array.isArray(HIST))HIST=[];
+    try{ YTDAILY=(yRes&&yRes.ok)?await yRes.json():null; }catch(e){ YTDAILY=null; }
   }catch(e){
     $('#updated').textContent='chyba načítania';
     $('#overview').innerHTML=`<div class="empty">⚠️ Dáta sa nepodarilo načítať (${esc(''+e.message||e)}).<br>

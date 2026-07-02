@@ -1,0 +1,43 @@
+name: YT Analytics denne
+
+# Kazde rano stiahne REALNE denne YT cisla (per kanal) cez YouTube Analytics API
+# a commitne yt_daily.json. YouTube finalizuje data s ~3-dnovym oneskorenim, preto
+# tahame poslednych ~16 dni a posledne dni sa doplnia/upresnia pri kazdom behu
+# (× dni v grafe sa tak samy zaplnia). Potrebuje secrets: YT_CLIENT_ID,
+# YT_CLIENT_SECRET, YT_ANALYTICS_TOKENS (uz nastavene).
+
+on:
+  schedule:
+    - cron: "30 5 * * *"   # ~07:30 Bratislava (po nocnej finalizacii YouTube)
+  workflow_dispatch: {}     # rucne spustenie na test
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yt-analytics
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Stiahni YT Analytics
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}
+        run: python yt_analytics_daily.py
+
+      - name: Commitni ak sa zmenilo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add yt_daily.json
+          git diff --cached --quiet || { git commit -m "yt analytics $(date -u +%F)"; git push; }

@@ -285,6 +285,10 @@ class H(BaseHTTPRequestHandler):
             if not os.path.exists(os.path.join(ROOT, "history.json")):
                 return self._send(200, "[]")
             return self._file("history.json", "application/json; charset=utf-8")
+        if u.path == "/yt_daily.json":
+            if not os.path.exists(os.path.join(ROOT, "yt_daily.json")):
+                return self._send(200, json.dumps({"days": {}}))
+            return self._file("yt_daily.json", "application/json; charset=utf-8")
         if u.path == "/api/refresh":
             try:
                 subprocess.run([sys.executable, os.path.join(ROOT, "generate.py")],
