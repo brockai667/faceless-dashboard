@@ -196,11 +196,15 @@ function gainBars(totalFn,color){
   if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
   // prirastok = kazdy zaznam vs PREDCHADZAJUCI zaznam (den po dni). Ak medzi zaznamami
   // chybaju dni (vypadok zberu), stlpec ich zahrna — oznaci sa bodkou a poznamkou.
+  // gap dni (prenesene hodnoty) NEdostanu vlastny stlpec — ich prirastok sa zaratava
+  // do najblizsieho REALNEHO dna, ktory dostane * (zahrna aj neodmerane dni).
+  const real=HIST.filter(h=>!h.gap);
+  if(real.length<2)return '<div class="empty">Zatiaľ málo reálnych dní zberu — doplní sa ďalším obnovením.</div>';
   let anyGap=false;
-  const items=HIST.slice(1).map((h,i)=>{
-    const days=Math.max(1,Math.round((new Date(h.date)-new Date(HIST[i].date))/864e5));
+  const items=real.slice(1).map((h,i)=>{
+    const days=Math.max(1,Math.round((new Date(h.date)-new Date(real[i].date))/864e5));
     if(days>1)anyGap=true;
-    return {n:h.date.slice(5)+(days>1?'*':''),c:color,v:Math.max(0,totalFn(h)-totalFn(HIST[i]))};
+    return {n:h.date.slice(5)+(days>1?'*':''),c:color,v:Math.max(0,totalFn(h)-totalFn(real[i]))};
   });
   const note=anyGap?'<div class="muted" style="font-size:11px;margin-top:6px">* stĺpec zahŕňa aj predošlé dni bez zberu (výpadok) — odteraz sa zbiera a zálohuje každý deň</div>':'';
   return barChart(items)+note;
@@ -235,8 +239,8 @@ function renderOverview(){
     :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
   const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
   const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14.5px;line-height:1.5">⚠️ <b>Instagram analytika dočasne nedostupná</b> — Meta zablokovala API prístup aplikácie. IG čísla nižšie sú <b>posledné známe</b> (nie live), preto sa "nehýbu". Príspevky na IG idú ďalej cez Buffer a účty sú v poriadku — týka sa to len čítania štatistík.</div>`:'';
-  // ALERT: fabriky s prazdnou frontou / chybami v Bufferi -> hned na ocach (len ked je problem)
-  const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]!=='🟢');
+  // ALERT: len REALNE problemy (cervene/zlte); "Buffer nedostupny" (siva) NIE JE poplach
+  const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]==='🔴'||x.h[0]==='🟡');
   const healthBanner=sick.length?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
     🚦 <b>Pozor — ${sick.length} ${sick.length===1?'fabrika potrebuje':'fabriky potrebujú'} pozornosť:</b> ${sick.map(x=>`<b style="color:${x.p.color}">${x.p.name}</b> (${x.h[1]})`).join(' · ')}
     <span class="muted">— detail v tabe Fabriky</span></div>`:'';
@@ -391,8 +395,12 @@ function renderPlatforms(){
 }
 
 /* ---------------- FABRIKY ---------------- */
-/* zdravie fabriky podla Buffer fronty: chyby -> cervena, prazdna fronta -> zlta */
+/* zdravie fabriky podla Buffer fronty: chyby -> cervena, prazdna fronta -> zlta.
+   POZOR: Buffer API ma rate-limit (429) — ked data nie su (alive=false, nic sent),
+   NEznamena to prazdnu frontu, len nedostupny stav -> siva, ziadny poplach. */
 function facHealth(p){
+  const noData=!p.alive&&!(p.sent>0)&&!p.last_sent;
+  if(noData)return ['⚪','Buffer stav nedostupný (rate-limit) — skús Obnoviť neskôr',true];
   if((p.errors||0)>0)return ['🔴','chyby v Bufferi: '+p.errors];
   if((p.scheduled||0)===0)return ['🟡','fronta prázdna — nič nie je naplánované'];
   return ['🟢','fronta OK · čaká '+p.scheduled];
