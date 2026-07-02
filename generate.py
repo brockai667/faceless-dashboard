@@ -505,9 +505,15 @@ def main():
     # --- history.json: jeden snapshot za den (pre grafy trendov + delty oproti vceru) ---
     import store
     hpath = os.path.join(ROOT, "history.json")
-    hist = store.load_history()                       # cloud: trvale z Gistu
-    if hist is None:
-        hist = json.load(open(hpath, encoding="utf-8")) if os.path.exists(hpath) else []
+    # ZLUC vsetky zdroje historie podla datumu -> pri redeploy (dočasny disk Renderu)
+    # sa historia UZ NIKDY nezmaze: seed z gitu (commitnuty history.json) + Gist ak je zapnuty.
+    gist_hist = store.load_history()                  # cloud Gist (alebo None ak vypnuty)
+    local_hist = json.load(open(hpath, encoding="utf-8")) if os.path.exists(hpath) else []
+    by_date = {h["date"]: h for h in local_hist if isinstance(h, dict) and h.get("date")}
+    for h in (gist_hist or []):                       # Gist (novsie) prepise ten isty den
+        if isinstance(h, dict) and h.get("date"):
+            by_date[h["date"]] = h
+    hist = [by_date[d] for d in sorted(by_date)]
     today = datetime.date.today().isoformat()
     fac_snap = {p["name"]: {
         "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _held(p, "youtube"),

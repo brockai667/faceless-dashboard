@@ -2,10 +2,12 @@
 settings.json
 ig_tokens.json
 tiktok_tokens.json
+.env
+.env.*
 
 # generovane / docasne
 data.json
-history.json
+# history.json sa COMMITUJE ako seed -> prezije redeploy Renderu (dočasny disk inak maze historiu)
 ig_cache.json
 dashboard.html
 __pycache__/
