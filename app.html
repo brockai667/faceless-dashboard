@@ -296,20 +296,27 @@ function buildTips(t,P,dFoll,dViews,unitTxt){
   tips.push(tipOfDay());
   return tips.slice(0,4);
 }
+/* 'vcerajsok' pre tab Rast = 1 den spat od dneska. Ak medzi poslednymi REALNYMI snapshotmi
+   je diera (vypadok zberu), dopocita sa priemerny 1-dnovy krok (presne ako stlpce v grafe). */
+function effYesterday(){
+  const real=(HIST||[]).filter(h=>!h.gap);
+  const t=DATA.totals;
+  if(!t||real.length<2)return null;
+  const today=real[real.length-1], P=real[real.length-2];
+  const days=Math.max(1,Math.round((new Date(today.date)-new Date(P.date))/864e5));
+  const y={_est:days>1};
+  ['yt_subs','yt_views','tk_foll','tk_views','ig_foll','ig_views','videos'].forEach(k=>{
+    y[k]=(t[k]||0)-((t[k]||0)-(P[k]||0))/days;   // ZIVE totals dnes minus 1 priemerny den
+  });
+  return y;
+}
 function renderGrowth(){
   const t=DATA.totals;
-  // Ak existuje REALNY vcerajsok (susedny den, nie gap) -> porovnaj den po dni ("oproti vcerajsku").
-  // Inak (dnesok po vypadku zberu) -> porovnaj "od posledneho obnovenia" (realny maly interval,
-  // presne ako Prehlad) namiesto klamliveho viacdnoveho skoku nalepeneho na "posledny den".
-  const L=(HIST&&HIST.length)?HIST[HIST.length-1]:null;
-  const hy=(HIST&&HIST.length>=2)?HIST[HIST.length-2]:null;
-  const span=(hy&&L)?Math.round((new Date(L.date)-new Date(hy.date))/864e5):0;
-  const realYest=hy&&!hy.gap&&span===1;
-  const PV=DATA.prev||{};
-  const P=realYest?hy:PV;
-  const hasBase=realYest||Object.keys(PV).length>0;
-  const perTxt=realYest?'oproti včerajšku':'od posledného obnovenia';
-  const dLbl=realYest?'za posledný deň':'od obnovenia';
+  // vcerajsok = 1 den spat (pri diere dopocitany ako stlpce v grafe) -> tab Rast VZDY "oproti vcerajsku"
+  const P=effYesterday();
+  const hasBase=!!P;
+  const perTxt='oproti včerajšku'+(P&&P._est?' (~ časť dopočítaná)':'');
+  const dLbl='za posledný deň';
   if(!hasBase){
     $('#growth').innerHTML=`<div class="card"><h2>📈 Rast</h2>
       <div class="empty">Porovnanie sa zapne po ďalšom obnovení dát (zbiera sa každé 3 h).</div></div>
@@ -319,12 +326,12 @@ function renderGrowth(){
   }
   const cf=t.yt_subs+t.tk_foll+t.ig_foll, pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0);
   const cv=t.yt_views+t.tk_views+t.ig_views, pv=(P.yt_views||0)+(P.tk_views||0)+(P.ig_views||0);
-  const dFoll=cf-pf, dViews=cv-pv, dVid=(t.videos||0)-(P.videos||0);
+  const dFoll=Math.round(cf-pf), dViews=Math.round(cv-pv), dVid=Math.round((t.videos||0)-(P.videos||0));
   const big=(lab,cur,d,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
      <div class="big">${fmt(cur)}</div>${dayDelta(d,false,dLbl)}<div class="sm">${sub}</div></div>`;
-  const DS={youtube:[t.yt_subs-(P.yt_subs||0),t.yt_views-(P.yt_views||0)],
-            tiktok:[t.tk_foll-(P.tk_foll||0),t.tk_views-(P.tk_views||0)],
-            instagram:[t.ig_foll-(P.ig_foll||0),t.ig_views-(P.ig_views||0)]};
+  const DS={youtube:[Math.round(t.yt_subs-(P.yt_subs||0)),Math.round(t.yt_views-(P.yt_views||0))],
+            tiktok:[Math.round(t.tk_foll-(P.tk_foll||0)),Math.round(t.tk_views-(P.tk_views||0))],
+            instagram:[Math.round(t.ig_foll-(P.ig_foll||0)),Math.round(t.ig_views-(P.ig_views||0))]};
   const prow=k=>`<div class="row" style="grid-template-columns:118px 1fr 1fr;gap:10px;margin:11px 0">
      <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
