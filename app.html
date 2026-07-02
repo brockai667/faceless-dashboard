@@ -341,7 +341,19 @@ function renderGrowth(){
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
      <span class="muted">videní ${dayDelta(DS[k][1],true)}</span></div>`;
   const tips=buildTips(t,P,dFoll,dViews,perTxt);
+  // 🔴 DNES NAZIVO: hruby priebezny prirastok zo ZIVEHO pocitadla od posledneho obnovenia
+  // (to co robil "vceraji" sposob). Nie graf-stlpec, aby to nebol obri viacdnovy balik.
+  const LV=DATA.prev||{}; const lvHas=Object.keys(LV).length>0;
+  const lvV=(t.yt_views+t.tk_views+t.ig_views)-((LV.yt_views||0)+(LV.tk_views||0)+(LV.ig_views||0));
+  const lvF=(t.yt_subs+t.tk_foll+t.ig_foll)-((LV.yt_subs||0)+(LV.tk_foll||0)+(LV.ig_foll||0));
+  const liveBanner=lvHas?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#1a1420">
+    <span style="font-weight:800">🔴 Dnes naživo <small class="muted" style="font-weight:400">(priebežne, zo živého počítadla od poslednej aktualizácie)</small></span>
+    <div style="display:flex;gap:26px;margin-top:8px;font-size:16px">
+      <span>👁️ <b style="color:#22c55e">${lvV>=0?'+':''}${fmt(lvV)}</b> zhliadnutí</span>
+      <span>👥 <b style="color:#0ea5e9">${lvF>=0?'+':''}${fmt(lvF)}</b> sledovateľov</span></div>
+    <div class="muted" style="font-size:11px;margin-top:6px">Presné denné čísla (nižšie) dopĺňa YouTube Analytics s ~3-dňovým oneskorením.</div></div>`:'';
   $('#growth').innerHTML=`
+    ${liveBanner}
     <div class="grid k3" style="margin-bottom:14px">
       ${big('Sledovatelia',cf,dFoll,perTxt)}
       ${big('Zhliadnutia',cv,dViews,perTxt)}
