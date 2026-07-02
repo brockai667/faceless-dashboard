@@ -521,6 +521,21 @@ def main():
         "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _held(p, "instagram"),
     } for p in projects}
     snap = {"date": today, **totals, "fac": fac_snap}
+    # POISTKA proti falosnym nulam: vypadok API (YT kluc, TikTok...) nesmie zapisat 0
+    # tam, kde vcera bola hodnota > 0 -> prenes posledne zname cislo (kumulativne metriky neklesaju).
+    _prev_day = ([h for h in hist if h.get("date") != today] or [None])[-1]
+    if _prev_day:
+        for _k, _v in list(snap.items()):
+            _pv = _prev_day.get(_k)
+            if isinstance(_v, (int, float)) and _v == 0 and isinstance(_pv, (int, float)) and _pv > 0:
+                snap[_k] = _pv
+        _pfac = _prev_day.get("fac") or {}
+        for _fn, _fm in (snap.get("fac") or {}).items():
+            _pm = _pfac.get(_fn) or {}
+            for _k, _v in list(_fm.items()):
+                _pv = _pm.get(_k)
+                if isinstance(_v, (int, float)) and _v == 0 and isinstance(_pv, (int, float)) and _pv > 0:
+                    _fm[_k] = _pv
     hist = [h for h in hist if h.get("date") != today] + [snap]   # nahrad dnesny
     hist = hist[-180:]                                            # drz max 180 dni
     json.dump(hist, open(hpath, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
