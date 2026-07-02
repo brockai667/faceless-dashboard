@@ -157,6 +157,11 @@ function barChart(items,h=260){
 function allVids(){return DATA.projects.flatMap(p=>p.videos);}
 function pViews(p,plat){return p.videos.filter(v=>(v.platform||'').toLowerCase()===plat).reduce((s,v)=>s+(v.views||0),0);}
 function facViews(p){return p.videos.reduce((s,v)=>s+(v.views||0),0);}
+/* MONOTONICKY CLAMP per fabrika/platforma (rovnaky ako server-side _held): kumulativne zhliadnutia
+   NIKDY neklesnu pod najvyssie kedy zname (z historie) -> ziadny falosny pokls pri API glitchi (napr. IG). */
+const _KVIEW={youtube:'yv',tiktok:'tv',instagram:'iv'};
+function facMax(){const M={};(HIST||[]).forEach(h=>{const f=h.fac||{};for(const nm in f){const m=M[nm]||(M[nm]={});['yv','tv','iv'].forEach(k=>{m[k]=Math.max(m[k]||0,f[nm][k]||0);});}});return M;}
+function pvHeld(p,plat){return Math.max(pViews(p,plat),(facMax()[p.name]||{})[_KVIEW[plat]]||0);}
 function facFollowers(p){return (p.yt?.subs||0)+(p.tiktok?.followers||0)+(p.instagram?.followers||0);}
 
 /* ---- jednoduchy SVG ciarovy graf (viac serii, auto-scale) ---- */
@@ -379,9 +384,9 @@ function renderFactories(){
         <span style="font-size:16px;font-weight:800">${p.name}</span>
         <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
       <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${fmtDate(last)}</div>
-      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pViews(p,'youtube'))} zhliad.${dchip(pViews(p,'youtube'),pf.yv)}`:'nepripojené', L.youtube)}
-      ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(pViews(p,'tiktok'))} zhliad.${dchip(pViews(p,'tiktok'),pf.tv)}`:'nepripojené', L.tiktok)}
-      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pViews(p,'instagram'))} zhliad.${dchip(pViews(p,'instagram'),pf.iv)}`:'nepripojené', L.instagram)}
+      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv)}`:'nepripojené', L.youtube)}
+      ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(pvHeld(p,'tiktok'))} zhliad.${dchip(pvHeld(p,'tiktok'),pf.tv)}`:'nepripojené', L.tiktok)}
+      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv)}`:'nepripojené', L.instagram)}
     </div>`;}).join('');
   $('#factories').innerHTML=`<div class="grid k2">${cards}</div>`;
 }
