@@ -297,29 +297,29 @@
   {
     "date": "2026-07-02",
     "factories": 11,
-    "yt_subs": 119,
-    "yt_views": 47695,
-    "tk_foll": 19,
-    "tk_views": 11595,
-    "tk_likes": 1016,
+    "yt_subs": 126,
+    "yt_views": 52389,
+    "tk_foll": 24,
+    "tk_views": 12714,
+    "tk_likes": 1051,
     "ig_foll": 27,
-    "ig_views": 6707,
-    "ig_posts": 156,
-    "videos": 365,
-    "ig_videos": 103,
+    "ig_views": 6711,
+    "ig_posts": 170,
+    "videos": 387,
+    "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 6,
         "yv": 5,
-        "tf": 19,
-        "tv": 11595,
+        "tf": 24,
+        "tv": 12714,
         "if": 17,
         "iv": 3542
       },
       "WealthMindset": {
-        "yf": 11,
-        "yv": 3921,
+        "yf": 12,
+        "yv": 4205,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -327,7 +327,7 @@
       },
       "UnexplainedDaily": {
         "yf": 49,
-        "yv": 12858,
+        "yv": 13399,
         "tf": 0,
         "tv": 0,
         "if": 8,
@@ -335,23 +335,23 @@
       },
       "DisciplineDaily": {
         "yf": 7,
-        "yv": 2867,
+        "yv": 2962,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 272
       },
       "VitalityDaily": {
-        "yf": 3,
-        "yv": 1399,
+        "yf": 5,
+        "yv": 1706,
         "tf": 0,
         "tv": 0,
         "if": 0,
-        "iv": 371
+        "iv": 375
       },
       "HiddenEarth": {
         "yf": 3,
-        "yv": 5184,
+        "yv": 5878,
         "tf": 0,
         "tv": 0,
         "if": 1,
@@ -359,23 +359,23 @@
       },
       "NextByte": {
         "yf": 1,
-        "yv": 5,
+        "yv": 11,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 19,
-        "yv": 10508,
+        "yf": 22,
+        "yv": 12213,
         "tf": 0,
         "tv": 0,
         "if": 1,
         "iv": 774
       },
       "Curio": {
-        "yf": 15,
-        "yv": 6509,
+        "yf": 16,
+        "yv": 7514,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -383,7 +383,7 @@
       },
       "Entropy": {
         "yf": 5,
-        "yv": 4436,
+        "yv": 4493,
         "tf": 0,
         "tv": 0,
         "if": 0,
