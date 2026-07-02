@@ -148,10 +148,9 @@ function barChart(items,h=260){
   const bw=Math.min(120,iw/n*0.55),gap=iw/n;
   let g='';for(let k=0;k<=4;k++){const y=pad.t+ih*k/4;g+=`<line class="gl" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/><text x="${pad.l-6}" y="${y+3}" text-anchor="end">${fmt(mx*(4-k)/4)}</text>`;}
   let bars=items.map((it,i)=>{const x=pad.l+gap*i+gap/2-bw/2,bh=ih*(it.v/mx),y=pad.t+ih-bh;
-    if(it.nod)return `<text x="${(x+bw/2).toFixed(1)}" y="${(pad.t+ih-8).toFixed(1)}" text-anchor="middle" fill="#5a6b7f" style="font-size:15px;font-weight:700">×</text>`+
-      `<text x="${(x+bw/2).toFixed(1)}" y="${H-12}" text-anchor="middle" fill="#5a6b7f">${it.n}</text>`;
-    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2,bh).toFixed(1)}" rx="5" fill="${it.c}"/>`+
-      `<text x="${(x+bw/2).toFixed(1)}" y="${y-5}" text-anchor="middle" fill="#cdd7e6" style="font-size:11px;font-weight:700">${fmt(it.v)}</text>`+
+    const est=it.est?` fill-opacity="0.38" stroke="${it.c}" stroke-width="1.5" stroke-dasharray="4 3"`:'';
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2,bh).toFixed(1)}" rx="5" fill="${it.c}"${est}/>`+
+      `<text x="${(x+bw/2).toFixed(1)}" y="${y-5}" text-anchor="middle" fill="#cdd7e6" style="font-size:11px;font-weight:700">${it.est?'~':''}${fmt(it.v)}</text>`+
       `<text x="${(x+bw/2).toFixed(1)}" y="${H-12}" text-anchor="middle">${it.n}</text>`;}).join('');
   return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${bars}</svg>`;
 }
@@ -194,38 +193,28 @@ const totViews=h=>(h.yt_views||0)+(h.tk_views||0)+(h.ig_views||0);
 const totFoll=h=>(h.yt_subs||0)+(h.tk_foll||0)+(h.ig_foll||0);
 function gainBars(totalFn,color){
   if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
-  // prirastok = kazdy zaznam vs PREDCHADZAJUCI zaznam (den po dni). Ak medzi zaznamami
-  // chybaju dni (vypadok zberu), stlpec ich zahrna — oznaci sa bodkou a poznamkou.
-  // LEN REALNE denne prirastky: stlpec iba ked su DVA susedne skutocne dni (1 den od seba,
-  // ani jeden nie je gap). Den bez merania = × (ziadny falosny skok, ziadny odhad).
-  let anyX=false;
-  const items=HIST.slice(1).map((h,i)=>{
-    const p=HIST[i];
-    const days=Math.round((new Date(h.date)-new Date(p.date))/864e5);
-    const clean=!h.gap&&!p.gap&&days===1;
-    if(!clean)anyX=true;
-    return clean?{n:h.date.slice(5),c:color,v:Math.max(0,totalFn(h)-totalFn(p))}
-                :{n:h.date.slice(5),v:0,nod:true};
-  });
-  const note=anyX?'<div class="muted" style="font-size:11px;margin-top:6px">× = deň bez reálneho merania (výpadok zberu) — reálny denný prírastok nie je známy. Od zajtra každý deň reálny.</div>':'';
-  return barChart(items)+note;
-}
-
-/* ---- REALNY denny prirastok z YouTube Analytics (per kanal, presne) ----
-   metric: 'views' alebo 'subs'. Fallback na snapshoty (gainBars) ak Analytics nie su. */
-function ytGainBars(metric,color,fallbackFn){
-  const D=YTDAILY&&YTDAILY.days;
-  if(!D||!Object.keys(D).length)return gainBars(fallbackFn,color);
-  const dates=Object.keys(D).sort();
-  // zahod uvodne prazdne dni (pred spustenim), ukaz poslednych max 10 s aktivitou
-  const active=dates.filter(dt=>(D[dt].views||0)>0||(D[dt].subs||0)!==0);
-  const show=(active.length?active:dates).slice(-10);
-  const items=show.map(dt=>({n:dt.slice(5),c:color,v:Math.max(0,metric==='subs'?(D[dt].subs||0):(D[dt].views||0))}));
-  const last=dates[dates.length-1];
-  const lag=Math.round((Date.now()-new Date(last))/864e5);
-  const note='<div class="muted" style="font-size:11px;margin-top:6px">✅ reálne z YouTube Analytics (per kanál). '
-    +(lag>=1?`Posledné ~${lag} dni YouTube ešte finalizuje — doplnia sa automaticky.`:'')+'</div>';
-  return barChart(items)+note;
+  // JEDNODUCHO: prirastok = dnesny snapshot MINUS vcerajsi (den po dni). Ak medzi dvoma
+  // zaznamami chyba den (vypadali data), rozdiel sa rozpocita rovnomerne a oznaci ~ (odhad).
+  const H=HIST.filter(h=>!h.gap);   // ignoruj 'gap' dni (prenesene fake hodnoty) -> rozdiel medzi REALNYMI snapshotmi
+  if(H.length<2)return '<div class="empty">Zatiaľ málo reálnych dní — doplní sa ďalším 23:59 snapshotom.</div>';
+  let anyEst=false;
+  const items=[];
+  for(let i=1;i<H.length;i++){
+    const a=H[i-1],b=H[i];
+    const days=Math.max(1,Math.round((new Date(b.date)-new Date(a.date))/864e5));
+    const total=Math.max(0,totalFn(b)-totalFn(a));
+    if(days===1){
+      items.push({n:b.date.slice(5),c:color,v:total});
+    }else{  // gap -> rozpocitaj rovnomerne, kazdy den ~ odhad
+      anyEst=true; const per=Math.round(total/days);
+      for(let d=1;d<=days;d++){
+        const dt=new Date(new Date(a.date).getTime()+d*864e5).toISOString().slice(5,10);
+        items.push({n:dt,c:color,v:per,est:true});
+      }
+    }
+  }
+  const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = odhad (v ten deň vypadli dáta — rozdiel rozpočítaný rovnomerne). Ostatné dni sú reálne.</div>':'';
+  return barChart(items.slice(-12))+note;
 }
 
 /* ---------------- PREHLAD ---------------- */
@@ -341,27 +330,15 @@ function renderGrowth(){
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
      <span class="muted">videní ${dayDelta(DS[k][1],true)}</span></div>`;
   const tips=buildTips(t,P,dFoll,dViews,perTxt);
-  // 🔴 DNES NAZIVO: hruby priebezny prirastok zo ZIVEHO pocitadla od posledneho obnovenia
-  // (to co robil "vceraji" sposob). Nie graf-stlpec, aby to nebol obri viacdnovy balik.
-  const LV=DATA.prev||{}; const lvHas=Object.keys(LV).length>0;
-  const lvV=(t.yt_views+t.tk_views+t.ig_views)-((LV.yt_views||0)+(LV.tk_views||0)+(LV.ig_views||0));
-  const lvF=(t.yt_subs+t.tk_foll+t.ig_foll)-((LV.yt_subs||0)+(LV.tk_foll||0)+(LV.ig_foll||0));
-  const liveBanner=lvHas?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#1a1420">
-    <span style="font-weight:800">🔴 Dnes naživo <small class="muted" style="font-weight:400">(priebežne, zo živého počítadla od poslednej aktualizácie)</small></span>
-    <div style="display:flex;gap:26px;margin-top:8px;font-size:16px">
-      <span>👁️ <b style="color:#22c55e">${lvV>=0?'+':''}${fmt(lvV)}</b> zhliadnutí</span>
-      <span>👥 <b style="color:#0ea5e9">${lvF>=0?'+':''}${fmt(lvF)}</b> sledovateľov</span></div>
-    <div class="muted" style="font-size:11px;margin-top:6px">Presné denné čísla (nižšie) dopĺňa YouTube Analytics s ~3-dňovým oneskorením.</div></div>`:'';
   $('#growth').innerHTML=`
-    ${liveBanner}
     <div class="grid k3" style="margin-bottom:14px">
       ${big('Sledovatelia',cf,dFoll,perTxt)}
       ${big('Zhliadnutia',cv,dViews,perTxt)}
       ${big('Videá / príspevky',t.videos,dVid,perTxt)}
     </div>
     <div class="grid k2" style="margin-bottom:14px">
-      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch (YouTube)</small></h2>${ytGainBars('views','#22c55e',totViews)}</div>
-      <div class="card"><h2>🚀 Odberatelia získaní <small>po dňoch (YouTube)</small></h2>${ytGainBars('subs','#0ea5e9',totFoll)}</div>
+      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e')}</div>
+      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9')}</div>
     </div>
     <div class="grid k2">
       <div class="card bars"><h2>📱 Podľa platformy <small>(${perTxt})</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
