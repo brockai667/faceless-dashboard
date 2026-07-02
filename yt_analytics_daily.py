@@ -72,6 +72,12 @@ def main():
     n = len(days)
     last = max(days) if days else "-"
     print(f"HOTOVO: {ok}/{len(TOKENS)} kanalov, {n} dni (posledny realny den: {last}).")
+    if ok == 0 and TOKENS:
+        # ziadny kanal nepresiel -> pravdepodobne vyprsane tokeny (OAuth app v Testing mode).
+        # Zlyhaj, nech pride notifikacia (inak by dashboard ticho zamrzol).
+        import sys
+        print("CHYBA: 0 kanalov -> tokeny mozno vyprsali (publikuj OAuth app / re-auth).")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
