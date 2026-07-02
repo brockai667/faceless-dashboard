@@ -1,0 +1,63 @@
+name: Ranny report
+
+# Kazde rano zhrnie vcerajsok z history.json (zalohovanej o 23:40) do GitHub Issue.
+# Issue = notifikacia na tvoj email. Ziadne dalsie hesla netreba.
+
+on:
+  schedule:
+    - cron: "10 4 * * *"    # ~06:10 Bratislava
+  workflow_dispatch: {}      # rucne spustenie na test
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zostav report
+        id: rep
+        run: |
+          python - <<'PY'
+          import json, os, datetime
+          h = json.load(open("history.json", encoding="utf-8")) if os.path.exists("history.json") else []
+          out = os.environ["GITHUB_OUTPUT"]
+          if len(h) < 2:
+              open(out, "a").write("skip=1\n"); raise SystemExit
+          b, a = h[-1], h[-2]           # posledny den vs predosly
+          span = max(1, (datetime.date.fromisoformat(b["date"]) - datetime.date.fromisoformat(a["date"])).days)
+          gap = " (pozn.: medzi zaznamami je diera %d dni)" % span if span > 1 else ""
+          def d(k): return (b.get(k) or 0) - (a.get(k) or 0)
+          views = d("yt_views") + d("tk_views") + d("ig_views")
+          foll = d("yt_subs") + d("tk_foll") + d("ig_foll")
+          fb, fa = b.get("fac") or {}, a.get("fac") or {}
+          gains = []
+          for nm, m in fb.items():
+              pm = fa.get(nm) or {}
+              gv = sum((m.get(k) or 0) - (pm.get(k) or 0) for k in ("yv", "tv", "iv"))
+              gains.append((gv, nm))
+          gains.sort(reverse=True)
+          rows = "\n".join(f"| {nm} | {gv:+,} |" for gv, nm in gains if gv)
+          body = (f"**Za {b['date']}**{gap}\n\n"
+                  f"### Spolu\n"
+                  f"- 👁️ Zhliadnutia: **{views:+,}** (YT {d('yt_views'):+,} · TT {d('tk_views'):+,} · IG {d('ig_views'):+,})\n"
+                  f"- 👥 Sledovatelia: **{foll:+,}** (YT {d('yt_subs'):+,} · TT {d('tk_foll'):+,} · IG {d('ig_foll'):+,})\n"
+                  f"- 🎬 Nové posty: {d('videos'):+,}\n\n"
+                  + (f"### Fabriky (prírastok zhliadnutí)\n| Fabrika | +views |\n|---|---|\n{rows}\n\n" if rows else "")
+                  + (f"🏆 Deň vyhráva **{gains[0][1]}** (+{gains[0][0]:,} videní)." if gains and gains[0][0] > 0 else ""))
+          open("report_body.md", "w", encoding="utf-8").write(body)
+          open(out, "a").write(f"skip=0\ntitle=Ranný report {b['date']}\n")
+          PY
+
+      - name: Vytvor issue (a zavri stare reporty)
+        if: steps.rep.outputs.skip == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --state open --search "Ranný report in:title" --json number --jq '.[].number'); do
+            gh issue close "$n" -c "Nahradený novším reportom." || true
+          done
+          gh issue create --title "${{ steps.rep.outputs.title }}" --body-file report_body.md

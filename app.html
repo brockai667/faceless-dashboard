@@ -194,24 +194,15 @@ const totViews=h=>(h.yt_views||0)+(h.tk_views||0)+(h.ig_views||0);
 const totFoll=h=>(h.yt_subs||0)+(h.tk_foll||0)+(h.ig_foll||0);
 function gainBars(totalFn,color){
   if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
-  // LEN REALNE DATA, ziadne odhady: stlpec sa kresli iba ked existuje vcerajsi realny snapshot.
-  // Dni bez zberu (gap:true / chybajuci datum) = male "×" — realny prirastok tam nie je znamy.
-  const real=HIST.filter(h=>!h.gap);
-  if(real.length<2)return '<div class="empty">Zatiaľ málo reálnych dní zberu — graf sa doplní ďalším obnovením.</div>';
-  const items=[];
-  for(let i=1;i<real.length;i++){
-    const a=real[i-1],b=real[i];
-    const days=Math.max(1,Math.round((new Date(b.date)-new Date(a.date))/864e5));
-    if(days===1){
-      items.push({n:b.date.slice(5),c:color,v:Math.max(0,totalFn(b)-totalFn(a))});
-    }else{
-      for(let d=1;d<=days;d++){
-        const dt=new Date(new Date(a.date).getTime()+d*864e5).toISOString().slice(5,10);
-        items.push({n:dt,c:color,v:0,nod:true});
-      }
-    }
-  }
-  const note=items.some(it=>it.nod)?'<div class="muted" style="font-size:11px;margin-top:6px">× = deň bez zberu dát — reálny denný prírastok nie je známy (odteraz sa zbiera a zálohuje každý deň)</div>':'';
+  // prirastok = kazdy zaznam vs PREDCHADZAJUCI zaznam (den po dni). Ak medzi zaznamami
+  // chybaju dni (vypadok zberu), stlpec ich zahrna — oznaci sa bodkou a poznamkou.
+  let anyGap=false;
+  const items=HIST.slice(1).map((h,i)=>{
+    const days=Math.max(1,Math.round((new Date(h.date)-new Date(HIST[i].date))/864e5));
+    if(days>1)anyGap=true;
+    return {n:h.date.slice(5)+(days>1?'*':''),c:color,v:Math.max(0,totalFn(h)-totalFn(HIST[i]))};
+  });
+  const note=anyGap?'<div class="muted" style="font-size:11px;margin-top:6px">* stĺpec zahŕňa aj predošlé dni bez zberu (výpadok) — odteraz sa zbiera a zálohuje každý deň</div>':'';
   return barChart(items)+note;
 }
 
@@ -244,8 +235,13 @@ function renderOverview(){
     :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
   const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
   const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14.5px;line-height:1.5">⚠️ <b>Instagram analytika dočasne nedostupná</b> — Meta zablokovala API prístup aplikácie. IG čísla nižšie sú <b>posledné známe</b> (nie live), preto sa "nehýbu". Príspevky na IG idú ďalej cez Buffer a účty sú v poriadku — týka sa to len čítania štatistík.</div>`:'';
+  // ALERT: fabriky s prazdnou frontou / chybami v Bufferi -> hned na ocach (len ked je problem)
+  const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]!=='🟢');
+  const healthBanner=sick.length?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
+    🚦 <b>Pozor — ${sick.length} ${sick.length===1?'fabrika potrebuje':'fabriky potrebujú'} pozornosť:</b> ${sick.map(x=>`<b style="color:${x.p.color}">${x.p.name}</b> (${x.h[1]})`).join(' · ')}
+    <span class="muted">— detail v tabe Fabriky</span></div>`:'';
   $('#overview').innerHTML=`
-    ${igBanner}
+    ${igBanner}${healthBanner}
     <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
         ${delta(k[3],k[4])}<div class="sm">${k[2]}</div></div>`).join('')}</div>
@@ -292,10 +288,9 @@ function buildTips(t,P,dFoll,dViews,span){
 }
 function renderGrowth(){
   const t=DATA.totals;
-  // porovnavaj s poslednym REALNYM dnom zberu (gap dni preskoc) a priznaj rozpätie
+  // porovnavaj s PREDCHADZAJUCIM zaznamom (vcerajsok) — den po dni, ako v grafe
   const L=(HIST&&HIST.length)?HIST[HIST.length-1]:null;
-  let P=null;
-  for(let i=(HIST?HIST.length:0)-2;i>=0;i--){ if(!HIST[i].gap){P=HIST[i];break;} }
+  const P=(HIST&&HIST.length>=2)?HIST[HIST.length-2]:null;
   const span=(P&&L)?Math.max(1,Math.round((new Date(L.date)-new Date(P.date))/864e5)):1;
   const fromD=P?P.date.slice(8,10)+'.'+P.date.slice(5,7)+'.':'';
   const perTxt=span<=1?'oproti včerajšku':'od '+fromD+' (medzitým výpadok zberu)';
@@ -396,8 +391,39 @@ function renderPlatforms(){
 }
 
 /* ---------------- FABRIKY ---------------- */
+/* zdravie fabriky podla Buffer fronty: chyby -> cervena, prazdna fronta -> zlta */
+function facHealth(p){
+  if((p.errors||0)>0)return ['🔴','chyby v Bufferi: '+p.errors];
+  if((p.scheduled||0)===0)return ['🟡','fronta prázdna — nič nie je naplánované'];
+  return ['🟢','fronta OK · čaká '+p.scheduled];
+}
+/* klik na "Vývoj po dňoch" -> denna krivka fabriky (views YT/TT/IG z historie) */
+function facTrend(name,idx){
+  const el=document.getElementById('ftr_'+idx);
+  if(!el)return;
+  if(el.innerHTML){el.innerHTML='';return;}
+  const days=(HIST||[]).filter(h=>h.fac&&h.fac[name]);
+  if(days.length<2){el.innerHTML='<div class="empty">Krivka sa zapne pri 2+ dňoch histórie tejto fabriky.</div>';return;}
+  const dates=days.map(h=>h.date);
+  const f=k=>days.map(h=>(h.fac[name]||{})[k]||0);
+  el.innerHTML='<div style="margin-top:10px">'+lineChart([
+    {name:'YouTube',c:PC.youtube,pts:f('yv')},
+    {name:'TikTok',c:PC.tiktok,pts:f('tv')},
+    {name:'Instagram',c:PC.instagram,pts:f('iv')}],dates,180)+'</div>';
+}
 function renderFactories(){
-  const cards=DATA.projects.map(p=>{
+  const hrows=DATA.projects.map(p=>{
+    const [ic,txt]=facHealth(p);
+    const ls=p.last_sent?fmtDate(String(p.last_sent).slice(0,10)):'—';
+    const nd=p.next_due?new Date(p.next_due):null;
+    const ndTxt=nd?nd.toLocaleDateString('sk-SK',{day:'numeric',month:'numeric'})+' '+nd.toLocaleTimeString('sk-SK',{hour:'2-digit',minute:'2-digit'}):'—';
+    return `<div style="display:grid;grid-template-columns:26px 148px 1fr 170px 130px;gap:8px;padding:7px 0;border-top:1px solid #131a25;align-items:center">
+      <span>${ic}</span><span style="font-weight:700;color:${p.color}">${p.name}</span>
+      <span class="muted" style="font-size:12.5px">${txt}</span>
+      <span class="muted" style="font-size:12px">posledný post: ${ls}</span>
+      <span class="muted" style="font-size:12px">ďalší: ${ndTxt}</span></div>`;}).join('');
+  const health=`<div class="card" style="margin-bottom:14px"><h2>🚦 Zdravie fabrík <small>Buffer fronta a publikovanie</small></h2>${hrows}</div>`;
+  const cards=DATA.projects.map((p,pi)=>{
     const L=p.links||{};
     const pubs=p.videos.map(v=>v.published).filter(Boolean).sort();
     const last=pubs.length?pubs[pubs.length-1]:null;
@@ -417,8 +443,10 @@ function renderFactories(){
       ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv)}`:'nepripojené', L.youtube)}
       ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(pvHeld(p,'tiktok'))} zhliad.${dchip(pvHeld(p,'tiktok'),pf.tv)}`:'nepripojené', L.tiktok)}
       ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv)}`:'nepripojené', L.instagram)}
+      <div style="margin-top:9px"><a class="btn" style="padding:5px 11px;cursor:pointer" onclick="facTrend('${p.name.replace(/'/g,"\\'")}',${pi})">📈 Vývoj po dňoch</a></div>
+      <div id="ftr_${pi}"></div>
     </div>`;}).join('');
-  $('#factories').innerHTML=`<div class="grid k2">${cards}</div>`;
+  $('#factories').innerHTML=health+`<div class="grid k2">${cards}</div>`;
 }
 
 /* ---------------- DOKUMENTY (dlhe YT videa) ---------------- */
