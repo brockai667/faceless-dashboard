@@ -439,19 +439,22 @@ def main():
     # predosle totals (z minuleho behu) -> dashboard ukaze zmenu +/- "od posledneho obnovenia".
     # V cloude (Render) je data.json docasny a po restarte zmizne -> ber prev z TRVALEHO Gistu (store).
     _dp0 = os.path.join(ROOT, "data.json")
-    _prev = None
+    _old_totals, _old_prev = {}, {}
+    if os.path.exists(_dp0):
+        try:
+            _old = json.load(open(_dp0, encoding="utf-8"))
+            _old_totals = _old.get("totals", {}) or {}
+            _old_prev = _old.get("prev", {}) or {}
+        except Exception:
+            pass
     try:
         import store as _stp
-        _prev = _stp.load_prev()
+        _sp = _stp.load_prev()
+        if _sp:
+            _old_prev = _sp                 # trvaly store ma prednost (prezije restart)
     except Exception:
-        _prev = None
-    if _prev is None:
-        _prev = {}
-        if os.path.exists(_dp0):
-            try:
-                _prev = json.load(open(_dp0, encoding="utf-8")).get("totals", {})
-            except Exception:
-                _prev = {}
+        pass
+    _prev = _old_totals                     # pre monotonicky clamp nizsie (posledne zname totals)
 
     # totals zhliadnut nesmu klesnut pod posledny beh (monotonicky aj pre "+X za posledny den")
     for _k in ("yt_views", "tk_views", "ig_views"):
@@ -494,6 +497,11 @@ def main():
             "tiktok": f"https://www.tiktok.com/@{TIKTOK_HANDLE[p['name']]}" if p["name"] in TIKTOK_HANDLE else None,
             "instagram": f"https://www.instagram.com/{IG_HANDLE[p['name']]}" if p["name"] in IG_HANDLE else None,
         }
+    # DELTA "od obnovenia": ak sa totals od minuleho behu NEZMENILI, ponechaj STARSI prev
+    # (inak by delta pri kazdom obnoveni spadla na 0). Pri zmene posun prev na minule totals.
+    _dkeys = ("yt_subs", "yt_views", "tk_foll", "tk_views", "ig_foll", "ig_views", "videos")
+    _changed = any((totals.get(k, 0) or 0) != (_old_totals.get(k, 0) or 0) for k in _dkeys)
+    _prev = dict(_old_totals) if (_changed and _old_totals) else (dict(_old_prev) if _old_prev else dict(_old_totals))
     json.dump({"projects": projects, "totals": totals, "prev": _prev, "gen_at": gen_at},
               open(os.path.join(ROOT, "data.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     try:
