@@ -551,15 +551,15 @@
       }
     },
     "2026-06-27": {
-      "views": 5791,
+      "views": 5769,
       "subs": 25,
       "fac": {
         "UnexplainedDaily": {
-          "v": 1862,
+          "v": 1859,
           "s": 7
         },
         "DisciplineDaily": {
-          "v": 366,
+          "v": 364,
           "s": 1
         },
         "Entropy": {
@@ -575,11 +575,11 @@
           "s": 6
         },
         "coldcasedaily667": {
-          "v": 1397,
+          "v": 1387,
           "s": 7
         },
         "WealthMindset": {
-          "v": 1028,
+          "v": 1024,
           "s": 0
         },
         "Lumora Music": {
@@ -587,11 +587,11 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 111,
+          "v": 110,
           "s": 1
         },
         "HiddenEarth667": {
-          "v": 1023,
+          "v": 1021,
           "s": 2
         },
         "MindBlownDaily": {
@@ -699,7 +699,57 @@
           "s": 0
         }
       }
+    },
+    "2026-06-30": {
+      "views": 13206,
+      "subs": 33,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 3023,
+          "s": 16
+        },
+        "DisciplineDaily": {
+          "v": 1477,
+          "s": 5
+        },
+        "Entropy": {
+          "v": 1230,
+          "s": 2
+        },
+        "Curio": {
+          "v": 2038,
+          "s": 3
+        },
+        "NextByte": {
+          "v": 1,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 2294,
+          "s": 3
+        },
+        "WealthMindset": {
+          "v": 763,
+          "s": 2
+        },
+        "Lumora Music": {
+          "v": 0,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 208,
+          "s": 1
+        },
+        "HiddenEarth667": {
+          "v": 2172,
+          "s": 1
+        },
+        "MindBlownDaily": {
+          "v": 0,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-07-02T13:40:40.062436Z"
+  "generated": "2026-07-03T08:32:12.650131Z"
 }
