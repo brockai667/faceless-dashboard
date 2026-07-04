@@ -749,7 +749,45 @@
           "s": 0
         }
       }
+    },
+    "2026-07-01": {
+      "views": 6774,
+      "subs": 17,
+      "fac": {
+        "DisciplineDaily": {
+          "v": 267,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 383,
+          "s": 2
+        },
+        "Curio": {
+          "v": 3007,
+          "s": 7
+        },
+        "NextByte": {
+          "v": 0,
+          "s": 1
+        },
+        "coldcasedaily667": {
+          "v": 2278,
+          "s": 6
+        },
+        "VitalityDaily": {
+          "v": 305,
+          "s": 1
+        },
+        "HiddenEarth667": {
+          "v": 534,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 0,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-07-03T08:32:12.650131Z"
+  "generated": "2026-07-04T08:08:45.926808Z"
 }
