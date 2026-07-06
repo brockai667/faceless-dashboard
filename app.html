@@ -531,6 +531,7 @@ function renderComments(){
       <h2>💬 Správa komentárov <small>Instagram + YouTube · všetky účty naraz</small></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button class="btn acc" onclick="loadComments()">↻ Načítať komentáre zo všetkých účtov</button>
+        <button class="btn" onclick="markAllShown()" title="Označí všetky práve zobrazené komentáre ako vybavené (YouTube ostávajú, len zmiznú odtiaľto)">✓ Vybaviť všetky zobrazené</button>
         <span class="muted" style="font-size:12px">ℹ️ IG: odpoveď + skrytie priamo tu. YouTube: zobrazené (odpoveď cez tlačidlo na YT).</span>
       </div>
     </div>
@@ -569,6 +570,17 @@ async function loadComments(){
           </div></div>`).join('')}
       </div>`;}).join('');
   }catch(e){$('#cbody').innerHTML=`<div class="empty">Chyba spojenia: ${esc(''+e)}</div>`;}
+}
+async function markAllShown(){          // hromadne: vsetky prave zobrazene komentare -> vybavene
+  const cms=[...document.querySelectorAll('#cbody .cm')];
+  if(!cms.length){alert('Najprv načítaj komentáre.');return;}
+  if(!confirm('Označiť všetkých '+cms.length+' zobrazených komentárov ako vybavené? (YouTube komentáre sa NEmažú, len zmiznú z dashboardu)'))return;
+  let ok=0;
+  for(const el of cms){
+    const cid=el.id.replace(/^cm_/,'');
+    try{ await fetch('/api/comment_done',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({comment_id:cid})}); ok++; }catch(e){}
+  }
+  $('#cbody').innerHTML='<div class="empty">Hotovo — '+ok+' komentárov označených ako vybavené. 🎉</div>';
 }
 function dropComment(cid,pid){            // odstrani komentar; ak je prispevok prazdny, odstrani aj prispevok
   const el=$('#cm_'+cid); if(el)el.remove();
