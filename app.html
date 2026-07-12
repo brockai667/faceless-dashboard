@@ -326,7 +326,7 @@ function effYesterday(){
   if(!t||real.length<2)return null;
   const today=real[real.length-1], P=real[real.length-2];
   const days=Math.max(1,Math.round((new Date(today.date)-new Date(P.date))/864e5));
-  const y={_est:days>1};
+  const y={_est:days>1, _days:days};
   ['yt_subs','yt_views','tk_foll','tk_views','ig_foll','ig_views','videos'].forEach(k=>{
     y[k]=(t[k]||0)-((t[k]||0)-(P[k]||0))/days;   // ZIVE totals dnes minus 1 priemerny den
   });
@@ -337,8 +337,9 @@ function renderGrowth(){
   // vcerajsok = 1 den spat (pri diere dopocitany ako stlpce v grafe) -> tab Rast VZDY "oproti vcerajsku"
   const P=effYesterday();
   const hasBase=!!P;
-  const perTxt='oproti včerajšku'+(P&&P._est?' (~ časť dopočítaná)':'');
-  const dLbl='za posledný deň';
+  const est=!!(P&&P._est), nd=P&&P._days||1;
+  const perTxt=est?`chýbal denný zber ${nd} dní — ukazujeme priemer/deň`:'oproti včerajšku';
+  const dLbl=est?'priemer/deň':'za posledný deň';
   if(!hasBase){
     $('#growth').innerHTML=`<div class="card"><h2>📈 Rast</h2>
       <div class="empty">Porovnanie sa zapne po ďalšom obnovení dát (zbiera sa každé 3 h).</div></div>
@@ -358,7 +359,7 @@ function renderGrowth(){
      <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
      <span class="muted">videní ${dayDelta(DS[k][1],true)}</span></div>`;
-  const tips=buildTips(t,P,dFoll,dViews,perTxt);
+  const tips=buildTips(t,P,dFoll,dViews,est?'priemer/deň':'za deň');
   $('#growth').innerHTML=`
     <div class="grid k3" style="margin-bottom:14px">
       ${big('Sledovatelia',cf,dFoll,perTxt)}
