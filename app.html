@@ -210,21 +210,29 @@ function gainBars(totalFn,color,ytField){
       items.push({n:b.date.slice(5),c:color,v:total});
       continue;
     }
-    // diera: chybajuce dni
+    // diera: rozdel chybajuce dni na REALNE (YT Analytics uz ma) a ESTE NEFINALIZOVANE (odhad)
     const miss=[];for(let d=1;d<=days;d++)miss.push(new Date(new Date(a.date).getTime()+d*864e5));
-    // mam realne denne YT cisla pre VSETKY chybajuce dni?
-    let raw=null;
-    if(ytField && miss.every(dt=>YD[dayKey(dt)]&&typeof YD[dayKey(dt)][ytField]==='number')){
-      raw=miss.map(dt=>Math.max(0,YD[dayKey(dt)][ytField]||0));
-      if(raw.reduce((s,x)=>s+x,0)<=0)raw=null;
-    }
-    if(raw){  // REALNY denny tvar z YT Analytics, skalovany tak aby sucet sedel s celkovym (YT+TT+IG) prirastkom
-      const sum=raw.reduce((s,x)=>s+x,0),f=total/sum;
-      miss.forEach((dt,k)=>items.push({n:dayKey(dt).slice(5),c:color,v:Math.round(raw[k]*f)}));
-    }else{    // Analytics to este nema -> 1 suhrnny odhadovy stlpec
-      anyEst=true;
-      const from=dayKey(miss[0]).slice(8,10),to=b.date.slice(8,10);
-      items.push({n:from+'.–'+to+'.',c:color,v:Math.round(total/days),est:true,days:days});
+    const covered=[],uncovered=[];
+    miss.forEach(dt=>{
+      const yd=YD[dayKey(dt)];
+      if(ytField && yd && typeof yd[ytField]==='number' && yd[ytField]>=0) covered.push({dt,v:yd[ytField]});
+      else uncovered.push(dt);
+    });
+    const cSum=covered.reduce((s,x)=>s+x.v,0);
+    if(covered.length && uncovered.length===0 && cSum>0){
+      // CELA diera pokryta realnymi YT datami -> skaluj tak, aby sucet sedel s celkovym (YT+TT+IG) prirastkom
+      const f=total/cSum;
+      covered.forEach(x=>items.push({n:dayKey(x.dt).slice(5),c:color,v:Math.round(x.v*f)}));
+    }else{
+      // realne dni (co YouTube uz finalizoval) zobraz naozaj; zvysne (este nefinalizovane) 1 odhadom
+      covered.forEach(x=>items.push({n:dayKey(x.dt).slice(5),c:color,v:Math.round(x.v)}));
+      if(uncovered.length){
+        anyEst=true;
+        const rem=Math.max(0,total-cSum),per=Math.round(rem/uncovered.length);
+        const from=dayKey(uncovered[0]).slice(8,10),to=dayKey(uncovered[uncovered.length-1]).slice(8,10);
+        const lbl=uncovered.length===1?dayKey(uncovered[0]).slice(5):(from+'.–'+to+'.');
+        items.push({n:lbl,c:color,v:per,est:true,days:uncovered.length});
+      }
     }
   }
   const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = obdobie bez denného zberu (cloud spal) — priemer/deň; celkový prírastok je reálny. Presné denné čísla sa doplnia keď YouTube Analytics dobehne (~3 dni).</div>':'';
