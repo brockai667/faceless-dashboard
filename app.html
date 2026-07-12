@@ -205,15 +205,14 @@ function gainBars(totalFn,color){
     const total=Math.max(0,totalFn(b)-totalFn(a));
     if(days===1){
       items.push({n:b.date.slice(5),c:color,v:total});
-    }else{  // gap -> rozpocitaj rovnomerne, kazdy den ~ odhad
-      anyEst=true; const per=Math.round(total/days);
-      for(let d=1;d<=days;d++){
-        const dt=new Date(new Date(a.date).getTime()+d*864e5).toISOString().slice(5,10);
-        items.push({n:dt,c:color,v:per,est:true});
-      }
+    }else{  // diera v zbere -> JEDEN suhrnny stlpec (priemer/den), nie N rovnakych plochych
+      anyEst=true;
+      const from=new Date(new Date(a.date).getTime()+864e5).toISOString().slice(8,10); // prvy chybajuci den
+      const to=b.date.slice(8,10);
+      items.push({n:from+'.–'+to+'.',c:color,v:Math.round(total/days),est:true,days:days});
     }
   }
-  const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = odhad (v ten deň vypadli dáta — rozdiel rozpočítaný rovnomerne). Ostatné dni sú reálne.</div>':'';
+  const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = obdobie bez denného zberu (cloud spal) — ukazujeme priemer/deň; celkový prírastok za obdobie je reálny.</div>':'';
   return barChart(items.slice(-12))+note;
 }
 
@@ -291,7 +290,7 @@ function buildTips(t,P,dFoll,dViews,unitTxt){
   const facV=DATA.projects.map(p=>({n:p.name,v:facViews(p)})).sort((a,b)=>b.v-a.v);
   if(facV[0]&&facV[0].v>0)tips.push(`🏆 <b>${facV[0].n}</b> vedie (${fmt(facV[0].v)} videní) — pozri jeho top videá vo Víťazoch a replikuj štýl/hooky.`);
   const weak=facV[facV.length-1];
-  if(weak&&facV[0]&&weak.v<facV[0].v*0.15)tips.push(`⚠️ <b>${weak.n}</b> zaostáva (${fmt(weak.v)}) — skús silnejší 2-sekundový hook alebo inú tému.`);
+  if(weak&&facV[0]&&weak.v<facV[0].v*0.15)tips.push(`⚠️ <b>${weak.n}</b> má zatiaľ najmenej videní (${fmt(weak.v)}) — daj mu čas alebo skús iný formát/tému.`);
   if(dViews>0&&dFoll<=0)tips.push('💬 Videní pribúda, sledovateľov nie — over že každé video má „Follow" CTA na konci.');
   tips.push(tipOfDay());
   return tips.slice(0,4);

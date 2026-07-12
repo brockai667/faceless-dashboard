@@ -8,7 +8,9 @@ name: Zaloha historie
 
 on:
   schedule:
-    - cron: "59 21 * * *"   # 23:59 Bratislava (leto) - snapshot na konci dna
+    - cron: "59 9 * * *"    # 11:59 Bratislava - poistny denny snapshot (ak vecerny beh zlyha)
+    - cron: "59 15 * * *"   # 17:59 Bratislava - poistny denny snapshot
+    - cron: "59 21 * * *"   # 23:59 Bratislava (leto) - cisty end-of-day snapshot
   workflow_dispatch: {}      # rucne spustenie na test
 
 permissions:
