@@ -191,12 +191,15 @@ function lineChart(series, dates, h=250){
 /* ---- denny prirastok (bar graf po dnoch): kolko views/sledov. PRIBUDLO kazdy den ---- */
 const totViews=h=>(h.yt_views||0)+(h.tk_views||0)+(h.ig_views||0);
 const totFoll=h=>(h.yt_subs||0)+(h.tk_foll||0)+(h.ig_foll||0);
-function gainBars(totalFn,color){
+function gainBars(totalFn,color,ytField){
   if(!HIST||HIST.length<2)return '<div class="empty">Graf po dňoch sa zapne pri 2+ dňoch histórie (zbiera sa každým obnovením).</div>';
-  // JEDNODUCHO: prirastok = dnesny snapshot MINUS vcerajsi (den po dni). Ak medzi dvoma
-  // zaznamami chyba den (vypadali data), rozdiel sa rozpocita rovnomerne a oznaci ~ (odhad).
+  // prirastok = dnesny snapshot MINUS vcerajsi (den po dni). Ak medzi dvoma REALNYMI snapshotmi
+  // chyba den (cloud spal), skusime dopocitat REALNE denne cisla z YouTube Analytics (yt_daily.json);
+  // ak ich Analytics este nema, ukazeme 1 suhrnny odhadovy stlpec (~).
   const H=HIST.filter(h=>!h.gap);   // ignoruj 'gap' dni (prenesene fake hodnoty) -> rozdiel medzi REALNYMI snapshotmi
   if(H.length<2)return '<div class="empty">Zatiaľ málo reálnych dní — doplní sa ďalším 23:59 snapshotom.</div>';
+  const YD=(YTDAILY&&YTDAILY.days)||{};
+  const dayKey=dt=>dt.toISOString().slice(0,10);
   let anyEst=false;
   const items=[];
   for(let i=1;i<H.length;i++){
@@ -205,14 +208,26 @@ function gainBars(totalFn,color){
     const total=Math.max(0,totalFn(b)-totalFn(a));
     if(days===1){
       items.push({n:b.date.slice(5),c:color,v:total});
-    }else{  // diera v zbere -> JEDEN suhrnny stlpec (priemer/den), nie N rovnakych plochych
+      continue;
+    }
+    // diera: chybajuce dni
+    const miss=[];for(let d=1;d<=days;d++)miss.push(new Date(new Date(a.date).getTime()+d*864e5));
+    // mam realne denne YT cisla pre VSETKY chybajuce dni?
+    let raw=null;
+    if(ytField && miss.every(dt=>YD[dayKey(dt)]&&typeof YD[dayKey(dt)][ytField]==='number')){
+      raw=miss.map(dt=>Math.max(0,YD[dayKey(dt)][ytField]||0));
+      if(raw.reduce((s,x)=>s+x,0)<=0)raw=null;
+    }
+    if(raw){  // REALNY denny tvar z YT Analytics, skalovany tak aby sucet sedel s celkovym (YT+TT+IG) prirastkom
+      const sum=raw.reduce((s,x)=>s+x,0),f=total/sum;
+      miss.forEach((dt,k)=>items.push({n:dayKey(dt).slice(5),c:color,v:Math.round(raw[k]*f)}));
+    }else{    // Analytics to este nema -> 1 suhrnny odhadovy stlpec
       anyEst=true;
-      const from=new Date(new Date(a.date).getTime()+864e5).toISOString().slice(8,10); // prvy chybajuci den
-      const to=b.date.slice(8,10);
+      const from=dayKey(miss[0]).slice(8,10),to=b.date.slice(8,10);
       items.push({n:from+'.–'+to+'.',c:color,v:Math.round(total/days),est:true,days:days});
     }
   }
-  const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = obdobie bez denného zberu (cloud spal) — ukazujeme priemer/deň; celkový prírastok za obdobie je reálny.</div>':'';
+  const note=anyEst?'<div class="muted" style="font-size:11px;margin-top:6px">~ = obdobie bez denného zberu (cloud spal) — priemer/deň; celkový prírastok je reálny. Presné denné čísla sa doplnia keď YouTube Analytics dobehne (~3 dni).</div>':'';
   return barChart(items.slice(-12))+note;
 }
 
@@ -343,8 +358,8 @@ function renderGrowth(){
       ${big('Videá / príspevky',t.videos,dVid,perTxt)}
     </div>
     <div class="grid k2" style="margin-bottom:14px">
-      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e')}</div>
-      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9')}</div>
+      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e','views')}</div>
+      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9','subs')}</div>
     </div>
     <div class="grid k2">
       <div class="card bars"><h2>📱 Podľa platformy <small>(${perTxt})</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
