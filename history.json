@@ -1347,15 +1347,15 @@
   {
     "date": "2026-07-15",
     "factories": 11,
-    "yt_subs": 237,
-    "yt_views": 135800,
+    "yt_subs": 240,
+    "yt_views": 136886,
     "tk_foll": 38,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 48,
-    "ig_views": 8452,
-    "ig_posts": 440,
-    "videos": 700,
+    "ig_views": 8625,
+    "ig_posts": 443,
+    "videos": 705,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
@@ -1369,11 +1369,11 @@
       },
       "WealthMindset": {
         "yf": 24,
-        "yv": 6805,
+        "yv": 6839,
         "tf": 0,
         "tv": 0,
         "if": 3,
-        "iv": 477
+        "iv": 508
       },
       "UnexplainedDaily": {
         "yf": 77,
@@ -1385,15 +1385,15 @@
       },
       "DisciplineDaily": {
         "yf": 10,
-        "yv": 6834,
+        "yv": 6871,
         "tf": 0,
         "tv": 0,
         "if": 4,
         "iv": 958
       },
       "VitalityDaily": {
-        "yf": 12,
-        "yv": 11379,
+        "yf": 13,
+        "yv": 12005,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -1401,15 +1401,15 @@
       },
       "HiddenEarth": {
         "yf": 4,
-        "yv": 15027,
+        "yv": 15142,
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 902
+        "iv": 1044
       },
       "NextByte": {
-        "yf": 13,
-        "yv": 20201,
+        "yf": 14,
+        "yv": 20467,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -1424,7 +1424,7 @@
         "iv": 839
       },
       "Curio": {
-        "yf": 46,
+        "yf": 47,
         "yv": 26292,
         "tf": 0,
         "tv": 0,
@@ -1433,7 +1433,7 @@
       },
       "Entropy": {
         "yf": 10,
-        "yv": 9017,
+        "yv": 9025,
         "tf": 0,
         "tv": 0,
         "if": 0,
