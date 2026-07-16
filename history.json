@@ -1452,21 +1452,21 @@
   {
     "date": "2026-07-16",
     "factories": 11,
-    "yt_subs": 247,
-    "yt_views": 139657,
+    "yt_subs": 249,
+    "yt_views": 140390,
     "tk_foll": 38,
     "tk_views": 12771,
     "tk_likes": 1415,
-    "ig_foll": 49,
-    "ig_views": 9115,
-    "ig_posts": 460,
-    "videos": 723,
+    "ig_foll": 50,
+    "ig_views": 9361,
+    "ig_posts": 463,
+    "videos": 728,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 6,
-        "yv": 37,
+        "yv": 39,
         "tf": 38,
         "tv": 12771,
         "if": 21,
@@ -1474,11 +1474,11 @@
       },
       "WealthMindset": {
         "yf": 24,
-        "yv": 6912,
+        "yv": 6921,
         "tf": 0,
         "tv": 0,
         "if": 3,
-        "iv": 740
+        "iv": 866
       },
       "UnexplainedDaily": {
         "yf": 80,
@@ -1490,7 +1490,7 @@
       },
       "DisciplineDaily": {
         "yf": 10,
-        "yv": 6967,
+        "yv": 6987,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -1498,7 +1498,7 @@
       },
       "VitalityDaily": {
         "yf": 13,
-        "yv": 12672,
+        "yv": 12820,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -1506,26 +1506,26 @@
       },
       "HiddenEarth": {
         "yf": 4,
-        "yv": 15508,
+        "yv": 15687,
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1264
+        "iv": 1384
       },
       "NextByte": {
-        "yf": 15,
-        "yv": 21586,
+        "yf": 16,
+        "yv": 21923,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 36,
+        "yf": 37,
         "yv": 15215,
         "tf": 0,
         "tv": 0,
-        "if": 2,
+        "if": 3,
         "iv": 839
       },
       "Curio": {
@@ -1538,7 +1538,7 @@
       },
       "Entropy": {
         "yf": 10,
-        "yv": 9255,
+        "yv": 9292,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -1546,7 +1546,7 @@
       },
       "Lumora": {
         "yf": 0,
-        "yv": 12,
+        "yv": 13,
         "tf": 0,
         "tv": 0,
         "if": 0,
