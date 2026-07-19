@@ -37,7 +37,8 @@ jobs:
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
-          YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}
+          YT_WRITE_TOKENS: ${{ secrets.YT_WRITE_TOKENS }}          # write scope (youtube.force-ssl), len re-authnute kanaly
+          YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}  # fallback
           ONLY_CHANNELS: ${{ github.event.inputs.only_channels }}
         run: python set_thumbnails.py
 

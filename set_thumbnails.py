@@ -13,7 +13,9 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DONE = os.path.join(ROOT, "thumb_done.json")
 CID = os.environ.get("YT_CLIENT_ID")
 CSEC = os.environ.get("YT_CLIENT_SECRET")
-TOKENS = json.loads(os.environ.get("YT_ANALYTICS_TOKENS", "{}"))
+# samostatny WRITE token secret (scope youtube.force-ssl) - nezasahuje do read-only analytics tokenov;
+# fallback na analytics tokeny ak by boli re-authnute so scope.
+TOKENS = json.loads(os.environ.get("YT_WRITE_TOKENS") or os.environ.get("YT_ANALYTICS_TOKENS", "{}"))
 OWNER = os.environ.get("GH_OWNER", "brockai667")
 
 # kanal (kluc v TOKENS/YT_CHANNELS) -> GitHub repo fabriky (kde su 'thumbs' release).
