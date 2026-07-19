@@ -1,0 +1,49 @@
+name: YT thumbnaily
+
+# Nastavi custom thumbnaily na nedavne Shorts cez YouTube Data API (thumbnails.set).
+# Bezi viackrat denne (po Buffer publikacnych slotoch). Potrebuje secrets YT_CLIENT_ID,
+# YT_CLIENT_SECRET a YT_ANALYTICS_TOKENS RE-AUTHNUTE so scope youtube.force-ssl.
+# Kanal musi mat zapnute custom thumbnails (Studio -> Feature eligibility -> overenie
+# telefonom), inak thumbnails.set vrati 403 (nekriticke, skusi znova nabuduce).
+
+on:
+  schedule:
+    - cron: "0 9,17,22 * * *"   # ~11/19/24 Bratislava, po publikacnych slotoch
+  workflow_dispatch:
+    inputs:
+      only_channels:
+        description: "len tieto kanaly (napr. Curio); prazdne = vsetky"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: set-thumbnails
+  cancel-in-progress: false
+
+jobs:
+  set:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Nastav thumbnaily
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}
+          ONLY_CHANNELS: ${{ github.event.inputs.only_channels }}
+        run: python set_thumbnails.py
+
+      - name: Commitni stav
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add thumb_done.json
+          git diff --cached --quiet || { git commit -m "thumbnaily $(date -u +%F)"; git push; }
