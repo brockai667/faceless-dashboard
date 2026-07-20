@@ -1873,14 +1873,14 @@
     "date": "2026-07-20",
     "factories": 11,
     "yt_subs": 275,
-    "yt_views": 153831,
+    "yt_views": 154243,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 49,
-    "ig_views": 10692,
-    "ig_posts": 527,
-    "videos": 780,
+    "ig_views": 10754,
+    "ig_posts": 533,
+    "videos": 782,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
@@ -1910,7 +1910,7 @@
       },
       "DisciplineDaily": {
         "yf": 11,
-        "yv": 7807,
+        "yv": 7982,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -1918,7 +1918,7 @@
       },
       "VitalityDaily": {
         "yf": 15,
-        "yv": 16327,
+        "yv": 16562,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -1946,7 +1946,7 @@
         "tf": 0,
         "tv": 0,
         "if": 3,
-        "iv": 903
+        "iv": 965
       },
       "Curio": {
         "yf": 58,
@@ -1966,7 +1966,7 @@
       },
       "Lumora": {
         "yf": 0,
-        "yv": 26,
+        "yv": 28,
         "tf": 0,
         "tv": 0,
         "if": 0,
