@@ -18,9 +18,20 @@ def main():
         json.dump({"configured": False},
                   open(os.path.join(ROOT, "episodary.json"), "w", encoding="utf-8"))
         print("Episodary: chyba EPISODARY_URL/EPISODARY_SECRET -> tab ukaze 'pripoj Episodary'"); return
-    req = urllib.request.Request(URL + "/api/admin/stats",
-                                 headers={"Authorization": "Bearer " + SECRET})
-    data = json.loads(urllib.request.urlopen(req, timeout=40).read())
+    try:
+        req = urllib.request.Request(URL + "/api/admin/stats",
+                                     headers={"Authorization": "Bearer " + SECRET})
+        data = json.loads(urllib.request.urlopen(req, timeout=40).read())
+    except Exception as e:
+        msg = str(e)
+        if "401" in msg:
+            msg = ("401 Unauthorized - EPISODARY_SECRET nesedi s CRON_SECRET "
+                   "(redeployol si Episodary po zmene tajomstva?)")
+        elif "404" in msg:
+            msg = "404 - endpoint /api/admin/stats nenajdeny (zla EPISODARY_URL?)"
+        json.dump({"configured": False, "error": msg[:180]},
+                  open(os.path.join(ROOT, "episodary.json"), "w", encoding="utf-8"), ensure_ascii=False)
+        print("Episodary CHYBA:", msg[:180]); return
     data["configured"] = True
     json.dump(data, open(os.path.join(ROOT, "episodary.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)

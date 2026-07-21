@@ -650,7 +650,7 @@ async function renderSpotify(){
   const el=$('#spotify'), C='#1DB954';
   el.innerHTML='<div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam Spotify…</div>';
   const d=await fetchJson('/spotify.json'); const hist=(await fetchJson('/spotify_history.json'))||[];
-  const head=t=>`<div class="card"><h2><span style="color:${C}">🎧 Spotify</span> <small>Lumora · streaming</small></h2><div class="empty">${t}</div></div>`;
+  const head=t=>`<div class="card"><h2><span style="color:${C}">🎧 Spotify</span> <small>Lumora · streaming</small></h2><div class="empty">${t}${d&&d.error?`<div class="sm" style="color:#f87171;margin-top:10px">⚠️ ${esc(d.error)}</div>`:''}</div></div>`;
   if(!d||!d.configured){ el.innerHTML=head('Spotify ešte nie je pripojený — do dashboard secrets pridaj <code>SPOTIFY_CLIENT_ID</code> + <code>SPOTIFY_CLIENT_SECRET</code> + <code>SPOTIFY_ARTIST_ID</code>.'); return; }
   if(!d.found){ el.innerHTML=head('Lumora sa na Spotify nenašla — ešte nie je live, alebo zlé <code>SPOTIFY_ARTIST_ID</code>.'); return; }
   const a=d.artist;
@@ -679,7 +679,7 @@ async function renderEpisodary(){
   const el=$('#episodary'), C='#6366f1';
   el.innerHTML='<div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam Episodary…</div>';
   const d=await fetchJson('/episodary.json'); const hist=(await fetchJson('/episodary_history.json'))||[];
-  if(!d||!d.configured){ el.innerHTML=`<div class="card"><h2><span style="color:${C}">📺 Episodary</span></h2><div class="empty">Episodary ešte nie je pripojený — do dashboard secrets pridaj <code>EPISODARY_URL</code> + <code>EPISODARY_SECRET</code> (= CRON_SECRET z Episodary Vercel env).</div></div>`; return; }
+  if(!d||!d.configured){ const e=d&&d.error?`<div class="sm" style="color:#f87171;margin-top:10px">⚠️ ${esc(d.error)}</div>`:''; el.innerHTML=`<div class="card"><h2><span style="color:${C}">📺 Episodary</span></h2><div class="empty">Episodary ešte nie je pripojený — do dashboard secrets pridaj <code>EPISODARY_URL</code> + <code>EPISODARY_SECRET</code> (= CRON_SECRET z Episodary Vercel env).${e}</div></div>`; return; }
   const u=d.users||{}, act=d.activity||{}, mm=d.movieMatch||{}, imp=d.imports||{};
   const kp=[['Používatelia',fmt(u.total||0),`+${u.last24h||0} /24h · +${u.last7d||0} /7d`],
     ['Knižnica',fmt(act.libraryItems||0),'seriály + filmy'],

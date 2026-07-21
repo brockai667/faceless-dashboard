@@ -106,4 +106,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as _e:
+        _write({"configured": True, "found": False, "error": str(_e)[:180]})
+        print("Spotify CHYBA:", str(_e)[:180])

@@ -46,5 +46,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add spotify.json spotify_history.json episodary.json episodary_history.json 2>/dev/null || true
+          for f in spotify.json spotify_history.json episodary.json episodary_history.json; do [ -f "$f" ] && git add "$f"; done
           git diff --cached --quiet || { git commit -m "platform analytika $(date -u +%F)"; git push; }
