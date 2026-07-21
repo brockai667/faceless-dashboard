@@ -9,8 +9,8 @@ import os
 import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-URL = os.environ.get("EPISODARY_URL", "").rstrip("/")
-SECRET = os.environ.get("EPISODARY_SECRET", "")
+URL = os.environ.get("EPISODARY_URL", "").strip().rstrip("/")
+SECRET = os.environ.get("EPISODARY_SECRET", "").strip()   # .strip() = odstrani trailing newline z GitHub secretu (castá príčina 401)
 
 
 def main():

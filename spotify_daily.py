@@ -13,8 +13,8 @@ import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-CID = os.environ.get("SPOTIFY_CLIENT_ID")
-CSEC = os.environ.get("SPOTIFY_CLIENT_SECRET")
+CID = (os.environ.get("SPOTIFY_CLIENT_ID") or "").strip() or None
+CSEC = (os.environ.get("SPOTIFY_CLIENT_SECRET") or "").strip() or None
 ARTIST = os.environ.get("SPOTIFY_ARTIST_ID", "").strip()
 MARKET = os.environ.get("SPOTIFY_MARKET", "US")
 
