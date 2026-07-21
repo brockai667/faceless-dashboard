@@ -1,1 +1,30 @@
-{"configured": false, "error": "401 Unauthorized - EPISODARY_SECRET nesedi s CRON_SECRET (redeployol si Episodary po zmene tajomstva?)"}
+{
+  "generatedAt": "2026-07-21T21:28:54.075Z",
+  "users": {
+    "total": 3,
+    "last24h": 1,
+    "last7d": 2
+  },
+  "imports": {
+    "total": 1,
+    "last24h": 0
+  },
+  "activity": {
+    "libraryItems": 41,
+    "watchedEpisodes": 2350,
+    "movieWatches": 517,
+    "comments": 0
+  },
+  "movieMatch": {
+    "rooms": 11,
+    "roomsLast24h": 0,
+    "members": 18,
+    "votes": 106
+  },
+  "recentSignups": [
+    "2026-07-21T13:31:52.775Z",
+    "2026-07-18T19:48:09.909Z",
+    "2026-07-07T09:43:20.059Z"
+  ],
+  "configured": true
+}
