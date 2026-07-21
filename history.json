@@ -1977,21 +1977,21 @@
   {
     "date": "2026-07-21",
     "factories": 11,
-    "yt_subs": 280,
-    "yt_views": 155345,
+    "yt_subs": 281,
+    "yt_views": 155639,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 49,
-    "ig_views": 10880,
-    "ig_posts": 551,
-    "videos": 788,
+    "ig_views": 10918,
+    "ig_posts": 554,
+    "videos": 789,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 10,
-        "yv": 5718,
+        "yv": 5913,
         "tf": 37,
         "tv": 12771,
         "if": 21,
@@ -2015,15 +2015,15 @@
       },
       "DisciplineDaily": {
         "yf": 11,
-        "yv": 8322,
+        "yv": 8357,
         "tf": 0,
         "tv": 0,
         "if": 4,
-        "iv": 1103
+        "iv": 1141
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 17131,
+        "yv": 17193,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2038,7 +2038,7 @@
         "iv": 1793
       },
       "NextByte": {
-        "yf": 15,
+        "yf": 16,
         "yv": 22818,
         "tf": 0,
         "tv": 0,
@@ -2071,7 +2071,7 @@
       },
       "Lumora": {
         "yf": 0,
-        "yv": 29,
+        "yv": 31,
         "tf": 0,
         "tv": 0,
         "if": 0,
