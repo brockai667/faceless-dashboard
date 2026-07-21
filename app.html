@@ -103,6 +103,8 @@ svg text{fill:var(--mut);font-size:15px}
   <button class="tab" role="tab" aria-selected="false" aria-controls="comments" id="tabbtn_comments" data-t="comments">💬 Komentáre</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="docs" id="tabbtn_docs" data-t="docs">🎬 Dokumenty</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="lumora" id="tabbtn_lumora" data-t="lumora">🌙 Lumora</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="spotify" id="tabbtn_spotify" data-t="spotify">🎧 Spotify</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="episodary" id="tabbtn_episodary" data-t="episodary">📺 Episodary</button>
 </div>
 
 <section id="overview" role="tabpanel" aria-labelledby="tabbtn_overview"><div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam dáta…</div></section>
@@ -112,6 +114,8 @@ svg text{fill:var(--mut);font-size:15px}
 <section id="platforms" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_platforms"></section>
 <section id="docs" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_docs"></section>
 <section id="lumora" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_lumora"></section>
+<section id="spotify" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_spotify"></section>
+<section id="episodary" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_episodary"></section>
 <section id="comments" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_comments"></section>
 
 </div>
@@ -631,12 +635,81 @@ async function hideC(user,cid,pid){
   if(d.ok){dropComment(cid,pid);} else alert('Chyba: '+(d.error||'?'));
 }
 
+/* ---------------- SPOTIFY + EPISODARY (samostatne, mimo hlavnej faceless analytiky) ---------------- */
+async function fetchJson(u){ try{ const r=await fetch(u+'?'+Date.now()); return r.ok?await r.json():null; }catch(e){ return null; } }
+function miniBars(items,color){
+  if(!items||items.length<2)return '<div class="empty">Graf sa zapne po 2+ dňoch zberu (beží denne).</div>';
+  const mx=Math.max(1,...items.map(i=>i.v));
+  return `<div style="display:flex;align-items:flex-end;gap:4px;height:132px;padding-top:6px">${items.map(i=>
+    `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%">
+      <div style="font-size:10.5px;color:var(--mut);margin-bottom:3px">${fmt(i.v)}</div>
+      <div title="${i.n}: ${i.v}" style="width:100%;background:${color};border-radius:4px 4px 0 0;height:${Math.max(3,i.v/mx*100)}%"></div>
+      <div style="font-size:10px;color:var(--mut2);margin-top:4px;white-space:nowrap">${i.n}</div></div>`).join('')}</div>`;
+}
+async function renderSpotify(){
+  const el=$('#spotify'), C='#1DB954';
+  el.innerHTML='<div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam Spotify…</div>';
+  const d=await fetchJson('/spotify.json'); const hist=(await fetchJson('/spotify_history.json'))||[];
+  const head=t=>`<div class="card"><h2><span style="color:${C}">🎧 Spotify</span> <small>Lumora · streaming</small></h2><div class="empty">${t}</div></div>`;
+  if(!d||!d.configured){ el.innerHTML=head('Spotify ešte nie je pripojený — do dashboard secrets pridaj <code>SPOTIFY_CLIENT_ID</code> + <code>SPOTIFY_CLIENT_SECRET</code> + <code>SPOTIFY_ARTIST_ID</code>.'); return; }
+  if(!d.found){ el.innerHTML=head('Lumora sa na Spotify nenašla — ešte nie je live, alebo zlé <code>SPOTIFY_ARTIST_ID</code>.'); return; }
+  const a=d.artist;
+  const kp=[['Followers',fmt(a.followers),'Spotify'],['Popularity',a.popularity+' / 100','reach skóre'],['Albumy',(d.albums||[]).length,'vydané'],['Top tracky',(d.top_tracks||[]).length,'najhranejšie']];
+  const trend=hist.slice(-14).map(h=>({n:(h.date||'').slice(5),v:h.followers||0}));
+  const tracks=(d.top_tracks||[]).slice(0,10); const mxp=Math.max(1,...tracks.map(t=>t.popularity||0));
+  const trows=tracks.length?tracks.map((t,i)=>`<div class="row"><span class="nm">${i+1}. <a href="${t.url}" target="_blank" rel="noopener noreferrer">${esc(t.name)}</a></span>
+    <div class="track"><div class="fill" style="width:${(t.popularity||0)/mxp*100}%;background:${C}"></div></div><span class="val">${t.popularity||0}</span></div>`).join(''):'<div class="empty">Žiadne tracky.</div>';
+  const albs=(d.albums||[]).slice(0,12).map(al=>`<a href="${al.url}" target="_blank" rel="noopener noreferrer" class="card" style="padding:10px;text-decoration:none;display:flex;gap:10px;align-items:center">
+    ${al.image?`<img src="${al.image}" width="52" height="52" style="border-radius:6px;flex:none" alt="">`:''}
+    <div style="min-width:0"><div style="font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(al.name)}</div>
+    <div class="sm" style="color:var(--mut)">${esc(al.type)} · ${al.tracks} tratkov · ${(al.release||'').slice(0,4)}</div></div></a>`).join('');
+  el.innerHTML=`
+    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:14px;display:flex;gap:14px;align-items:center">
+      ${a.image?`<img src="${a.image}" width="72" height="72" style="border-radius:10px;flex:none" alt="">`:''}
+      <div style="min-width:0"><h2 style="margin:0"><a href="${a.url}" target="_blank" rel="noopener noreferrer" style="color:${C}">${esc(a.name)}</a></h2>
+      <div class="sm" style="color:var(--mut)">${(a.genres||[]).map(esc).join(' · ')||'—'}</div></div></div>
+    <div class="grid k2" style="margin-bottom:14px">
+      <div class="card"><h2>📈 Followers <small>po dňoch</small></h2>${miniBars(trend,C)}</div>
+      <div class="card bars"><h2>🔥 Najhranejšie tracky <small>popularity 0-100</small></h2>${trows}</div></div>
+    <div class="card"><h2>💿 Katalóg</h2><div class="grid k3" style="margin-top:4px">${albs||'<div class="empty">Žiadne albumy.</div>'}</div></div>
+    <div class="sm" style="color:var(--mut2);margin-top:10px">ℹ️ Verejné Spotify API nedáva presné streamy (len Spotify for Artists) — followers + popularity + katalóg sú jediné verejné signály.</div>`;
+}
+async function renderEpisodary(){
+  const el=$('#episodary'), C='#6366f1';
+  el.innerHTML='<div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam Episodary…</div>';
+  const d=await fetchJson('/episodary.json'); const hist=(await fetchJson('/episodary_history.json'))||[];
+  if(!d||!d.configured){ el.innerHTML=`<div class="card"><h2><span style="color:${C}">📺 Episodary</span></h2><div class="empty">Episodary ešte nie je pripojený — do dashboard secrets pridaj <code>EPISODARY_URL</code> + <code>EPISODARY_SECRET</code> (= CRON_SECRET z Episodary Vercel env).</div></div>`; return; }
+  const u=d.users||{}, act=d.activity||{}, mm=d.movieMatch||{}, imp=d.imports||{};
+  const kp=[['Používatelia',fmt(u.total||0),`+${u.last24h||0} /24h · +${u.last7d||0} /7d`],
+    ['Knižnica',fmt(act.libraryItems||0),'seriály + filmy'],
+    ['Sledované epizódy',fmt(act.watchedEpisodes||0),'označené'],
+    ['Import joby',fmt(imp.total||0),`+${imp.last24h||0} /24h`]];
+  const trend=hist.slice(-14).map(h=>({n:(h.date||'').slice(5),v:h.users||0}));
+  const ai=[['Knižnica (seriály/filmy)',act.libraryItems||0],['Sledované epizódy',act.watchedEpisodes||0],['Pozreté filmy',act.movieWatches||0],['Komentáre',act.comments||0]];
+  const mxa=Math.max(1,...ai.map(x=>x[1]));
+  const arows=ai.map(x=>`<div class="row"><span class="nm">${x[0]}</span><div class="track"><div class="fill" style="width:${x[1]/mxa*100}%;background:${C}"></div></div><span class="val">${fmt(x[1])}</span></div>`).join('');
+  el.innerHTML=`
+    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="grid k2" style="margin-bottom:14px">
+      <div class="card"><h2>📈 Používatelia <small>po dňoch</small></h2>${miniBars(trend,C)}</div>
+      <div class="card bars"><h2>📊 Aktivita</h2>${arows}</div></div>
+    <div class="card"><h2>🎬 Movie Match <small>párovanie filmov</small></h2>
+      <div class="grid k4" style="margin-top:4px">
+        <div class="card kpi"><div class="lab">Miestnosti</div><div class="big">${fmt(mm.rooms||0)}</div><div class="sm">+${mm.roomsLast24h||0} /24h</div></div>
+        <div class="card kpi"><div class="lab">Členovia</div><div class="big">${fmt(mm.members||0)}</div><div class="sm">v miestnostiach</div></div>
+        <div class="card kpi"><div class="lab">Hlasy</div><div class="big">${fmt(mm.votes||0)}</div><div class="sm">za/proti filmom</div></div>
+        <div class="card kpi"><div class="lab">Aktualizované</div><div class="big" style="font-size:19px">${d.generatedAt?fmtDate(d.generatedAt):'—'}</div><div class="sm">z Episodary DB</div></div>
+      </div></div>`;
+}
+
 /* ---------------- INFRA ---------------- */
 function show(t){
   $$('.tab').forEach(b=>{const on=b.dataset.t===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false');});
-  ['overview','growth','factories','winners','platforms','docs','lumora','comments'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  ['overview','growth','factories','winners','platforms','docs','lumora','comments','spotify','episodary'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
   if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
   if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='lumora')renderLumora(); if(t==='comments')renderComments();
+  if(t==='spotify')renderSpotify(); if(t==='episodary')renderEpisodary();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
 async function refresh(){

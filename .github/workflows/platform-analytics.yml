@@ -1,0 +1,50 @@
+name: Platform analytika (Spotify + Episodary)
+
+# Denne stiahne Spotify (Lumora: followers/popularity/katalog) a Episodary (users/aktivita
+# z /api/admin/stats) do samostatnych JSON (mimo hlavnej faceless analytiky). Kazdy krok je
+# continue-on-error + collectory su best-effort: ak chyba secret, zapisu "configured:false"
+# a tab ukaze friendly "pripoj" stav. Secrets: SPOTIFY_CLIENT_ID/SECRET/ARTIST_ID,
+# EPISODARY_URL, EPISODARY_SECRET (= CRON_SECRET z Episodary).
+
+on:
+  schedule:
+    - cron: "40 6 * * *"   # ~08:40 Bratislava, denne
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: platform-analytics
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Spotify (Lumora)
+        continue-on-error: true
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_ARTIST_ID: ${{ secrets.SPOTIFY_ARTIST_ID }}
+        run: python spotify_daily.py
+
+      - name: Episodary
+        continue-on-error: true
+        env:
+          EPISODARY_URL: ${{ secrets.EPISODARY_URL }}
+          EPISODARY_SECRET: ${{ secrets.EPISODARY_SECRET }}
+        run: python episodary_daily.py
+
+      - name: Commitni ak sa zmenilo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add spotify.json spotify_history.json episodary.json episodary_history.json 2>/dev/null || true
+          git diff --cached --quiet || { git commit -m "platform analytika $(date -u +%F)"; git push; }
