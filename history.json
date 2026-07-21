@@ -1977,21 +1977,21 @@
   {
     "date": "2026-07-21",
     "factories": 11,
-    "yt_subs": 277,
-    "yt_views": 155079,
+    "yt_subs": 280,
+    "yt_views": 155345,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 49,
     "ig_views": 10880,
-    "ig_posts": 544,
-    "videos": 785,
+    "ig_posts": 551,
+    "videos": 788,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 10,
-        "yv": 5636,
+        "yv": 5718,
         "tf": 37,
         "tv": 12771,
         "if": 21,
@@ -2006,7 +2006,7 @@
         "iv": 1653
       },
       "UnexplainedDaily": {
-        "yf": 86,
+        "yf": 88,
         "yv": 24985,
         "tf": 0,
         "tv": 0,
@@ -2015,7 +2015,7 @@
       },
       "DisciplineDaily": {
         "yf": 11,
-        "yv": 8227,
+        "yv": 8322,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2023,7 +2023,7 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 17043,
+        "yv": 17131,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2046,7 +2046,7 @@
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 39,
+        "yf": 40,
         "yv": 15215,
         "tf": 0,
         "tv": 0,
@@ -2071,7 +2071,7 @@
       },
       "Lumora": {
         "yf": 0,
-        "yv": 28,
+        "yv": 29,
         "tf": 0,
         "tv": 0,
         "if": 0,
