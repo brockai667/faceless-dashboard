@@ -2083,20 +2083,20 @@
     "date": "2026-07-22",
     "factories": 11,
     "yt_subs": 285,
-    "yt_views": 156093,
+    "yt_views": 156195,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 49,
-    "ig_views": 10934,
-    "ig_posts": 563,
-    "videos": 792,
+    "ig_views": 10976,
+    "ig_posts": 568,
+    "videos": 755,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 10,
-        "yv": 6182,
+        "yv": 6231,
         "tf": 37,
         "tv": 12771,
         "if": 21,
@@ -2120,7 +2120,7 @@
       },
       "DisciplineDaily": {
         "yf": 11,
-        "yv": 8434,
+        "yv": 8475,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2128,7 +2128,7 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 17299,
+        "yv": 17311,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2156,7 +2156,7 @@
         "tf": 0,
         "tv": 0,
         "if": 3,
-        "iv": 1012
+        "iv": 1054
       },
       "Curio": {
         "yf": 60,
@@ -2182,6 +2182,7 @@
         "if": 0,
         "iv": 0
       }
-    }
+    },
+    "gap": true
   }
 ]
