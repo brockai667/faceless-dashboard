@@ -35,20 +35,19 @@ def main():
     data["configured"] = True
     json.dump(data, open(os.path.join(ROOT, "episodary.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
-    # trend: denny snapshot -> graf rastu
+    # trend: denny snapshot -> graf rastu (users + aktivni + instalacie)
     hp = os.path.join(ROOT, "episodary_history.json")
     hist = json.load(open(hp, encoding="utf-8")) if os.path.exists(hp) else []
     today = datetime.date.today().isoformat()
     hist = [h for h in hist if h.get("date") != today]
-    u = data.get("users", {}); act = data.get("activity", {})
+    u = data.get("users", {}); ac = data.get("active", {}); pf = data.get("platform", {})
     hist.append({"date": today, "users": u.get("total", 0),
-                 "library": act.get("libraryItems", 0),
-                 "watched": act.get("watchedEpisodes", 0),
-                 "imports": data.get("imports", {}).get("total", 0)})
+                 "mau": ac.get("mau", 0), "wau": ac.get("wau", 0),
+                 "installs": pf.get("installs", 0)})
     json.dump(hist[-200:], open(hp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    print("Episodary OK: %d userov (+%d/24h, +%d/7d), %d kniznica, %d epizod"
-          % (u.get("total", 0), u.get("last24h", 0), u.get("last7d", 0),
-             act.get("libraryItems", 0), act.get("watchedEpisodes", 0)))
+    print("Episodary OK: %d userov (+%d/24h, +%d/7d) | aktivni MAU %d / WAU %d / DAU %d | %d instalacii"
+          % (u.get("total", 0), u.get("new24h", 0), u.get("new7d", 0),
+             ac.get("mau", 0), ac.get("wau", 0), ac.get("dau", 0), pf.get("installs", 0)))
 
 
 if __name__ == "__main__":

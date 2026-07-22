@@ -680,27 +680,35 @@ async function renderEpisodary(){
   el.innerHTML='<div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam Episodary…</div>';
   const d=await fetchJson('/episodary.json'); const hist=(await fetchJson('/episodary_history.json'))||[];
   if(!d||!d.configured){ const e=d&&d.error?`<div class="sm" style="color:#f87171;margin-top:10px">⚠️ ${esc(d.error)}</div>`:''; el.innerHTML=`<div class="card"><h2><span style="color:${C}">📺 Episodary</span></h2><div class="empty">Episodary ešte nie je pripojený — do dashboard secrets pridaj <code>EPISODARY_URL</code> + <code>EPISODARY_SECRET</code> (= CRON_SECRET z Episodary Vercel env).${e}</div></div>`; return; }
-  const u=d.users||{}, act=d.activity||{}, mm=d.movieMatch||{}, imp=d.imports||{};
-  const kp=[['Používatelia',fmt(u.total||0),`+${u.last24h||0} /24h · +${u.last7d||0} /7d`],
-    ['Knižnica',fmt(act.libraryItems||0),'seriály + filmy'],
-    ['Sledované epizódy',fmt(act.watchedEpisodes||0),'označené'],
-    ['Import joby',fmt(imp.total||0),`+${imp.last24h||0} /24h`]];
+  const u=d.users||{}, ac=d.active||{}, pf=d.platform||{};
+  // ĽUDIA + AKTÍVNI (to čo user chce: koľko ich máme + koľko je aktívnych)
+  const kp=[['Používatelia',fmt(u.total||0),`+${u.new24h||0} /24h · +${u.new7d||0} /7d`],
+    ['Aktívni /mesiac',fmt(ac.mau||0),'MAU · niečo spravili'],
+    ['Aktívni /týždeň',fmt(ac.wau||0),`dnes ${fmt(ac.dau||0)} DAU`],
+    ['Premium',fmt(u.premium||0),'platiaci']];
+  // WEB vs APP + downloads
+  const appTracked = pf.appUsers!=null;
+  const web = appTracked ? (pf.webUsers||0) : (u.total||0);
+  const app = appTracked ? (pf.appUsers||0) : (pf.installs||0);
+  const dl = pf.storeDownloads;
+  const plat=[
+    ['🌐 Web',fmt(web),'cez prehliadač'],
+    ['📱 App',fmt(app),appTracked?'nainštalovaná appka':'PWA inštalácie (push)'],
+    ['⬇️ Downloads',dl==null?'—':fmt(dl),pf.storePublished?'zo store':'appka ešte nie je v store']];
   const trend=hist.slice(-14).map(h=>({n:(h.date||'').slice(5),v:h.users||0}));
-  const ai=[['Knižnica (seriály/filmy)',act.libraryItems||0],['Sledované epizódy',act.watchedEpisodes||0],['Pozreté filmy',act.movieWatches||0],['Komentáre',act.comments||0]];
-  const mxa=Math.max(1,...ai.map(x=>x[1]));
-  const arows=ai.map(x=>`<div class="row"><span class="nm">${x[0]}</span><div class="track"><div class="fill" style="width:${x[1]/mxa*100}%;background:${C}"></div></div><span class="val">${fmt(x[1])}</span></div>`).join('');
+  // aktivita rozpad (DAU/WAU/MAU + prihlásené zariadenia)
+  const ab=[['Dnes (DAU)',ac.dau||0],['Tento týždeň (WAU)',ac.wau||0],['Tento mesiac (MAU)',ac.mau||0],['Prihlásené zariadenia',ac.liveSessions||0]];
+  const mxb=Math.max(1,...ab.map(x=>x[1]));
+  const arows=ab.map(x=>`<div class="row"><span class="nm">${x[0]}</span><div class="track"><div class="fill" style="width:${x[1]/mxb*100}%;background:${C}"></div></div><span class="val">${fmt(x[1])}</span></div>`).join('');
   el.innerHTML=`
     <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:14px"><h2>📊 Web vs App <small>rozdelenie + downloads</small></h2>
+      <div class="grid k3" style="margin-top:4px">${plat.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+      <div class="sm" style="color:var(--mut2);margin-top:10px">ℹ️ Android appka ešte nie je publikovaná v store (0 downloads). „App" = PWA inštalácie (push-enabled zariadenia). Presné web-vs-app rozdelenie <b>návštev</b> je aj vo Vercel Analytics (tag <code>utm_source=pwa</code>).</div></div>
     <div class="grid k2" style="margin-bottom:14px">
       <div class="card"><h2>📈 Používatelia <small>po dňoch</small></h2>${miniBars(trend,C)}</div>
-      <div class="card bars"><h2>📊 Aktivita</h2>${arows}</div></div>
-    <div class="card"><h2>🎬 Movie Match <small>párovanie filmov</small></h2>
-      <div class="grid k4" style="margin-top:4px">
-        <div class="card kpi"><div class="lab">Miestnosti</div><div class="big">${fmt(mm.rooms||0)}</div><div class="sm">+${mm.roomsLast24h||0} /24h</div></div>
-        <div class="card kpi"><div class="lab">Členovia</div><div class="big">${fmt(mm.members||0)}</div><div class="sm">v miestnostiach</div></div>
-        <div class="card kpi"><div class="lab">Hlasy</div><div class="big">${fmt(mm.votes||0)}</div><div class="sm">za/proti filmom</div></div>
-        <div class="card kpi"><div class="lab">Aktualizované</div><div class="big" style="font-size:19px">${d.generatedAt?fmtDate(d.generatedAt):'—'}</div><div class="sm">z Episodary DB</div></div>
-      </div></div>`;
+      <div class="card bars"><h2>⚡ Aktivita</h2>${arows}</div></div>
+    <div class="sm" style="color:var(--mut2)">Aktualizované: ${d.generatedAt?fmtDate(d.generatedAt):'—'} · z Episodary DB (len agregáty, žiadne osobné dáta).</div>`;
 }
 
 /* ---------------- INFRA ---------------- */
