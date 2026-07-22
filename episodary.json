@@ -1,30 +1,24 @@
 {
-  "generatedAt": "2026-07-22T09:12:56.463Z",
+  "generatedAt": "2026-07-22T19:32:42.796Z",
   "users": {
-    "total": 3,
-    "last24h": 1,
-    "last7d": 2
+    "total": 4,
+    "premium": 0,
+    "new24h": 1,
+    "new7d": 3,
+    "new30d": 4
   },
-  "imports": {
-    "total": 1,
-    "last24h": 0
+  "active": {
+    "dau": 0,
+    "wau": 2,
+    "mau": 3,
+    "liveSessions": 6
   },
-  "activity": {
-    "libraryItems": 41,
-    "watchedEpisodes": 2350,
-    "movieWatches": 517,
-    "comments": 0
+  "platform": {
+    "webUsers": 4,
+    "appUsers": null,
+    "installs": 0,
+    "storePublished": false,
+    "storeDownloads": null
   },
-  "movieMatch": {
-    "rooms": 11,
-    "roomsLast24h": 0,
-    "members": 18,
-    "votes": 106
-  },
-  "recentSignups": [
-    "2026-07-21T13:31:52.775Z",
-    "2026-07-18T19:48:09.909Z",
-    "2026-07-07T09:43:20.059Z"
-  ],
   "configured": true
 }
