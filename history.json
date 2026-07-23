@@ -2187,21 +2187,21 @@
   {
     "date": "2026-07-23",
     "factories": 11,
-    "yt_subs": 289,
-    "yt_views": 156586,
+    "yt_subs": 291,
+    "yt_views": 156677,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
-    "ig_foll": 49,
+    "ig_foll": 50,
     "ig_views": 10980,
-    "ig_posts": 576,
-    "videos": 798,
-    "ig_videos": 105,
+    "ig_posts": 583,
+    "videos": 785,
+    "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 10,
-        "yv": 6342,
+        "yv": 6368,
         "tf": 37,
         "tv": 12771,
         "if": 21,
@@ -2233,10 +2233,10 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 17568,
+        "yv": 17633,
         "tf": 0,
         "tv": 0,
-        "if": 4,
+        "if": 5,
         "iv": 620
       },
       "HiddenEarth": {
@@ -2248,7 +2248,7 @@
         "iv": 1793
       },
       "NextByte": {
-        "yf": 16,
+        "yf": 17,
         "yv": 22818,
         "tf": 0,
         "tv": 0,
@@ -2264,7 +2264,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 61,
+        "yf": 62,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
