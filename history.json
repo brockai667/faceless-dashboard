@@ -2187,24 +2187,24 @@
   {
     "date": "2026-07-23",
     "factories": 11,
-    "yt_subs": 291,
-    "yt_views": 156677,
+    "yt_subs": 294,
+    "yt_views": 157753,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
-    "ig_foll": 50,
+    "ig_foll": 51,
     "ig_views": 10980,
-    "ig_posts": 583,
-    "videos": 785,
-    "ig_videos": 90,
+    "ig_posts": 589,
+    "videos": 801,
+    "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 10,
-        "yv": 6368,
+        "yv": 6563,
         "tf": 37,
         "tv": 12771,
-        "if": 21,
+        "if": 22,
         "iv": 3542
       },
       "WealthMindset": {
@@ -2224,8 +2224,8 @@
         "iv": 1157
       },
       "DisciplineDaily": {
-        "yf": 11,
-        "yv": 8495,
+        "yf": 12,
+        "yv": 8536,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2233,7 +2233,7 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 17633,
+        "yv": 17655,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -2256,8 +2256,8 @@
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 41,
-        "yv": 15215,
+        "yf": 43,
+        "yv": 16033,
         "tf": 0,
         "tv": 0,
         "if": 3,
