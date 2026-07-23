@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T19:32:42.796Z",
+  "generatedAt": "2026-07-23T09:12:09.348Z",
   "users": {
     "total": 4,
     "premium": 0,
@@ -11,7 +11,7 @@
     "dau": 0,
     "wau": 2,
     "mau": 3,
-    "liveSessions": 6
+    "liveSessions": 7
   },
   "platform": {
     "webUsers": 4,
