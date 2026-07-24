@@ -354,6 +354,10 @@ function renderGrowth(){
   const cf=t.yt_subs+t.tk_foll+t.ig_foll, pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0);
   const cv=t.yt_views+t.tk_views+t.ig_views, pv=(P.yt_views||0)+(P.tk_views||0)+(P.ig_views||0);
   const dFoll=Math.round(cf-pf), dViews=Math.round(cv-pv), dVid=Math.round((t.videos||0)-(P.videos||0));
+  // REAL-TIME vydané: z publish-dátumov videí (YouTube Data API = live, na rozdiel od Analytics čo mešká ~3 dni)
+  const _tdy=new Date().toISOString().slice(0,10), _7ago=new Date(Date.now()-6*864e5).toISOString().slice(0,10);
+  const pubToday=allVids().filter(v=>(v.published||'')===_tdy).length;
+  const pub7=allVids().filter(v=>(v.published||'')>=_7ago).length;
   const big=(lab,cur,d,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
      <div class="big">${fmt(cur)}</div>${dayDelta(d,false,dLbl)}<div class="sm">${sub}</div></div>`;
   const DS={youtube:[Math.round(t.yt_subs-(P.yt_subs||0)),Math.round(t.yt_views-(P.yt_views||0))],
@@ -368,7 +372,10 @@ function renderGrowth(){
     <div class="grid k3" style="margin-bottom:14px">
       ${big('Sledovatelia',cf,dFoll,perTxt)}
       ${big('Zhliadnutia',cv,dViews,perTxt)}
-      ${big('Videá / príspevky',t.videos,dVid,perTxt)}
+      <div class="card kpi"><div class="lab">Vydané dnes <span style="color:#22c55e">● live</span></div>
+        <div class="big">${fmt(pubToday)}</div>
+        <div class="sm" style="color:#22c55e;font-weight:600">${pub7} za 7 dní · reálne z YouTube</div>
+        <div class="sm">spolu ${fmt(t.videos)} videí (súčet mešká ~3 dni)</div></div>
     </div>
     <div class="grid k2" style="margin-bottom:14px">
       <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e','views')}</div>
