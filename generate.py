@@ -158,19 +158,32 @@ def _iso_dur(s):
     return h * 3600 + mi * 60 + se
 
 
-def yt_videos(channel_id, key, n=50):
-    """Posledných N videí kanála + ich štatistiky (views/likes/comments)."""
+def yt_videos(channel_id, key, n=50, deep=0):
+    """Posledných N videí kanála + štatistiky. Ak deep>n: prehľadá HLBŠIE (paginácia
+    po 50) a navyše vráti VŠETKY is_long (dokumenty) aj spoza N-okna — inak staré docs
+    vypadnú z okna (kanál chŕli shorts) a dashboard ich prestane vidieť."""
     if not key or not channel_id or not channel_id.startswith("UC"):
         return []
     pl = "UU" + channel_id[2:]  # uploads playlist
+    want = max(n, deep)
+    ids, token = [], ""
     try:
-        u1 = f"https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults={n}&playlistId={pl}&key={key}"
-        items = json.loads(urllib.request.urlopen(u1, timeout=30).read().decode("utf-8")).get("items", [])
-        vids = [i["contentDetails"]["videoId"] for i in items]
-        if not vids:
+        while len(ids) < want:
+            u1 = (f"https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails"
+                  f"&maxResults=50&playlistId={pl}&key={key}" + (f"&pageToken={token}" if token else ""))
+            j = json.loads(urllib.request.urlopen(u1, timeout=30).read().decode("utf-8"))
+            ids += [i["contentDetails"]["videoId"] for i in j.get("items", [])]
+            token = j.get("nextPageToken")
+            if not token:
+                break
+        ids = ids[:want]
+        if not ids:
             return []
-        u2 = f"https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails&id={','.join(vids)}&key={key}"
-        data = json.loads(urllib.request.urlopen(u2, timeout=30).read().decode("utf-8")).get("items", [])
+        data = []
+        for k in range(0, len(ids), 50):   # videos.list max 50 id/volanie
+            u2 = (f"https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet,contentDetails"
+                  f"&id={','.join(ids[k:k+50])}&key={key}")
+            data += json.loads(urllib.request.urlopen(u2, timeout=30).read().decode("utf-8")).get("items", [])
     except urllib.error.HTTPError as e:
         if e.code != 404:   # 404 = kanál zatiaľ bez publikovaných videí (nové) — bez chyby
             print("  [YT videos] chyba:", e)
@@ -190,6 +203,14 @@ def yt_videos(channel_id, key, n=50):
             "published": it.get("snippet", {}).get("publishedAt", "")[:10],
             "duration": dur, "is_long": dur >= 120,   # >=2 min = dlhy dokument (shorts su <1 min)
         })
+    if deep:   # drž recent N (grafy) + VŠETKY dokumenty (aj staré) -> data.json nebobtná
+        recent = out[:n]
+        longs = [v for v in out if v["is_long"]]
+        seen, merged = set(), []
+        for v in recent + longs:
+            if v["id"] not in seen:
+                seen.add(v["id"]); merged.append(v)
+        return merged
     return out
 
 def profile_link(c):
@@ -295,7 +316,7 @@ def main():
         if cid in yt:
             p["yt"] = yt[cid]
         if True:
-            vids = yt_videos(cid, yt_key)
+            vids = yt_videos(cid, yt_key, n=50, deep=250)   # deep -> nájde aj staré dokumenty (ColdCaseLong)
             for v in vids:
                 v["factory"] = p["name"]; v["color"] = p["color"]
                 v["platform"] = "YouTube"
