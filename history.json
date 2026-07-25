@@ -2292,21 +2292,21 @@
   {
     "date": "2026-07-25",
     "factories": 11,
-    "yt_subs": 297,
-    "yt_views": 158970,
+    "yt_subs": 298,
+    "yt_views": 159705,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 51,
-    "ig_views": 10998,
-    "ig_posts": 619,
-    "videos": 799,
+    "ig_views": 11002,
+    "ig_posts": 627,
+    "videos": 801,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 11,
-        "yv": 7024,
+        "yf": 12,
+        "yv": 7704,
         "tf": 37,
         "tv": 12771,
         "if": 22,
@@ -2330,7 +2330,7 @@
       },
       "DisciplineDaily": {
         "yf": 12,
-        "yv": 8929,
+        "yv": 8937,
         "tf": 0,
         "tv": 0,
         "if": 4,
@@ -2338,7 +2338,7 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 18013,
+        "yv": 18060,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -2350,7 +2350,7 @@
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1811
+        "iv": 1815
       },
       "NextByte": {
         "yf": 17,
