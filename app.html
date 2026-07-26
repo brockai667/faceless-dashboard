@@ -428,7 +428,7 @@ function renderPlatforms(){
     {k:'instagram',foll:t.ig_foll,views:t.ig_views,pf:PD.ig_foll,pv:PD.ig_views,extra:`${t.ig_posts} príspevkov`},
   ];
   $('#platforms').innerHTML=`<div class="grid k3">${cols.map(c=>{
-    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,v:pViews(p,c.k),
+    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,v:pvHeld(p,c.k),
       f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
       .sort((a,b)=>b.v-a.v);
     const mx=Math.max(1,...fac.map(f=>f.v));
