@@ -47,4 +47,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           for f in spotify.json spotify_history.json episodary.json episodary_history.json; do [ -f "$f" ] && git add "$f"; done
-          git diff --cached --quiet || { git commit -m "platform analytika $(date -u +%F)"; git push; }
+          git diff --cached --quiet || { git commit -m "platform analytika $(date -u +%F)"; for _i in 1 2 3 4; do git pull --rebase -q origin main && git push -q && break || sleep 4; done; }
