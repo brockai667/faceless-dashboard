@@ -2502,21 +2502,21 @@
   {
     "date": "2026-07-27",
     "factories": 11,
-    "yt_subs": 306,
-    "yt_views": 162118,
+    "yt_subs": 307,
+    "yt_views": 162383,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 53,
     "ig_views": 11209,
-    "ig_posts": 664,
+    "ig_posts": 668,
     "videos": 813,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 13,
-        "yv": 9473,
+        "yv": 9736,
         "tf": 37,
         "tv": 12771,
         "if": 22,
@@ -2555,7 +2555,7 @@
         "iv": 620
       },
       "HiddenEarth": {
-        "yf": 6,
+        "yf": 7,
         "yv": 15961,
         "tf": 0,
         "tv": 0,
@@ -2596,7 +2596,7 @@
       },
       "Lumora": {
         "yf": 1,
-        "yv": 54,
+        "yv": 56,
         "tf": 0,
         "tv": 0,
         "if": 0,
