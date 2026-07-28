@@ -2607,21 +2607,21 @@
   {
     "date": "2026-07-28",
     "factories": 11,
-    "yt_subs": 308,
-    "yt_views": 162571,
+    "yt_subs": 310,
+    "yt_views": 162788,
     "tk_foll": 37,
     "tk_views": 12771,
     "tk_likes": 1415,
     "ig_foll": 54,
     "ig_views": 11209,
-    "ig_posts": 676,
+    "ig_posts": 684,
     "videos": 816,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 13,
-        "yv": 9918,
+        "yv": 10130,
         "tf": 37,
         "tv": 12771,
         "if": 22,
@@ -2684,7 +2684,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 65,
+        "yf": 67,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
@@ -2701,7 +2701,7 @@
       },
       "Lumora": {
         "yf": 1,
-        "yv": 62,
+        "yv": 67,
         "tf": 0,
         "tv": 0,
         "if": 0,
