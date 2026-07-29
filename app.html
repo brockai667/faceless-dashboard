@@ -428,7 +428,8 @@ function renderPlatforms(){
     {k:'instagram',foll:t.ig_foll,views:t.ig_views,pf:PD.ig_foll,pv:PD.ig_views,extra:`${t.ig_posts} príspevkov`},
   ];
   $('#platforms').innerHTML=`<div class="grid k3">${cols.map(c=>{
-    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,v:pvHeld(p,c.k),
+    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,
+      v:(c.k==='tiktok'?(p.tiktok?.likes||0):pvHeld(p,c.k)),   // TikTok: lajky (Display API nedáva per-video views)
       f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
       .sort((a,b)=>b.v-a.v);
     const mx=Math.max(1,...fac.map(f=>f.v));
@@ -443,6 +444,7 @@ function renderPlatforms(){
         <span class="nm" style="color:${f.color};font-size:12px">${f.name}</span>
         <div class="track"><div class="fill" style="width:${f.v/mx*100}%;background:${f.color}"></div></div>
         <span class="val">${fmt(f.v)}</span></div>`).join('')}</div>
+      ${c.k==='tiktok'?`<div class="muted" style="font-size:10.5px;margin-top:9px;line-height:1.45">Per-kanál = <b>lajky</b> (tu vidno rast). TikTok cez základné API nedáva per-video zhliadnutia — tie sú len v TikTok Analytics. „Zhliadnutia" vyššie je starý čiastočný odhad.</div>`:''}
     </div>`;}).join('')}</div>`;
 }
 
