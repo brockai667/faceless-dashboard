@@ -21,16 +21,16 @@ CSEC = os.environ.get("YT_CLIENT_SECRET")
 # per-nika keywords; viacslovne v uvodzovkach (YouTube limit ~500 znakov celkovo)
 KEYWORDS = {
     "UnexplainedDaily": '"unexplained mysteries" "unsolved mysteries" paranormal "strange phenomena" "creepy facts" "mystery shorts" "ancient mysteries" "declassified files" shorts',
-    "ColdCaseDaily": '"true crime" "cold case" "unsolved cases" "true crime shorts" "missing persons" "crime stories" investigation detective shorts',
+    "coldcasedaily667": '"true crime" "cold case" "unsolved cases" "true crime shorts" "missing persons" "crime stories" investigation detective shorts',
     "WealthMindset": '"personal finance" "money mindset" "wealth building" investing "financial freedom" "money facts" "passive income" success shorts',
     "DisciplineDaily": 'motivation discipline "self improvement" mindset "success habits" productivity stoicism "mental toughness" shorts',
     "VitalityDaily": '"health tips" wellness nutrition "healthy habits" "human body" longevity "fitness facts" "health shorts" shorts',
     "MindBlownDaily": '"amazing facts" "mind blowing facts" "did you know" "interesting facts" "fun facts" trivia "random facts" shorts',
-    "HiddenEarth": '"hidden places" travel "amazing places" geography "natural wonders" "earth facts" exploration "travel shorts" shorts',
+    "HiddenEarth667": '"hidden places" travel "amazing places" geography "natural wonders" "earth facts" exploration "travel shorts" shorts',
     "NextByte": '"tech news" "ai news" technology "artificial intelligence" gadgets "future tech" innovation "tech shorts" shorts',
     "Curio": '"science facts" space astronomy physics "science shorts" "how it works" biology curiosity shorts',
     "Entropy": '"generative art" simulation "oddly satisfying" "physics simulation" "creative coding" "satisfying video" "ambient visuals" shorts',
-    "Lumora": '"ambient music" "study music" "focus music" "sleep music" relaxation "deep focus" "calm music" "music for studying"',
+    "Lumora Music": '"ambient music" "study music" "focus music" "sleep music" relaxation "deep focus" "calm music" "music for studying"',
     "ColdCaseLong": '"true crime documentary" "cold case" "true crime stories" "crime documentary" "unsolved cases" investigation',
 }
 
