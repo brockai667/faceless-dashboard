@@ -1,0 +1,57 @@
+{
+ "Curio": {
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"science facts\" space astronomy physics \"science shorts\" \"how it works\" biology curiosity shorts"
+ },
+ "DisciplineDaily": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "Entropy": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "HiddenEarth667": {
+  "status": "SKIP: nemam keyword sadu pre tento nazov"
+ },
+ "Lumora Music": {
+  "status": "SKIP: nemam keyword sadu pre tento nazov"
+ },
+ "MindBlownDaily": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "NextByte": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "UnexplainedDaily": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "VitalityDaily": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "WealthMindset": {
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+ },
+ "coldcasedaily667": {
+  "status": "SKIP: nemam keyword sadu pre tento nazov"
+ },
+ "_bez_tokenu": [
+  "ColdCaseDaily",
+  "HiddenEarth",
+  "Lumora",
+  "ColdCaseLong"
+ ]
+}
