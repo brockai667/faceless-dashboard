@@ -15,10 +15,14 @@
   "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "HiddenEarth667": {
-  "status": "SKIP: nemam keyword sadu pre tento nazov"
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "Lumora Music": {
-  "status": "SKIP: nemam keyword sadu pre tento nazov"
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "MindBlownDaily": {
   "status": "NEEDS-REAUTH (chyba write scope)",
@@ -46,12 +50,11 @@
   "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "coldcasedaily667": {
-  "status": "SKIP: nemam keyword sadu pre tento nazov"
+  "status": "NEEDS-REAUTH (chyba write scope)",
+  "source": "analytics",
+  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "_bez_tokenu": [
-  "ColdCaseDaily",
-  "HiddenEarth",
-  "Lumora",
   "ColdCaseLong"
  ]
 }
