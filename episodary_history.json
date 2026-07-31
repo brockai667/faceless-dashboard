@@ -68,5 +68,12 @@
     "mau": 3,
     "wau": 1,
     "installs": 0
+  },
+  {
+    "date": "2026-07-31",
+    "users": 5,
+    "mau": 4,
+    "wau": 2,
+    "installs": 0
   }
 ]
