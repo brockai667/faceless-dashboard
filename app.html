@@ -337,11 +337,15 @@ function effYesterday(){
 }
 function renderGrowth(){
   const t=DATA.totals;
-  // baseline = presny stav z POSLEDNEHO obnovenia (DATA.prev). Ziaden odhad ani priemer/den.
-  const P=DATA.prev||{};
+  // baseline = presny stav z POSLEDNEHO obnovenia (DATA.prev). Ak chyba (data.json je
+  // na Render free efemerny -> po restarte/redeployi zmizne), spadni na DURABLE historiu
+  // (effYesterday z committed history.json), nech Rast VZDY nieco ukaze, nie placeholder.
+  let P=DATA.prev||{};
+  let usingHist=false;
+  if(Object.keys(P).length===0){ const y=effYesterday(); if(y){ P=y; usingHist=true; } }
   const hasBase=Object.keys(P).length>0;
-  const perTxt='od posledného obnovenia';
-  const dLbl='od posl. obnovenia';
+  const perTxt=usingHist?'za posledný deň':'od posledného obnovenia';
+  const dLbl=usingHist?'za deň':'od posl. obnovenia';
   if(!hasBase){
     $('#growth').innerHTML=`<div class="card"><h2>📈 Rast</h2>
       <div class="empty">Porovnanie sa zapne po ďalšom obnovení dát (zbiera sa každé 3 h).</div></div>
