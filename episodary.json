@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-07-31T09:27:09.438Z",
+  "generatedAt": "2026-08-01T08:54:45.041Z",
   "users": {
     "total": 5,
     "premium": 0,
-    "new24h": 1,
+    "new24h": 0,
     "new7d": 1,
     "new30d": 5
   },
   "active": {
-    "dau": 1,
+    "dau": 0,
     "wau": 2,
     "mau": 4,
     "liveSessions": 8
