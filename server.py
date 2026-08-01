@@ -45,7 +45,20 @@ def bootstrap_secrets():
                 print(f"[bootstrap] {env_key} nie je platny JSON: {e}")
 
 
-def run_generate():
+def _data_fresh():
+    p = os.path.join(ROOT, "data.json")
+    if not os.path.exists(p):
+        return False
+    hrs = float(os.environ.get("REFRESH_HOURS", "3"))
+    return (time.time() - os.path.getmtime(p)) < hrs * 3600
+
+
+def run_generate(force=True):
+    # Preskoc plny re-collect ak su data cerstve: otvorenie dashboardu uz nezbiera
+    # zo vsetkych upstream API (YouTube/IG/TikTok/Spotify) pri KAZDEJ navsteve —
+    # obnovi az ked su data starsie nez REFRESH_HOURS. Setri kvoty aj Render compute.
+    if not force and _data_fresh():
+        return
     try:
         subprocess.run([sys.executable, os.path.join(ROOT, "generate.py")],
                        cwd=ROOT, timeout=240, capture_output=True)
@@ -299,8 +312,9 @@ class H(BaseHTTPRequestHandler):
                 return self._file(_pf, "application/json; charset=utf-8")
         if u.path == "/api/refresh":
             try:
-                subprocess.run([sys.executable, os.path.join(ROOT, "generate.py")],
-                               cwd=ROOT, timeout=180, capture_output=True)
+                # force=False: re-collect len ak su data stale (>REFRESH_HOURS).
+                # ?force=1 vynuti okamzity zber (manualne tlacidlo).
+                run_generate(force=("force" in q))
                 return self._send(200, json.dumps({"ok": True}))
             except Exception as e:
                 return self._send(200, json.dumps({"error": str(e)}))
