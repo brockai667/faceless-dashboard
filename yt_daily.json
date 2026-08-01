@@ -2051,7 +2051,7 @@
       }
     },
     "2026-07-27": {
-      "views": 4764,
+      "views": 4717,
       "subs": 6,
       "fac": {
         "UnexplainedDaily": {
@@ -2059,7 +2059,7 @@
           "s": 0
         },
         "DisciplineDaily": {
-          "v": 138,
+          "v": 136,
           "s": 0
         },
         "Entropy": {
@@ -2067,19 +2067,19 @@
           "s": 0
         },
         "Curio": {
-          "v": 1020,
+          "v": 1015,
           "s": 2
         },
         "NextByte": {
-          "v": 887,
+          "v": 876,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 282,
+          "v": 278,
           "s": 2
         },
         "WealthMindset": {
-          "v": 114,
+          "v": 111,
           "s": 0
         },
         "Lumora Music": {
@@ -2087,15 +2087,15 @@
           "s": 1
         },
         "VitalityDaily": {
-          "v": 296,
+          "v": 293,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 917,
+          "v": 902,
           "s": 1
         },
         "MindBlownDaily": {
-          "v": 710,
+          "v": 706,
           "s": 0
         }
       }
@@ -2149,7 +2149,57 @@
           "s": 0
         }
       }
+    },
+    "2026-07-29": {
+      "views": 4650,
+      "subs": 3,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 379,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 28,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 1,
+          "s": 0
+        },
+        "Curio": {
+          "v": 1496,
+          "s": 2
+        },
+        "NextByte": {
+          "v": 798,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 177,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 143,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 5,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 92,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 853,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 678,
+          "s": 1
+        }
+      }
     }
   },
-  "generated": "2026-07-31T08:14:35.686132Z"
+  "generated": "2026-08-01T07:40:58.750144Z"
 }
