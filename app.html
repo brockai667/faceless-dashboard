@@ -522,10 +522,24 @@ function renderFactories(){
       ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv,true)}`:'nepripojené', L.youtube)}
       ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(tk.likes)} lajkov`:'nepripojené', L.tiktok)}
       ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv,true)}`:'nepripojené', L.instagram)}
+      ${ytSplit(p)}
       <div style="margin-top:9px"><a class="btn" style="padding:5px 11px;cursor:pointer" onclick="facTrend('${p.name.replace(/'/g,"\\'")}',${pi})">📈 Vývoj po dňoch</a></div>
       <div id="ftr_${pi}"></div>
     </div>`;}).join('');
   $('#factories').innerHTML=health+`<div class="grid k2">${cards}</div>`;
+}
+
+/* Rozdelenie YT vykonu fabriky na Shorts vs Dokumenty (podla is_long) — zobrazi sa len ak uz ma aj dlhe videa */
+function ytSplit(p){
+  const yv=(p.videos||[]).filter(v=>(v.platform||'').toLowerCase()==='youtube');
+  const lo=yv.filter(v=>v.is_long), sh=yv.filter(v=>!v.is_long);
+  if(!lo.length) return '';
+  const sv=sh.reduce((s,v)=>s+(v.views||0),0), lv=lo.reduce((s,v)=>s+(v.views||0),0);
+  const box=(ic,lab,n,vw)=>`<div style="flex:1;background:#0d1420;border:1px solid #172234;border-radius:8px;padding:7px 10px">
+    <div class="muted" style="font-size:11.5px">${ic} ${lab}</div>
+    <div style="font-weight:800;font-size:14px">${fmt(n)} <span class="muted" style="font-weight:500;font-size:11px">videí</span></div>
+    <div class="muted" style="font-size:11.5px">${fmt(vw)} zhliad.</div></div>`;
+  return `<div style="display:flex;gap:8px;margin-top:9px">${box('🎬','Shorts',sh.length,sv)}${box('📄','Dokumenty',lo.length,lv)}</div>`;
 }
 
 /* ---------------- DOKUMENTY (dlhe YT videa) ---------------- */
@@ -534,7 +548,7 @@ function renderDocs(){
     .sort((a,b)=>(b.views||0)-(a.views||0));
   if(!docs.length){
     $('#docs').innerHTML=`<div class="card"><h2>🎬 Dlhé dokumenty</h2>
-      <div class="empty">Zatiaľ žiadne dlhé videá (>10 min). Dokumenty z ColdCaseLong sa tu objavia po nahratí na YouTube.</div></div>`;return;}
+      <div class="empty">Zatiaľ žiadne dlhé videá (≥2 min). Dokumenty z Money Glitch a ColdCaseLong sa tu objavia po nahratí na YouTube.</div></div>`;return;}
   const tot=docs.reduce((s,v)=>s+(v.views||0),0);
   const avg=docs.reduce((s,v)=>s+(v.duration||0),0)/docs.length;
   const kp=[['Dokumentov',docs.length,''],['Zhliadnutia',fmt(tot),'spolu'],['Priem. dĺžka',dur(avg),'min:sek']];
