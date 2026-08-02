@@ -2001,11 +2001,11 @@
       }
     },
     "2026-07-26": {
-      "views": 6436,
+      "views": 6425,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
-          "v": 1565,
+          "v": 1564,
           "s": 1
         },
         "DisciplineDaily": {
@@ -2017,19 +2017,19 @@
           "s": 0
         },
         "Curio": {
-          "v": 1096,
+          "v": 1092,
           "s": 1
         },
         "NextByte": {
-          "v": 1444,
+          "v": 1442,
           "s": 1
         },
         "coldcasedaily667": {
-          "v": 119,
+          "v": 118,
           "s": 0
         },
         "WealthMindset": {
-          "v": 425,
+          "v": 424,
           "s": 0
         },
         "Lumora Music": {
@@ -2037,7 +2037,7 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 325,
+          "v": 324,
           "s": 0
         },
         "HiddenEarth667": {
@@ -2045,7 +2045,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 793,
+          "v": 792,
           "s": 0
         }
       }
@@ -2199,7 +2199,57 @@
           "s": 1
         }
       }
+    },
+    "2026-07-30": {
+      "views": 5046,
+      "subs": 4,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 420,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 128,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 1,
+          "s": 0
+        },
+        "Curio": {
+          "v": 596,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 768,
+          "s": 1
+        },
+        "coldcasedaily667": {
+          "v": 787,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 72,
+          "s": 1
+        },
+        "Lumora Music": {
+          "v": 224,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 188,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 1092,
+          "s": 2
+        },
+        "MindBlownDaily": {
+          "v": 770,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-08-01T07:40:58.750144Z"
+  "generated": "2026-08-02T07:42:53.360323Z"
 }
