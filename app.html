@@ -91,7 +91,7 @@ svg text{fill:var(--mut);font-size:15px}
   <h1><span class="dot" aria-hidden="true"></span>FacelessFactory <span style="color:var(--mut);font-weight:500">Centrála</span></h1>
   <div class="spacer"></div>
   <span class="sub" id="updated" role="status">Načítavam…</span>
-  <button class="btn acc" id="refresh" onclick="refresh()">↻ Obnoviť dáta</button>
+  <button class="btn acc" id="refresh" onclick="refresh(true)">↻ Obnoviť dáta</button>
 </header>
 
 <div class="tabs" role="tablist" aria-label="Sekcie dashboardu">
@@ -427,14 +427,14 @@ function renderPlatforms(){
   const cols=[
     {k:'youtube',  foll:t.yt_subs, pf:PD.yt_subs, m2lab:'ZHLIADNUTIA', m2:t.yt_views, pm2:PD.yt_views, barLab:'zhliadnutia videí',
      extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí`},
-    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'LAJKY',       m2:t.tk_likes, pm2:PD.tk_likes, barLab:'lajky',
-     extra:`${DATA.projects.reduce((s,p)=>s+(p.tiktok?.videos||0),0)} videí`},
+    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'ZHLIADNUTIA', m2:t.tk_views, pm2:PD.tk_views, barLab:'zhliadnutia videí',
+     extra:`${DATA.projects.reduce((s,p)=>s+(p.tiktok?.videos||0),0)} videí · ${fmt(t.tk_likes)} lajky`},
     {k:'instagram',foll:t.ig_foll, pf:PD.ig_foll, m2lab:'ZHLIADNUTIA', m2:t.ig_views, pm2:PD.ig_views, barLab:'zhliadnutia videí',
      extra:`${t.ig_posts} príspevkov`},
   ];
   $('#platforms').innerHTML=`${baselineNote()}<div class="grid k3">${cols.map(c=>{
     const fac=DATA.projects.map(p=>({name:p.name,color:p.color,
-      v:(c.k==='tiktok'?(p.tiktok?.likes||0):pViews(p,c.k)),   // presne co mame: YT/IG realne views, TikTok realne lajky
+      v:(c.k==='tiktok'?(p.tiktok?.views||0):pViews(p,c.k)),   // YT/IG per-video views; TikTok lifetime views (paginovane)
       f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
       .sort((a,b)=>b.v-a.v);
     const mx=Math.max(1,...fac.map(f=>f.v));
@@ -450,7 +450,7 @@ function renderPlatforms(){
         <span class="nm" style="color:${f.color};font-size:12px">${f.name}</span>
         <div class="track"><div class="fill" style="width:${f.v/mx*100}%;background:${f.color}"></div></div>
         <span class="val">${fmt(f.v)}</span></div>`).join('')}</div>
-      ${c.k==='tiktok'?`<div class="muted" style="font-size:10.5px;margin-top:9px;line-height:1.45">TikTok cez základné API dáva len <b>sledovateľov, lajky a počet videí</b> — to je presné. Zhliadnutia per-video základné API nedáva (sú iba v TikTok Analytics), tak ich neukazujeme.</div>`:''}
+      ${c.k==='tiktok'?`<div class="muted" style="font-size:10.5px;margin-top:9px;line-height:1.45">TikTok <b>zhliadnutia</b> = súčet <code>view_count</code> cez video API (lifetime, paginované cez všetky videá). Sledovatelia, lajky aj počet videí sú z účtu — presné.</div>`:''}
     </div>`;}).join('')}</div>`;
 }
 
@@ -735,9 +735,10 @@ function show(t){
   if(t==='spotify')renderSpotify(); if(t==='episodary')renderEpisodary();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
-async function refresh(){
+async function refresh(force){
   const b=$('#refresh'); b.innerHTML='<span class="spin" aria-hidden="true"></span> Obnovujem…'; b.disabled=true;
-  try{await fetch('/api/refresh');}catch(e){/* server nedostupny -> skus aspon nacitat existujuce data nizsie */}
+  // manualne tlacidlo -> ?force=1 (vzdy prezbieraj); automaticky on-load -> mekky (server prezbiera len ak su data stale >REFRESH_HOURS)
+  try{await fetch('/api/refresh'+(force?'?force=1':''));}catch(e){/* server nedostupny -> skus aspon nacitat existujuce data nizsie */}
   await load(); b.innerHTML='↻ Obnoviť dáta'; b.disabled=false;
 }
 // bezpecne totals so vsetkymi klucmi na 0 -> ziadne "NaN" ked su data.json prazdne (prvy beh / vypadok API)
