@@ -65,12 +65,30 @@ def fetch_all(root):
 
         user = ui.get("data", {}).get("user", {})
         name = user.get("display_name") or label
-        try:
-            vl = _api(VIDEOLIST, acc, "POST", {"max_count": 20})
-            vids = vl.get("data", {}).get("videos", [])
-        except Exception:
-            vids = []
-        out[name] = {"stats": user, "videos": vids}
+        # Paginuj cez VSETKY videa -> sucet view_count = realne ZHLIADNUTIA (lifetime).
+        # Do 'videos' nechaj len prvych 20 (na winners/zobrazenie), zvysok len scitaj.
+        vids, views_total, cursor = [], 0, None
+        for _pg in range(40):   # bezpecnostny strop: 40 * 20 = 800 videi
+            body = {"max_count": 20}
+            if cursor is not None:
+                body["cursor"] = cursor
+            try:
+                vl = _api(VIDEOLIST, acc, "POST", body)
+            except Exception:
+                break
+            data = vl.get("data", {}) or {}
+            page = data.get("videos", []) or []
+            if not page:
+                break
+            if len(vids) < 20:
+                vids.extend(page[:20 - len(vids)])
+            views_total += sum(int(v.get("view_count", 0) or 0) for v in page)
+            if not data.get("has_more"):
+                break
+            cursor = data.get("cursor")
+            if cursor is None:
+                break
+        out[name] = {"stats": {**user, "views_total": views_total}, "videos": vids}
 
     if changed:
         json.dump(tokens, open(tpath, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
