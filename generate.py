@@ -340,6 +340,7 @@ def main():
             st = d.get("stats", {})
             p["tiktok"] = {"followers": int(st.get("follower_count", 0) or 0),
                            "likes": int(st.get("likes_count", 0) or 0),
+                           "views": int(st.get("views_total", 0) or 0),
                            "videos": int(st.get("video_count", 0) or 0), "handle": handle}
             for v in d.get("videos", []):
                 p["videos"].append({
@@ -450,7 +451,7 @@ def main():
         "yt_subs": sum((p["yt"]["subs"] for p in projects if p["yt"]), 0),
         "yt_views": sum(_held(p, "youtube") for p in projects),
         "tk_foll": sum((p["tiktok"]["followers"] for p in projects if p["tiktok"]), 0),
-        "tk_views": sum(_held(p, "tiktok") for p in projects),
+        "tk_views": sum((p["tiktok"]["views"] for p in projects if p["tiktok"]), 0),
         "tk_likes": sum((p["tiktok"]["likes"] for p in projects if p["tiktok"]), 0),
         "ig_foll": sum((p["instagram"]["followers"] for p in projects if p["instagram"]), 0),
         "ig_views": sum(_held(p, "instagram") for p in projects),
