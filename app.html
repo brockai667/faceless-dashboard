@@ -140,9 +140,10 @@ function delta(cur,prev){   // velka delta pod KPI cislo (oproti POSLEDNEMU obno
   const up=d>0;
   return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} od posl. obnovenia</div>`;
 }
-function dchip(cur,prev){   // maly inline odznak (platformy/fabriky)
-  if(cur==null||prev==null)return '';
-  const d=cur-prev;if(d===0)return '';
+function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noNeg=true -> kumulativna
+  if(cur==null||prev==null)return '';   // metrika (views/lajky): nemoze klesnut, tak zapornu zmenu
+  const d=cur-prev;                     // (= neuplny zber, nie realny pokles) vobec neukazuj.
+  if(d===0||(noNeg&&d<0))return '';
   const up=d>0;return ` <span class="dchip ${up?'dlu':'dld'}">${up?'▲+':'▼−'}${fmt(Math.abs(d))}</span>`;
 }
 /* jednotne vysvetlenie casu (user chce: co mame + od kedy + ci je zmena od obnovenia alebo od 00:00) */
@@ -355,16 +356,16 @@ function renderGrowth(){
   }
   const cf=t.yt_subs+t.tk_foll+t.ig_foll, pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0);
   const cv=t.yt_views+t.ig_views, pv=(P.yt_views||0)+(P.ig_views||0);   // Zhliadnutia = YT+IG (TikTok views zakl. API nedava)
-  const dFoll=Math.round(cf-pf), dViews=Math.round(cv-pv), dVid=Math.round((t.videos||0)-(P.videos||0));
+  const dFoll=Math.round(cf-pf), dViews=Math.max(0,Math.round(cv-pv)), dVid=Math.round((t.videos||0)-(P.videos||0));
   // REAL-TIME vydané: z publish-dátumov videí (YouTube Data API = live, na rozdiel od Analytics čo mešká ~3 dni)
   const _tdy=new Date().toISOString().slice(0,10), _7ago=new Date(Date.now()-6*864e5).toISOString().slice(0,10);
   const pubToday=allVids().filter(v=>(v.published||'')===_tdy).length;
   const pub7=allVids().filter(v=>(v.published||'')>=_7ago).length;
   const big=(lab,cur,d,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
      <div class="big">${fmt(cur)}</div>${dayDelta(d,false,dLbl)}<div class="sm">${sub}</div></div>`;
-  const DS={youtube:[Math.round(t.yt_subs-(P.yt_subs||0)),Math.round(t.yt_views-(P.yt_views||0))],
-            tiktok:[Math.round(t.tk_foll-(P.tk_foll||0)),Math.round((t.tk_likes||0)-(P.tk_likes||0))],
-            instagram:[Math.round(t.ig_foll-(P.ig_foll||0)),Math.round(t.ig_views-(P.ig_views||0))]};
+  const DS={youtube:[Math.round(t.yt_subs-(P.yt_subs||0)),Math.max(0,Math.round(t.yt_views-(P.yt_views||0)))],
+            tiktok:[Math.round(t.tk_foll-(P.tk_foll||0)),Math.max(0,Math.round((t.tk_likes||0)-(P.tk_likes||0)))],
+            instagram:[Math.round(t.ig_foll-(P.ig_foll||0)),Math.max(0,Math.round(t.ig_views-(P.ig_views||0)))]};
   const prow=k=>`<div class="row" style="grid-template-columns:118px 1fr 1fr;gap:10px;margin:11px 0">
      <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
      <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
@@ -452,7 +453,7 @@ function renderPlatforms(){
       <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span></h2>
       <div style="display:flex;gap:18px;margin:6px 0 14px">
         <div><div class="muted" style="font-size:11px">SLEDOVATELIA</div><div style="font-size:22px;font-weight:800">${fmt(c.foll)}${dchip(c.foll,c.pf)}</div></div>
-        <div><div class="muted" style="font-size:11px">${c.m2lab}</div><div style="font-size:22px;font-weight:800">${fmt(c.m2)}${dchip(c.m2,c.pm2)}</div></div>
+        <div><div class="muted" style="font-size:11px">${c.m2lab}</div><div style="font-size:22px;font-weight:800">${fmt(c.m2)}${dchip(c.m2,c.pm2,true)}</div></div>
       </div>
       <div class="muted" style="font-size:11.5px;margin-bottom:8px">${c.extra}</div>
       <div class="muted" style="font-size:10.5px;margin-bottom:4px">Per-kanál = ${c.barLab}</div>
@@ -518,9 +519,9 @@ function renderFactories(){
         <span style="font-size:16px;font-weight:800">${p.name}</span>
         <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
       <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${fmtDate(last)}</div>
-      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv)}`:'nepripojené', L.youtube)}
+      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv,true)}`:'nepripojené', L.youtube)}
       ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(tk.likes)} lajkov`:'nepripojené', L.tiktok)}
-      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv)}`:'nepripojené', L.instagram)}
+      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv,true)}`:'nepripojené', L.instagram)}
       <div style="margin-top:9px"><a class="btn" style="padding:5px 11px;cursor:pointer" onclick="facTrend('${p.name.replace(/'/g,"\\'")}',${pi})">📈 Vývoj po dňoch</a></div>
       <div id="ftr_${pi}"></div>
     </div>`;}).join('');
