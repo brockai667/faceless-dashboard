@@ -438,6 +438,16 @@ function renderPlatforms(){
       f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
       .sort((a,b)=>b.v-a.v);
     const mx=Math.max(1,...fac.map(f=>f.v));
+    if(c.k==='tiktok'){
+      // TikTok karta: IBA zhliadnutia na kazdom ucte, nic ine (user request).
+      return `<div class="card">
+        <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span> <span class="muted" style="font-size:11px;font-weight:700;letter-spacing:.04em">ZHLIADNUTIA</span></h2>
+        <div class="bars" style="margin-top:8px">${fac.map(f=>`<div class="row" style="grid-template-columns:130px 1fr 74px">
+          <span class="nm" style="color:${f.color};font-size:12.5px">${f.name}</span>
+          <div class="track"><div class="fill" style="width:${f.v/mx*100}%;background:${f.color}"></div></div>
+          <span class="val" style="font-weight:700">${fmt(f.v)}</span></div>`).join('')}</div>
+      </div>`;
+    }
     return `<div class="card">
       <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span></h2>
       <div style="display:flex;gap:18px;margin:6px 0 14px">
