@@ -96,6 +96,7 @@ svg text{fill:var(--mut);font-size:15px}
 
 <div class="tabs" role="tablist" aria-label="Sekcie dashboardu">
   <button class="tab on" role="tab" aria-selected="true" aria-controls="overview" id="tabbtn_overview" data-t="overview">📊 Prehľad</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="galaxy" id="tabbtn_galaxy" data-t="galaxy">🌌 Galaxia</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="growth" id="tabbtn_growth" data-t="growth">📈 Rast &amp; rady</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="platforms" id="tabbtn_platforms" data-t="platforms">📱 Platformy</button>
   <button class="tab" role="tab" aria-selected="false" aria-controls="winners" id="tabbtn_winners" data-t="winners">🏆 Víťazi</button>
@@ -108,6 +109,7 @@ svg text{fill:var(--mut);font-size:15px}
 </div>
 
 <section id="overview" role="tabpanel" aria-labelledby="tabbtn_overview"><div class="empty"><span class="spin" aria-hidden="true"></span> Načítavam dáta…</div></section>
+<section id="galaxy" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_galaxy"></section>
 <section id="growth" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_growth"></section>
 <section id="factories" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_factories"></section>
 <section id="winners" class="hide-tab" role="tabpanel" aria-labelledby="tabbtn_winners"></section>
@@ -471,7 +473,7 @@ function renderPlatforms(){
    NEznamena to prazdnu frontu, len nedostupny stav -> siva, ziadny poplach. */
 function facHealth(p){
   const noData=!p.alive&&!(p.sent>0)&&!p.last_sent;
-  if(noData)return ['⚪','Buffer stav nedostupný (rate-limit) — skús Obnoviť neskôr',true];
+  if(noData)return ['⚪','Buffer stav nedostupný v cloude (nastav BUFFER_TOKENS_JSON) alebo rate-limit',true];
   if((p.errors||0)>0)return ['🔴','chyby v Bufferi: '+p.errors];
   if((p.scheduled||0)===0)return ['🟡','fronta prázdna — nič nie je naplánované'];
   return ['🟢','fronta OK · čaká '+p.scheduled];
@@ -751,10 +753,117 @@ async function renderEpisodary(){
     <div class="sm" style="color:var(--mut2)">Aktualizované: ${d.generatedAt?fmtDate(d.generatedAt):'—'} · z Episodary DB (len agregáty, žiadne osobné dáta).</div>`;
 }
 
+/* ===================== 🌌 3D GALAXIA FABRÍK (čistý canvas, bez knižníc) ===================== */
+window.renderGalaxy=function(container,projects,opts){
+  opts=opts||{};
+  if(window._galRaf){cancelAnimationFrame(window._galRaf);window._galRaf=0;}
+  container.innerHTML='';
+  const P=(projects||[]).filter(p=>p&&p.name);
+  if(!P.length){container.innerHTML='<div class="empty">Galaxia sa objaví po načítaní dát.</div>';return;}
+
+  const wrap=document.createElement('div');
+  wrap.style.cssText='position:relative;width:100%;height:'+(opts.height||'72vh')+';min-height:460px;border-radius:16px;overflow:hidden;background:radial-gradient(1200px 700px at 50% 38%,#0e1a33,#05070d 72%);border:1px solid var(--bd,#1e2733);touch-action:none;cursor:grab';
+  const cv=document.createElement('canvas'); cv.style.cssText='display:block;width:100%;height:100%'; wrap.appendChild(cv);
+  const tip=document.createElement('div');
+  tip.style.cssText='position:absolute;pointer-events:none;background:#0b0f18ee;border:1px solid #2a3647;border-radius:9px;padding:7px 10px;font:600 12.5px/1.4 Segoe UI,system-ui,sans-serif;color:#e6edf3;opacity:0;transform:translate(-50%,-128%);transition:opacity .12s;white-space:nowrap;z-index:5'; wrap.appendChild(tip);
+  const hint=document.createElement('div');
+  hint.style.cssText='position:absolute;left:14px;bottom:11px;font:500 11.5px/1.5 Segoe UI,system-ui;color:#6f7d92;pointer-events:none;z-index:4';
+  hint.innerHTML='🖱️ ťahaj = otáčaj &nbsp;·&nbsp; koliesko = zoom &nbsp;·&nbsp; hover = detail'; wrap.appendChild(hint);
+  container.appendChild(wrap);
+
+  const ctx=cv.getContext('2d');
+  const DPR=Math.min(2,window.devicePixelRatio||1);
+  let W=0,H=0,bg=null;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const mulberry32=a=>function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+  const hexRgb=h=>{h=(h||'#6aa0ff').replace('#','');if(h.length===3)h=h.split('').map(x=>x+x).join('');const n=parseInt(h,16)||0x6aa0ff;return[n>>16&255,n>>8&255,n&255];};
+
+  const nodes=[],suns=[],R=300,NF=P.length;
+  P.forEach((p,i)=>{
+    const gt=(i+0.5)/NF, phi=Math.acos(1-2*gt), th=Math.PI*(1+Math.sqrt(5))*i;
+    const cx=Math.sin(phi)*Math.cos(th)*R, cy=Math.cos(phi)*R*0.68, cz=Math.sin(phi)*Math.sin(th)*R;
+    const col=p.color||'#6aa0ff';
+    const foll=((p.yt&&p.yt.subs)||0)+((p.tiktok&&p.tiktok.followers)||0)+((p.instagram&&p.instagram.followers)||0);
+    const vids=(p.videos||[]), totV=vids.reduce((s,v)=>s+(v.views||0),0);
+    const sunR=clamp(12+Math.sqrt(Math.max(foll,totV,1))/6,12,40);
+    const sun={x:cx,y:cy,z:cz,r:sunR,col,name:p.name,niche:p.niche||'',sub:foll,views:totV,isSun:1};
+    nodes.push(sun); suns.push(sun);
+    const rng=mulberry32(1000+i*97);
+    vids.slice().sort((a,b)=>(b.views||0)-(a.views||0)).slice(0,36).forEach(v=>{
+      const rr=42+rng()*74, a1=rng()*Math.PI*2, a2=Math.acos(2*rng()-1);
+      nodes.push({x:cx+Math.sin(a2)*Math.cos(a1)*rr, y:cy+Math.cos(a2)*rr*0.62, z:cz+Math.sin(a2)*Math.sin(a1)*rr,
+        r:clamp(2+Math.sqrt(v.views||1)/9,2,13), col, name:v.title||'video', views:v.views||0, parent:sun, isSun:0});
+    });
+  });
+
+  const sprites={};
+  const sprite=col=>{
+    if(sprites[col])return sprites[col];
+    const s=64,c=document.createElement('canvas');c.width=c.height=s;
+    const g=c.getContext('2d'),[r,gg,b]=hexRgb(col),grd=g.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);
+    grd.addColorStop(0,'rgba('+r+','+gg+','+b+',0.95)');grd.addColorStop(0.25,'rgba('+r+','+gg+','+b+',0.5)');grd.addColorStop(1,'rgba('+r+','+gg+','+b+',0)');
+    g.fillStyle=grd;g.beginPath();g.arc(s/2,s/2,s/2,0,7);g.fill();sprites[col]=c;return c;
+  };
+
+  function resize(){
+    const rc=wrap.getBoundingClientRect();W=rc.width;H=rc.height;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+    bg=document.createElement('canvas');bg.width=cv.width;bg.height=cv.height;
+    const g=bg.getContext('2d');g.setTransform(DPR,0,0,DPR,0,0);const rng=mulberry32(7);
+    for(let i=0;i<170;i++){const x=rng()*W,y=rng()*H,rr=rng()*1.2+0.2,a=rng()*0.5+0.08;g.fillStyle='rgba(200,215,255,'+a.toFixed(2)+')';g.beginPath();g.arc(x,y,rr,0,7);g.fill();}
+  }
+
+  let yaw=0.5,pitch=-0.32,zoom=1,mx=-1,my=-1,dragging=false,lastX=0,lastY=0,vyaw=0,vpitch=0,lastAct=0;
+  const focal=650, now=()=>performance.now();
+  wrap.addEventListener('pointerdown',e=>{dragging=true;lastAct=now();lastX=e.clientX;lastY=e.clientY;try{wrap.setPointerCapture(e.pointerId);}catch(_){}wrap.style.cursor='grabbing';});
+  wrap.addEventListener('pointermove',e=>{const rc=wrap.getBoundingClientRect();mx=e.clientX-rc.left;my=e.clientY-rc.top;
+    if(dragging){const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;yaw+=dx*0.006;pitch=clamp(pitch+dy*0.006,-1.3,1.3);vyaw=dx*0.006;vpitch=dy*0.006;lastAct=now();}});
+  const endDrag=()=>{dragging=false;wrap.style.cursor='grab';lastAct=now();};
+  wrap.addEventListener('pointerup',endDrag);wrap.addEventListener('pointercancel',endDrag);
+  wrap.addEventListener('pointerleave',()=>{mx=my=-1;});
+  wrap.addEventListener('wheel',e=>{e.preventDefault();zoom=clamp(zoom*(e.deltaY<0?1.1:0.9),0.45,3.2);lastAct=now();},{passive:false});
+
+  function frame(){
+    if(!wrap.isConnected)return;
+    if(wrap.offsetParent===null){window._galRaf=requestAnimationFrame(frame);return;}
+    if(W!==wrap.clientWidth||H!==wrap.clientHeight)resize();
+    const idle=now()-lastAct>3200;
+    if(idle&&!dragging){yaw+=0.0016;}
+    else if(!dragging){yaw+=vyaw;pitch=clamp(pitch+vpitch,-1.3,1.3);vyaw*=0.93;vpitch*=0.93;if(Math.abs(vyaw)<1e-4)vyaw=0;if(Math.abs(vpitch)<1e-4)vpitch=0;}
+    const cy_=Math.cos(yaw),sy_=Math.sin(yaw),cx_=Math.cos(pitch),sx_=Math.sin(pitch),cxp=W/2,cyp=H/2;
+    ctx.clearRect(0,0,W,H);if(bg)ctx.drawImage(bg,0,0,W,H);
+    for(const n of nodes){
+      const x1=n.x*cy_+n.z*sy_,z1=-n.x*sy_+n.z*cy_,y1=n.y;
+      const y2=y1*cx_-z1*sx_,z2=y1*sx_+z1*cx_,persp=focal/(focal-z2*0.9);
+      n._z=z2;n._p=persp;n._sx=cxp+x1*persp*zoom;n._sy=cyp+y2*persp*zoom;n._r=Math.max(0.6,n.r*persp*zoom);n._b=clamp((persp-0.55)/1.1,0.18,1);
+    }
+    nodes.sort((a,b)=>a._z-b._z);
+    ctx.globalCompositeOperation='lighter';
+    for(const n of nodes){const sp=sprite(n.col),gr=n._r*(n.isSun?6:4.6);ctx.globalAlpha=(n.isSun?0.5:0.32)*n._b;ctx.drawImage(sp,n._sx-gr,n._sy-gr,gr*2,gr*2);}
+    for(const n of nodes){
+      ctx.globalAlpha=0.92*n._b;ctx.fillStyle=n.col;ctx.beginPath();ctx.arc(n._sx,n._sy,n._r,0,7);ctx.fill();
+      ctx.globalAlpha=0.85*n._b;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(n._sx,n._sy,n._r*0.42,0,7);ctx.fill();
+    }
+    ctx.globalCompositeOperation='source-over';
+    ctx.textAlign='center';ctx.font='700 13px Segoe UI,system-ui,sans-serif';
+    for(const s of suns){if(s._b>0.4){ctx.globalAlpha=clamp(s._b,0.3,1);ctx.fillStyle='#fff';ctx.fillText(s.name,s._sx,s._sy-s._r-9);}}
+    ctx.globalAlpha=1;
+    let hv=null,hz=-1e9;
+    if(mx>=0)for(const n of nodes){const dx=n._sx-mx,dy=n._sy-my,rad=n._r+6;if(dx*dx+dy*dy<=rad*rad&&n._z>hz){hv=n;hz=n._z;}}
+    if(hv){ctx.beginPath();ctx.arc(hv._sx,hv._sy,hv._r+5,0,7);ctx.strokeStyle=hv.col;ctx.lineWidth=1.6;ctx.globalAlpha=0.95;ctx.stroke();ctx.globalAlpha=1;
+      tip.style.left=hv._sx+'px';tip.style.top=hv._sy+'px';tip.style.opacity='1';
+      tip.innerHTML=hv.isSun?('<span style="color:'+hv.col+'">●</span> <b>'+esc(hv.name)+'</b> · '+esc(hv.niche)+'<br><span style="color:#8b97a8">'+fmt(hv.sub)+' sledov. · '+fmt(hv.views)+' videní</span>'):('<b>'+esc((hv.name||'').slice(0,54))+'</b><br><span style="color:#8b97a8">'+fmt(hv.views)+' videní</span>');
+    }else tip.style.opacity='0';
+    window._galRaf=requestAnimationFrame(frame);
+  }
+  resize();window._galRaf=requestAnimationFrame(frame);
+};
+
 /* ---------------- INFRA ---------------- */
 function show(t){
   $$('.tab').forEach(b=>{const on=b.dataset.t===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false');});
-  ['overview','growth','factories','winners','platforms','docs','lumora','comments','spotify','episodary'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  ['overview','galaxy','growth','factories','winners','platforms','docs','lumora','comments','spotify','episodary'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  if(t==='galaxy')renderGalaxy($('#galaxy'),DATA.projects,{height:'74vh'});
   if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
   if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='lumora')renderLumora(); if(t==='comments')renderComments();
   if(t==='spotify')renderSpotify(); if(t==='episodary')renderEpisodary();

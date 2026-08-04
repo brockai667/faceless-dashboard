@@ -234,6 +234,12 @@ def main():
     _cpath = os.path.join(ROOT, "channels_cache.json")
     chan_cache = _load_json_safe(_cpath, {})
     buffer_down = False  # ak Buffer raz hodi 429, zvysok behu ho preskocime (rychlost)
+    # Buffer tokeny z ENV (mapa {nazov_fabriky: token}) — aby zdravie fronty fungovalo AJ v cloude
+    # (na Renderi lokalne priecinky C:\...\*Factory\config.json neexistuju).
+    try:
+        buffer_tokens_env = json.loads(os.environ.get("BUFFER_TOKENS_JSON", "") or "{}")
+    except Exception:
+        buffer_tokens_env = {}
     for name, niche, color, folder in FACTORIES:
         print("-", name)
         proj = {"name": name, "niche": niche, "color": color, "online": False, "alive": False,
@@ -241,10 +247,9 @@ def main():
                 "channels": {}, "yt": None, "videos": [], "yt_recent_views": 0, "tiktok": None,
                 "instagram": None}
         cfg_path = os.path.join(folder, "config.json")
-        if not os.path.exists(cfg_path):
-            projects.append(proj); continue
-        cfg = _load_json_safe(cfg_path, {})   # poskodeny config jednej fabriky nesmie zhodit ostatne
-        token = cfg.get("buffer_token")
+        # poskodeny config jednej fabriky nesmie zhodit ostatne; ak lokalny chyba (cloud), skus ENV token
+        cfg = _load_json_safe(cfg_path, {}) if os.path.exists(cfg_path) else {}
+        token = cfg.get("buffer_token") or buffer_tokens_env.get(name)
         if not token:
             projects.append(proj); continue
         cached = chan_cache.get(name)
