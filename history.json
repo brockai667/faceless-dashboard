@@ -3657,20 +3657,20 @@
   {
     "date": "2026-08-07",
     "factories": 11,
-    "yt_subs": 338,
-    "yt_views": 170407,
+    "yt_subs": 341,
+    "yt_views": 171505,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 57,
     "ig_views": 11295,
-    "ig_posts": 821,
-    "videos": 748,
+    "ig_posts": 825,
+    "videos": 752,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 22,
+        "yf": 23,
         "yv": 14995,
         "tf": 37,
         "tv": 12771,
@@ -3734,7 +3734,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 79,
+        "yf": 81,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
@@ -3751,7 +3751,7 @@
       },
       "Money Glitch": {
         "yf": 3,
-        "yv": 2821,
+        "yv": 3886,
         "tf": 0,
         "tv": 0,
         "if": 0,
