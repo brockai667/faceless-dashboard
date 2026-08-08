@@ -3762,14 +3762,14 @@
   {
     "date": "2026-08-08",
     "factories": 11,
-    "yt_subs": 343,
-    "yt_views": 171901,
+    "yt_subs": 347,
+    "yt_views": 171922,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 57,
-    "ig_views": 11295,
-    "ig_posts": 834,
+    "ig_views": 11390,
+    "ig_posts": 838,
     "videos": 756,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -3791,7 +3791,7 @@
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 93,
+        "yf": 95,
         "yv": 24985,
         "tf": 0,
         "tv": 0,
@@ -3804,7 +3804,7 @@
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1243
+        "iv": 1338
       },
       "VitalityDaily": {
         "yf": 16,
@@ -3839,7 +3839,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 81,
+        "yf": 83,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
@@ -3856,7 +3856,7 @@
       },
       "Money Glitch": {
         "yf": 4,
-        "yv": 4315,
+        "yv": 4336,
         "tf": 0,
         "tv": 0,
         "if": 0,
