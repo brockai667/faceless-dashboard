@@ -3867,20 +3867,20 @@
   {
     "date": "2026-08-09",
     "factories": 11,
-    "yt_subs": 356,
+    "yt_subs": 357,
     "yt_views": 172165,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 57,
-    "ig_views": 11588,
-    "ig_posts": 846,
+    "ig_views": 11598,
+    "ig_posts": 850,
     "videos": 760,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 24,
+        "yf": 25,
         "yv": 14995,
         "tf": 37,
         "tv": 12771,
@@ -3909,7 +3909,7 @@
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1536
+        "iv": 1546
       },
       "VitalityDaily": {
         "yf": 16,
