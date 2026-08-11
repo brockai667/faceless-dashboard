@@ -4077,14 +4077,14 @@
   {
     "date": "2026-08-11",
     "factories": 11,
-    "yt_subs": 378,
+    "yt_subs": 381,
     "yt_views": 167256,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 57,
-    "ig_views": 11799,
-    "ig_posts": 885,
+    "ig_views": 11801,
+    "ig_posts": 887,
     "videos": 748,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -4119,7 +4119,7 @@
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1747
+        "iv": 1749
       },
       "VitalityDaily": {
         "yf": 16,
@@ -4138,7 +4138,7 @@
         "iv": 2003
       },
       "NextByte": {
-        "yf": 20,
+        "yf": 21,
         "yv": 22818,
         "tf": 0,
         "tv": 0,
@@ -4154,7 +4154,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 101,
+        "yf": 103,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
