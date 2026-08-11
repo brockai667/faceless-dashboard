@@ -4077,14 +4077,14 @@
   {
     "date": "2026-08-11",
     "factories": 11,
-    "yt_subs": 377,
-    "yt_views": 167252,
+    "yt_subs": 378,
+    "yt_views": 167256,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 57,
-    "ig_views": 11768,
-    "ig_posts": 878,
+    "ig_views": 11799,
+    "ig_posts": 885,
     "videos": 748,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -4115,11 +4115,11 @@
       },
       "BrainHeist": {
         "yf": 14,
-        "yv": 4139,
+        "yv": 4141,
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1716
+        "iv": 1747
       },
       "VitalityDaily": {
         "yf": 16,
@@ -4154,7 +4154,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 100,
+        "yf": 101,
         "yv": 26737,
         "tf": 0,
         "tv": 0,
@@ -4171,7 +4171,7 @@
       },
       "Money Glitch": {
         "yf": 4,
-        "yv": 4636,
+        "yv": 4638,
         "tf": 0,
         "tv": 0,
         "if": 0,
