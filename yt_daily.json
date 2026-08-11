@@ -2649,7 +2649,57 @@
           "s": 1
         }
       }
+    },
+    "2026-08-08": {
+      "views": 5859,
+      "subs": 11,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 1433,
+          "s": 6
+        },
+        "DisciplineDaily": {
+          "v": 213,
+          "s": 1
+        },
+        "Entropy": {
+          "v": 2,
+          "s": 0
+        },
+        "Curio": {
+          "v": 1097,
+          "s": 3
+        },
+        "NextByte": {
+          "v": 594,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 742,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 32,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 210,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 44,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 5,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1487,
+          "s": 1
+        }
+      }
     }
   },
-  "generated": "2026-08-10T06:49:06.316162Z"
+  "generated": "2026-08-11T06:12:30.937723Z"
 }
