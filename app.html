@@ -233,19 +233,30 @@ function renderOverview(){
     ['Videá / príspevky',fmt(vids),'',todayChip(h=>h.videos||0,true)],
     ['Fabriky',t.factories,'',''],
   ];
-  const dates=HIST.map(h=>h.date);
-  const trend=HIST.length>=2;   // ciarovy graf az ked mame aspon 2 dni historie
-  const followChart=trend?lineChart([
-      {name:'YouTube',c:PC.youtube,pts:HIST.map(h=>h.yt_subs||0)},
-      {name:'TikTok',c:PC.tiktok,pts:HIST.map(h=>h.tk_foll||0)},
-      {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_foll||0)},],dates)
-    :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_subs},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_foll},{n:'📸 Instagram',c:PC.instagram,v:t.ig_foll}]);
-  const rmax=a=>{let m=0;return a.map(v=>m=Math.max(m,v||0));};
-  const viewChart=trend?lineChart([
-      {name:'YouTube',c:PC.youtube,pts:rmax(HIST.map(h=>h.yt_views||0))},
-      {name:'Instagram',c:PC.instagram,pts:rmax(HIST.map(h=>h.ig_views||0))},],dates)
-    :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
-  const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
+  // per-platforma denne prirastky sledovatelov (rozdiely 23:59 zapisov + zivy 'dnes')
+  function perDay(key){
+    const today=_todayStr(); const rows=(HIST||[]).filter(h=>!h.gap&&h.date<today);
+    const out=[];
+    for(let i=1;i<rows.length;i++){
+      const days=Math.max(1,Math.round((new Date(rows[i].date)-new Date(rows[i-1].date))/864e5));
+      const v=Math.round(((rows[i][key]||0)-(rows[i-1][key]||0))/days);
+      if(Math.abs(v)>50000)continue;
+      out.push({n:rows[i].date.slice(8,10)+'.',v:Math.max(0,v)});
+    }
+    const base=lastRowBefore(today);
+    if(base&&DATA.totals){const d=Math.round((DATA.totals[key]||0)-(base[key]||0));if(Math.abs(d)<=50000)out.push({n:'dnes',v:Math.max(0,d),live:1});}
+    return out.slice(-21);
+  }
+  function miniGain(items,color){
+    if(items.length<2)return '<div class="muted" style="font-size:12px;padding:18px 0">grafy sa naplnia dennymi zápismi</div>';
+    const W=560,H=120,bw=Math.min(20,W/items.length*0.6),gap=W/items.length;
+    const mx=Math.max(1,...items.map(i=>i.v));
+    const bars=items.map((it,i)=>{const x=gap*i+gap/2-bw/2,bh=(H-34)*(it.v/mx),y=H-20-bh;
+      return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(2,bh).toFixed(1)}" rx="3" fill="${color}"${it.live?'':' fill-opacity="0.5"'}/>`+
+        ((it.live||i===0||i===items.length-1||it.v===mx)?`<text x="${(x+bw/2).toFixed(1)}" y="${H-6}" text-anchor="middle" style="font-size:10px" fill="#8b97a8">${it.n}</text>`:'')+
+        (it.v===mx||it.live?`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" style="font-size:10.5px;font-weight:700" fill="#cdd7e6">${it.v?'+'+fmt(it.v):'0'}</text>`:'');}).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%">${bars}</svg>`;
+  }
   const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14px">IG API nedostupné — IG čísla sú posledné známe.</div>`:'';
   // ALERT: len REALNE problemy (cervene/zlte); "Buffer nedostupny" (siva) NIE JE poplach
   const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]==='🔴'||x.h[0]==='🟡');
@@ -257,10 +268,18 @@ function renderOverview(){
     <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
         ${k[3]}<div class="sm">${k[2]}</div></div>`).join('')}</div>
-    <div class="grid k2">
-      <div class="card"><h2>Sledovatelia <small>spolu v čase</small></h2>${followChart}${note}</div>
-      <div class="card"><h2>Zhliadnutia <small>spolu v čase · YT+IG</small></h2>${viewChart}</div>
-    </div>`;
+    <div class="grid k3">${[
+      {k:'youtube',fk:'yt_subs',big:t.yt_subs,unit:'odberateľov',m2:`${fmt(t.yt_views)} videní`},
+      {k:'tiktok',fk:'tk_foll',big:t.tk_foll,unit:'sledovateľov',m2:`${fmt(t.tk_likes)} lajkov`},
+      {k:'instagram',fk:'ig_foll',big:t.ig_foll,unit:'sledovateľov',m2:`${fmt(t.ig_views)} videní`},
+    ].map(p=>`<div class="card" style="border-top:3px solid ${PC[p.k]}">
+      <h2 style="color:${PC[p.k]};margin-bottom:6px">${PI[p.k]} ${PN[p.k]}</h2>
+      <div style="font-size:36px;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums">${fmt(p.big)} <span class="muted" style="font-size:13.5px;font-weight:500">${p.unit}</span></div>
+      ${todayChip(h=>h[p.fk]||0)}
+      <div class="muted" style="font-size:13px;margin:2px 0 10px">${p.m2}</div>
+      ${miniGain(perDay(p.fk),PC[p.k])}
+      <div class="muted" style="font-size:11px">noví sledovatelia za deň</div>
+    </div>`).join('')}</div>`;
 }
 
 /* ---------------- RAST ---------------- */
