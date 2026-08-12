@@ -20,7 +20,7 @@ FACTORIES = [
     ("NextByte",         "TECH & AI",  "#0ea5e9", r"C:\Users\damia\HistoryFactory"),
     ("ColdCaseDaily",    "TRUE CRIME", "#7c92ad", r"C:\Users\damia\ColdCaseFactory"),
     ("Curio",            "VEDA & TECH","#00c8ff", r"C:\Users\damia\ScienceFactory"),
-    ("Entropy",          "CHAOS",      "#c026d3", r"C:\Users\damia\EntropyFactory"),
+    ("EyeHeist",         "EYE TESTY",  "#22d3ee", r"C:\Users\damia\EntropyFactory"),
     ("Money Glitch",     "MONEY GLITCH","#22c55e", r"C:\Users\damia\AmbientFactory"),
 ]
 
@@ -35,7 +35,7 @@ YT_CHANNELS = {
     "NextByte":         "UC54Qa6hJiAA18ls7qUf-6qA",
     "ColdCaseDaily":    "UCngv0ibjtidFdY5ZCmRTUxQ",
     "Curio":            "UCmRfvAQKGLBRxpAF4A0b2Kw",
-    "Entropy":          "UChVJ93eD9DyXFIkz6vrT65w",
+    "EyeHeist":         "UChVJ93eD9DyXFIkz6vrT65w",
     "Money Glitch":     "UCq8zz64h1AJaXKQuuuIWlpQ",
 }
 
@@ -63,7 +63,7 @@ IG_HANDLE = {
     "NextByte":         "historyuntold667",
     "ColdCaseDaily":    "coldcasedaily667",
     "Curio":            "curi.o667",
-    "Entropy":          "entropy667",
+    "EyeHeist":         "entropy667",
 }
 
 try:
