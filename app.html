@@ -126,7 +126,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const PC={youtube:'#ff4d4f',tiktok:'#fe2c55',instagram:'#e1306c'};
 const PN={youtube:'YouTube',tiktok:'TikTok',instagram:'Instagram'};
 const PI={youtube:'📺',tiktok:'🎵',instagram:'📸'};
-let DATA=null, HIST=[], YTDAILY=null;
+let DATA=null, HIST=[];
 const fmt=n=>n==null?'—':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':(''+Math.round(n));
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+(''+x).padStart(2,'0');};
@@ -134,13 +134,20 @@ const dur=s=>{s=Math.round(s||0);const m=Math.floor(s/60),x=s%60;return m+':'+('
 const fmtDate=iso=>{if(!iso)return '—';const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso);return m?`${m[3]}.${m[2]}.${m[1]}`:iso;};
 const fmtDateShort=iso=>{if(!iso)return '';const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso);return m?`${m[3]}.${m[2]}`:iso;};
 function prevDay(){return HIST.length>=2?HIST[HIST.length-2]:null;}   // snapshot z predoslého dňa
-function delta(cur,prev){   // velka delta pod KPI cislo (oproti POSLEDNEMU obnoveniu, nie za den)
-  if(cur==null)return '';
-  if(prev==null)return '<div class="dl dl0" style="opacity:.6">delta po ďalšom obnovení</div>';
-  const d=cur-prev;
-  if(d===0)return '<div class="dl dl0">— bez zmeny od obnovenia</div>';
-  const up=d>0;
-  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} od posl. obnovenia</div>`;
+function _todayStr(){return new Date().toISOString().slice(0,10);}
+function lastRowBefore(dateStr){const rows=(HIST||[]).filter(h=>!h.gap&&h.date<dateStr);return rows.length?rows[rows.length-1]:null;}
+function todayGain(fn){   // dnes = ZIVE cisla minus vcerajsi (23:59) zapis — presne ucty, ziadne odhady
+  const t=DATA&&DATA.totals; const base=lastRowBefore(_todayStr());
+  if(!t||!base)return null;
+  const d=Math.round(fn(t)-fn(base));
+  return Math.abs(d)>50000?null:d;   // 8/12 prechod na celokanalove pocitadlo: stary zapis je o ~130k nizsie -> 1. den bez chipu (od zajtra presne)
+}
+function todayChip(fn,noNeg){
+  const d=todayGain(fn);
+  if(d==null)return '<div class="dl dl0">dnes: —</div>';
+  const v=noNeg?Math.max(0,d):d;
+  if(v===0)return '<div class="dl dl0">dnes +0</div>';
+  return `<div class="dl ${v>0?'dlu':'dld'}">dnes ${v>0?'+':'−'}${fmt(Math.abs(v))}</div>`;
 }
 function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noNeg=true -> kumulativna
   if(cur==null||prev==null)return '';   // metrika (views/lajky): nemoze klesnut, tak zapornu zmenu
@@ -149,7 +156,7 @@ function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noN
   const up=d>0;return ` <span class="dchip ${up?'dlu':'dld'}">${up?'▲+':'▼−'}${fmt(Math.abs(d))}</span>`;
 }
 /* jednotne vysvetlenie casu (user chce: co mame + od kedy + ci je zmena od obnovenia alebo od 00:00) */
-const baselineNote=()=>`<div class="muted" style="font-size:12px;line-height:1.55;margin:0 0 14px;padding:9px 12px;border:1px solid #1a2330;border-radius:9px">📌 Čísla = <b>presný stav</b> k poslednému obnoveniu (<b>${DATA.gen_at||'—'}</b>) — žiadne odhady. <b>▲▼</b> = zmena <b>od predošlého obnovenia</b>. „<b>Vydané dnes</b>" = počet <b>od dnes 00:00</b>.</div>`;
+const baselineNote=()=>'';
 const userFac=u=>{const p=DATA.projects.find(p=>p.instagram&&p.instagram.handle===u);return p?{name:p.name,color:p.color}:{name:u,color:'#888'};};
 function barChart(items,h=260){
   const W=760,H=h,pad={l:52,r:14,t:16,b:40},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
@@ -195,44 +202,23 @@ function lineChart(series, dates, h=250){
   return `<svg viewBox="0 0 ${W} ${H}" width="100%">${g}${paths}${xl}</svg>${leg}`;
 }
 
-/* ---- denny prirastok (bar graf po dnoch): PRIMARNE realne cisla z YouTube Analytics ----
-   yt_daily.json = presne to, co ukazuje YT Studio (per-day Analytics API). Snapshot-diffy
-   (sucet views okna ~50 videi/kanal) divoko podstreluju -> pouzivaju sa UZ LEN na odhad
-   poslednych ~3 dni, ktore YouTube este finalizuje. */
-const totViews=h=>(h.yt_views||0)+(h.ig_views||0);   // TikTok zhliadnutia zakl. API nedava -> mimo (ziadny odhad)
+/* ---- denne stlpce: rozdiely dennych (23:59) zapisov — presne ucty, ziadne odhady ---- */
+const totViews=h=>(h.yt_views||0)+(h.ig_views||0);   // TikTok zhliadnutia API nedava
 const totFoll=h=>(h.yt_subs||0)+(h.tk_foll||0)+(h.ig_foll||0);
-function gainBars(totalFn,color,ytField){
-  const YD=(YTDAILY&&YTDAILY.days)||{};
-  const ydDays=Object.keys(YD).filter(k=>typeof (YD[k]||{})[ytField]==='number').sort();
-  const items=[];let anyEst=false;
-  // 1) REALNE dni z YouTube Analytics (sedia s YT Studiom)
-  ydDays.slice(-12).forEach(k=>items.push({n:k.slice(5),c:color,v:Math.max(0,Math.round(YD[k][ytField]))}));
-  // 2) chvost: dni po poslednom finalizovanom dni -> odhad = PRIEMER poslednych realnych dni
-  //    (snapshot-diffy tu NEpouzivame — okno ~50 videi vie klesnut a ukazovalo falosnu 0)
-  const H=(HIST||[]).filter(h=>!h.gap);
-  if(ydDays.length){
-    const lastYD=ydDays[ydDays.length-1];
-    const today=new Date().toISOString().slice(0,10);
-    const tailDays=Math.min(4,Math.max(0,Math.round((new Date(today)-new Date(lastYD))/864e5)));
-    if(tailDays>0){
-      const recent=ydDays.slice(-7).map(k=>YD[k][ytField]);
-      const avg=Math.round(recent.reduce((s,v)=>s+v,0)/recent.length);
-      anyEst=true;
-      const from=new Date(new Date(lastYD).getTime()+864e5).toISOString().slice(8,10);
-      items.push({n:tailDays===1?today.slice(5):(from+'.–'+today.slice(8,10)+'.'),c:color,v:Math.max(0,avg),est:true,days:tailDays});
-    }
+function dailyBars(fn,color){
+  const today=_todayStr();
+  const rows=(HIST||[]).filter(h=>!h.gap&&h.date<today);
+  const items=[];
+  for(let i=1;i<rows.length;i++){
+    const days=Math.max(1,Math.round((new Date(rows[i].date)-new Date(rows[i-1].date))/864e5));
+    const v=Math.round((fn(rows[i])-fn(rows[i-1]))/days);
+    if(Math.abs(v)>50000)continue;   // preskoc jednorazovy skok z prechodu na celokanalove pocitadlo (8/12)
+    items.push({n:rows[i].date.slice(5),c:color,v:Math.max(0,v)});
   }
-  if(!items.length){
-    // fallback (yt_daily.json este nie je): stary snapshot-diff sposob
-    if(H.length<2)return '<div class="empty">Graf po dňoch sa zapne, keď dobehne denný zber (YT Analytics).</div>';
-    for(let i=1;i<H.length;i++){
-      const days=Math.max(1,Math.round((new Date(H[i].date)-new Date(H[i-1].date))/864e5));
-      items.push({n:H[i].date.slice(5),c:color,v:Math.round(Math.max(0,totalFn(H[i])-totalFn(H[i-1]))/days),est:days>1});
-    }
-    anyEst=true;
-  }
-  const note='<div class="muted" style="font-size:11px;margin-top:6px">Reálne denné čísla z YouTube Analytics (sedia s YT Štúdiom); bez IG/TikTok.'+(anyEst?' ~ = posledné dni, ktoré YouTube ešte finalizuje — zatiaľ odhad z priemeru posledných dní, spresní sa samo (do ~3 dní).':'')+'</div>';
-  return barChart(items.slice(-13))+note;
+  const d=todayGain(fn);
+  if(d!=null)items.push({n:'dnes',c:color,v:Math.max(0,d)});
+  if(!items.length)return '<div class="empty">Stĺpce sa objavia po prvom dennom zápise.</div>';
+  return barChart(items.slice(-13))+'<div class="muted" style="font-size:11px;margin-top:6px">Rozdiely denných zápisov (23:59) · „dnes" = zatiaľ od polnoci.</div>';
 }
 
 /* ---------------- PREHLAD ---------------- */
@@ -241,14 +227,11 @@ function renderOverview(){
   const foll=t.yt_subs+t.tk_foll+t.ig_foll;
   const views=t.yt_views+t.ig_views;   // Zhliadnutia = YT+IG (TikTok per-video views zakl. API nedava)
   const vids=allVids().length;
-  const PV=DATA.prev||{}, hp=Object.keys(PV).length>0;   // prev = stav z POSLEDNEHO obnovenia (data.json)
-  const Pf=hp?((PV.yt_subs||0)+(PV.tk_foll||0)+(PV.ig_foll||0)):null;
-  const Pv=hp?((PV.yt_views||0)+(PV.ig_views||0)):null;
   const kpis=[
-    ['Fabriky',t.factories,'plne automatické v cloude',t.factories,hp?PV.factories:null],
-    ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,foll,Pf],
-    ['Zhliadnutia (YT+IG)',fmt(views),`YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)} · 🎵 ${fmt(t.tk_likes)} lajkov`,views,Pv],
-    ['Videá / príspevky',vids,'naprieč platformami',vids,hp?PV.videos:null],
+    ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,todayChip(totFoll)],
+    ['Zhliadnutia (YT+IG)',fmt(views),`YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)}`,todayChip(totViews,true)],
+    ['Videá / príspevky',fmt(vids),'',todayChip(h=>h.videos||0,true)],
+    ['Fabriky',t.factories,'',''],
   ];
   const dates=HIST.map(h=>h.date);
   const trend=HIST.length>=2;   // ciarovy graf az ked mame aspon 2 dni historie
@@ -257,12 +240,13 @@ function renderOverview(){
       {name:'TikTok',c:PC.tiktok,pts:HIST.map(h=>h.tk_foll||0)},
       {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_foll||0)},],dates)
     :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_subs},{n:'🎵 TikTok',c:PC.tiktok,v:t.tk_foll},{n:'📸 Instagram',c:PC.instagram,v:t.ig_foll}]);
+  const rmax=a=>{let m=0;return a.map(v=>m=Math.max(m,v||0));};
   const viewChart=trend?lineChart([
-      {name:'YouTube',c:PC.youtube,pts:HIST.map(h=>h.yt_views||0)},
-      {name:'Instagram',c:PC.instagram,pts:HIST.map(h=>h.ig_views||0)},],dates)
+      {name:'YouTube',c:PC.youtube,pts:rmax(HIST.map(h=>h.yt_views||0))},
+      {name:'Instagram',c:PC.instagram,pts:rmax(HIST.map(h=>h.ig_views||0))},],dates)
     :barChart([{n:'📺 YouTube',c:PC.youtube,v:t.yt_views},{n:'📸 Instagram',c:PC.instagram,v:t.ig_views}]);
   const note=trend?'':`<div class="muted" style="font-size:14.5px;margin-top:12px;line-height:1.5">📈 Teraz aktuálny stav podľa platformy. <b>Krivka rastu</b> sa zapne keď budeš mať históriu aspoň 2 dni (zbiera sa každým obnovením dát).</div>`;
-  const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14.5px;line-height:1.5">⚠️ <b>Instagram analytika dočasne nedostupná</b> — Meta zablokovala API prístup aplikácie. IG čísla nižšie sú <b>posledné známe</b> (nie live), preto sa "nehýbu". Príspevky na IG idú ďalej cez Buffer a účty sú v poriadku — týka sa to len čítania štatistík.</div>`:'';
+  const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14px">IG API nedostupné — IG čísla sú posledné známe.</div>`:'';
   // ALERT: len REALNE problemy (cervene/zlte); "Buffer nedostupny" (siva) NIE JE poplach
   const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]==='🔴'||x.h[0]==='🟡');
   const healthBanner=sick.length?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
@@ -272,114 +256,42 @@ function renderOverview(){
     ${baselineNote()}${igBanner}${healthBanner}
     <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
-        ${delta(k[3],k[4])}<div class="sm">${k[2]}</div></div>`).join('')}</div>
+        ${k[3]}<div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="grid k2">
-      <div class="card"><h2>👥 Sledovatelia <small>${trend?'rast v čase':'podľa platformy'}</small></h2>${followChart}${note}</div>
-      <div class="card"><h2>👁️ Zhliadnutia <small>YT+IG · ${trend?'rast v čase':'podľa platformy'}</small></h2>${viewChart}<div class="muted" style="font-size:11px;margin-top:8px">TikTok zhliadnutia základné API nedáva — v grafe sú len YouTube a Instagram.</div></div>
+      <div class="card"><h2>Sledovatelia <small>spolu v čase</small></h2>${followChart}${note}</div>
+      <div class="card"><h2>Zhliadnutia <small>spolu v čase · YT+IG</small></h2>${viewChart}</div>
     </div>`;
 }
 
-/* ---------------- RAST & RADY ---------------- */
-function dayDelta(d,inline,lbl){
-  lbl=lbl||'za posledný deň';
-  if(d==null)return '';
-  if(d===0)return inline?'<span class="muted">0</span>':'<div class="dl dl0">— bez zmeny za deň</div>';
-  const up=d>0;
-  if(inline)return `<span class="dchip ${up?'dlu':'dld'}">${up?'▲+':'▼−'}${fmt(Math.abs(d))}</span>`;
-  return `<div class="dl ${up?'dlu':'dld'}">${up?'▲ +':'▼ −'}${fmt(Math.abs(d))} ${lbl}</div>`;
-}
-function tipOfDay(){
-  const ever=[
-    'Prvé 2 sekundy = všetko. Hook musí udrieť hneď, žiaden pomalý intro.',
-    'Víťazné videá ručne prepostni v appke s trending zvukom — legálny algoritmický boost.',
-    'Konzistencia > dokonalosť. 3 videá denne porazia 1 perfektné za týždeň.',
-    'Sleduj ktoré témy vyhrávajú (tab Víťazi) a rob ich varianty — algoritmus odmeňuje sériu.',
-    'Každé video nech má jasné „Follow" CTA na konci — inak views nemenia na sledovateľov.',
-    'Odpovedaj na komentáre (tab Komentáre) — zvyšuje dosah a buduje komunitu.',
-  ];
-  return ever[Math.floor(Date.now()/864e5)%ever.length];
-}
-function buildTips(t,P,dFoll,dViews,unitTxt){
-  const unit=' videní '+(unitTxt||'za deň');
-  const tips=[];
-  const pg=[['youtube',t.yt_views-(P.yt_views||0)],
-            ['instagram',t.ig_views-(P.ig_views||0)]].sort((a,b)=>b[1]-a[1]);
-  if(pg[0][1]>0)tips.push(`${PI[pg[0][0]]} <b>${PN[pg[0][0]]}</b> rastie najrýchlejšie (+${fmt(pg[0][1])}${unit}) — daj tam viac, ide ti to.`);
-  const facV=DATA.projects.map(p=>({n:p.name,v:facViews(p)})).sort((a,b)=>b.v-a.v);
-  if(facV[0]&&facV[0].v>0)tips.push(`🏆 <b>${facV[0].n}</b> vedie (${fmt(facV[0].v)} videní) — pozri jeho top videá vo Víťazoch a replikuj štýl/hooky.`);
-  const weak=facV[facV.length-1];
-  if(weak&&facV[0]&&weak.v<facV[0].v*0.15)tips.push(`⚠️ <b>${weak.n}</b> má zatiaľ najmenej videní (${fmt(weak.v)}) — daj mu čas alebo skús iný formát/tému.`);
-  if(dViews>0&&dFoll<=0)tips.push('💬 Videní pribúda, sledovateľov nie — over že každé video má „Follow" CTA na konci.');
-  tips.push(tipOfDay());
-  return tips.slice(0,4);
-}
-/* 'vcerajsok' pre tab Rast = 1 den spat od dneska. Ak medzi poslednymi REALNYMI snapshotmi
-   je diera (vypadok zberu), dopocita sa priemerny 1-dnovy krok (presne ako stlpce v grafe). */
-function effYesterday(){
-  const real=(HIST||[]).filter(h=>!h.gap);
-  const t=DATA.totals;
-  if(!t||real.length<2)return null;
-  const today=real[real.length-1], P=real[real.length-2];
-  const days=Math.max(1,Math.round((new Date(today.date)-new Date(P.date))/864e5));
-  const y={_est:days>1, _days:days};
-  ['yt_subs','yt_views','tk_foll','tk_views','ig_foll','ig_views','videos'].forEach(k=>{
-    y[k]=(t[k]||0)-((t[k]||0)-(P[k]||0))/days;   // ZIVE totals dnes minus 1 priemerny den
-  });
-  return y;
-}
+/* ---------------- RAST ---------------- */
 function renderGrowth(){
   const t=DATA.totals;
-  // baseline = presny stav z POSLEDNEHO obnovenia (DATA.prev). Ak chyba (data.json je
-  // na Render free efemerny -> po restarte/redeployi zmizne), spadni na DURABLE historiu
-  // (effYesterday z committed history.json), nech Rast VZDY nieco ukaze, nie placeholder.
-  let P=DATA.prev||{};
-  let usingHist=false;
-  if(Object.keys(P).length===0){ const y=effYesterday(); if(y){ P=y; usingHist=true; } }
-  const hasBase=Object.keys(P).length>0;
-  const perTxt=usingHist?'za posledný deň':'od posledného obnovenia';
-  const dLbl=usingHist?'za deň':'od posl. obnovenia';
-  if(!hasBase){
-    $('#growth').innerHTML=`<div class="card"><h2>📈 Rast</h2>
-      <div class="empty">Porovnanie sa zapne po ďalšom obnovení dát (zbiera sa každé 3 h).</div></div>
-      <div class="card" style="margin-top:14px"><h2>💡 Rada dňa</h2>
-      <div style="font-size:15px;line-height:1.6">${tipOfDay()}</div></div>`;
-    return;
-  }
-  const cf=t.yt_subs+t.tk_foll+t.ig_foll, pf=(P.yt_subs||0)+(P.tk_foll||0)+(P.ig_foll||0);
-  const cv=t.yt_views+t.ig_views, pv=(P.yt_views||0)+(P.ig_views||0);   // Zhliadnutia = YT+IG (TikTok views zakl. API nedava)
-  const dFoll=Math.round(cf-pf), dViews=Math.max(0,Math.round(cv-pv)), dVid=Math.round((t.videos||0)-(P.videos||0));
-  // REAL-TIME vydané: z publish-dátumov videí (YouTube Data API = live, na rozdiel od Analytics čo mešká ~3 dni)
-  const _tdy=new Date().toISOString().slice(0,10), _7ago=new Date(Date.now()-6*864e5).toISOString().slice(0,10);
+  const _tdy=_todayStr(), _7ago=new Date(Date.now()-6*864e5).toISOString().slice(0,10);
   const pubToday=allVids().filter(v=>(v.published||'')===_tdy).length;
   const pub7=allVids().filter(v=>(v.published||'')>=_7ago).length;
-  const big=(lab,cur,d,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
-     <div class="big">${fmt(cur)}</div>${dayDelta(d,false,dLbl)}<div class="sm">${sub}</div></div>`;
-  const DS={youtube:[Math.round(t.yt_subs-(P.yt_subs||0)),Math.max(0,Math.round(t.yt_views-(P.yt_views||0)))],
-            tiktok:[Math.round(t.tk_foll-(P.tk_foll||0)),Math.max(0,Math.round((t.tk_likes||0)-(P.tk_likes||0)))],
-            instagram:[Math.round(t.ig_foll-(P.ig_foll||0)),Math.max(0,Math.round(t.ig_views-(P.ig_views||0)))]};
-  const prow=k=>`<div class="row" style="grid-template-columns:118px 1fr 1fr;gap:10px;margin:11px 0">
+  const cf=t.yt_subs+t.tk_foll+t.ig_foll, cv=t.yt_views+t.ig_views;
+  const big=(lab,cur,chip,sub)=>`<div class="card kpi"><div class="lab">${lab}</div>
+     <div class="big">${fmt(cur)}</div>${chip}<div class="sm">${sub}</div></div>`;
+  const Y=lastRowBefore(_tdy)||null;
+  const pchip=(cur,prev,noNeg)=>{ if(!Y)return '<span class="muted">—</span>';
+    let d=Math.round((cur||0)-(prev||0)); if(noNeg)d=Math.max(0,d);
+    return d===0?'<span class="muted">+0</span>':`<span class="dchip ${d>0?'dlu':'dld'}">${d>0?'+':'−'}${fmt(Math.abs(d))}</span>`; };
+  const prow=k=>{const m={youtube:['yt_subs','yt_views','videní'],tiktok:['tk_foll','tk_likes','lajky'],instagram:['ig_foll','ig_views','videní']}[k];
+    return `<div class="row" style="grid-template-columns:118px 1fr 1fr;gap:10px;margin:11px 0">
      <span class="nm" style="color:${PC[k]}">${PI[k]} ${PN[k]}</span>
-     <span class="muted">sledov. ${dayDelta(DS[k][0],true)}</span>
-     <span class="muted">${k==='tiktok'?'lajky':'videní'} ${dayDelta(DS[k][1],true)}</span></div>`;
-  const tips=buildTips(t,P,dFoll,dViews,'od obnovenia');
-  $('#growth').innerHTML=`${baselineNote()}
+     <span class="muted">sledov. ${pchip(t[m[0]],Y&&Y[m[0]])}</span>
+     <span class="muted">${m[2]} ${pchip(t[m[1]],Y&&Y[m[1]],true)}</span></div>`;};
+  $('#growth').innerHTML=`
     <div class="grid k3" style="margin-bottom:14px">
-      ${big('Sledovatelia',cf,dFoll,perTxt)}
-      ${big('Zhliadnutia (YT+IG)',cv,dViews,perTxt)}
-      <div class="card kpi"><div class="lab">Vydané dnes <span style="color:#22c55e">● live</span></div>
-        <div class="big">${fmt(pubToday)}</div>
-        <div class="sm" style="color:#22c55e;font-weight:600">dnes = od 00:00 · ${pub7} za 7 dní</div>
-        <div class="sm">spolu ${fmt(t.videos)} videí</div></div>
+      ${big('Sledovatelia',cf,todayChip(totFoll),'zmena dnes od 00:00')}
+      ${big('Zhliadnutia (YT+IG)',cv,todayChip(totViews,true),'zmena dnes od 00:00')}
+      ${big('Vydané dnes',pubToday,'',`${pub7} za 7 dní · spolu ${fmt(t.videos)} videí`)}
     </div>
     <div class="grid k2" style="margin-bottom:14px">
-      <div class="card"><h2>📈 Zhliadnutia získané <small>po dňoch</small></h2>${gainBars(totViews,'#22c55e','views')}</div>
-      <div class="card"><h2>🚀 Sledovatelia získaní <small>po dňoch</small></h2>${gainBars(totFoll,'#0ea5e9','subs')}</div>
+      <div class="card"><h2>Zhliadnutia za deň</h2>${dailyBars(totViews,'#22c55e')}</div>
+      <div class="card"><h2>Sledovatelia za deň</h2>${dailyBars(totFoll,'#0ea5e9')}</div>
     </div>
-    <div class="grid k2">
-      <div class="card bars"><h2>📱 Podľa platformy <small>(${perTxt})</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
-      <div class="card"><h2>💡 Rady — čo vylepšiť</h2>
-        <ul style="margin:0;padding-left:18px;line-height:1.85;font-size:15px">${tips.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-    </div>`;
+    <div class="card bars"><h2>Dnes podľa platformy <small>od 00:00</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>`;
 }
 
 /* ---------------- VITAZI ---------------- */
@@ -875,12 +787,11 @@ function normalizeData(d){
 }
 async function load(){
   try{
-    const [dRes,hRes,yRes]=await Promise.all([fetch('/data.json?'+Date.now()),fetch('/history.json?'+Date.now()),fetch('/yt_daily.json?'+Date.now()).catch(()=>null)]);
+    const [dRes,hRes]=await Promise.all([fetch('/data.json?'+Date.now()),fetch('/history.json?'+Date.now())]);
     if(!dRes.ok)throw new Error('server vratil '+dRes.status);
     DATA=normalizeData(await dRes.json());
     HIST=hRes.ok?await hRes.json():[];
     if(!Array.isArray(HIST))HIST=[];
-    try{ YTDAILY=(yRes&&yRes.ok)?await yRes.json():null; }catch(e){ YTDAILY=null; }
   }catch(e){
     $('#updated').textContent='chyba načítania';
     $('#overview').innerHTML=`<div class="empty">⚠️ Dáta sa nepodarilo načítať (${esc(''+e.message||e)}).<br>

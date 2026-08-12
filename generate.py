@@ -454,7 +454,7 @@ def main():
     totals = {
         "factories": len(projects),
         "yt_subs": sum((p["yt"]["subs"] for p in projects if p["yt"]), 0),
-        "yt_views": sum(_held(p, "youtube") for p in projects),
+        "yt_views": sum((p["yt"]["views"] for p in projects if p["yt"]), 0),   # CELOKANALOVE pocitadlo (presne co ukazuje YT)
         "tk_foll": sum((p["tiktok"]["followers"] for p in projects if p["tiktok"]), 0),
         "tk_views": sum((p["tiktok"]["views"] for p in projects if p["tiktok"]), 0),
         "tk_likes": sum((p["tiktok"]["likes"] for p in projects if p["tiktok"]), 0),
@@ -551,7 +551,7 @@ def main():
     hist = [by_date[d] for d in sorted(by_date)]
     today = datetime.date.today().isoformat()
     fac_snap = {p["name"]: {
-        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _held(p, "youtube"),
+        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": (p["yt"]["views"] if p["yt"] else 0),
         "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _held(p, "tiktok"),
         "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _held(p, "instagram"),
     } for p in projects}
