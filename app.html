@@ -207,19 +207,19 @@ function gainBars(totalFn,color,ytField){
   const items=[];let anyEst=false;
   // 1) REALNE dni z YouTube Analytics (sedia s YT Studiom)
   ydDays.slice(-12).forEach(k=>items.push({n:k.slice(5),c:color,v:Math.max(0,Math.round(YD[k][ytField]))}));
-  // 2) chvost: dni po poslednom finalizovanom dni -> odhad zo snapshot-diffov (~)
+  // 2) chvost: dni po poslednom finalizovanom dni -> odhad = PRIEMER poslednych realnych dni
+  //    (snapshot-diffy tu NEpouzivame — okno ~50 videi vie klesnut a ukazovalo falosnu 0)
   const H=(HIST||[]).filter(h=>!h.gap);
-  if(ydDays.length&&H.length>=2){
+  if(ydDays.length){
     const lastYD=ydDays[ydDays.length-1];
-    const base=H.filter(h=>h.date<=lastYD).pop()||H[0];
-    const last=H[H.length-1];
-    const tailDays=Math.round((new Date(last.date)-new Date(Math.max(new Date(base.date),new Date(lastYD))))/864e5);
+    const today=new Date().toISOString().slice(0,10);
+    const tailDays=Math.min(4,Math.max(0,Math.round((new Date(today)-new Date(lastYD))/864e5)));
     if(tailDays>0){
-      const rem=Math.max(0,totalFn(last)-totalFn(base));
+      const recent=ydDays.slice(-7).map(k=>YD[k][ytField]);
+      const avg=Math.round(recent.reduce((s,v)=>s+v,0)/recent.length);
       anyEst=true;
       const from=new Date(new Date(lastYD).getTime()+864e5).toISOString().slice(8,10);
-      const to=last.date.slice(8,10);
-      items.push({n:tailDays===1?last.date.slice(5):(from+'.–'+to+'.'),c:color,v:Math.round(rem/tailDays),est:true,days:tailDays});
+      items.push({n:tailDays===1?today.slice(5):(from+'.–'+today.slice(8,10)+'.'),c:color,v:Math.max(0,avg),est:true,days:tailDays});
     }
   }
   if(!items.length){
@@ -231,7 +231,7 @@ function gainBars(totalFn,color,ytField){
     }
     anyEst=true;
   }
-  const note='<div class="muted" style="font-size:11px;margin-top:6px">Reálne denné čísla z YouTube Analytics (sedia s YT Štúdiom); bez IG/TikTok.'+(anyEst?' ~ = posledné dni, ktoré YouTube ešte finalizuje (odhad zo snapshotov, spresní sa samo do ~3 dní).':'')+'</div>';
+  const note='<div class="muted" style="font-size:11px;margin-top:6px">Reálne denné čísla z YouTube Analytics (sedia s YT Štúdiom); bez IG/TikTok.'+(anyEst?' ~ = posledné dni, ktoré YouTube ešte finalizuje — zatiaľ odhad z priemeru posledných dní, spresní sa samo (do ~3 dní).':'')+'</div>';
   return barChart(items.slice(-13))+note;
 }
 
