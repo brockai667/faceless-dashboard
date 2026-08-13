@@ -4287,14 +4287,14 @@
   {
     "date": "2026-08-13",
     "factories": 11,
-    "yt_subs": 386,
-    "yt_views": 301308,
+    "yt_subs": 389,
+    "yt_views": 302148,
     "tk_foll": 37,
     "tk_views": 40763,
     "tk_likes": 1415,
     "ig_foll": 59,
     "ig_views": 11804,
-    "ig_posts": 910,
+    "ig_posts": 915,
     "videos": 751,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -4309,7 +4309,7 @@
       },
       "WealthMindset": {
         "yf": 26,
-        "yv": 10123,
+        "yv": 10122,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -4317,7 +4317,7 @@
       },
       "UnexplainedDaily": {
         "yf": 100,
-        "yv": 44290,
+        "yv": 44441,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -4333,7 +4333,7 @@
       },
       "VitalityDaily": {
         "yf": 16,
-        "yv": 21432,
+        "yv": 21510,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -4348,7 +4348,7 @@
         "iv": 2003
       },
       "NextByte": {
-        "yf": 21,
+        "yf": 23,
         "yv": 45288,
         "tf": 0,
         "tv": 0,
@@ -4364,8 +4364,8 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 107,
-        "yv": 63809,
+        "yf": 108,
+        "yv": 64291,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -4381,7 +4381,7 @@
       },
       "Money Glitch": {
         "yf": 4,
-        "yv": 4763,
+        "yv": 4778,
         "tf": 0,
         "tv": 0,
         "if": 0,
