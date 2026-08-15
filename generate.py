@@ -455,6 +455,7 @@ def main():
         "factories": len(projects),
         "yt_subs": sum((p["yt"]["subs"] for p in projects if p["yt"]), 0),
         "yt_views": sum((p["yt"]["views"] for p in projects if p["yt"]), 0),   # CELOKANALOVE pocitadlo (presne co ukazuje YT)
+        "yt_likes": sum(v.get("likes", 0) or 0 for p in projects for v in p["videos"] if (v.get("platform") or "").lower() == "youtube"),
         "tk_foll": sum((p["tiktok"]["followers"] for p in projects if p["tiktok"]), 0),
         "tk_views": sum((p["tiktok"]["views"] for p in projects if p["tiktok"]), 0),
         "tk_likes": sum((p["tiktok"]["likes"] for p in projects if p["tiktok"]), 0),
@@ -526,7 +527,7 @@ def main():
         }
     # DELTA "od obnovenia": ak sa totals od minuleho behu NEZMENILI, ponechaj STARSI prev
     # (inak by delta pri kazdom obnoveni spadla na 0). Pri zmene posun prev na minule totals.
-    _dkeys = ("yt_subs", "yt_views", "tk_foll", "tk_views", "ig_foll", "ig_views", "videos")
+    _dkeys = ("yt_subs", "yt_views", "yt_likes", "tk_foll", "tk_views", "ig_foll", "ig_views", "videos")
     _changed = any((totals.get(k, 0) or 0) != (_old_totals.get(k, 0) or 0) for k in _dkeys)
     _prev = dict(_old_totals) if (_changed and _old_totals) else (dict(_old_prev) if _old_prev else dict(_old_totals))
     json.dump({"projects": projects, "totals": totals, "prev": _prev, "gen_at": gen_at},

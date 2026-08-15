@@ -269,16 +269,15 @@ function renderOverview(){
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
         ${k[3]}<div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="grid k3">${[
-      {k:'youtube',fk:'yt_subs',big:t.yt_subs,unit:'odberateľov',m2:`${fmt(t.yt_views)} videní`},
-      {k:'tiktok',fk:'tk_foll',big:t.tk_foll,unit:'sledovateľov',m2:`${fmt(t.tk_likes)} lajkov`},
-      {k:'instagram',fk:'ig_foll',big:t.ig_foll,unit:'sledovateľov',m2:`${fmt(t.ig_views)} videní`},
-    ].map(p=>`<div class="card" style="border-top:3px solid ${PC[p.k]}">
-      <h2 style="color:${PC[p.k]};margin-bottom:6px">${PI[p.k]} ${PN[p.k]}</h2>
-      <div style="font-size:36px;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums">${fmt(p.big)} <span class="muted" style="font-size:13.5px;font-weight:500">${p.unit}</span></div>
-      ${todayChip(h=>h[p.fk]||0)}
-      <div class="muted" style="font-size:13px;margin:2px 0 10px">${p.m2}</div>
-      ${miniGain(perDay(p.fk),PC[p.k])}
-      <div class="muted" style="font-size:11px">noví sledovatelia za deň</div>
+      {lab:'Odberatelia',fk:'yt_subs',big:t.yt_subs,unit:'',sub:'noví odberatelia za deň'},
+      {lab:'Zhliadnutia',fk:'yt_views',big:t.yt_views,unit:'',sub:'zhliadnutia za deň'},
+      {lab:'Lajky',fk:'yt_likes',big:t.yt_likes||0,unit:'',sub:'lajky za deň'},
+    ].map(p=>`<div class="card" style="border-top:3px solid ${PC.youtube}">
+      <h2 style="margin-bottom:6px"><span style="color:${PC.youtube}">${PI.youtube} YouTube</span> <small>${p.lab}</small></h2>
+      <div style="font-size:40px;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums">${fmt(p.big)}</div>
+      ${todayChip(h=>h[p.fk]||0,true)}
+      <div style="margin-top:10px">${miniGain(perDay(p.fk),PC.youtube)}</div>
+      <div class="muted" style="font-size:11px">${p.sub}</div>
     </div>`).join('')}</div>`;
 }
 
