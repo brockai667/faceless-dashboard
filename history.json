@@ -4497,14 +4497,15 @@
   {
     "date": "2026-08-15",
     "factories": 11,
-    "yt_subs": 395,
-    "yt_views": 308836,
+    "yt_subs": 398,
+    "yt_views": 309440,
+    "yt_likes": 913,
     "tk_foll": 37,
     "tk_views": 40766,
     "tk_likes": 1415,
     "ig_foll": 59,
-    "ig_views": 11848,
-    "ig_posts": 939,
+    "ig_views": 11904,
+    "ig_posts": 947,
     "videos": 752,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -4526,24 +4527,24 @@
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 101,
-        "yv": 45197,
+        "yf": 102,
+        "yv": 45462,
         "tf": 0,
         "tv": 0,
         "if": 11,
         "iv": 1157
       },
       "BrainHeist": {
-        "yf": 15,
-        "yv": 10706,
+        "yf": 16,
+        "yv": 10718,
         "tf": 0,
         "tv": 0,
         "if": 6,
-        "iv": 1796
+        "iv": 1852
       },
       "VitalityDaily": {
-        "yf": 16,
-        "yv": 22058,
+        "yf": 17,
+        "yv": 22055,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -4575,7 +4576,7 @@
       },
       "Curio": {
         "yf": 109,
-        "yv": 65740,
+        "yv": 66070,
         "tf": 0,
         "tv": 0,
         "if": 0,
