@@ -4603,22 +4603,22 @@
   {
     "date": "2026-08-16",
     "factories": 11,
-    "yt_subs": 405,
-    "yt_views": 313114,
-    "yt_likes": 923,
+    "yt_subs": 408,
+    "yt_views": 314784,
+    "yt_likes": 932,
     "tk_foll": 37,
     "tk_views": 40766,
     "tk_likes": 1415,
     "ig_foll": 60,
     "ig_views": 11969,
-    "ig_posts": 960,
+    "ig_posts": 961,
     "videos": 753,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 29,
-        "yv": 22265,
+        "yv": 22457,
         "tf": 37,
         "tv": 12771,
         "if": 25,
@@ -4634,7 +4634,7 @@
       },
       "UnexplainedDaily": {
         "yf": 103,
-        "yv": 45945,
+        "yv": 46430,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -4650,14 +4650,14 @@
       },
       "VitalityDaily": {
         "yf": 17,
-        "yv": 22129,
+        "yv": 22172,
         "tf": 0,
         "tv": 0,
         "if": 7,
         "iv": 620
       },
       "HiddenEarth": {
-        "yf": 12,
+        "yf": 14,
         "yv": 27796,
         "tf": 0,
         "tv": 0,
@@ -4666,7 +4666,7 @@
       },
       "NextByte": {
         "yf": 23,
-        "yv": 48600,
+        "yv": 49434,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -4674,14 +4674,14 @@
       },
       "ColdCaseDaily": {
         "yf": 50,
-        "yv": 39866,
+        "yv": 39976,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1058
       },
       "Curio": {
-        "yf": 113,
+        "yf": 114,
         "yv": 67465,
         "tf": 0,
         "tv": 0,
@@ -4690,7 +4690,7 @@
       },
       "EyeHeist": {
         "yf": 11,
-        "yv": 13151,
+        "yv": 13154,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -4698,7 +4698,7 @@
       },
       "Money Glitch": {
         "yf": 5,
-        "yv": 4776,
+        "yv": 4779,
         "tf": 0,
         "tv": 0,
         "if": 0,
