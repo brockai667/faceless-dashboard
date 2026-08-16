@@ -4603,15 +4603,15 @@
   {
     "date": "2026-08-16",
     "factories": 11,
-    "yt_subs": 403,
-    "yt_views": 312225,
-    "yt_likes": 925,
+    "yt_subs": 405,
+    "yt_views": 313114,
+    "yt_likes": 923,
     "tk_foll": 37,
     "tk_views": 40766,
     "tk_likes": 1415,
     "ig_foll": 60,
     "ig_views": 11969,
-    "ig_posts": 953,
+    "ig_posts": 960,
     "videos": 753,
     "ig_videos": 105,
     "ig_blocked": false,
@@ -4633,7 +4633,7 @@
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 102,
+        "yf": 103,
         "yv": 45945,
         "tf": 0,
         "tv": 0,
@@ -4642,7 +4642,7 @@
       },
       "BrainHeist": {
         "yf": 16,
-        "yv": 10722,
+        "yv": 10986,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -4657,8 +4657,8 @@
         "iv": 620
       },
       "HiddenEarth": {
-        "yf": 11,
-        "yv": 27701,
+        "yf": 12,
+        "yv": 27796,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -4682,7 +4682,7 @@
       },
       "Curio": {
         "yf": 113,
-        "yv": 66935,
+        "yv": 67465,
         "tf": 0,
         "tv": 0,
         "if": 0,
