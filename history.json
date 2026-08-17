@@ -4709,22 +4709,22 @@
   {
     "date": "2026-08-17",
     "factories": 11,
-    "yt_subs": 410,
-    "yt_views": 316784,
-    "yt_likes": 919,
+    "yt_subs": 412,
+    "yt_views": 318107,
+    "yt_likes": 925,
     "tk_foll": 37,
     "tk_views": 40766,
     "tk_likes": 1415,
     "ig_foll": 60,
     "ig_views": 11969,
-    "ig_posts": 973,
+    "ig_posts": 975,
     "videos": 756,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 29,
-        "yv": 22547,
+        "yf": 30,
+        "yv": 22808,
         "tf": 37,
         "tv": 12771,
         "if": 25,
@@ -4732,7 +4732,7 @@
       },
       "WealthMindset": {
         "yf": 26,
-        "yv": 10150,
+        "yv": 10169,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -4740,7 +4740,7 @@
       },
       "UnexplainedDaily": {
         "yf": 103,
-        "yv": 46944,
+        "yv": 47123,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -4748,15 +4748,15 @@
       },
       "BrainHeist": {
         "yf": 16,
-        "yv": 11061,
+        "yv": 11067,
         "tf": 0,
         "tv": 0,
         "if": 6,
         "iv": 1917
       },
       "VitalityDaily": {
-        "yf": 17,
-        "yv": 22253,
+        "yf": 18,
+        "yv": 22394,
         "tf": 0,
         "tv": 0,
         "if": 7,
@@ -4764,7 +4764,7 @@
       },
       "HiddenEarth": {
         "yf": 14,
-        "yv": 27815,
+        "yv": 28038,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -4772,7 +4772,7 @@
       },
       "NextByte": {
         "yf": 23,
-        "yv": 49590,
+        "yv": 49976,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -4780,7 +4780,7 @@
       },
       "ColdCaseDaily": {
         "yf": 51,
-        "yv": 40804,
+        "yv": 40875,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -4788,7 +4788,7 @@
       },
       "Curio": {
         "yf": 115,
-        "yv": 67634,
+        "yv": 67670,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -4796,7 +4796,7 @@
       },
       "EyeHeist": {
         "yf": 11,
-        "yv": 13155,
+        "yv": 13156,
         "tf": 0,
         "tv": 0,
         "if": 0,
