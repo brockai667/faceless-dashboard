@@ -4709,16 +4709,16 @@
   {
     "date": "2026-08-17",
     "factories": 11,
-    "yt_subs": 411,
+    "yt_subs": 410,
     "yt_views": 316784,
-    "yt_likes": 937,
+    "yt_likes": 919,
     "tk_foll": 37,
     "tk_views": 40766,
     "tk_likes": 1415,
     "ig_foll": 60,
     "ig_views": 11969,
-    "ig_posts": 968,
-    "videos": 674,
+    "ig_posts": 973,
+    "videos": 756,
     "ig_videos": 105,
     "ig_blocked": false,
     "fac": {
@@ -4739,7 +4739,7 @@
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 104,
+        "yf": 103,
         "yv": 46944,
         "tf": 0,
         "tv": 0,
