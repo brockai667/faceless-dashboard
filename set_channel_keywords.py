@@ -20,17 +20,25 @@ CSEC = os.environ.get("YT_CLIENT_SECRET")
 
 # per-nika keywords; viacslovne v uvodzovkach (YouTube limit ~500 znakov celkovo)
 KEYWORDS = {
+    # --- prerobene fabriky (8/2026): novy styl videi -> nove keywords ---
+    # DisciplineDaily -> BrainHeist (denne riddle/logicke hadanky)
+    "DisciplineDaily": 'riddles "riddles with answers" "brain teasers" "logic puzzles" "hard riddles" "math riddles" "can you solve it" "puzzle shorts" "iq test" shorts',
+    "BrainHeist": 'riddles "riddles with answers" "brain teasers" "logic puzzles" "hard riddles" "math riddles" "can you solve it" "puzzle shorts" "iq test" shorts',
+    # Entropy -> EyeHeist (2-kolove vizualne puzzle / eye testy na cas)
+    "Entropy": '"eye test" "visual puzzle" "spot the difference" "find the odd one out" "brain teaser" "observation test" "can you spot it" "iq test" shorts',
+    "EyeHeist": '"eye test" "visual puzzle" "spot the difference" "find the odd one out" "brain teaser" "observation test" "can you spot it" "iq test" shorts',
+    # Lumora -> Money Glitch (deadpan satira o schemach na zbohatnutie)
+    "Lumora Music": '"money glitch" "get rich quick" "money hacks" "finance satire" "money memes" "financial loophole" "comedy shorts" "deadpan comedy" shorts',
+    "Lumora": '"money glitch" "get rich quick" "money hacks" "finance satire" "money memes" "financial loophole" "comedy shorts" "deadpan comedy" shorts',
+    "Money Glitch": '"money glitch" "get rich quick" "money hacks" "finance satire" "money memes" "financial loophole" "comedy shorts" "deadpan comedy" shorts',
     "UnexplainedDaily": '"unexplained mysteries" "unsolved mysteries" paranormal "strange phenomena" "creepy facts" "mystery shorts" "ancient mysteries" "declassified files" shorts',
     "coldcasedaily667": '"true crime" "cold case" "unsolved cases" "true crime shorts" "missing persons" "crime stories" investigation detective shorts',
     "WealthMindset": '"personal finance" "money mindset" "wealth building" investing "financial freedom" "money facts" "passive income" success shorts',
-    "DisciplineDaily": 'motivation discipline "self improvement" mindset "success habits" productivity stoicism "mental toughness" shorts',
     "VitalityDaily": '"health tips" wellness nutrition "healthy habits" "human body" longevity "fitness facts" "health shorts" shorts',
     "MindBlownDaily": '"amazing facts" "mind blowing facts" "did you know" "interesting facts" "fun facts" trivia "random facts" shorts',
     "HiddenEarth667": '"hidden places" travel "amazing places" geography "natural wonders" "earth facts" exploration "travel shorts" shorts',
     "NextByte": '"tech news" "ai news" technology "artificial intelligence" gadgets "future tech" innovation "tech shorts" shorts',
-    "Curio": '"science facts" space astronomy physics "science shorts" "how it works" biology curiosity shorts',
-    "Entropy": '"generative art" simulation "oddly satisfying" "physics simulation" "creative coding" "satisfying video" "ambient visuals" shorts',
-    "Lumora Music": '"ambient music" "study music" "focus music" "sleep music" relaxation "deep focus" "calm music" "music for studying"',
+    "Curio": '"science facts" space astronomy physics "science explained" "how it works" "science explainer" "science shorts" biology shorts',
     "ColdCaseLong": '"true crime documentary" "cold case" "true crime stories" "crime documentary" "unsolved cases" investigation',
 }
 
