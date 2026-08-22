@@ -1,4 +1,9 @@
 {
+ "BrainHeist": {
+  "status": "OK",
+  "source": "write",
+  "keywords": "riddles \"riddles with answers\" \"brain teasers\" \"logic puzzles\" \"hard riddles\" \"math riddles\" \"can you solve it\" \"puzzle shorts\" \"iq test\" shorts"
+ },
  "Curio": {
   "status": "OK",
   "source": "write",
@@ -14,10 +19,15 @@
   "source": "analytics",
   "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
+ "EyeHeist": {
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"eye test\" \"visual puzzle\" \"spot the difference\" \"find the odd one out\" \"brain teaser\" \"observation test\" \"can you spot it\" \"iq test\" shorts"
+ },
  "HiddenEarth667": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"hidden places\" travel \"amazing places\" geography \"natural wonders\" \"earth facts\" exploration \"travel shorts\" shorts"
  },
  "Lumora Music": {
   "status": "NEEDS-REAUTH (chyba write scope)",
@@ -25,40 +35,42 @@
   "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "MindBlownDaily": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"amazing facts\" \"mind blowing facts\" \"did you know\" \"interesting facts\" \"fun facts\" trivia \"random facts\" shorts"
+ },
+ "Money Glitch": {
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"money glitch\" \"get rich quick\" \"money hacks\" \"finance satire\" \"money memes\" \"financial loophole\" \"comedy shorts\" \"deadpan comedy\" shorts"
  },
  "NextByte": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"tech news\" \"ai news\" technology \"artificial intelligence\" gadgets \"future tech\" innovation \"tech shorts\" shorts"
  },
  "UnexplainedDaily": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"unexplained mysteries\" \"unsolved mysteries\" paranormal \"strange phenomena\" \"creepy facts\" \"mystery shorts\" \"ancient mysteries\" \"declassified files\" shorts"
  },
  "VitalityDaily": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"health tips\" wellness nutrition \"healthy habits\" \"human body\" longevity \"fitness facts\" \"health shorts\" shorts"
  },
  "WealthMindset": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"personal finance\" \"money mindset\" \"wealth building\" investing \"financial freedom\" \"money facts\" \"passive income\" success shorts"
  },
  "coldcasedaily667": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
+  "status": "OK",
+  "source": "write",
+  "keywords": "\"true crime\" \"cold case\" \"unsolved cases\" \"true crime shorts\" \"missing persons\" \"crime stories\" investigation detective shorts"
  },
  "_bez_tokenu": [
-  "BrainHeist",
-  "EyeHeist",
   "Lumora",
-  "Money Glitch",
   "ColdCaseLong"
  ]
 }
