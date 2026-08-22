@@ -2,7 +2,7 @@
  "Curio": {
   "status": "OK",
   "source": "write",
-  "keywords": "\"science facts\" space astronomy physics \"science shorts\" \"how it works\" biology curiosity shorts"
+  "keywords": "\"science facts\" space astronomy physics \"science explained\" \"how it works\" \"science explainer\" \"science shorts\" biology shorts"
  },
  "DisciplineDaily": {
   "status": "NEEDS-REAUTH (chyba write scope)",
@@ -55,6 +55,10 @@
   "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "_bez_tokenu": [
+  "BrainHeist",
+  "EyeHeist",
+  "Lumora",
+  "Money Glitch",
   "ColdCaseLong"
  ]
 }
