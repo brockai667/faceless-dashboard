@@ -9,16 +9,6 @@
   "source": "write",
   "keywords": "\"science facts\" space astronomy physics \"science explained\" \"how it works\" \"science explainer\" \"science shorts\" biology shorts"
  },
- "DisciplineDaily": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
- },
- "Entropy": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
- },
  "EyeHeist": {
   "status": "OK",
   "source": "write",
@@ -28,11 +18,6 @@
   "status": "OK",
   "source": "write",
   "keywords": "\"hidden places\" travel \"amazing places\" geography \"natural wonders\" \"earth facts\" exploration \"travel shorts\" shorts"
- },
- "Lumora Music": {
-  "status": "NEEDS-REAUTH (chyba write scope)",
-  "source": "analytics",
-  "detail": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"Request had insufficient authentication scopes.\",\n    \"errors\": [\n      {\n        \"message\": \"Insufficient Permi"
  },
  "MindBlownDaily": {
   "status": "OK",
@@ -70,6 +55,9 @@
   "keywords": "\"true crime\" \"cold case\" \"unsolved cases\" \"true crime shorts\" \"missing persons\" \"crime stories\" investigation detective shorts"
  },
  "_bez_tokenu": [
+  "DisciplineDaily",
+  "Entropy",
+  "Lumora Music",
   "Lumora",
   "ColdCaseLong"
  ]
