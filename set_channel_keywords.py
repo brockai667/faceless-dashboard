@@ -86,6 +86,19 @@ def main():
     ana_t = json.loads(os.environ.get("YT_ANALYTICS_TOKENS") or "{}")
     tokens = {n: dict(m, _src="analytics") for n, m in ana_t.items()}
     tokens.update({n: dict(m, _src="write") for n, m in write_t.items()})
+    # ten isty kanal moze byt pod starym aj novym menom (premenovane kanaly:
+    # DisciplineDaily->BrainHeist, Entropy->EyeHeist, Lumora->Money Glitch).
+    # Nechaj len jeden zaznam per channel_id, write token ma prednost.
+    best = {}
+    for n, m in tokens.items():
+        cid = m.get("channel_id")
+        if not cid:
+            best[n] = m
+            continue
+        cur = best.get(cid)
+        if cur is None or (cur[1]["_src"] != "write" and m["_src"] == "write"):
+            best[cid] = (n, m)
+    tokens = {n: m for k, v in best.items() for n, m in ([v] if isinstance(v, tuple) else [(k, v)])}
     if not tokens:
         print("CHYBA: ziadne tokeny v ENV"); return
     result = {}

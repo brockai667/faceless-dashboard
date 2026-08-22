@@ -24,6 +24,9 @@ CHANNEL_REPO = {
     "Curio": "ScienceFactory",
     "UnexplainedDaily": "UnexplainedDaily",
     "ColdCaseDaily": "coldcasedaily667",
+    "coldcasedaily667": "coldcasedaily667",   # meno v tokenoch
+    "HiddenEarth667": "HiddenEarth",          # meno v tokenoch
+    "BrainHeist": "MotivationFactory",        # premenovany DisciplineDaily
     "WealthMindset": "WealthFactory",
     "DisciplineDaily": "MotivationFactory",
     "VitalityDaily": "HealthFactory",
