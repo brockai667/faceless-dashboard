@@ -5981,11 +5981,11 @@
   {
     "date": "2026-08-29",
     "factories": 11,
-    "yt_subs": 428,
-    "yt_views": 334052,
-    "yt_likes": 799,
+    "yt_subs": 429,
+    "yt_views": 336122,
+    "yt_likes": 802,
     "tk_foll": 38,
-    "tk_views": 45477,
+    "tk_views": 45478,
     "tk_likes": 1462,
     "ig_foll": 54,
     "ig_views": 11994,
@@ -5995,8 +5995,8 @@
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 36,
-        "yv": 26169,
+        "yf": 37,
+        "yv": 27124,
         "tf": 38,
         "tv": 12771,
         "if": 25,
@@ -6004,7 +6004,7 @@
       },
       "WealthMindset": {
         "yf": 27,
-        "yv": 10577,
+        "yv": 10579,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -6020,7 +6020,7 @@
       },
       "BrainHeist": {
         "yf": 16,
-        "yv": 11234,
+        "yv": 11241,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -6036,7 +6036,7 @@
       },
       "HiddenEarth": {
         "yf": 15,
-        "yv": 29396,
+        "yv": 30498,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -6076,7 +6076,7 @@
       },
       "Money Glitch": {
         "yf": 5,
-        "yv": 4924,
+        "yv": 4928,
         "tf": 0,
         "tv": 0,
         "if": 0,
