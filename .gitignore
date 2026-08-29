@@ -14,3 +14,8 @@ __pycache__/
 *.pyc
 _check.js
 _c.js
+
+# Google OAuth klient — NIKDY do repa. Bol tu ako untracked subor, cize jeden
+# `git add -A` od zverejnenia. Tajomstva idu do Render env premennych.
+client_secret.json
+client_secret*.json
