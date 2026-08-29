@@ -365,7 +365,29 @@ def main():
     # IG API setrime: stiahneme MAX 1x za den (cache). Caste volanie 8 uctov Meta flagne
     # ako "unusual activity" a appku zablokuje. Ostatne obnovenia pouziju dnesny cache.
     ig = {}
+    ig_tokens_status = {}
     if _instagram:
+        # Tokeny obnovujeme PRED cache branou a nezavisle od nej.
+        # 26.8.2026 expirovali vsetky naraz prave preto, ze obnova sedela
+        # vnutri fetch_all() — pri cache-hite alebo pri zablokovanej analytike
+        # sa nespustila vobec. Toto uz nesmie zavisiet od nicoho ineho.
+        try:
+            _r = _instagram.refresh_tokens(ROOT)
+            _bad = [u for u, v in _r.items() if v not in ("ok", "skipped")]
+            if _bad:
+                print(f"  [IG] !! tokeny s problemom: {', '.join(_bad)}")
+        except Exception as e:
+            print("  [IG] !! obnova tokenov zlyhala:", e)
+        try:
+            ig_tokens_status = _instagram.token_status(ROOT)
+            _soon = {u: v["days_left"] for u, v in ig_tokens_status.items()
+                     if v.get("days_left") is not None and v["days_left"] < 14}
+            if _soon:
+                print("  [IG] !! coskoro expiruju:", ", ".join(
+                    f"{u} ({d:.0f}d)" for u, d in sorted(_soon.items(), key=lambda x: x[1])))
+        except Exception as e:
+            print("  [IG] !! stav tokenov sa neda zistit:", e)
+
         _igc = os.path.join(ROOT, "ig_cache.json")
         _today_iso = datetime.date.today().isoformat()
         _c = {}
