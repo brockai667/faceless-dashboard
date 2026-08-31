@@ -6193,15 +6193,15 @@
   {
     "date": "2026-08-31",
     "factories": 11,
-    "yt_subs": 436,
-    "yt_views": 351409,
-    "yt_likes": 779,
+    "yt_subs": 437,
+    "yt_views": 351882,
+    "yt_likes": 783,
     "tk_foll": 40,
-    "tk_views": 47366,
-    "tk_likes": 1487,
+    "tk_views": 47560,
+    "tk_likes": 1489,
     "ig_foll": 54,
     "ig_views": 11994,
-    "ig_posts": 939,
+    "ig_posts": 940,
     "videos": 735,
     "ig_videos": 90,
     "ig_blocked": false,
@@ -6231,7 +6231,7 @@
         "iv": 1157
       },
       "BrainHeist": {
-        "yf": 19,
+        "yf": 20,
         "yv": 11280,
         "tf": 0,
         "tv": 0,
@@ -6248,7 +6248,7 @@
       },
       "HiddenEarth": {
         "yf": 15,
-        "yv": 32754,
+        "yv": 33203,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -6280,7 +6280,7 @@
       },
       "EyeHeist": {
         "yf": 11,
-        "yv": 13213,
+        "yv": 13217,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -6288,7 +6288,7 @@
       },
       "Money Glitch": {
         "yf": 5,
-        "yv": 4948,
+        "yv": 4968,
         "tf": 0,
         "tv": 0,
         "if": 0,
