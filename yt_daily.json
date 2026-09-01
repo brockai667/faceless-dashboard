@@ -3601,11 +3601,11 @@
       }
     },
     "2026-08-27": {
-      "views": 3488,
+      "views": 3463,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
-          "v": 226,
+          "v": 225,
           "s": 1
         },
         "DisciplineDaily": {
@@ -3621,7 +3621,7 @@
           "s": 1
         },
         "NextByte": {
-          "v": 647,
+          "v": 640,
           "s": 0
         },
         "coldcasedaily667": {
@@ -3629,7 +3629,7 @@
           "s": 0
         },
         "WealthMindset": {
-          "v": 52,
+          "v": 51,
           "s": 0
         },
         "Lumora Music": {
@@ -3637,15 +3637,15 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 121,
+          "v": 119,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 1204,
+          "v": 1196,
           "s": 1
         },
         "MindBlownDaily": {
-          "v": 1012,
+          "v": 1006,
           "s": 0
         }
       }
@@ -3699,7 +3699,57 @@
           "s": 1
         }
       }
+    },
+    "2026-08-29": {
+      "views": 6118,
+      "subs": 0,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 225,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 6,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 7,
+          "s": 0
+        },
+        "Curio": {
+          "v": 903,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 1138,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 120,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 69,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 8,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 892,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 1552,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1198,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-08-31T11:42:48.794961Z"
+  "generated": "2026-09-01T10:16:52.881253Z"
 }
