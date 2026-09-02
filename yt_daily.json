@@ -3651,11 +3651,11 @@
       }
     },
     "2026-08-28": {
-      "views": 4427,
+      "views": 4329,
       "subs": 4,
       "fac": {
         "UnexplainedDaily": {
-          "v": 183,
+          "v": 181,
           "s": 0
         },
         "DisciplineDaily": {
@@ -3667,19 +3667,19 @@
           "s": 0
         },
         "Curio": {
-          "v": 1367,
+          "v": 1340,
           "s": 0
         },
         "NextByte": {
-          "v": 955,
+          "v": 931,
           "s": 1
         },
         "coldcasedaily667": {
-          "v": 234,
+          "v": 228,
           "s": 0
         },
         "WealthMindset": {
-          "v": 167,
+          "v": 164,
           "s": 1
         },
         "Lumora Music": {
@@ -3687,15 +3687,15 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 718,
+          "v": 698,
           "s": 1
         },
         "HiddenEarth667": {
-          "v": 602,
+          "v": 588,
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 184,
+          "v": 182,
           "s": 1
         }
       }
@@ -3749,7 +3749,57 @@
           "s": 0
         }
       }
+    },
+    "2026-08-30": {
+      "views": 5873,
+      "subs": 5,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 674,
+          "s": 3
+        },
+        "DisciplineDaily": {
+          "v": 29,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 14,
+          "s": 0
+        },
+        "Curio": {
+          "v": 878,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 1710,
+          "s": 1
+        },
+        "coldcasedaily667": {
+          "v": 229,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 124,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 26,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 550,
+          "s": 1
+        },
+        "HiddenEarth667": {
+          "v": 555,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1084,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-09-01T10:16:52.881253Z"
+  "generated": "2026-09-02T09:46:49.440311Z"
 }
