@@ -6401,5 +6401,111 @@
         "iv": 0
       }
     }
+  },
+  {
+    "date": "2026-09-02",
+    "factories": 11,
+    "yt_subs": 443,
+    "yt_views": 354203,
+    "yt_likes": 702,
+    "tk_foll": 41,
+    "tk_views": 48742,
+    "tk_likes": 1497,
+    "ig_foll": 53,
+    "ig_views": 11994,
+    "ig_posts": 948,
+    "videos": 738,
+    "ig_videos": 90,
+    "ig_blocked": false,
+    "fac": {
+      "MindBlownDaily": {
+        "yf": 39,
+        "yv": 29887,
+        "tf": 41,
+        "tv": 12771,
+        "if": 24,
+        "iv": 3542
+      },
+      "WealthMindset": {
+        "yf": 27,
+        "yv": 10946,
+        "tf": 0,
+        "tv": 0,
+        "if": 3,
+        "iv": 1672
+      },
+      "UnexplainedDaily": {
+        "yf": 109,
+        "yv": 50297,
+        "tf": 0,
+        "tv": 0,
+        "if": 11,
+        "iv": 1157
+      },
+      "BrainHeist": {
+        "yf": 20,
+        "yv": 11437,
+        "tf": 0,
+        "tv": 0,
+        "if": 6,
+        "iv": 1917
+      },
+      "VitalityDaily": {
+        "yf": 20,
+        "yv": 26063,
+        "tf": 0,
+        "tv": 0,
+        "if": 7,
+        "iv": 645
+      },
+      "HiddenEarth": {
+        "yf": 15,
+        "yv": 33267,
+        "tf": 0,
+        "tv": 0,
+        "if": 5,
+        "iv": 2003
+      },
+      "NextByte": {
+        "yf": 26,
+        "yv": 59555,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "ColdCaseDaily": {
+        "yf": 51,
+        "yv": 42094,
+        "tf": 0,
+        "tv": 0,
+        "if": 3,
+        "iv": 1058
+      },
+      "Curio": {
+        "yf": 119,
+        "yv": 72421,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "EyeHeist": {
+        "yf": 11,
+        "yv": 13220,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "Money Glitch": {
+        "yf": 6,
+        "yv": 5016,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      }
+    }
   }
 ]
