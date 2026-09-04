@@ -6618,22 +6618,22 @@
   {
     "date": "2026-09-04",
     "factories": 11,
-    "yt_subs": 453,
-    "yt_views": 354280,
-    "yt_likes": 706,
+    "yt_subs": 446,
+    "yt_views": 354246,
+    "yt_likes": 56,
     "tk_foll": 41,
-    "tk_views": 50591,
-    "tk_likes": 1507,
+    "tk_views": 50780,
+    "tk_likes": 1509,
     "ig_foll": 53,
     "ig_views": 11994,
     "ig_posts": 957,
-    "videos": 739,
+    "videos": 130,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 40,
-        "yv": 29890,
+        "yf": 39,
+        "yv": 29891,
         "tf": 41,
         "tv": 12771,
         "if": 24,
@@ -6641,15 +6641,15 @@
       },
       "WealthMindset": {
         "yf": 27,
-        "yv": 10948,
+        "yv": 10947,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 113,
-        "yv": 50304,
+        "yf": 110,
+        "yv": 50298,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -6665,23 +6665,23 @@
       },
       "VitalityDaily": {
         "yf": 20,
-        "yv": 26065,
+        "yv": 26064,
         "tf": 0,
         "tv": 0,
         "if": 7,
         "iv": 645
       },
       "HiddenEarth": {
-        "yf": 16,
-        "yv": 33279,
+        "yf": 15,
+        "yv": 33277,
         "tf": 0,
         "tv": 0,
         "if": 5,
         "iv": 2003
       },
       "NextByte": {
-        "yf": 30,
-        "yv": 59574,
+        "yf": 29,
+        "yv": 59562,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -6689,15 +6689,15 @@
       },
       "ColdCaseDaily": {
         "yf": 51,
-        "yv": 42113,
+        "yv": 42107,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1058
       },
       "Curio": {
-        "yf": 119,
-        "yv": 72431,
+        "yf": 118,
+        "yv": 72424,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -6719,6 +6719,7 @@
         "if": 0,
         "iv": 0
       }
-    }
+    },
+    "gap": true
   }
 ]
