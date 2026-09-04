@@ -6618,21 +6618,21 @@
   {
     "date": "2026-09-04",
     "factories": 11,
-    "yt_subs": 451,
+    "yt_subs": 453,
     "yt_views": 354280,
-    "yt_likes": 712,
+    "yt_likes": 706,
     "tk_foll": 41,
-    "tk_views": 50319,
-    "tk_likes": 1506,
+    "tk_views": 50591,
+    "tk_likes": 1507,
     "ig_foll": 53,
     "ig_views": 11994,
-    "ig_posts": 956,
-    "videos": 759,
+    "ig_posts": 957,
+    "videos": 739,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 39,
+        "yf": 40,
         "yv": 29890,
         "tf": 41,
         "tv": 12771,
@@ -6696,7 +6696,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 118,
+        "yf": 119,
         "yv": 72431,
         "tf": 0,
         "tv": 0,
