@@ -6725,16 +6725,16 @@
   {
     "date": "2026-09-05",
     "factories": 11,
-    "yt_subs": 457,
+    "yt_subs": 459,
     "yt_views": 354471,
-    "yt_likes": 721,
+    "yt_likes": 56,
     "tk_foll": 41,
-    "tk_views": 51306,
-    "tk_likes": 1512,
-    "ig_foll": 52,
+    "tk_views": 51570,
+    "tk_likes": 1516,
+    "ig_foll": 53,
     "ig_views": 11994,
-    "ig_posts": 960,
-    "videos": 740,
+    "ig_posts": 961,
+    "videos": 150,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
@@ -6771,11 +6771,11 @@
         "iv": 1917
       },
       "VitalityDaily": {
-        "yf": 20,
+        "yf": 21,
         "yv": 26070,
         "tf": 0,
         "tv": 0,
-        "if": 6,
+        "if": 7,
         "iv": 645
       },
       "HiddenEarth": {
@@ -6803,7 +6803,7 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 119,
+        "yf": 120,
         "yv": 72438,
         "tf": 0,
         "tv": 0,
@@ -6826,6 +6826,7 @@
         "if": 0,
         "iv": 0
       }
-    }
+    },
+    "gap": true
   }
 ]
