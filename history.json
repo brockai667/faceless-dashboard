@@ -6832,21 +6832,21 @@
   {
     "date": "2026-09-06",
     "factories": 11,
-    "yt_subs": 463,
-    "yt_views": 354544,
-    "yt_likes": 727,
+    "yt_subs": 464,
+    "yt_views": 354547,
+    "yt_likes": 56,
     "tk_foll": 41,
-    "tk_views": 51849,
-    "tk_likes": 1517,
+    "tk_views": 52098,
+    "tk_likes": 1519,
     "ig_foll": 53,
     "ig_views": 11994,
-    "ig_posts": 963,
-    "videos": 741,
+    "ig_posts": 964,
+    "videos": 150,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 40,
+        "yf": 41,
         "yv": 29929,
         "tf": 41,
         "tv": 12771,
@@ -6871,7 +6871,7 @@
       },
       "BrainHeist": {
         "yf": 20,
-        "yv": 11474,
+        "yv": 11475,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -6887,7 +6887,7 @@
       },
       "HiddenEarth": {
         "yf": 16,
-        "yv": 33305,
+        "yv": 33307,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -6933,6 +6933,7 @@
         "if": 0,
         "iv": 0
       }
-    }
+    },
+    "gap": true
   }
 ]
