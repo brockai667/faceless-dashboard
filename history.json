@@ -7259,16 +7259,16 @@
   {
     "date": "2026-09-10",
     "factories": 11,
-    "yt_subs": 474,
-    "yt_views": 387486,
-    "yt_likes": 680,
+    "yt_subs": 475,
+    "yt_views": 389044,
+    "yt_likes": 686,
     "tk_foll": 41,
-    "tk_views": 54810,
-    "tk_likes": 1532,
+    "tk_views": 55067,
+    "tk_likes": 1534,
     "ig_foll": 52,
     "ig_views": 11994,
-    "ig_posts": 977,
-    "videos": 766,
+    "ig_posts": 978,
+    "videos": 746,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
@@ -7282,7 +7282,7 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 11764,
+        "yv": 11880,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -7306,7 +7306,7 @@
       },
       "VitalityDaily": {
         "yf": 21,
-        "yv": 28545,
+        "yv": 29024,
         "tf": 0,
         "tv": 0,
         "if": 7,
@@ -7314,7 +7314,7 @@
       },
       "HiddenEarth": {
         "yf": 16,
-        "yv": 36582,
+        "yv": 37093,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -7322,7 +7322,7 @@
       },
       "NextByte": {
         "yf": 30,
-        "yv": 67058,
+        "yv": 67439,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -7337,8 +7337,8 @@
         "iv": 1058
       },
       "Curio": {
-        "yf": 121,
-        "yv": 76796,
+        "yf": 122,
+        "yv": 76867,
         "tf": 0,
         "tv": 0,
         "if": 0,
