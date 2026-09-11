@@ -7366,22 +7366,22 @@
   {
     "date": "2026-09-11",
     "factories": 11,
-    "yt_subs": 475,
-    "yt_views": 396817,
-    "yt_likes": 697,
+    "yt_subs": 477,
+    "yt_views": 399233,
+    "yt_likes": 696,
     "tk_foll": 41,
-    "tk_views": 55616,
-    "tk_likes": 1540,
+    "tk_views": 55881,
+    "tk_likes": 1542,
     "ig_foll": 52,
     "ig_views": 11994,
-    "ig_posts": 980,
+    "ig_posts": 981,
     "videos": 747,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 41,
-        "yv": 34820,
+        "yv": 35091,
         "tf": 41,
         "tv": 12771,
         "if": 23,
@@ -7389,7 +7389,7 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 12143,
+        "yv": 12190,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -7397,7 +7397,7 @@
       },
       "UnexplainedDaily": {
         "yf": 128,
-        "yv": 61674,
+        "yv": 61977,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -7413,15 +7413,15 @@
       },
       "VitalityDaily": {
         "yf": 21,
-        "yv": 29287,
+        "yv": 30356,
         "tf": 0,
         "tv": 0,
         "if": 7,
         "iv": 645
       },
       "HiddenEarth": {
-        "yf": 15,
-        "yv": 37575,
+        "yf": 16,
+        "yv": 37750,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -7429,7 +7429,7 @@
       },
       "NextByte": {
         "yf": 30,
-        "yv": 67733,
+        "yv": 68018,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -7437,15 +7437,15 @@
       },
       "ColdCaseDaily": {
         "yf": 53,
-        "yv": 45835,
+        "yv": 45878,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1058
       },
       "Curio": {
-        "yf": 122,
-        "yv": 77207,
+        "yf": 123,
+        "yv": 77429,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -7461,7 +7461,7 @@
       },
       "Money Glitch": {
         "yf": 6,
-        "yv": 5078,
+        "yv": 5079,
         "tf": 0,
         "tv": 0,
         "if": 0,
