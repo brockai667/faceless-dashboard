@@ -7472,22 +7472,22 @@
   {
     "date": "2026-09-12",
     "factories": 11,
-    "yt_subs": 477,
-    "yt_views": 399233,
-    "yt_likes": 696,
+    "yt_subs": 478,
+    "yt_views": 400937,
+    "yt_likes": 693,
     "tk_foll": 41,
-    "tk_views": 56064,
-    "tk_likes": 1543,
+    "tk_views": 56176,
+    "tk_likes": 1545,
     "ig_foll": 52,
     "ig_views": 11994,
-    "ig_posts": 981,
-    "videos": 130,
+    "ig_posts": 983,
+    "videos": 748,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 41,
-        "yv": 35091,
+        "yv": 35142,
         "tf": 41,
         "tv": 12771,
         "if": 23,
@@ -7495,15 +7495,15 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 12190,
+        "yv": 12249,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 128,
-        "yv": 61977,
+        "yf": 129,
+        "yv": 62335,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -7511,7 +7511,7 @@
       },
       "BrainHeist": {
         "yf": 20,
-        "yv": 12211,
+        "yv": 12225,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -7519,15 +7519,15 @@
       },
       "VitalityDaily": {
         "yf": 21,
-        "yv": 30356,
+        "yv": 30538,
         "tf": 0,
         "tv": 0,
         "if": 7,
         "iv": 645
       },
       "HiddenEarth": {
-        "yf": 16,
-        "yv": 37750,
+        "yf": 15,
+        "yv": 37829,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -7535,15 +7535,15 @@
       },
       "NextByte": {
         "yf": 30,
-        "yv": 68018,
+        "yv": 68658,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 53,
-        "yv": 45878,
+        "yf": 54,
+        "yv": 46187,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -7551,7 +7551,7 @@
       },
       "Curio": {
         "yf": 123,
-        "yv": 77429,
+        "yv": 77441,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -7573,7 +7573,6 @@
         "if": 0,
         "iv": 0
       }
-    },
-    "gap": true
+    }
   }
 ]
