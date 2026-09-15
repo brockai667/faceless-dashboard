@@ -1,1 +1,24 @@
-{"configured": false, "error": "HTTP Error 429: Too Many Requests"}
+{
+  "generatedAt": "2026-09-15T20:26:59.305Z",
+  "users": {
+    "total": 6,
+    "premium": 0,
+    "new24h": 0,
+    "new7d": 2,
+    "new30d": 6
+  },
+  "active": {
+    "dau": 1,
+    "wau": 3,
+    "mau": 5,
+    "liveSessions": 7
+  },
+  "platform": {
+    "webUsers": 6,
+    "appUsers": null,
+    "installs": 0,
+    "storePublished": false,
+    "storeDownloads": null
+  },
+  "configured": true
+}
