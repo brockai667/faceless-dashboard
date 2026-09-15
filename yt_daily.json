@@ -4101,11 +4101,11 @@
       }
     },
     "2026-09-06": {
-      "views": 5140,
+      "views": 5114,
       "subs": 5,
       "fac": {
         "UnexplainedDaily": {
-          "v": 1468,
+          "v": 1460,
           "s": 3
         },
         "DisciplineDaily": {
@@ -4121,15 +4121,15 @@
           "s": 0
         },
         "NextByte": {
-          "v": 1594,
+          "v": 1592,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 642,
+          "v": 636,
           "s": 1
         },
         "WealthMindset": {
-          "v": 200,
+          "v": 199,
           "s": 0
         },
         "Lumora Music": {
@@ -4137,11 +4137,11 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 447,
+          "v": 441,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 349,
+          "v": 346,
           "s": 0
         },
         "MindBlownDaily": {
@@ -4151,11 +4151,11 @@
       }
     },
     "2026-09-07": {
-      "views": 4392,
+      "views": 4358,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
-          "v": 1597,
+          "v": 1582,
           "s": 3
         },
         "DisciplineDaily": {
@@ -4167,15 +4167,15 @@
           "s": 0
         },
         "Curio": {
-          "v": 814,
+          "v": 806,
           "s": 0
         },
         "NextByte": {
-          "v": 517,
+          "v": 514,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 430,
+          "v": 427,
           "s": 0
         },
         "WealthMindset": {
@@ -4187,25 +4187,25 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 206,
+          "v": 203,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 558,
+          "v": 557,
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 160,
+          "v": 159,
           "s": 0
         }
       }
     },
     "2026-09-08": {
-      "views": 4421,
+      "views": 4369,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
-          "v": 1850,
+          "v": 1830,
           "s": 3
         },
         "DisciplineDaily": {
@@ -4217,19 +4217,19 @@
           "s": 0
         },
         "Curio": {
-          "v": 226,
+          "v": 225,
           "s": 0
         },
         "NextByte": {
-          "v": 231,
+          "v": 224,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 549,
+          "v": 544,
           "s": 0
         },
         "WealthMindset": {
-          "v": 84,
+          "v": 82,
           "s": 0
         },
         "Lumora Music": {
@@ -4237,15 +4237,15 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 958,
+          "v": 946,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 380,
+          "v": 376,
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 133,
+          "v": 132,
           "s": 0
         }
       }
@@ -4399,7 +4399,57 @@
           "s": 0
         }
       }
+    },
+    "2026-09-12": {
+      "views": 4592,
+      "subs": 5,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 1301,
+          "s": 2
+        },
+        "DisciplineDaily": {
+          "v": 26,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 3,
+          "s": 0
+        },
+        "Curio": {
+          "v": 308,
+          "s": 1
+        },
+        "NextByte": {
+          "v": 453,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 1008,
+          "s": 1
+        },
+        "WealthMindset": {
+          "v": 107,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 3,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 660,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 635,
+          "s": 1
+        },
+        "MindBlownDaily": {
+          "v": 88,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-09-14T10:50:14.127888Z"
+  "generated": "2026-09-15T10:14:45.137624Z"
 }
