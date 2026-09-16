@@ -7897,22 +7897,22 @@
   {
     "date": "2026-09-16",
     "factories": 11,
-    "yt_subs": 489,
-    "yt_views": 414059,
-    "yt_likes": 670,
+    "yt_subs": 490,
+    "yt_views": 415909,
+    "yt_likes": 655,
     "tk_foll": 41,
-    "tk_views": 58041,
-    "tk_likes": 1553,
+    "tk_views": 58663,
+    "tk_likes": 1560,
     "ig_foll": 52,
     "ig_views": 11994,
-    "ig_posts": 993,
-    "videos": 130,
+    "ig_posts": 997,
+    "videos": 733,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 41,
-        "yv": 35491,
+        "yv": 35593,
         "tf": 41,
         "tv": 12771,
         "if": 23,
@@ -7920,7 +7920,7 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 12901,
+        "yv": 12924,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -7928,7 +7928,7 @@
       },
       "UnexplainedDaily": {
         "yf": 134,
-        "yv": 66158,
+        "yv": 67250,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -7944,7 +7944,7 @@
       },
       "VitalityDaily": {
         "yf": 21,
-        "yv": 32024,
+        "yv": 32058,
         "tf": 0,
         "tv": 0,
         "if": 7,
@@ -7952,7 +7952,7 @@
       },
       "HiddenEarth": {
         "yf": 17,
-        "yv": 39042,
+        "yv": 39421,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -7960,15 +7960,15 @@
       },
       "NextByte": {
         "yf": 31,
-        "yv": 70903,
+        "yv": 71237,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 55,
-        "yv": 47538,
+        "yf": 56,
+        "yv": 47671,
         "tf": 0,
         "tv": 0,
         "if": 3,
@@ -7976,7 +7976,7 @@
       },
       "Curio": {
         "yf": 123,
-        "yv": 78175,
+        "yv": 78340,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -7992,13 +7992,12 @@
       },
       "Money Glitch": {
         "yf": 6,
-        "yv": 5084,
+        "yv": 5086,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       }
-    },
-    "gap": true
+    }
   }
 ]
