@@ -8003,22 +8003,22 @@
   {
     "date": "2026-09-17",
     "factories": 11,
-    "yt_subs": 491,
-    "yt_views": 416724,
-    "yt_likes": 645,
+    "yt_subs": 494,
+    "yt_views": 417793,
+    "yt_likes": 619,
     "tk_foll": 41,
-    "tk_views": 59089,
+    "tk_views": 59091,
     "tk_likes": 1563,
     "ig_foll": 52,
     "ig_views": 11994,
     "ig_posts": 998,
-    "videos": 130,
+    "videos": 732,
     "ig_videos": 90,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 41,
-        "yv": 35633,
+        "yv": 35824,
         "tf": 41,
         "tv": 12771,
         "if": 23,
@@ -8026,15 +8026,15 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 12947,
+        "yv": 12984,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 135,
-        "yv": 67382,
+        "yf": 137,
+        "yv": 67767,
         "tf": 0,
         "tv": 0,
         "if": 11,
@@ -8042,23 +8042,23 @@
       },
       "BrainHeist": {
         "yf": 22,
-        "yv": 13073,
+        "yv": 13076,
         "tf": 0,
         "tv": 0,
         "if": 6,
         "iv": 1917
       },
       "VitalityDaily": {
-        "yf": 21,
-        "yv": 32084,
+        "yf": 22,
+        "yv": 32091,
         "tf": 0,
         "tv": 0,
         "if": 7,
         "iv": 645
       },
       "HiddenEarth": {
-        "yf": 17,
-        "yv": 39630,
+        "yf": 18,
+        "yv": 39926,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -8066,7 +8066,7 @@
       },
       "NextByte": {
         "yf": 31,
-        "yv": 71533,
+        "yv": 71545,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -8074,15 +8074,15 @@
       },
       "ColdCaseDaily": {
         "yf": 56,
-        "yv": 47737,
+        "yv": 47855,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1058
       },
       "Curio": {
-        "yf": 123,
-        "yv": 78363,
+        "yf": 122,
+        "yv": 78379,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -8090,7 +8090,7 @@
       },
       "EyeHeist": {
         "yf": 11,
-        "yv": 13256,
+        "yv": 13257,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -8098,13 +8098,12 @@
       },
       "Money Glitch": {
         "yf": 6,
-        "yv": 5086,
+        "yv": 5089,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       }
-    },
-    "gap": true
+    }
   }
 ]
