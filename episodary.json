@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T12:00:01.223Z",
+  "generatedAt": "2026-09-18T11:43:53.584Z",
   "users": {
     "total": 6,
     "premium": 0,
@@ -8,7 +8,7 @@
     "new30d": 6
   },
   "active": {
-    "dau": 0,
+    "dau": 1,
     "wau": 3,
     "mau": 5,
     "liveSessions": 7
