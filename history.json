@@ -8428,8 +8428,8 @@
   {
     "date": "2026-09-21",
     "factories": 11,
-    "yt_subs": 446,
-    "yt_views": 419718,
+    "yt_subs": 492,
+    "yt_views": 419657,
     "yt_likes": 618,
     "tk_foll": 41,
     "tk_views": 59094,
@@ -8442,7 +8442,7 @@
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 33,
+        "yf": 41,
         "yv": 35855,
         "tf": 41,
         "tv": 12771,
@@ -8451,31 +8451,31 @@
       },
       "WealthMindset": {
         "yf": 28,
-        "yv": 13276,
+        "yv": 13267,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1672
       },
       "UnexplainedDaily": {
-        "yf": 134,
-        "yv": 68105,
+        "yf": 136,
+        "yv": 68048,
         "tf": 0,
         "tv": 0,
         "if": 11,
         "iv": 1157
       },
       "BrainHeist": {
-        "yf": 20,
-        "yv": 13093,
+        "yf": 22,
+        "yv": 13102,
         "tf": 0,
         "tv": 0,
         "if": 6,
         "iv": 1917
       },
       "VitalityDaily": {
-        "yf": 21,
-        "yv": 32279,
+        "yf": 22,
+        "yv": 32280,
         "tf": 0,
         "tv": 0,
         "if": 7,
@@ -8483,31 +8483,31 @@
       },
       "HiddenEarth": {
         "yf": 17,
-        "yv": 40927,
+        "yv": 40897,
         "tf": 0,
         "tv": 0,
         "if": 5,
         "iv": 2003
       },
       "NextByte": {
-        "yf": 29,
-        "yv": 71735,
+        "yf": 31,
+        "yv": 71747,
         "tf": 0,
         "tv": 0,
         "if": 0,
         "iv": 0
       },
       "ColdCaseDaily": {
-        "yf": 54,
-        "yv": 47181,
+        "yf": 55,
+        "yv": 47189,
         "tf": 0,
         "tv": 0,
         "if": 3,
         "iv": 1058
       },
       "Curio": {
-        "yf": 93,
-        "yv": 78898,
+        "yf": 123,
+        "yv": 78897,
         "tf": 0,
         "tv": 0,
         "if": 0,
@@ -8515,7 +8515,7 @@
       },
       "EyeHeist": {
         "yf": 11,
-        "yv": 13258,
+        "yv": 13264,
         "tf": 0,
         "tv": 0,
         "if": 0,
