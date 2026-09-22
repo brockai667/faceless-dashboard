@@ -138,5 +138,12 @@
     "mau": 5,
     "wau": 2,
     "installs": 0
+  },
+  {
+    "date": "2026-09-22",
+    "users": 6,
+    "mau": 5,
+    "wau": 1,
+    "installs": 0
   }
 ]
