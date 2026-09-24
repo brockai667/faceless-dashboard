@@ -4551,11 +4551,11 @@
       }
     },
     "2026-09-15": {
-      "views": 1446,
+      "views": 1398,
       "subs": 1,
       "fac": {
         "UnexplainedDaily": {
-          "v": 457,
+          "v": 454,
           "s": 1
         },
         "DisciplineDaily": {
@@ -4567,19 +4567,19 @@
           "s": 0
         },
         "Curio": {
-          "v": 37,
+          "v": 35,
           "s": 0
         },
         "NextByte": {
-          "v": 299,
+          "v": 291,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 135,
+          "v": 130,
           "s": 0
         },
         "WealthMindset": {
-          "v": 58,
+          "v": 54,
           "s": 0
         },
         "Lumora Music": {
@@ -4587,15 +4587,15 @@
           "s": 0
         },
         "VitalityDaily": {
-          "v": 31,
+          "v": 30,
           "s": 0
         },
         "HiddenEarth667": {
-          "v": 360,
+          "v": 341,
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 66,
+          "v": 60,
           "s": 0
         }
       }
@@ -4849,7 +4849,57 @@
           "s": 0
         }
       }
+    },
+    "2026-09-21": {
+      "views": 74,
+      "subs": 0,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 11,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 8,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 0,
+          "s": 0
+        },
+        "Curio": {
+          "v": 13,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 17,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 11,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 2,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 0,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 3,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 8,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-09-23T10:10:39.972304Z"
+  "generated": "2026-09-24T10:17:13.887076Z"
 }
