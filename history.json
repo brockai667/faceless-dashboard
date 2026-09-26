@@ -8957,5 +8957,112 @@
       }
     },
     "gap": true
+  },
+  {
+    "date": "2026-09-26",
+    "factories": 11,
+    "yt_subs": 492,
+    "yt_views": 405601,
+    "yt_likes": 139,
+    "tk_foll": 41,
+    "tk_views": 59098,
+    "tk_likes": 1563,
+    "ig_foll": 52,
+    "ig_views": 11994,
+    "ig_posts": 998,
+    "videos": 150,
+    "ig_videos": 90,
+    "ig_blocked": false,
+    "fac": {
+      "MindBlownDaily": {
+        "yf": 41,
+        "yv": 35869,
+        "tf": 41,
+        "tv": 12771,
+        "if": 23,
+        "iv": 3542
+      },
+      "WealthMindset": {
+        "yf": 28,
+        "yv": 13270,
+        "tf": 0,
+        "tv": 0,
+        "if": 3,
+        "iv": 1672
+      },
+      "UnexplainedDaily": {
+        "yf": 136,
+        "yv": 68075,
+        "tf": 0,
+        "tv": 0,
+        "if": 11,
+        "iv": 1157
+      },
+      "BrainHeist": {
+        "yf": 22,
+        "yv": 10674,
+        "tf": 0,
+        "tv": 0,
+        "if": 6,
+        "iv": 1917
+      },
+      "VitalityDaily": {
+        "yf": 22,
+        "yv": 32283,
+        "tf": 0,
+        "tv": 0,
+        "if": 7,
+        "iv": 645
+      },
+      "HiddenEarth": {
+        "yf": 17,
+        "yv": 40907,
+        "tf": 0,
+        "tv": 0,
+        "if": 5,
+        "iv": 2003
+      },
+      "NextByte": {
+        "yf": 31,
+        "yv": 68703,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "ColdCaseDaily": {
+        "yf": 55,
+        "yv": 39812,
+        "tf": 0,
+        "tv": 0,
+        "if": 3,
+        "iv": 1058
+      },
+      "Curio": {
+        "yf": 123,
+        "yv": 78950,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "EyeHeist": {
+        "yf": 11,
+        "yv": 13230,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      },
+      "Money Glitch": {
+        "yf": 6,
+        "yv": 3828,
+        "tf": 0,
+        "tv": 0,
+        "if": 0,
+        "iv": 0
+      }
+    },
+    "gap": true
   }
 ]
