@@ -47,8 +47,9 @@ HANDLE_TO_FACTORY = {
     "disciplinedaily667": "BrainHeist",
     "vitalitydaily667": "VitalityDaily",
     "hiddenearth667": "HiddenEarth",
-    "historyuntold667": "NextByte",
-    "coldcasedaily667": "ColdCaseDaily",
+    # 27.9.2026: TikTok historyuntold667 (ex-NextByte) premenovany na coldcase_daily a pouzity pre ColdCase;
+    # povodny TikTok coldcasedaily667 je zabanovany
+    "coldcase_daily": "ColdCaseDaily",
 }
 
 # Profilove handle (natvrdo) — odkazy nezavisle od Buffera
