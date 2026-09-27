@@ -26,6 +26,7 @@ def lan_ip():
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PORT = int(os.environ.get("PORT", "8765"))          # cloud host nastavi PORT
 GRAPH = "https://graph.instagram.com"
+HISTORY_START = os.environ.get("DASH_HISTORY_START", "2026-09-28")   # Part 2: grafy a "dnes" od tohto dna (1. den novej fabriky)
 DASH_PASS = os.environ.get("DASH_PASS", "")          # ak je nastavene -> vyzaduje heslo (cloud)
 CLOUD = bool(os.environ.get("PORT"))                 # bezime v cloude?
 
@@ -255,6 +256,22 @@ class H(BaseHTTPRequestHandler):
             return self._send(404, json.dumps({"error": "not found"}))
         self._send(200, open(p, "rb").read(), ctype)
 
+    def _history_from(self, name):
+        """„Part 2" (27.9.2026): stare stock videa boli zmazane, grafy a denne rozdiely zacinaju odznova.
+        Data v suboroch ostavaju (zaloha), servuju sa len zaznamy od DASH_HISTORY_START."""
+        start = HISTORY_START
+        try:
+            d = json.load(open(os.path.join(ROOT, name), encoding="utf-8"))
+        except Exception:
+            return None
+        if isinstance(d, list):
+            d = [r for r in d if str((r or {}).get("date", "")) >= start]
+        elif isinstance(d, dict) and isinstance(d.get("days"), dict):
+            d["days"] = {k: v for k, v in d["days"].items() if str(k) >= start}
+        elif isinstance(d, dict) and isinstance(d.get("days"), list):
+            d["days"] = [r for r in d["days"] if str((r or {}).get("date", "")) >= start]
+        return json.dumps(d, ensure_ascii=False)
+
     def log_message(self, *a):
         pass  # ticho
 
@@ -297,11 +314,15 @@ class H(BaseHTTPRequestHandler):
         if u.path == "/history.json":
             if not os.path.exists(os.path.join(ROOT, "history.json")):
                 return self._send(200, "[]")
-            return self._file("history.json", "application/json; charset=utf-8")
+            body = self._history_from("history.json")
+            return self._send(200, body, "application/json; charset=utf-8") if body is not None \
+                else self._file("history.json", "application/json; charset=utf-8")
         if u.path == "/yt_daily.json":
             if not os.path.exists(os.path.join(ROOT, "yt_daily.json")):
                 return self._send(200, json.dumps({"days": {}}))
-            return self._file("yt_daily.json", "application/json; charset=utf-8")
+            body = self._history_from("yt_daily.json")
+            return self._send(200, body, "application/json; charset=utf-8") if body is not None \
+                else self._file("yt_daily.json", "application/json; charset=utf-8")
         for _pf, _empty in (("spotify.json", '{"configured": false}'),
                             ("spotify_history.json", "[]"),
                             ("episodary.json", '{"configured": false}'),
