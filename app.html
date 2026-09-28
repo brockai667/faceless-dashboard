@@ -1,39 +1,57 @@
 <!doctype html><html lang="sk"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FacelessFactory — Centrála</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2322c55e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
 :root{
   --bg:#0a0d14; --bg2:#0d1119; --panel:#11161f; --panel2:#141b26;
-  --bd:#1e2733; --bd2:#283342; --tx:#e6edf3; --mut:#8b97a8; --mut2:#5b6675;
+  --bd:#1e2733; --bd2:#283342; --tx:#e6edf3; --mut:#8b97a8; --mut2:#6b778a;
   --acc:#3b82f6; --yt:#ff4d4f; --tk:#fe2c55; --ig:#e1306c; --ok:#22c55e;
+  --font:'Inter','Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+  --r:12px; --s1:8px; --s2:12px; --s3:16px; --s4:24px;
+  --lift:0 16px 36px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:radial-gradient(1200px 600px at 70% -10%,#13203a22,transparent),var(--bg);
-  color:var(--tx);font:16px/1.55 'Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  color:var(--tx);font:16px/1.55 var(--font);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:#3b82f655}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1340px;margin:0 auto;padding:26px 26px 70px}
-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
-h1{font-size:25px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wrap{max-width:1340px;margin:0 auto;padding:var(--s4) var(--s4) 64px}
+header{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4);flex-wrap:wrap}
+h1{font-size:24px;font-weight:750;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
 h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
-.sub{color:var(--mut);font-size:14px}
+.sub{color:var(--mut);font-size:14px;font-variant-numeric:tabular-nums}
 .spacer{flex:1}
-.btn{background:var(--panel2);border:1px solid var(--bd2);color:var(--tx);border-radius:9px;
-  padding:10px 16px;font-size:14.5px;font-weight:600;cursor:pointer;display:inline-flex;gap:7px;align-items:center;transition:.15s}
+.btn{background:var(--panel2);border:1px solid var(--bd2);color:var(--tx);border-radius:10px;
+  padding:10px 16px;font:600 14px/1.25 var(--font);cursor:pointer;display:inline-flex;gap:8px;align-items:center;
+  transition:background-color .15s,border-color .15s,box-shadow .15s}
 .btn:hover{background:#1b2433;border-color:#39465a}
-.btn.acc{background:var(--acc);border-color:var(--acc)} .btn.acc:hover{background:#2f6fd8}
-.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.tab{background:transparent;border:1px solid var(--bd);color:var(--mut);border-radius:10px;
-  padding:11px 20px;font-size:15.5px;font-weight:600;cursor:pointer;transition:.15s}
-.tab:hover{color:var(--tx);border-color:var(--bd2)}
-.tab.on{background:var(--panel);border-color:var(--bd2);color:var(--tx)}
-.grid{display:grid;gap:14px}
+.btn.acc{background:var(--acc);border-color:var(--acc);box-shadow:0 8px 20px -10px #3b82f6cc} .btn.acc:hover{background:#2f6fd8}
+.btn:disabled{opacity:.75;cursor:progress}
+/* taby = segmentovy ovladac (pill); aktivny tab svieti akcentom */
+.tabs{display:flex;gap:4px;margin-bottom:var(--s4);flex-wrap:wrap;width:fit-content;max-width:100%;padding:4px;
+  background:var(--bg2);border:1px solid var(--bd);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.02)}
+.tab{background:transparent;border:1px solid transparent;color:var(--mut);border-radius:10px;
+  padding:8px 14px;font:600 14px/1.25 var(--font);cursor:pointer;white-space:nowrap;
+  transition:color .15s,background-color .15s,border-color .15s,box-shadow .15s}
+.tab:hover{color:var(--tx);background:rgba(255,255,255,.04)}
+.tab.on{color:#fff;background:linear-gradient(180deg,#1f2d4a,#162038);border-color:#3b82f666;
+  box-shadow:0 0 0 1px #3b82f626,0 8px 22px -10px #3b82f6c0,inset 0 1px 0 rgba(255,255,255,.07)}
+.grid{display:grid;gap:var(--s3)}
 .k4{grid-template-columns:repeat(4,1fr)} .k3{grid-template-columns:repeat(3,1fr)} .k2{grid-template-columns:repeat(2,1fr)}
-.wsplit{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.wsplit{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--s3)}
 @media(max-width:900px){.k4,.k3{grid-template-columns:repeat(2,1fr)}.k2,.wsplit{grid-template-columns:1fr}}
 @media(max-width:600px){
-  .wrap{padding:16px 13px 50px}
+  .wrap{padding:var(--s3) var(--s2) 48px}
   .k4,.k3,.k2,.wsplit{grid-template-columns:1fr}
-  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:5px;margin-bottom:16px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:var(--s3);width:100%;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
   .tab{flex:0 0 auto}
   header{gap:10px}
   h1{font-size:21px}
@@ -42,49 +60,145 @@ h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow
   .bars .row{grid-template-columns:92px 1fr 50px;gap:8px}
   #refresh{padding:9px 13px}
 }
-.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--bd);border-radius:14px;padding:18px}
-.kpi .lab{color:var(--mut);font-size:13.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-.kpi .big{font-size:48px;font-weight:800;letter-spacing:-1.5px;margin-top:6px;line-height:1.05}
-.kpi .sm{color:var(--mut);font-size:14px;margin-top:7px}
-.dl{font-size:14.5px;font-weight:700;margin-top:6px}
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--bd);border-radius:var(--r);padding:var(--s3);
+  transition:border-color .2s,box-shadow .2s,transform .2s}
+.card:hover{border-color:var(--bd2);box-shadow:var(--lift)}
+.card.kpi:hover,a.card:hover{transform:translateY(-1px)}
+.kpi .lab{color:var(--mut);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.kpi .big{font-size:48px;font-weight:800;letter-spacing:-.035em;margin-top:var(--s1);line-height:1.05;font-variant-numeric:tabular-nums}
+.kpi .sm{color:var(--mut);font-size:13.5px;margin-top:var(--s1)}
+.dl{font-size:14px;font-weight:700;margin-top:var(--s1);font-variant-numeric:tabular-nums}
 .dl.dlu{color:var(--ok)} .dl.dld{color:#ef4444} .dl.dl0{color:var(--mut2);font-weight:600}
-.dchip{display:inline-block;font-size:12px;font-weight:800;padding:1px 7px;border-radius:20px;white-space:nowrap}
+.dchip{display:inline-block;font-size:12px;font-weight:800;padding:1px 7px;border-radius:20px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dchip.dlu{color:var(--ok);background:#22c55e1f} .dchip.dld{color:#ef4444;background:#ef44441f}
 .pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:13px;font-weight:700}
-h2{font-size:17px;font-weight:700;margin-bottom:13px;display:flex;align-items:center;gap:8px}
-h2 small{color:var(--mut);font-weight:500;font-size:13.5px}
-.bars .row{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:10px;margin:9px 0}
+h2{font-size:16.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:var(--s2);display:flex;align-items:center;gap:8px}
+h2 small{color:var(--mut);font-weight:500;font-size:13px;letter-spacing:0}
+.bars .row{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:var(--s2);margin:var(--s1) 0}
 .bars .nm{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bars .track{height:11px;background:#0c1018;border-radius:6px;overflow:hidden}
+.bars .track{height:10px;background:#0c1018;border-radius:6px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
 .bars .fill{height:100%;border-radius:6px;transition:width .6s}
 .bars .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--mut);font-size:13.5px}
-table{width:100%;border-collapse:collapse;font-size:14.5px}
-th{text-align:left;color:var(--mut2);font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding:8px 9px;border-bottom:1px solid var(--bd)}
-td{padding:11px 9px;border-bottom:1px solid #131a25}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th{text-align:left;color:var(--mut2);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:var(--s1) var(--s2);border-bottom:1px solid var(--bd)}
+th.n{text-align:right}
+td{padding:var(--s2);border-bottom:1px solid #131a25}
 td.n{text-align:right;font-variant-numeric:tabular-nums}
 tr:hover td{background:#0e1520}
 .rk{color:var(--mut2);width:24px}
+#winners td:nth-child(4){white-space:nowrap}                          /* "📸 Instagram" na jednom riadku */
+#factories span[style*="width:74px"]{min-width:112px;white-space:nowrap}  /* "📺 YouTube" v kartách fabrík na jednom riadku */
 .tag{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--bd2);cursor:pointer;color:var(--mut)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--bd2);cursor:pointer;color:var(--mut);
+  transition:color .15s,border-color .15s,background-color .15s}
+.chip:hover{color:var(--tx);border-color:#39465a}
 .chip.on{color:#fff;border-color:transparent}
 .muted{color:var(--mut)}
-select,input,textarea{background:var(--bg2);border:1px solid var(--bd2);color:var(--tx);border-radius:9px;padding:9px 11px;font:inherit;font-size:13px}
+select,input,textarea{background:var(--bg2);border:1px solid var(--bd2);color:var(--tx);border-radius:10px;padding:9px 12px;font:inherit;font-size:13px}
 select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acc)}
-.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:600;color:var(--tx);margin-top:12px}
+select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #3b82f670;outline-offset:1px}
+.legend{display:flex;gap:var(--s3);flex-wrap:wrap;font-size:14.5px;font-weight:600;color:var(--tx);margin-top:var(--s2)}
 .legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:7px;vertical-align:middle}
-.post{border:1px solid var(--bd);border-radius:12px;padding:13px;margin-bottom:12px;background:var(--panel)}
-.post .cap{font-size:13px;margin-bottom:8px}
-.cm{border-top:1px solid #131a25;padding:9px 0;display:flex;gap:9px;flex-wrap:wrap;align-items:flex-start}
+.post{border:1px solid var(--bd);border-radius:var(--r);padding:var(--s2);margin-bottom:var(--s2);background:var(--panel)}
+.post .cap{font-size:13px;margin-bottom:var(--s1)}
+.cm{border-top:1px solid #131a25;padding:var(--s1) 0;display:flex;gap:var(--s1);flex-wrap:wrap;align-items:flex-start}
 .cm .u{font-weight:700;font-size:12.5px;color:var(--ig)}
 .cm .t{font-size:13px}
-.reply{display:flex;gap:7px;margin-top:6px;width:100%;flex-wrap:wrap}
+.reply{display:flex;gap:var(--s1);margin-top:6px;width:100%;flex-wrap:wrap}
 .reply input{flex:1;min-width:160px}
 .hide-tab{display:none}
-.empty{color:var(--mut);text-align:center;padding:30px;border:1px dashed var(--bd2);border-radius:12px}
-.spin{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+.empty{color:var(--mut);text-align:center;padding:var(--s4);border:1px dashed var(--bd2);border-radius:var(--r)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
 @keyframes sp{to{transform:rotate(360deg)}}
 svg .gl{stroke:#1a2330;stroke-width:1}
-svg text{fill:var(--mut);font-size:15px}
+svg text{fill:var(--mut);font-size:15px;font-family:var(--font)}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em;background:rgba(255,255,255,.05);padding:1px 5px;border-radius:5px}
+@media(prefers-reduced-motion:reduce){.card,.tab,.btn,.chip,.bars .fill{transition:none}.card.kpi:hover,a.card:hover{transform:none}}
+/* ---------------- 🌌 GALAXIA 3D ---------------- */
+.gx{position:relative;width:100%;height:74vh;min-height:480px;border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);
+  background:radial-gradient(1200px 700px at 50% 42%,#0b1430 0%,#04060d 62%,#020309 100%);isolation:isolate;color:var(--tx)}
+.gx-stage{position:absolute;inset:0;touch-action:none;cursor:grab;outline:none;-webkit-tap-highlight-color:transparent}
+.gx-stage.drag{cursor:grabbing}.gx-stage.hov{cursor:pointer}
+.gx-stage>canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+.gx-labels{position:absolute;left:0;top:0;pointer-events:none;z-index:1}
+.gx-lw{transition:opacity .22s ease}
+.gx-lw.off{opacity:0}
+.gx-lw.off .gx-lbl{pointer-events:none}
+.gx-lbl{pointer-events:auto;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 9px 5px;border-radius:8px;
+  background:rgba(5,8,15,.66);border:1px solid rgba(255,255,255,.09);box-shadow:0 6px 16px -8px rgba(0,0,0,.9);
+  font:600 12px/1.25 var(--font);color:#eef3fa;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.6);
+  transition:border-color .15s,background-color .15s}
+.gx-lbl b{font-weight:650;display:flex;align-items:center;gap:6px;letter-spacing:-.005em}
+.gx-lbl small{font:500 10.5px/1.25 var(--font);color:#9fb0c6;font-variant-numeric:tabular-nums}
+.gx-lbl em{font-style:normal;color:#f5c26b}
+.gx-dot{display:inline-block;width:7px;height:7px;border-radius:50%;box-shadow:0 0 8px currentColor;flex:none}
+.gx-lbl.dim b{color:#aab4c3}.gx-lbl.dim .gx-dot{opacity:.55}
+.gx-lbl.sun{background:rgba(38,22,6,.6);border-color:rgba(255,190,110,.3)}.gx-lbl.sun b{color:#ffd9a0}
+.gx-lbl.hot{border-color:rgba(255,255,255,.38);background:rgba(12,18,30,.9)}
+.gx-glass{background:rgba(10,14,22,.66);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:0 16px 40px -18px rgba(0,0,0,.85)}
+.gx-top{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:3;pointer-events:none}
+.gx-top>*{pointer-events:auto}
+.gx-sp{flex:1}
+.gx-title{display:flex;align-items:center;gap:12px;padding:8px 12px;font-size:13px;min-width:0}
+.gx-title b{font-size:14px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.gx-sum{color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gx-btn{color:var(--tx);font:600 13px/1 var(--font);padding:10px 12px;cursor:pointer;white-space:nowrap}
+.gx-btn:hover{background:rgba(24,32,48,.85);border-color:rgba(255,255,255,.16)}
+select.gx-jump{color:var(--tx);font:600 13px/1 var(--font);padding:9px 10px;cursor:pointer;max-width:220px}
+select.gx-jump option{background:#0d1119;color:var(--tx)}
+.gx-legend{position:absolute;left:12px;bottom:12px;z-index:3;padding:10px 12px;font-size:12px;line-height:1.5;color:#c3ccd9;display:grid;gap:4px;max-width:min(560px,calc(100% - 24px))}
+.gx-legend .r{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-weight:600}
+.gx-legend i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle;box-shadow:0 0 6px currentColor}
+.gx-legend .m{color:var(--mut);font-weight:500}
+.gx-hint{position:absolute;right:12px;bottom:12px;z-index:2;font-size:11.5px;color:#6f7d92;pointer-events:none;text-align:right}
+.gx-tip{position:absolute;left:0;top:0;z-index:5;pointer-events:none;opacity:0;transition:opacity .12s;max-width:320px;padding:8px 10px;
+  font-size:12.5px;line-height:1.45;background:rgba(8,11,18,.94);border:1px solid rgba(255,255,255,.1);border-radius:10px;box-shadow:0 10px 30px -10px #000}
+.gx-tip.on{opacity:1}
+.gx-tip .m{color:var(--mut)}
+.gx-panel{position:absolute;top:64px;right:12px;bottom:12px;width:340px;z-index:4;overflow:auto;padding:16px;overscroll-behavior:contain;
+  opacity:0;visibility:hidden;transform:translateX(16px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s}
+.gx-panel.on{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s ease}
+.gx-ph{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.gx-ph .dot{width:12px;height:12px;border-radius:50%;margin-top:7px;flex:none;box-shadow:0 0 12px currentColor}
+.gx-ph h3{font-size:18px;font-weight:750;letter-spacing:-.02em;line-height:1.25;overflow-wrap:anywhere}
+.gx-ph .n{color:var(--mut);font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.gx-x{margin-left:auto;flex:none;background:transparent;border:1px solid var(--bd2);color:var(--mut);border-radius:8px;width:32px;height:32px;
+  cursor:pointer;font:400 20px/1 var(--font)}
+.gx-x:hover{color:var(--tx);border-color:#39465a;background:rgba(255,255,255,.04)}
+.gx-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.gx-chip{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);color:var(--mut);white-space:nowrap}
+.gx-chip.ok{background:#22c55e1f;color:#4ade80}.gx-chip.warn{background:#f59e0b1f;color:#fbbf24}.gx-chip.bad{background:#ef44441f;color:#f87171}
+.gx-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gx-kpi{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:8px 10px;min-width:0}
+.gx-kpi span{display:block;color:var(--mut);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.gx-kpi b{display:block;font-size:18px;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:2px}
+.gx-sec{font-size:11px;font-weight:700;color:var(--mut2);text-transform:uppercase;letter-spacing:.07em;margin:16px 0 8px}
+.gx-prow{display:grid;grid-template-columns:1fr auto auto 20px;gap:12px;align-items:center;padding:8px 0;border-top:1px solid rgba(255,255,255,.06);
+  font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.gx-prow .pi{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.gx-prow .pi::before{content:'';width:10px;height:3px;border-radius:2px;background:var(--c);box-shadow:0 0 6px var(--c)}
+.gx-prow small{color:var(--mut);font-size:11px;font-weight:500}
+.gx-prow a{color:var(--mut);text-align:center;border-radius:6px}.gx-prow a:hover{color:var(--tx)}
+.gx-st{font-size:13px;margin-bottom:4px;line-height:1.45}
+.gx-kv{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:4px 0}
+.gx-kv span{color:var(--mut)}.gx-kv b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}.gx-kv b.bad{color:#f87171}
+.gx-vids{list-style:none;display:grid;gap:2px}
+.gx-vids a{display:grid;grid-template-columns:20px 1fr auto;gap:8px;align-items:center;padding:6px 8px;border-radius:8px;font-size:12.5px}
+.gx-vids a:hover{background:rgba(255,255,255,.05)}
+.gx-vids .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gx-vids .v{color:var(--mut);font-variant-numeric:tabular-nums;font-weight:600}
+.gx-load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--mut);font-size:14px;z-index:6;
+  pointer-events:none;transition:opacity .45s ease}
+.gx-load.done{opacity:0}
+@media(max-width:720px){
+  .gx-panel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:52%;transform:translateY(16px)}
+  .gx-legend,.gx-hint{display:none}
+  .gx-top{top:8px;left:8px;right:8px}
+  .gx-sum,.gx-rt{display:none}
+  select.gx-jump{max-width:150px;min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.gx-panel,.gx-panel.on,.gx-lw,.gx-tip,.gx-load,.gx-lbl{transition:none}}
 </style></head>
 <body><div class="wrap">
 <header>
@@ -149,6 +263,11 @@ function todayChip(fn,noNeg){
   if(v===0)return '<div class="dl dl0">dnes +0</div>';
   return `<div class="dl ${v>0?'dlu':'dld'}">dnes ${v>0?'+':'−'}${fmt(Math.abs(v))}</div>`;
 }
+/* PART 2 (od 28.9.2026): zhliadnutia = prirastok od PRVEHO zapisu novej fabriky (server servuje historiu
+   len od DASH_HISTORY_START). Celkove (lifetime) cislo ostava v malom texte — YouTube ho po zmazani videi nenuluje. */
+function part2Base(){const rows=(HIST||[]);const ok=rows.filter(h=>!h.gap);return ok[0]||rows[0]||null;}
+function part2Gain(fn){const t=DATA&&DATA.totals,b=part2Base();if(!t||!b)return null;return Math.max(0,Math.round(fn(t)-fn(b)));}
+function part2Label(){const b=part2Base();if(!b)return 'od štartu';const p=b.date.split('-');return `od ${+p[2]}.${+p[1]}.`;}
 function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noNeg=true -> kumulativna
   if(cur==null||prev==null)return '';   // metrika (views/lajky): nemoze klesnut, tak zapornu zmenu
   const d=cur-prev;                     // (= neuplny zber, nie realny pokles) vobec neukazuj.
@@ -229,7 +348,7 @@ function renderOverview(){
   const vids=allVids().length;
   const kpis=[
     ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,todayChip(totFoll)],
-    ['Zhliadnutia (YT+IG)',fmt(views),`YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)}`,todayChip(totViews,true)],
+    ['Zhliadnutia (YT+IG)',fmt(part2Gain(totViews)),`${part2Label()} · celkovo ${fmt(views)} (YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)})`,todayChip(totViews,true)],
     ['Videá / príspevky',fmt(vids),'',todayChip(h=>h.videos||0,true)],
     ['Fabriky',t.factories,'',''],
   ];
@@ -257,20 +376,20 @@ function renderOverview(){
         (it.v===mx||it.live?`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" style="font-size:10.5px;font-weight:700" fill="#cdd7e6">${it.v?'+'+fmt(it.v):'0'}</text>`:'');}).join('');
     return `<svg viewBox="0 0 ${W} ${H}" width="100%">${bars}</svg>`;
   }
-  const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:14px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14px">IG API nedostupné — IG čísla sú posledné známe.</div>`:'';
+  const igBanner=t.ig_blocked?`<div class="card" style="margin-bottom:16px;border-left:4px solid #f59e0b;background:#241d0e;font-size:14px">IG API nedostupné — IG čísla sú posledné známe.</div>`:'';
   // ALERT: len REALNE problemy (cervene/zlte); "Buffer nedostupny" (siva) NIE JE poplach
   const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]==='🔴'||x.h[0]==='🟡');
-  const healthBanner=sick.length?`<div class="card" style="margin-bottom:14px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
+  const healthBanner=sick.length?`<div class="card" style="margin-bottom:16px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
     🚦 <b>Pozor — ${sick.length} ${sick.length===1?'fabrika potrebuje':'fabriky potrebujú'} pozornosť:</b> ${sick.map(x=>`<b style="color:${x.p.color}">${x.p.name}</b> (${x.h[1]})`).join(' · ')}
     <span class="muted">— detail v tabe Fabriky</span></div>`:'';
   $('#overview').innerHTML=`
     ${baselineNote()}${igBanner}${healthBanner}
-    <div class="grid k4" style="margin-bottom:14px">${kpis.map(k=>`
+    <div class="grid k4" style="margin-bottom:16px">${kpis.map(k=>`
       <div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div>
         ${k[3]}<div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="grid k3">${[
       {lab:'Odberatelia',fk:'yt_subs',big:t.yt_subs,unit:'',sub:'noví odberatelia za deň'},
-      {lab:'Zhliadnutia',fk:'yt_views',big:t.yt_views,unit:'',sub:'zhliadnutia za deň'},
+      {lab:'Zhliadnutia',fk:'yt_views',big:part2Gain(h=>h.yt_views||0),unit:'',sub:`zhliadnutia za deň · ${part2Label()} · celkovo ${fmt(t.yt_views)}`},
       {lab:'Lajky',fk:'yt_likes',big:t.yt_likes||0,unit:'',sub:'lajky za deň'},
     ].map(p=>`<div class="card" style="border-top:3px solid ${PC.youtube}">
       <h2 style="margin-bottom:6px"><span style="color:${PC.youtube}">${PI.youtube} YouTube</span> <small>${p.lab}</small></h2>
@@ -300,12 +419,12 @@ function renderGrowth(){
      <span class="muted">sledov. ${pchip(t[m[0]],Y&&Y[m[0]])}</span>
      <span class="muted">${m[2]} ${pchip(t[m[1]],Y&&Y[m[1]],true)}</span></div>`;};
   $('#growth').innerHTML=`
-    <div class="grid k3" style="margin-bottom:14px">
+    <div class="grid k3" style="margin-bottom:16px">
       ${big('Sledovatelia',cf,todayChip(totFoll),'zmena dnes od 00:00')}
-      ${big('Zhliadnutia (YT+IG)',cv,todayChip(totViews,true),'zmena dnes od 00:00')}
+      ${big('Zhliadnutia (YT+IG)',part2Gain(totViews),todayChip(totViews,true),`zmena dnes od 00:00 · ${part2Label()} · celkovo ${fmt(cv)}`)}
       ${big('Vydané dnes',pubToday,'',`${pub7} za 7 dní · spolu ${fmt(t.videos)} videí`)}
     </div>
-    <div class="grid k2" style="margin-bottom:14px">
+    <div class="grid k2" style="margin-bottom:16px">
       <div class="card"><h2>Zhliadnutia za deň</h2>${dailyBars(totViews,'#22c55e')}</div>
       <div class="card"><h2>Sledovatelia za deň</h2>${dailyBars(totFoll,'#0ea5e9')}</div>
     </div>
@@ -347,12 +466,12 @@ function renderWinners(){
 function renderPlatforms(){
   const t=DATA.totals, PD=DATA.prev||{};   // ▲▼ = od posledného obnovenia (presne, žiaden odhad)
   const cols=[
-    {k:'youtube',  foll:t.yt_subs, pf:PD.yt_subs, m2lab:'ZHLIADNUTIA', m2:t.yt_views, pm2:PD.yt_views, barLab:'zhliadnutia videí',
-     extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí`},
-    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'ZHLIADNUTIA', m2:t.tk_views, pm2:PD.tk_views, barLab:'zhliadnutia videí',
+    {k:'youtube',  foll:t.yt_subs, pf:PD.yt_subs, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Gain(h=>h.yt_views||0), m2raw:t.yt_views, pm2:PD.yt_views, barLab:'zhliadnutia videí',
+     extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí · celkovo ${fmt(t.yt_views)} zhliadnutí`},
+    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'ZHLIADNUTIA', m2:t.tk_views, m2raw:t.tk_views, pm2:PD.tk_views, barLab:'zhliadnutia videí',
      extra:`${DATA.projects.reduce((s,p)=>s+(p.tiktok?.videos||0),0)} videí · ${fmt(t.tk_likes)} lajky`},
-    {k:'instagram',foll:t.ig_foll, pf:PD.ig_foll, m2lab:'ZHLIADNUTIA', m2:t.ig_views, pm2:PD.ig_views, barLab:'zhliadnutia videí',
-     extra:`${t.ig_posts} príspevkov`},
+    {k:'instagram',foll:t.ig_foll, pf:PD.ig_foll, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Gain(h=>h.ig_views||0), m2raw:t.ig_views, pm2:PD.ig_views, barLab:'zhliadnutia videí',
+     extra:`${t.ig_posts} príspevkov · celkovo ${fmt(t.ig_views)} zhliadnutí`},
   ];
   $('#platforms').innerHTML=`${baselineNote()}<div class="grid k3">${cols.map(c=>{
     const fac=DATA.projects.map(p=>({name:p.name,color:p.color,
@@ -374,7 +493,7 @@ function renderPlatforms(){
       <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span></h2>
       <div style="display:flex;gap:18px;margin:6px 0 14px">
         <div><div class="muted" style="font-size:11px">SLEDOVATELIA</div><div style="font-size:22px;font-weight:800">${fmt(c.foll)}${dchip(c.foll,c.pf)}</div></div>
-        <div><div class="muted" style="font-size:11px">${c.m2lab}</div><div style="font-size:22px;font-weight:800">${fmt(c.m2)}${dchip(c.m2,c.pm2,true)}</div></div>
+        <div><div class="muted" style="font-size:11px">${c.m2lab}</div><div style="font-size:22px;font-weight:800">${fmt(c.m2)}${dchip(c.m2raw,c.pm2,true)}</div></div>
       </div>
       <div class="muted" style="font-size:11.5px;margin-bottom:8px">${c.extra}</div>
       <div class="muted" style="font-size:10.5px;margin-bottom:4px">Per-kanál = ${c.barLab}</div>
@@ -422,7 +541,7 @@ function renderFactories(){
       <span class="muted" style="font-size:12.5px">${txt}</span>
       <span class="muted" style="font-size:12px">posledný post: ${ls}</span>
       <span class="muted" style="font-size:12px">ďalší: ${ndTxt}</span></div>`;}).join('');
-  const health=`<div class="card" style="margin-bottom:14px"><h2>🚦 Zdravie fabrík <small>Buffer fronta a publikovanie</small></h2>${hrows}</div>`;
+  const health=`<div class="card" style="margin-bottom:16px"><h2>🚦 Zdravie fabrík <small>Buffer fronta a publikovanie</small></h2>${hrows}</div>`;
   const cards=DATA.projects.map((p,pi)=>{
     const L=p.links||{};
     const pubs=p.videos.map(v=>v.published).filter(Boolean).sort();
@@ -481,7 +600,7 @@ function renderDocs(){
     <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
     <td class="muted" style="font-size:12px">${fmtDate(v.published)}</td></tr>`).join('');
   $('#docs').innerHTML=`
-    <div class="grid k3" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="grid k3" style="margin-bottom:16px">${kp.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="card"><h2>🎬 Dlhé dokumenty <small>YouTube · samostatná analýza</small></h2>
       <table><thead><tr><th>#</th><th>Video</th><th>Kanál</th><th class="n">Dĺžka</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Kom.</th><th>Dátum</th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
@@ -504,8 +623,8 @@ function renderLumora(){
     <td class="n"><b>${fmt(v.views)}</b></td><td class="n">${fmt(v.likes)}</td><td class="n">${fmt(v.comments)}</td>
     <td class="muted" style="font-size:12px">${fmtDate(v.published)}</td></tr>`).join(''):`<tr><td colspan="7"><div class="empty">Zatiaľ žiadne videá — objavia sa po nahratí na kanál Lumora.</div></td></tr>`;
   $('#lumora').innerHTML=`
-    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
-    <div class="card" style="margin-bottom:14px"><h2><span style="color:${C}">🌙 Lumora</span> <small>ambient hudba · YouTube long-form + Spotify</small></h2>
+    <div class="grid k4" style="margin-bottom:16px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:16px"><h2><span style="color:${C}">🌙 Lumora</span> <small>ambient hudba · YouTube long-form + Spotify</small></h2>
       <div class="sm" style="color:var(--mut)">Dlhé ambient videá (focus / study / sleep) — monetizácia cez čas sledovania. Rovnaká hudba ide aj na Spotify ako krátke skladby.</div></div>
     <div class="card"><h2>🎧 Videá Lumory</h2>
       <table><thead><tr><th>#</th><th>Video</th><th class="n">Dĺžka</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Kom.</th><th>Dátum</th></tr></thead>
@@ -515,7 +634,7 @@ function renderLumora(){
 /* ---------------- KOMENTARE ---------------- */
 function renderComments(){
   $('#comments').innerHTML=`
-    <div class="card" style="margin-bottom:14px">
+    <div class="card" style="margin-bottom:16px">
       <h2>💬 Správa komentárov <small>Instagram + YouTube · všetky účty naraz</small></h2>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button class="btn acc" onclick="loadComments()">↻ Načítať komentáre zo všetkých účtov</button>
@@ -625,12 +744,12 @@ async function renderSpotify(){
     <div style="min-width:0"><div style="font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(al.name)}</div>
     <div class="sm" style="color:var(--mut)">${esc(al.type)} · ${al.tracks} tratkov · ${(al.release||'').slice(0,4)}</div></div></a>`).join('');
   el.innerHTML=`
-    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
-    <div class="card" style="margin-bottom:14px;display:flex;gap:14px;align-items:center">
+    <div class="grid k4" style="margin-bottom:16px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:16px;display:flex;gap:16px;align-items:center">
       ${a.image?`<img src="${a.image}" width="72" height="72" style="border-radius:10px;flex:none" alt="">`:''}
       <div style="min-width:0"><h2 style="margin:0"><a href="${a.url}" target="_blank" rel="noopener noreferrer" style="color:${C}">${esc(a.name)}</a></h2>
       <div class="sm" style="color:var(--mut)">${(a.genres||[]).map(esc).join(' · ')||'—'}</div></div></div>
-    <div class="grid k2" style="margin-bottom:14px">
+    <div class="grid k2" style="margin-bottom:16px">
       <div class="card"><h2>📈 Followers <small>po dňoch</small></h2>${miniBars(trend,C)}</div>
       <div class="card bars"><h2>🔥 Najhranejšie tracky <small>popularity 0-100</small></h2>${trows}</div></div>
     <div class="card"><h2>💿 Katalóg</h2><div class="grid k3" style="margin-top:4px">${albs||'<div class="empty">Žiadne albumy.</div>'}</div></div>
@@ -662,18 +781,18 @@ async function renderEpisodary(){
   const mxb=Math.max(1,...ab.map(x=>x[1]));
   const arows=ab.map(x=>`<div class="row"><span class="nm">${x[0]}</span><div class="track"><div class="fill" style="width:${x[1]/mxb*100}%;background:${C}"></div></div><span class="val">${fmt(x[1])}</span></div>`).join('');
   el.innerHTML=`
-    <div class="grid k4" style="margin-bottom:14px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
-    <div class="card" style="margin-bottom:14px"><h2>📊 Web vs App <small>rozdelenie + downloads</small></h2>
+    <div class="grid k4" style="margin-bottom:16px">${kp.map(k=>`<div class="card kpi" style="border-top:3px solid ${C}"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
+    <div class="card" style="margin-bottom:16px"><h2>📊 Web vs App <small>rozdelenie + downloads</small></h2>
       <div class="grid k3" style="margin-top:4px">${plat.map(k=>`<div class="card kpi"><div class="lab">${k[0]}</div><div class="big">${k[1]}</div><div class="sm">${k[2]}</div></div>`).join('')}</div>
       <div class="sm" style="color:var(--mut2);margin-top:10px">ℹ️ Android appka ešte nie je publikovaná v store (0 downloads). „App" = PWA inštalácie (push-enabled zariadenia). Presné web-vs-app rozdelenie <b>návštev</b> je aj vo Vercel Analytics (tag <code>utm_source=pwa</code>).</div></div>
-    <div class="grid k2" style="margin-bottom:14px">
+    <div class="grid k2" style="margin-bottom:16px">
       <div class="card"><h2>📈 Používatelia <small>po dňoch</small></h2>${miniBars(trend,C)}</div>
       <div class="card bars"><h2>⚡ Aktivita</h2>${arows}</div></div>
     <div class="sm" style="color:var(--mut2)">Aktualizované: ${d.generatedAt?fmtDate(d.generatedAt):'—'} · z Episodary DB (len agregáty, žiadne osobné dáta).</div>`;
 }
 
-/* ===================== 🌌 3D GALAXIA FABRÍK (čistý canvas, bez knižníc) ===================== */
-window.renderGalaxy=function(container,projects,opts){
+/* ---- 🌌 2D fallback galaxie (pôvodný čistý canvas) — len keď WebGL alebo three.js z CDN nie je k dispozícii ---- */
+function renderGalaxy2D(container,projects,opts){
   opts=opts||{};
   if(window._galRaf){cancelAnimationFrame(window._galRaf);window._galRaf=0;}
   container.innerHTML='';
@@ -776,18 +895,705 @@ window.renderGalaxy=function(container,projects,opts){
     window._galRaf=requestAnimationFrame(frame);
   }
   resize();window._galRaf=requestAnimationFrame(frame);
+}
+
+/* ===================== 🌌 GALAXIA FABRÍK — 3D vesmír (three.js z CDN cez importmap; fallback = 2D canvas) =====================
+   Slnko = celá sieť (súčet sledovateľov). Planéta = fabrika: veľkosť ∝ √sledovatelia, farba = brand, vlastná dráha
+   (poradie podľa veľkosti, najväčšia najbližšie k slnku), prstence = platformy (YT/TT/IG — šírka + jas ∝ sledovatelia),
+   mesiace = top 8 videí (veľkosť ∝ √zhliadnutia). Sivá planéta + prerušovaná dráha = bez nového videa 7+ dní
+   (alive/stale z Bufferu sa na to nedajú použiť — v cloude bez BUFFER_TOKENS_JSON je alive=false všade).
+   Jeden renderer na celú stránku (žiadny únik WebGL kontextov), pauza keď tab/okno nie je vidieť,
+   prefers-reduced-motion = bez automatického pohybu a okamžité prelety. */
+const GX={RING:{youtube:'#ff4d4f',tiktok:'#25f4ee',instagram:'#d946ef'},MOONS:8,IDLE_DAYS:7,SUN_R:8.5,
+  lib:null,libP:null,webgl:undefined,shell:null,g:null,failed:false,call:0,listen:false};
+const GXS={
+  starV:`attribute vec3 aColor;attribute float aSize;attribute float aPhase;uniform float uTime;uniform float uPR;varying vec3 vC;
+void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);gl_Position=projectionMatrix*mv;
+float tw=0.72+0.28*sin(uTime*(0.4+aPhase*1.6)+aPhase*37.0);vC=aColor*tw;gl_PointSize=max(1.0,aSize*uPR);}`,
+  starF:`varying vec3 vC;void main(){vec2 c=gl_PointCoord-0.5;float a=exp(-dot(c,c)*14.0);if(a<0.03)discard;gl_FragColor=vec4(vC,a);}`,
+  sunV:`varying vec3 vN;varying vec3 vV;varying vec3 vP;void main(){vP=position;vec4 mv=modelViewMatrix*vec4(position,1.0);
+vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+  sunF:`uniform float uTime;uniform float uPulse;varying vec3 vN;varying vec3 vV;varying vec3 vP;
+float hs(vec3 p){p=fract(p*0.3183099+0.1);p*=17.0;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+float n3(vec3 x){vec3 i=floor(x);vec3 f=fract(x);f=f*f*(3.0-2.0*f);
+return mix(mix(mix(hs(i),hs(i+vec3(1.0,0.0,0.0)),f.x),mix(hs(i+vec3(0.0,1.0,0.0)),hs(i+vec3(1.0,1.0,0.0)),f.x),f.y),
+mix(mix(hs(i+vec3(0.0,0.0,1.0)),hs(i+vec3(1.0,0.0,1.0)),f.x),mix(hs(i+vec3(0.0,1.0,1.0)),hs(i+vec3(1.0,1.0,1.0)),f.x),f.y),f.z);}
+void main(){float n=n3(vP*3.2+vec3(uTime*0.12))*0.55+n3(vP*7.5-vec3(uTime*0.18))*0.3+n3(vP*16.0+vec3(uTime*0.3))*0.15;
+float mu=max(dot(normalize(vN),normalize(vV)),0.0);float limb=pow(mu,0.45);
+vec3 col=mix(vec3(1.0,0.42,0.1),vec3(1.0,0.9,0.7),limb)*(0.72+0.56*n);
+gl_FragColor=vec4(col*2.6*uPulse,1.0);}`,
+  atmoV:`varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);
+vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}`,
+  atmoF:`uniform vec3 uColor;uniform float uI;varying vec3 vN;varying vec3 vV;
+void main(){float d=-dot(normalize(vN),normalize(vV));float a=pow(smoothstep(0.0,0.64,d),1.6)*uI;gl_FragColor=vec4(uColor,a);}`,
+  orbV:`attribute float aT;varying float vT;void main(){vT=aT;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+  orbF:`uniform vec3 uColor;uniform float uHead;uniform float uBase;uniform float uTrail;uniform float uDash;varying float vT;
+void main(){float d=fract(uHead-vT);float a=uBase+uTrail*exp(-d*10.0);if(uDash>0.5&&fract(vT*180.0)>0.55)discard;gl_FragColor=vec4(uColor,a);}`,
+  ringV:`varying vec2 vP;void main(){vP=position.xy;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+  ringF:`uniform vec3 uC0;uniform vec3 uC1;uniform vec3 uC2;uniform vec4 uB0;uniform vec4 uB1;uniform vec4 uB2;uniform float uDim;varying vec2 vP;
+float band(float r,vec4 b){float aa=fwidth(r)*1.5+0.004;return b.z*smoothstep(b.x-aa,b.x+aa,r)*(1.0-smoothstep(b.y-aa,b.y+aa,r));}
+void main(){float r=length(vP);float a0=band(r,uB0);float a1=band(r,uB1);float a2=band(r,uB2);float s=a0+a1+a2;if(s<0.004)discard;
+float gr=0.8+0.2*sin(r*150.0);vec3 c=(uC0*a0+uC1*a1+uC2*a2)/s;gl_FragColor=vec4(c*(0.9+0.35*gr),min(1.0,s*gr*uDim));}`
+};
+
+function gxWebGL(){
+  if(GX.webgl!==undefined)return GX.webgl;
+  let ok=false;
+  try{const c=document.createElement('canvas');const gl=c.getContext('webgl2')||c.getContext('webgl');ok=!!gl;
+    const x=gl&&gl.getExtension('WEBGL_lose_context');if(x)x.loseContext();}catch(e){ok=false;}
+  return (GX.webgl=ok);
+}
+function gxLoad(){
+  if(GX.lib)return Promise.resolve(GX.lib);
+  if(!GX.libP){
+    const A='three/addons/';
+    const all=Promise.all([import('three'),import(A+'controls/OrbitControls.js'),import(A+'postprocessing/EffectComposer.js'),
+      import(A+'postprocessing/RenderPass.js'),import(A+'postprocessing/UnrealBloomPass.js'),import(A+'postprocessing/OutputPass.js'),
+      import(A+'renderers/CSS2DRenderer.js')]);
+    const tmo=new Promise((_,no)=>setTimeout(()=>no(new Error('three.js sa nenačítal (timeout)')),20000));
+    GX.libP=Promise.race([all,tmo]).then(m=>(GX.lib={T:m[0],OrbitControls:m[1].OrbitControls,EffectComposer:m[2].EffectComposer,
+      RenderPass:m[3].RenderPass,UnrealBloomPass:m[4].UnrealBloomPass,OutputPass:m[5].OutputPass,
+      CSS2DRenderer:m[6].CSS2DRenderer,CSS2DObject:m[6].CSS2DObject}))
+      .catch(e=>{GX.libP=null;throw e;});
+  }
+  return GX.libP;
+}
+
+/* ---- pomocníci ---- */
+const gxRnd=s=>{let a=s>>>0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};};
+const gxHash=s=>{s=String(s==null?'':s);let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;};
+const gxCol=c=>/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(c||'')?c:'#6aa0ff';
+const gxRGB=c=>{c=gxCol(c).slice(1);if(c.length===3)c=c.replace(/./g,x=>x+x);const n=parseInt(c,16);return[n>>16&255,n>>8&255,n&255];};
+const gxPlat=v=>{const k=String((v&&v.platform)||'').toLowerCase();return PN[k]?k:'other';};
+const gxFabr=n=>n===1?'fabrika':(n>=2&&n<=4?'fabriky':'fabrík');
+function gxRefTime(){   // "teraz" = cas vygenerovania dat (stare data.json -> meria sa voci svojmu snapshotu)
+  const m=/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/.exec((typeof DATA!=='undefined'&&DATA&&DATA.gen_at)||'');
+  const t=m?new Date(+m[3],+m[2]-1,+m[1],+(m[4]||12),+(m[5]||0)).getTime():NaN;
+  return isFinite(t)?t:Date.now();
+}
+function gxDT(iso){
+  if(!iso)return '—';const d=new Date(iso);if(isNaN(d))return esc(String(iso));
+  return d.toLocaleDateString('sk-SK',{day:'numeric',month:'numeric'})+' '+d.toLocaleTimeString('sk-SK',{hour:'2-digit',minute:'2-digit'});
+}
+/* zhliadnutia za ~28 dni = rozdiel dennych zapisov history.json (yv+tv+iv fabriky), bez medzier (gap) */
+function gxViews28(name,hist){
+  const rows=(Array.isArray(hist)?hist:[]).filter(h=>h&&!h.gap&&h.date&&h.fac&&h.fac[name])
+    .sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);
+  if(rows.length<2)return null;
+  const last=rows[rows.length-1],lt=new Date(last.date+'T00:00:00Z').getTime();
+  if(!isFinite(lt))return null;
+  const cut=new Date(lt-28*864e5).toISOString().slice(0,10);
+  let base=rows[0];for(const r of rows){if(r.date<=cut)base=r;else break;}
+  const days=Math.round((lt-new Date(base.date+'T00:00:00Z').getTime())/864e5);
+  if(!(days>=1))return null;
+  const tot=r=>{const f=r.fac[name]||{};return (f.yv||0)+(f.tv||0)+(f.iv||0);};
+  return {v:Math.max(0,tot(last)-tot(base)),days};
+}
+function gxModel(P,hist){
+  const ref=gxRefTime();
+  return P.map((p,i)=>{
+    const vids=(p.videos||[]).filter(Boolean).slice().sort((a,b)=>(b.views||0)-(a.views||0));
+    const pv=k=>vids.filter(v=>gxPlat(v)===k).reduce((s,v)=>s+(v.views||0),0);
+    const f={youtube:p.yt?(p.yt.subs||0):null,tiktok:p.tiktok?(p.tiktok.followers||0):null,instagram:p.instagram?(p.instagram.followers||0):null};
+    const pvw={youtube:p.yt?(p.yt.views||0):pv('youtube'),tiktok:p.tiktok?(p.tiktok.views||0):pv('tiktok'),instagram:pv('instagram')};
+    const last=vids.map(v=>v.published).filter(Boolean).map(String).sort().pop()||null;
+    const idle=last?Math.floor((ref-new Date(last.slice(0,10)+'T12:00:00').getTime())/864e5):Infinity;
+    return {p,i,name:String(p.name),color:gxCol(p.color),foll:facFollowers(p),f,pvw,views:pvw.youtube+pvw.tiktok+pvw.instagram,
+      v28:gxViews28(p.name,hist),vids,top:vids.slice(0,GX.MOONS),last,idle:Math.max(0,idle),dormant:!(idle<=GX.IDLE_DAYS)};
+  });
+}
+/* rozlozenie: velkost planet, mesiace, polomery drah (bez prekryvu planet a prstencov susedov) */
+function gxLayout(F){
+  const maxF=Math.max(1,...F.map(f=>f.foll));
+  const maxPF=Math.max(1,...F.flatMap(f=>Object.values(f.f).map(x=>x||0)));
+  const maxMV=Math.max(1,...F.flatMap(f=>f.top.map(v=>v.views||0)));
+  const ord=F.slice().sort((a,b)=>(b.foll-a.foll)||(b.views-a.views)||(a.i-b.i));
+  let r=GX.SUN_R*2.3,prev=null;
+  ord.forEach((f,k)=>{
+    f.rank=k;f.R=2.1+3.2*Math.sqrt(f.foll/maxF);
+    f.mr=f.top.map(v=>0.2+0.6*Math.sqrt((v.views||0)/maxMV));
+    f.md=f.top.map((v,j)=>f.R*2.5+(j%4)*(f.R*0.13+0.3)+(j>3?f.R*0.07:0));   // 4 pasy, v kazdom 2 mesiace (ine sklony/fazy)
+    f.ext=Math.max(f.R*2.45,...f.md.map((d,j)=>d+f.mr[j]));
+    r+=prev?(prev.ext+f.ext)*0.76+2:f.ext;f.orbitR=r;prev=f;
+  });
+  return {ord,maxPF,outer:r+(prev?prev.ext:0)};
+}
+/* prstence platforiem v polomeroch planety: [r0,r1,alpha] — sirka aj jas ∝ √sledovatelia (globalne normovane) */
+function gxBands(f,maxPF){
+  let r=1.42;
+  return ['youtube','tiktok','instagram'].map(k=>{
+    const n=f.f[k];if(n==null)return null;
+    const q=Math.sqrt(n/maxPF),w=n>0?0.08+0.26*q:0.035,a=n>0?0.32+0.55*q:0.16,b={k,r0:r,r1:r+w,a};
+    r+=w+0.07;return b;
+  });
+}
+
+/* ---- proceduralne textury (raz, zdielane) ---- */
+function gxNoise(seed){
+  const hs=(x,y,z)=>{let h=(seed|0)^Math.imul(x|0,0x27d4eb2d)^Math.imul(y|0,0x165667b1)^Math.imul(z|0,0x9e3779b1);
+    h=Math.imul(h^h>>>15,0x85ebca6b);h=Math.imul(h^h>>>13,0xc2b2ae35);return((h^h>>>16)>>>0)/4294967296;};
+  return (x,y,z)=>{const X=Math.floor(x),Y=Math.floor(y),Z=Math.floor(z);let u=x-X,v=y-Y,w=z-Z;u=u*u*(3-2*u);v=v*v*(3-2*v);w=w*w*(3-2*w);
+    const a=hs(X,Y,Z),b=hs(X+1,Y,Z),c=hs(X,Y+1,Z),d=hs(X+1,Y+1,Z),e=hs(X,Y,Z+1),f=hs(X+1,Y,Z+1),g=hs(X,Y+1,Z+1),h=hs(X+1,Y+1,Z+1);
+    const l1=a+(b-a)*u,l2=c+(d-c)*u,l3=e+(f-e)*u,l4=g+(h-g)*u,m1=l1+(l2-l1)*v,m2=l3+(l4-l3)*v;return m1+(m2-m1)*w;};
+}
+const gxFbm=(n,x,y,z,o)=>{let s=0,a=0.5,f=1,t=0;for(let i=0;i<o;i++){s+=a*n(x*f,y*f,z*f);t+=a;a*=0.5;f*=2.02;}return s/t;};
+function gxCanvasTex(T,cv){const t=new T.CanvasTexture(cv);t.colorSpace=T.SRGBColorSpace;return t;}
+function gxPlanetTex(T,kind,seed){   // siva equirect mapa; farbu dava material (brand fabriky)
+  const W=256,H=128,cv=document.createElement('canvas');cv.width=W;cv.height=H;
+  const ctx=cv.getContext('2d'),im=ctx.createImageData(W,H),d=im.data,n=gxNoise(seed);
+  for(let y=0;y<H;y++){const lat=(y/(H-1)-0.5)*Math.PI,sy=Math.sin(lat),cy=Math.cos(lat);
+    for(let x=0;x<W;x++){const lo=x/W*Math.PI*2,px=Math.cos(lo)*cy,pz=Math.sin(lo)*cy;let g;
+      if(kind===0){const wv=gxFbm(n,px*1.8,sy*1.8,pz*1.8,3);g=0.72+0.17*Math.sin((sy*7+wv*2.4)*Math.PI)+0.08*Math.sin((sy*19+wv*3.1)*Math.PI);}
+      else if(kind===1){const f=gxFbm(n,px*2.4,sy*2.4,pz*2.4,5);g=0.66+Math.max(0,f-0.46)*1.4+0.1*(gxFbm(n,px*8+3,sy*8,pz*8,2)-0.5);}
+      else{const f=gxFbm(n,px*1.5,sy*2.8,pz*1.5,4);g=0.78+0.16*Math.sin((f*5+sy*2)*Math.PI);}
+      const c=Math.max(0,Math.min(255,Math.round(g*255))),k=(y*W+x)*4;d[k]=d[k+1]=d[k+2]=c;d[k+3]=255;}}
+  ctx.putImageData(im,0,0);return gxCanvasTex(T,cv);
+}
+function gxNebTex(T,c1,c2,seed){   // mäkká hmlovina (fbm) s radialnym vyblednutim
+  const N=192,cv=document.createElement('canvas');cv.width=cv.height=N;
+  const ctx=cv.getContext('2d'),im=ctx.createImageData(N,N),d=im.data,n=gxNoise(seed),A=gxRGB(c1),B=gxRGB(c2);
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+    const u=x/N-0.5,v=y/N-0.5,r=Math.sqrt(u*u+v*v)*2;
+    const f=gxFbm(n,u*3.2,v*3.2,0.5,5),m=Math.max(0,Math.min(1,(gxFbm(n,u*2.1+9,v*2.1+3,1.5,3)-0.3)/0.4));
+    const a=Math.min(1,Math.max(0,f-0.34)*2.4*Math.pow(Math.max(0,1-r),1.7)),k=(y*N+x)*4;
+    d[k]=A[0]+(B[0]-A[0])*m;d[k+1]=A[1]+(B[1]-A[1])*m;d[k+2]=A[2]+(B[2]-A[2])*m;d[k+3]=a*255;}
+  ctx.putImageData(im,0,0);return gxCanvasTex(T,cv);
+}
+function gxGlowTex(T){
+  const s=128,cv=document.createElement('canvas');cv.width=cv.height=s;const x=cv.getContext('2d'),gr=x.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);
+  gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(0.16,'rgba(255,255,255,.55)');gr.addColorStop(0.42,'rgba(255,255,255,.13)');gr.addColorStop(1,'rgba(255,255,255,0)');
+  x.fillStyle=gr;x.fillRect(0,0,s,s);return gxCanvasTex(T,cv);
+}
+function gxRingTex(T){
+  const s=128,cv=document.createElement('canvas');cv.width=cv.height=s;const x=cv.getContext('2d');
+  x.strokeStyle='rgba(255,255,255,.95)';x.lineWidth=5;x.beginPath();x.arc(s/2,s/2,s/2-8,0,Math.PI*2);x.stroke();return gxCanvasTex(T,cv);
+}
+function gxPointsGeo(T,n,fill){
+  const pos=new Float32Array(n*3),col=new Float32Array(n*3),sz=new Float32Array(n),ph=new Float32Array(n);
+  for(let i=0;i<n;i++)fill(i,pos,col,sz,ph);
+  const geo=new T.BufferGeometry();
+  geo.setAttribute('position',new T.BufferAttribute(pos,3));geo.setAttribute('aColor',new T.BufferAttribute(col,3));
+  geo.setAttribute('aSize',new T.BufferAttribute(sz,1));geo.setAttribute('aPhase',new T.BufferAttribute(ph,1));
+  return geo;
+}
+function gxStars(T,n,r0,r1,s0,s1,seed){   // jedna vrstva hviezd v gulovej skrupine
+  const rnd=gxRnd(seed),tint=[[1,1,1],[0.74,0.84,1],[1,0.9,0.76],[0.86,0.8,1]];
+  return gxPointsGeo(T,n,(i,p,c,s,ph)=>{
+    const u=rnd()*2-1,a=rnd()*Math.PI*2,r=r0+(r1-r0)*rnd(),q=Math.sqrt(1-u*u);
+    p[i*3]=r*q*Math.cos(a);p[i*3+1]=r*u;p[i*3+2]=r*q*Math.sin(a);
+    const t=tint[(rnd()*tint.length)|0],b=0.3+Math.pow(rnd(),3)*0.95;
+    c[i*3]=t[0]*b;c[i*3+1]=t[1]*b;c[i*3+2]=t[2]*b;s[i]=s0+(s1-s0)*Math.pow(rnd(),2.2);ph[i]=rnd();});
+}
+function gxDustGeo(T,n,seed){   // tenky prachovy disk v rovine drah (jednotkovy polomer, skaluje sa podla sustavy)
+  const rnd=gxRnd(seed);
+  return gxPointsGeo(T,n,(i,p,c,s,ph)=>{
+    const r=0.07+1.08*Math.pow(rnd(),0.8),a=rnd()*Math.PI*2;
+    p[i*3]=Math.cos(a)*r;p[i*3+1]=(rnd()+rnd()+rnd()-1.5)*0.006;p[i*3+2]=Math.sin(a)*r;
+    const b=0.1+rnd()*0.2,t=rnd();c[i*3]=b*(0.55+0.45*t);c[i*3+1]=b*0.72;c[i*3+2]=b*1.25;s[i]=0.8+rnd()*1.3;ph[i]=rnd();});
+}
+
+/* ---- DOM obal (raz; pri kazdom volani sa len presunie do kontajnera) ---- */
+function gxShell(container,opts){
+  let S=GX.shell;
+  if(!S){
+    const w=document.createElement('div');w.className='gx';
+    w.innerHTML=`<div class="gx-stage"></div>
+<div class="gx-top"><div class="gx-title gx-glass"><b>🌌 Galaxia fabrík</b><span class="gx-sum"></span></div><div class="gx-sp"></div>
+<select class="gx-jump gx-glass" aria-label="Prejsť na fabriku"></select>
+<button type="button" class="gx-btn gx-glass gx-reset" title="Späť na celý vesmír (Esc)" aria-label="Reset pohľadu">⟲<span class="gx-rt"> Reset pohľadu</span></button></div>
+<div class="gx-legend gx-glass">
+<div class="r"><span><i style="background:${GX.RING.youtube}"></i>YouTube</span><span><i style="background:${GX.RING.tiktok}"></i>TikTok</span><span><i style="background:${GX.RING.instagram}"></i>Instagram</span><span class="m">= prstence (sledovatelia)</span></div>
+<div class="m">Veľkosť planéty = sledovatelia fabriky · mesiace = top videá (veľkosť = zhliadnutia)</div>
+<div class="m">Sivá planéta + prerušovaná dráha = bez nového videa ${GX.IDLE_DAYS}+ dní</div></div>
+<div class="gx-hint">ťahaj = otáčaj · koliesko = zoom · klik na planétu = detail · Esc = späť</div>
+<div class="gx-tip" role="tooltip"></div>
+<aside class="gx-panel gx-glass" aria-hidden="true" aria-label="Detail fabriky"></aside>
+<div class="gx-load"><span class="spin" aria-hidden="true"></span> Načítavam 3D galaxiu…</div>`;
+    S=GX.shell={wrap:w,stage:w.querySelector('.gx-stage'),sum:w.querySelector('.gx-sum'),jump:w.querySelector('.gx-jump'),
+      reset:w.querySelector('.gx-reset'),tip:w.querySelector('.gx-tip'),panel:w.querySelector('.gx-panel'),load:w.querySelector('.gx-load')};
+  }
+  if(S.wrap.parentNode!==container){container.innerHTML='';container.appendChild(S.wrap);}
+  S.wrap.style.height=opts.height||'74vh';
+  return S;
+}
+
+/* ---- jednorazova inicializacia WebGL (renderer, kompozitor, pozadie, slnko, udalosti) ---- */
+function gx3d(S,L){
+  if(GX.g)return GX.g;
+  const T=L.T,st=S.stage;
+  const g={T,L,S,stage:st,panel:S.panel,tip:S.tip,t:0,running:false,raf:0,lastMs:0,inView:true,w:0,h:0,
+    ptr:{x:0,y:0,in:false,lab:null},hover:null,hoverKey:'',focus:null,tw:null,touched:false,lastInteract:0,
+    planets:[],labels:[],pick:[],own:[],root:null,sig:null,vo:null,voKey:'',panelW:340,P:[]};
+  g.RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  g.pr=Math.min(window.devicePixelRatio||1,1.5);   // bloom+MSAA su fill-rate narocne; popisky su HTML, takze ostanu ostre aj tak
+  const R=g.renderer=new T.WebGLRenderer({antialias:false,powerPreference:'high-performance',stencil:false});
+  GX.g=g;
+  R.setPixelRatio(g.pr);R.toneMapping=T.ACESFilmicToneMapping;R.toneMappingExposure=1.0;
+  const cv=R.domElement;cv.setAttribute('role','img');cv.setAttribute('aria-label','3D galaxia fabrík — planéty sú fabriky, slnko je celá sieť');
+  st.appendChild(cv);
+  const lab=document.createElement('div');lab.className='gx-labels';st.appendChild(lab);
+  g.labelR=new L.CSS2DRenderer({element:lab});
+  const sc=g.scene=new T.Scene();sc.background=new T.Color('#02040a');
+  const cam=g.camera=new T.PerspectiveCamera(40,1,0.3,9000);
+  const c=g.controls=new L.OrbitControls(cam,st);
+  Object.assign(c,{enableDamping:true,dampingFactor:0.07,rotateSpeed:0.55,zoomSpeed:0.9,panSpeed:0.7,screenSpacePanning:false,
+    minPolarAngle:0.1,maxPolarAngle:Math.PI/2-0.05,minDistance:14,maxDistance:4000,autoRotate:!g.RM,autoRotateSpeed:0.35});
+  c.addEventListener('start',()=>{g.touched=true;g.lastInteract=performance.now();c.autoRotate=false;});
+  c.addEventListener('end',()=>{g.lastInteract=performance.now();});
+  // post-processing: MSAA scena -> bloom (len jasne veci) -> tone mapping + sRGB. Popisky su HTML nad canvasom = ostre.
+  const rt=new T.WebGLRenderTarget(4,4,{type:T.HalfFloatType,samples:R.capabilities.isWebGL2?(g.pr>1.25?2:4):0});
+  const comp=g.composer=new L.EffectComposer(R,rt);
+  comp.addPass(new L.RenderPass(sc,cam));
+  g.bloom=new L.UnrealBloomPass(new T.Vector2(256,256),0.9,0.55,0.6);comp.addPass(g.bloom);
+  comp.addPass(new L.OutputPass());
+  // svetlo zo slnka + jemne vyplnove (noc na planetach nie je uplne cierna)
+  sc.add(new T.PointLight(0xfff0dc,3.4,0,0));
+  sc.add(new T.HemisphereLight(0x9fb8ff,0x170e28,0.65));
+  // zdielane geometrie / materialy / textury
+  g.sphere=new T.SphereGeometry(1,32,24);g.moonGeo=new T.SphereGeometry(1,16,12);g.ringGeo=new T.RingGeometry(1.3,2.6,128,1);
+  {const N=256,p=new Float32Array((N+1)*3),a=new Float32Array(N+1);
+    for(let i=0;i<=N;i++){const t=i/N*Math.PI*2;p[i*3]=Math.cos(t);p[i*3+2]=-Math.sin(t);a[i]=i/N;}
+    g.orbitGeo=new T.BufferGeometry();g.orbitGeo.setAttribute('position',new T.BufferAttribute(p,3));g.orbitGeo.setAttribute('aT',new T.BufferAttribute(a,1));}
+  g.tex=[0,1,2].map(k=>gxPlanetTex(T,k,101+k*57));
+  const mm=(hex,mix)=>new T.MeshStandardMaterial({color:new T.Color(hex).lerp(new T.Color('#ffffff'),mix),emissive:new T.Color(hex),emissiveIntensity:0.6,roughness:0.85,metalness:0});
+  g.moonMat={youtube:mm(GX.RING.youtube,0.5),tiktok:mm(GX.RING.tiktok,0.45),instagram:mm(GX.RING.instagram,0.5),other:mm('#9aa4b2',0.5),
+    dim:new T.MeshStandardMaterial({color:'#6b7280',emissive:new T.Color('#1f2430'),emissiveIntensity:0.4,roughness:0.9,metalness:0})};
+  // pozadie: 2 vrstvy hviezd (paralaxa) + prachovy disk + hmloviny
+  g.starMat=new T.ShaderMaterial({uniforms:{uTime:{value:0},uPR:{value:g.pr}},vertexShader:GXS.starV,fragmentShader:GXS.starF,
+    transparent:true,depthWrite:false,blending:T.AdditiveBlending});
+  g.starsNear=new T.Points(gxStars(T,1700,900,1500,1.2,3.0,11),g.starMat);
+  g.starsFar=new T.Points(gxStars(T,4200,2200,3600,0.8,2.1,29),g.starMat);
+  g.dust=new T.Points(gxDustGeo(T,2600,5),g.starMat);
+  sc.add(g.starsNear,g.starsFar,g.dust);
+  const neb=(c1,c2,seed,x,y,z,s,op)=>{const sp=new T.Sprite(new T.SpriteMaterial({map:gxNebTex(T,c1,c2,seed),transparent:true,depthWrite:false,
+    blending:T.AdditiveBlending,opacity:op}));sp.position.set(x,y,z);sp.scale.set(s,s,1);sc.add(sp);};
+  // 4 hmloviny dookola (pri auto-rotacii je vzdy nejaka v zabere); prva je za sustavou v uvodnom pohlade
+  neb('#1d4ed8','#7c3aed',3,1050,-380,-2350,2700,0.62);
+  neb('#0e7490','#be185d',7,-2300,-150,-700,2300,0.46);
+  neb('#6d28d9','#0369a1',13,-900,-350,2300,2400,0.42);
+  neb('#be185d','#1e40af',19,2300,-250,900,2200,0.4);
+  // slnko = cela siet
+  g.sunMat=new T.ShaderMaterial({uniforms:{uTime:{value:0},uPulse:{value:1}},vertexShader:GXS.sunV,fragmentShader:GXS.sunF});
+  g.sun=new T.Mesh(g.sphere,g.sunMat);g.sun.scale.setScalar(GX.SUN_R);sc.add(g.sun);
+  const glow=g.glowTex=gxGlowTex(T);
+  g.halo=new T.Sprite(new T.SpriteMaterial({map:glow,color:new T.Color('#ffb86b'),transparent:true,depthWrite:false,blending:T.AdditiveBlending,opacity:0.9}));
+  g.halo.scale.setScalar(GX.SUN_R*7);sc.add(g.halo);
+  const h2=g.halo2=new T.Sprite(new T.SpriteMaterial({map:glow,color:new T.Color('#ff7a2e'),transparent:true,depthWrite:false,blending:T.AdditiveBlending,opacity:0.22}));
+  h2.scale.setScalar(GX.SUN_R*16);sc.add(h2);
+  g.marker=new T.Sprite(new T.SpriteMaterial({map:gxRingTex(T),transparent:true,depthWrite:false,depthTest:false,blending:T.AdditiveBlending,opacity:0.9}));
+  g.marker.visible=false;g.marker.renderOrder=10;sc.add(g.marker);
+  const se=document.createElement('div');se.className='gx-lw';
+  se.innerHTML='<div class="gx-lbl sun" data-k="sun"><b>☀ Celá sieť</b><small></small></div>';
+  const so=new L.CSS2DObject(se);so.center.set(0.5,0);sc.add(so);
+  g.sunLabel={obj:so,el:se,inner:se.firstElementChild,anchor:so,r:GX.SUN_R,up:false,prio:5e8,pl:null,w:0,h:0};
+  // udalosti: hover / klik (odlisene od tahania) / popisky su klikatelne
+  const lbOf=e=>{const x=e.target&&e.target.closest&&e.target.closest('.gx-lbl');return x?x.dataset.k:null;};
+  st.addEventListener('pointerdown',e=>{g.down={x:e.clientX,y:e.clientY,t:performance.now(),lab:lbOf(e)};g.drag=true;st.classList.add('drag');});
+  st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();g.ptr.x=e.clientX-r.left;g.ptr.y=e.clientY-r.top;g.ptr.in=true;g.ptr.lab=g.drag?null:lbOf(e);});
+  st.addEventListener('pointerup',e=>{st.classList.remove('drag');g.drag=false;const d=g.down;g.down=null;
+    if(e.pointerType!=='mouse'){g.ptr.in=false;g.ptr.lab=null;}   // dotyk nema hover -> ziadny "prilepeny" tooltip
+    if(d&&Math.hypot(e.clientX-d.x,e.clientY-d.y)<6&&performance.now()-d.t<700)gxClick(g,e,d);});
+  st.addEventListener('pointercancel',()=>{st.classList.remove('drag');g.drag=false;g.down=null;});
+  st.addEventListener('pointerleave',()=>{g.ptr.in=false;g.ptr.lab=null;});
+  S.reset.addEventListener('click',()=>{g.touched=false;gxUnfocus(g);});
+  S.jump.addEventListener('change',()=>{const v=S.jump.value;S.jump.value='';const pl=v===''?null:g.planets[+v];if(pl)gxFocus(g,pl,false,true);});
+  cv.addEventListener('webglcontextlost',e=>{e.preventDefault();g.lost=true;g.running=false;},false);
+  cv.addEventListener('webglcontextrestored',()=>{g.lost=false;gxResume(g);},false);
+  if(window.ResizeObserver){g.ro=new ResizeObserver(()=>{gxResize(g);gxResume(g);});g.ro.observe(st);}
+  if(window.IntersectionObserver){g.io=new IntersectionObserver(es=>{for(const en of es){g.inView=en.isIntersecting;if(g.inView)gxResume(g);}});g.io.observe(S.wrap);}
+  if(!GX.listen){
+    GX.listen=true;
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&GX.g)gxResume(GX.g);});
+    window.addEventListener('resize',()=>{if(GX.g){gxResize(GX.g);gxResume(GX.g);}});
+    document.addEventListener('keydown',e=>{const q=GX.g;if(e.key==='Escape'&&q&&q.focus&&q.S.wrap.offsetParent!==null)gxUnfocus(q);});
+    if(window.matchMedia){const mq=matchMedia('(prefers-reduced-motion: reduce)');
+      const f=()=>{const q=GX.g;if(!q)return;q.RM=mq.matches;q.controls.autoRotate=!q.RM;};
+      if(mq.addEventListener)mq.addEventListener('change',f);else if(mq.addListener)mq.addListener(f);}
+  }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{for(const x of g.labels)x.w=0;});
+  return g;
+}
+
+/* ---- scena z dat (prestavba len ked sa data zmenia) ---- */
+function gxClear(g){
+  if(g.focus)gxGlow(g.focus,false);
+  g.hover=null;g.hoverKey='';g.marker.visible=false;g.tip.classList.remove('on');
+  for(const x of g.labels)if(x!==g.sunLabel&&x.el.parentNode)x.el.parentNode.removeChild(x.el);
+  if(g.root)g.scene.remove(g.root);
+  for(const m of g.own)m.dispose();
+  g.own=[];g.planets=[];g.labels=[];g.pick=[];g.root=null;
+}
+function gxBuild(g,P,opts){
+  const T=g.T,L=g.L,hist=opts.history||(typeof HIST!=='undefined'?HIST:[]);
+  const sig=JSON.stringify([P.map(p=>[p.name,p.color,p.niche,facFollowers(p),p.online,p.alive,p.stale,p.errors,p.sent,p.scheduled,
+    p.last_sent,p.next_due,p.yt&&p.yt.views,p.tiktok&&p.tiktok.views,(p.videos||[]).map(v=>(v&&v.id||'')+':'+(v&&v.views||0)).join(',')]),
+    (hist||[]).length,typeof DATA!=='undefined'&&DATA&&DATA.gen_at]);
+  g.P=P;
+  if(sig===g.sig)return false;
+  const keep=g.focus?g.focus.f.name:null;
+  gxClear(g);g.sig=sig;g.focus=null;
+  const F=gxModel(P,hist),lay=gxLayout(F);
+  g.outerR=lay.outer;
+  const root=g.root=new T.Group();g.scene.add(root);
+  g.labels.push(g.sunLabel);g.pick.push({kind:'sun',obj:g.sun,r:GX.SUN_R});
+  const r0=lay.ord.length?lay.ord[0].orbitR:40,grey=new T.Color('#7d8796');
+  lay.ord.forEach((f,k)=>{
+    const rnd=gxRnd(gxHash(f.name)+7),dim=f.dormant;
+    const plane=new T.Object3D();plane.rotation.set((rnd()-0.5)*0.07,0,(rnd()-0.5)*0.07);root.add(plane);
+    const col=dim?new T.Color(f.color).lerp(grey,0.8):new T.Color(f.color);
+    const orbMat=new T.ShaderMaterial({uniforms:{uColor:{value:col.clone()},uHead:{value:0},uBase:{value:dim?0.05:0.11},uTrail:{value:dim?0.14:0.55},uDash:{value:dim?1:0}},
+      vertexShader:GXS.orbV,fragmentShader:GXS.orbF,transparent:true,depthWrite:false,blending:T.AdditiveBlending});
+    const orbit=new T.Line(g.orbitGeo,orbMat);orbit.scale.set(f.orbitR,1,f.orbitR);plane.add(orbit);
+    const pivot=new T.Object3D();plane.add(pivot);
+    const tilt=new T.Object3D();tilt.rotation.set((rnd()-0.5)*0.35,0,0.12+rnd()*0.35);pivot.add(tilt);
+    const tex=g.tex[gxHash(f.name)%g.tex.length];
+    const mat=new T.MeshStandardMaterial({color:col,map:tex,emissive:col,emissiveMap:tex,emissiveIntensity:dim?0.05:0.22,roughness:0.78,metalness:0.04});
+    const body=new T.Mesh(g.sphere,mat);body.scale.setScalar(f.R);tilt.add(body);
+    const atmoMat=new T.ShaderMaterial({uniforms:{uColor:{value:col.clone()},uI:{value:dim?0.3:1.0}},vertexShader:GXS.atmoV,fragmentShader:GXS.atmoF,
+      side:T.BackSide,transparent:true,depthWrite:false,blending:T.AdditiveBlending});
+    const atmo=new T.Mesh(g.sphere,atmoMat);atmo.scale.setScalar(f.R*1.3);tilt.add(atmo);
+    // žiara v pixeloch (viditeľná v celkovom pohľade, pri priblížení zmizne)
+    const glw=new T.Sprite(new T.SpriteMaterial({map:g.glowTex,color:col,transparent:true,depthWrite:false,blending:T.AdditiveBlending,opacity:0,sizeAttenuation:false}));
+    const gs=0.02+0.0045*f.R;glw.scale.set(gs,gs,1);pivot.add(glw);g.own.push(glw.material);
+    let ringMat=null;const bands=gxBands(f,lay.maxPF);
+    if(bands.some(Boolean)){
+      const U={uDim:{value:dim?0.35:1}};
+      bands.forEach((b,j)=>{U['uC'+j]={value:new T.Color(b?GX.RING[b.k]:'#000000')};U['uB'+j]={value:new T.Vector4(b?b.r0:0,b?b.r1:0,b?b.a:0,0)};});
+      ringMat=new T.ShaderMaterial({uniforms:U,vertexShader:GXS.ringV,fragmentShader:GXS.ringF,transparent:true,depthWrite:false,side:T.DoubleSide,extensions:{derivatives:true}});
+      const ring=new T.Mesh(g.ringGeo,ringMat);ring.rotation.x=-Math.PI/2;ring.scale.setScalar(f.R);tilt.add(ring);
+    }
+    const el=document.createElement('div');el.className='gx-lw';
+    el.innerHTML=`<div class="gx-lbl${dim?' dim':''}" data-k="${k}"><b><i class="gx-dot" style="background:${f.color};color:${f.color}"></i>${esc(f.name)}</b>`+
+      `<small>${fmt(f.foll)} sledov.${dim?' · <em>💤 neaktívna</em>':''}</small></div>`;
+    const lo=new L.CSS2DObject(el);lo.center.set(0.5,1);pivot.add(lo);
+    const pl={f,k,pivot,body,mat,atmoMat,orbMat,glw,glwA:dim?0.1:0.42,moons:[],orbitR:f.orbitR,R:f.R,
+      th0:0.4+k*2.39996,w:(dim?0.35:1)*0.075*Math.sqrt(r0/f.orbitR),spin:0.1+rnd()*0.16,
+      baseEm:mat.emissiveIntensity,baseAt:atmoMat.uniforms.uI.value,baseOrb:orbMat.uniforms.uBase.value};
+    pl.label={obj:lo,el,inner:el.firstElementChild,anchor:pivot,r:f.R,up:true,prio:1e6-k,pl,w:0,h:0};
+    pl.pick={kind:'planet',obj:pivot,r:f.R,pl,f};
+    f.top.forEach((v,j)=>{
+      const mr=gxRnd(gxHash((v.id||'')+(v.title||'')+j)+j*977);
+      const mp=new T.Object3D();mp.rotation.set((mr()-0.5)*1.0,mr()*6.283,(mr()-0.5)*0.6);pivot.add(mp);
+      const pk=gxPlat(v),mesh=new T.Mesh(g.moonGeo,dim?g.moonMat.dim:(g.moonMat[pk]||g.moonMat.other));mesh.scale.setScalar(f.mr[j]);mp.add(mesh);
+      const d=f.md[j];pl.moons.push({mesh,d,ph:mr()*6.283,w:(dim?0.35:1)*0.62*Math.sqrt(5/d)});
+      g.pick.push({kind:'moon',obj:mesh,r:f.mr[j],v,f,pl});
+    });
+    const th=pl.th0+pl.w*g.t;pivot.position.set(Math.cos(th)*f.orbitR,0,-Math.sin(th)*f.orbitR);
+    g.planets.push(pl);g.labels.push(pl.label);g.pick.push(pl.pick);
+    g.own.push(mat,atmoMat,orbMat);if(ringMat)g.own.push(ringMat);
+  });
+  root.updateMatrixWorld(true);
+  g.dust.scale.setScalar(g.outerR);
+  const tf=F.reduce((s,f)=>s+f.foll,0),tv=F.reduce((s,f)=>s+f.views,0);
+  g.tot={foll:tf,views:tv,n:F.length};
+  g.sunLabel.inner.querySelector('small').textContent=`${fmt(tf)} sledov. · ${F.length} ${gxFabr(F.length)}`;g.sunLabel.w=0;
+  g.S.sum.textContent=`${F.length} ${gxFabr(F.length)} · ${fmt(tf)} sledov. · ${fmt(tv)} zhliad.`;
+  g.S.jump.innerHTML='<option value="">Prejsť na fabriku…</option>'+
+    g.planets.map(pl=>`<option value="${pl.k}">${esc(pl.f.name)} · ${fmt(pl.f.foll)} sledov.</option>`).join('');
+  gxHome(g);
+  const kp=keep&&g.planets.find(x=>x.f.name===keep);
+  if(kp)gxFocus(g,kp,true);
+  else{gxPanel(g,null);if(!g.touched||keep||!g.built){g.controls.minDistance=14;gxApplyHome(g);}}
+  g.built=true;
+  return true;
+}
+
+/* ---- kamera: celkovy pohlad, prelet na planetu, sledovanie, posun kvoli panelu ---- */
+function gxHome(g){
+  const T=g.T,R=Math.max(60,g.outerR||120),a=(g.w||800)/(g.h||500),tv=Math.tan(T.MathUtils.degToRad(g.camera.fov)/2),th=tv*a;
+  const narrow=(g.w||800)<700,el=T.MathUtils.degToRad(narrow?50:33);
+  const dist=Math.max(R*(narrow?0.74:1.06)/th,R*(Math.sin(el)*1.22+0.1)/tv);   // mobil: vonkajšie dráhy smú presahovať okraj
+  g.home=new T.Spherical(dist,Math.PI/2-el,T.MathUtils.degToRad(-24));
+  g.controls.maxDistance=dist*2.3;g.controls.maxTargetRadius=R*1.1;g.labelMax=dist*1.9;
+}
+function gxApplyHome(g){g.tw=null;g.controls.enabled=true;g.controls.target.set(0,0,0);g.camera.position.setFromSpherical(g.home);g.camera.lookAt(0,0,0);}
+function gxTween(g,tgt,s1,instant){
+  const T=g.T,c=g.controls,t0=c.target.clone(),s0=new T.Spherical().setFromVector3(g.camera.position.clone().sub(t0));
+  g.tw={p:0,dur:(instant||g.RM)?0:1.1,t0,s0,s1,tgt};c.enabled=false;
+}
+function gxTweenStep(g,dt){
+  const w=g.tw,T=g.T;w.p=w.dur?Math.min(1,w.p+dt/w.dur):1;
+  const x=w.p,e=x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+  g.controls.target.lerpVectors(w.t0,w.tgt(),e);
+  const dth=Math.atan2(Math.sin(w.s1.theta-w.s0.theta),Math.cos(w.s1.theta-w.s0.theta));
+  const r=Math.exp(Math.log(Math.max(1e-3,w.s0.radius))*(1-e)+Math.log(Math.max(1e-3,w.s1.radius))*e);
+  const s=g._ts||(g._ts=new T.Spherical());s.set(r,w.s0.phi+(w.s1.phi-w.s0.phi)*e,w.s0.theta+dth*e);
+  g.camera.position.setFromSpherical(s).add(g.controls.target);g.camera.lookAt(g.controls.target);
+  if(w.p>=1){g.tw=null;g.controls.enabled=true;g.lastFocus=g.focus?g.controls.target.clone():null;}
+}
+function gxFollow(g){   // zameraná planeta obieha -> kamera ide s ňou (používateľ môže ďalej otáčať/zoomovať)
+  if(!g.focus)return;
+  const P=g.focus.pivot.getWorldPosition(g._fp||(g._fp=new g.T.Vector3()));
+  if(g.lastFocus){const d=(g._fd||(g._fd=new g.T.Vector3())).subVectors(P,g.lastFocus);g.camera.position.add(d);g.controls.target.add(d);g.lastFocus.copy(P);}
+  else g.lastFocus=P.clone();
+}
+function gxFocus(g,pl,instant,kb){
+  const T=g.T;
+  if(g.focus&&g.focus!==pl)gxGlow(g.focus,false);
+  g.focus=pl;g.lastFocus=null;gxGlow(pl,true);gxPanel(g,pl,kb);
+  const P=pl.pivot.getWorldPosition(new T.Vector3()),thSun=Math.atan2(-P.x,-P.z);   // kamera zo strany slnka = osvetlena pologula
+  g.controls.minDistance=Math.max(pl.R*1.8,3);g.controls.autoRotateSpeed=0.22;
+  // vzdialenost tak, aby sa planeta s prstencami a mesiacmi zmestila do volnej casti (vedla panelu / nad panelom na mobile)
+  const tv=Math.tan(T.MathUtils.degToRad(g.camera.fov)/2),wide=g.w>=720;
+  const vis=Math.max(120,Math.min(wide?g.w-g.panelW-24:g.w,wide?g.h-64:g.h*0.46));
+  const dist=Math.max(pl.f.ext,pl.R*2.4)*0.83*g.h/(tv*vis);
+  const tp=g._ft||(g._ft=new T.Vector3());
+  gxTween(g,()=>pl.pivot.getWorldPosition(tp),new T.Spherical(dist,T.MathUtils.degToRad(60),thSun+1.1),instant);
+}
+function gxUnfocus(g,instant){
+  if(g.focus)gxGlow(g.focus,false);
+  g.focus=null;g.lastFocus=null;gxPanel(g,null);
+  g.controls.minDistance=14;g.controls.autoRotateSpeed=0.35;
+  const Z=new g.T.Vector3();gxTween(g,()=>Z,g.home.clone(),instant);
+}
+function gxViewOffset(g,dt,snap){   // otvoreny panel -> planeta sa vycentruje vo volnej casti (vlavo / nad panelom na mobile)
+  const want=g.focus?(g.w>=720?{x:Math.round(Math.min(g.w*0.22,g.panelW/2+8)),y:0}:{x:0,y:Math.round(g.h*0.2)}):{x:0,y:0};
+  if(!g.vo)g.vo={x:0,y:0};
+  const k=(snap||g.RM)?1:1-Math.exp(-(dt||0.016)*7);
+  let nx=g.vo.x+(want.x-g.vo.x)*k,ny=g.vo.y+(want.y-g.vo.y)*k;
+  if(Math.abs(nx-want.x)<0.25&&Math.abs(ny-want.y)<0.25){nx=want.x;ny=want.y;}
+  g.vo.x=nx;g.vo.y=ny;
+  const key=nx.toFixed(1)+','+ny.toFixed(1);if(key===g.voKey)return;g.voKey=key;
+  if(!nx&&!ny)g.camera.clearViewOffset();else g.camera.setViewOffset(g.w,g.h,nx,ny,g.w,g.h);
+}
+function gxResize(g){
+  const w=g.stage.clientWidth,h=g.stage.clientHeight;
+  if(!w||!h||(w===g.w&&h===g.h))return;
+  g.w=w;g.h=h;g.renderer.setSize(w,h,false);g.composer.setSize(w,h);g.labelR.setSize(w,h);
+  g.camera.aspect=w/h;g.camera.updateProjectionMatrix();g.voKey='';gxViewOffset(g,0,true);
+  g.starMat.uniforms.uPR.value=g.pr;
+  if(g.built){gxHome(g);if(!g.touched&&!g.focus&&!g.tw)gxApplyHome(g);}
+}
+
+/* ---- hover / klik ---- */
+function gxPick(g,x,y){   // vyber v obrazovkovom priestore (tolerantne aj k malym planetam a mesiacom)
+  const T=g.T,cam=g.camera,v=g._pv||(g._pv=new T.Vector3()),wp=g._pw||(g._pw=new T.Vector3());
+  const tanH=Math.tan(T.MathUtils.degToRad(cam.fov)/2),hh=g.h/2;let best=null,bd=Infinity;
+  for(const it of g.pick){
+    it.obj.getWorldPosition(wp);const dist=cam.position.distanceTo(wp);
+    v.copy(wp).project(cam);if(v.z<-1||v.z>1)continue;
+    const sx=(v.x*0.5+0.5)*g.w,sy=(-v.y*0.5+0.5)*g.h,rp=it.r/(dist*tanH)*hh+(it.kind==='moon'?4:8);
+    if((sx-x)*(sx-x)+(sy-y)*(sy-y)<=rp*rp&&dist<bd){best=it;bd=dist;}
+  }
+  return best;
+}
+function gxClick(g,e,d){
+  let h=null;
+  if(d.lab!=null)h=d.lab==='sun'?{kind:'sun'}:(g.planets[+d.lab]?g.planets[+d.lab].pick:null);
+  else{const r=g.stage.getBoundingClientRect();h=gxPick(g,e.clientX-r.left,e.clientY-r.top);}
+  if(!h){if(g.focus)gxUnfocus(g);return;}
+  if(h.kind==='sun'){gxUnfocus(g);return;}
+  if(h.pl&&h.pl!==g.focus)gxFocus(g,h.pl);
+}
+function gxGlow(pl,on){
+  pl.mat.emissiveIntensity=on?pl.baseEm*2.4+0.15:pl.baseEm;
+  pl.atmoMat.uniforms.uI.value=on?pl.baseAt*1.6+0.25:pl.baseAt;
+  pl.orbMat.uniforms.uBase.value=on?Math.max(0.2,pl.baseOrb*2.2):pl.baseOrb;
+}
+function gxHover(g){
+  let h=null;
+  if(g.ptr.in&&!g.drag){
+    const k=g.ptr.lab;
+    if(k!=null)h=k==='sun'?g.pick[0]:(g.planets[+k]?g.planets[+k].pick:null);
+    else h=gxPick(g,g.ptr.x,g.ptr.y);
+  }
+  const key=h?h.kind+(h.pl?h.pl.k:'')+(h.v?'|'+(h.v.id||h.v.title):''):'';
+  if(key!==g.hoverKey){g.hoverKey=key;gxSetHover(g,h);}
+  if(h)gxTipPos(g);
+}
+function gxSetHover(g,h){
+  const a=g.hover&&g.hover.pl,b=h&&h.pl;g.hover=h;
+  if(a&&a!==b)gxGlow(a,a===g.focus);
+  if(b)gxGlow(b,true);
+  g.stage.classList.toggle('hov',!!h);
+  g.marker.visible=!!(h&&h.kind==='moon');
+  if(h){g.tip.innerHTML=gxTipHtml(g,h);g.tip.classList.add('on');g.tipW=g.tip.offsetWidth;g.tipH=g.tip.offsetHeight;}
+  else g.tip.classList.remove('on');
+  for(const x of g.labels)x.inner.classList.toggle('hot',!!h&&(x.pl?x.pl===b:h.kind==='sun'));
+}
+function gxTipPos(g){
+  let x=g.ptr.x+16,y=g.ptr.y+18;const w=g.tipW||200,h=g.tipH||60;
+  if(x+w>g.w-8)x=g.ptr.x-w-12;if(y+h>g.h-8)y=g.ptr.y-h-12;x=Math.max(8,x);y=Math.max(8,y);
+  g.tip.style.transform=`translate(${x|0}px,${y|0}px)`;
+}
+function gxTipHtml(g,h){
+  if(h.kind==='sun'){const t=g.tot||{foll:0,views:0,n:0};
+    return `<b>☀ Celá sieť</b><br><span class="m">${fmt(t.foll)} sledov. · ${fmt(t.views)} zhliad. · ${t.n} ${gxFabr(t.n)}</span>`;}
+  const f=h.f;
+  if(h.kind==='moon'){const v=h.v,k=gxPlat(v);
+    return `<b>${PI[k]||'🎬'} ${esc(String(v.title||'(bez názvu)').slice(0,80))}</b><br><span class="m">${fmt(v.views||0)} zhliad. · ${esc(f.name)}${v.published?' · '+fmtDate(String(v.published)):''}</span>`;}
+  return `<b><span style="color:${f.color}">●</span> ${esc(f.name)}</b> <span class="m">· ${esc(f.p.niche||'')}</span><br>`+
+    `${fmt(f.foll)} sledov. · ${f.v28?`+${fmt(f.v28.v)} zhliad. za ${f.v28.days} d`:`${fmt(f.views)} zhliad. spolu`}`+
+    (f.dormant?`<br><span class="m">💤 ${f.last?`bez nového videa ${f.idle} d`:'zatiaľ bez videí'}</span>`:'')+
+    `<br><span class="m">klik = detail</span>`;
+}
+
+/* ---- bocny panel ---- */
+function gxPanelHtml(f){
+  const p=f.p,Lk=p.links||{},hh=facHealth(p);
+  const kpi=(l,v)=>`<div class="gx-kpi"><span>${l}</span><b>${v}</b></div>`;
+  const chip=(c,t)=>`<span class="gx-chip ${c}">${t}</span>`;
+  const prow=k=>{const n=f.f[k],on=n!=null;
+    return `<div class="gx-prow"><span class="pi" style="--c:${GX.RING[k]}">${PI[k]} ${PN[k]}</span>`+
+      `<span>${on?fmt(n):'—'}<small> ${k==='youtube'?'odber.':'sledov.'}</small></span>`+
+      `<span>${on||f.pvw[k]?fmt(f.pvw[k]):'—'}<small> zhliad.</small></span>`+
+      (Lk[k]?`<a href="${esc(Lk[k])}" target="_blank" rel="noopener noreferrer" title="Otvoriť ${PN[k]}" aria-label="Otvoriť ${PN[k]}">↗</a>`:'<span></span>')+`</div>`;};
+  const vids=f.vids.slice(0,5).map(v=>{const k=gxPlat(v);
+    return `<li><a href="${esc(v.link||'#')}" target="_blank" rel="noopener noreferrer"><span>${PI[k]||'🎬'}</span>`+
+      `<span class="t">${esc(String(v.title||'(bez názvu)'))}</span><span class="v">${fmt(v.views||0)}</span></a></li>`;}).join('')
+    ||'<li class="muted" style="font-size:12.5px;padding:6px 0">Zatiaľ žiadne videá.</li>';
+  const act=f.dormant?chip('warn',`💤 ${f.last?'bez videa '+f.idle+' d':'bez videí'}`):chip('ok','● aktívna');
+  return `<div class="gx-ph"><span class="dot" style="background:${f.color};color:${f.color}"></span>`+
+    `<div style="min-width:0"><h3>${esc(f.name)}</h3><div class="n">${esc(p.niche||'')}</div></div>`+
+    `<button type="button" class="gx-x" aria-label="Zavrieť detail (Esc)">×</button></div>`+
+    `<div class="gx-chips">${act}${chip(p.online?'ok':'',p.online?'Buffer online':'Buffer offline')}`+
+    `${chip(p.alive?'ok':'',p.alive?'alive':'nie alive')}${p.stale?chip('warn','stav z cache'):''}${(p.errors||0)>0?chip('bad','chyby: '+p.errors):''}</div>`+
+    `<div class="gx-kpis">${kpi('Sledovatelia',fmt(f.foll))}${kpi(f.v28?`Zhliad. ${f.v28.days} d`:'Zhliad. 28 d',f.v28?'+'+fmt(f.v28.v):'—')}${kpi('Zhliad. spolu',fmt(f.views))}</div>`+
+    `<div class="gx-sec">Platformy</div>${['youtube','tiktok','instagram'].map(prow).join('')}`+
+    `<div class="gx-sec">Stav</div><div class="gx-st">${hh[0]} ${esc(hh[1])}</div>`+
+    `<div class="gx-kv"><span>Posledný post</span><b>${gxDT(p.last_sent)}</b></div>`+
+    `<div class="gx-kv"><span>Ďalší naplánovaný</span><b>${gxDT(p.next_due)}</b></div>`+
+    `<div class="gx-kv"><span>Naplánované / odoslané</span><b>${p.scheduled||0} / ${p.sent||0}</b></div>`+
+    `<div class="gx-kv"><span>Chyby v Bufferi</span><b class="${(p.errors||0)>0?'bad':''}">${p.errors||0}</b></div>`+
+    `<div class="gx-kv"><span>Posledné video</span><b>${f.last?fmtDate(String(f.last).slice(0,10)):'—'}</b></div>`+
+    `<div class="gx-sec">Top videá</div><ol class="gx-vids">${vids}</ol>`;
+}
+function gxPanel(g,pl,kb){
+  const P=g.panel;
+  if(!pl){P.classList.remove('on');P.setAttribute('aria-hidden','true');return;}
+  P.innerHTML=gxPanelHtml(pl.f);P.classList.add('on');P.setAttribute('aria-hidden','false');P.scrollTop=0;
+  const x=P.querySelector('.gx-x');
+  if(x){x.addEventListener('click',()=>gxUnfocus(g));if(kb)try{x.focus({preventScroll:true});}catch(e){}}
+  g.panelW=P.offsetWidth||340;
+}
+
+/* ---- popisky: vzdy citatelne (HTML), bez prekryvu (priorita: zamerana > hover > slnko > vacsia fabrika) ---- */
+function gxDeclutter(g){
+  const T=g.T,cam=g.camera,v=g._dv||(g._dv=new T.Vector3()),W=g.w,H=g.h,tanH=Math.tan(T.MathUtils.degToRad(cam.fov)/2);
+  const hp=g.hover&&g.hover.pl,pr=x=>!x.pl?x.prio:x.pl===g.focus?1e9:x.pl===hp?9e8:x.prio;
+  const list=g.labels.slice().sort((a,b)=>pr(b)-pr(a)),placed=[];
+  for(const x of list){
+    if(!x.w&&x.el.isConnected&&x.el.style.display!=='none'){x.w=x.el.offsetWidth;x.h=x.el.offsetHeight;}
+    x.anchor.getWorldPosition(v);const dist=cam.position.distanceTo(v);v.project(cam);
+    let show=v.z>-1&&v.z<1&&x.w>0,off=0,dx=0;
+    if(show&&x.pl&&x.pl!==g.focus&&x.pl!==hp&&dist>g.labelMax)show=false;
+    if(show){
+      const sx=(v.x*0.5+0.5)*W,sy=(-v.y*0.5+0.5)*H;off=x.r/(dist*tanH)*(H/2)+6;
+      const y0=x.up?sy-off-x.h:sy+off;
+      if(sx+x.w/2<0||sx-x.w/2>W||y0+x.h<0||y0>H)show=false;
+      else{
+        dx=Math.max(6-(sx-x.w/2),Math.min(0,W-6-(sx+x.w/2)));   // na okraji posun popisok dnu, nech nie je orezany
+        const rc={x0:sx+dx-x.w/2-3,x1:sx+dx+x.w/2+3,y0:y0-2,y1:y0+x.h+2};
+        if(placed.some(q=>q.x0<rc.x1&&q.x1>rc.x0&&q.y0<rc.y1&&q.y1>rc.y0))show=false;else placed.push(rc);
+      }
+    }
+    if(show!==x.shown){x.shown=show;x.el.classList.toggle('off',!show);}
+    if(show){const o=Math.round(x.up?-off:off),d=Math.round(dx),key=o*10000+d;
+      if(key!==x.off){x.off=key;x.inner.style.transform=`translate(${d}px,${o}px)`;}}
+  }
+}
+
+/* ---- animacna slucka (bezi len ked je galaxia naozaj vidiet) ---- */
+function gxUpdate(g,dt,rdt){
+  const t=g.t;
+  g.starsNear.rotation.y=t*0.004;g.starsFar.rotation.y=t*0.0015;g.dust.rotation.y=t*0.008;
+  g.starMat.uniforms.uTime.value=t;
+  const ps=Math.sin(t*1.25);
+  g.sunMat.uniforms.uTime.value=t;g.sunMat.uniforms.uPulse.value=1+0.05*ps;g.halo.scale.setScalar(GX.SUN_R*7*(1+0.04*ps));
+  const ds=g.camera.position.length(),cl=x=>Math.max(0,Math.min(1,x));   // zblízka by halo slnka zaplavilo celý záber
+  g.halo.material.opacity=0.9*cl((ds-30)/110);g.halo2.material.opacity=0.22*cl((ds-90)/260);
+  for(const pl of g.planets){
+    const th=pl.th0+pl.w*t;pl.pivot.position.set(Math.cos(th)*pl.orbitR,0,-Math.sin(th)*pl.orbitR);
+    pl.body.rotation.y=t*pl.spin;
+    const hd=th/(Math.PI*2);pl.orbMat.uniforms.uHead.value=hd-Math.floor(hd);
+    for(const m of pl.moons){const a=m.ph+m.w*t;m.mesh.position.set(Math.cos(a)*m.d,0,-Math.sin(a)*m.d);}
+  }
+  if(g.root)g.root.updateMatrixWorld();
+  const wp=g._uw||(g._uw=new g.T.Vector3());
+  for(const pl of g.planets){pl.pivot.getWorldPosition(wp);pl.glw.material.opacity=pl.glwA*cl((g.camera.position.distanceTo(wp)-60)/220);}
+  if(g.tw)gxTweenStep(g,rdt);else{gxFollow(g);g.controls.update(dt);}
+  if(!g.RM&&!g.controls.autoRotate&&!g.tw&&performance.now()-g.lastInteract>8000)g.controls.autoRotate=true;
+  gxViewOffset(g,rdt,false);
+  g.camera.updateMatrixWorld();
+  gxHover(g);
+  if(g.marker.visible&&g.hover&&g.hover.obj){g.hover.obj.getWorldPosition(g.marker.position);const s=g.hover.r*4.2;g.marker.scale.set(s,s,1);}
+}
+function gxPerf(g,dt){   // adaptivna kvalita: dlhodobo < ~45 fps -> nizsie rozlisenie (az po 1.0)
+  if(!dt)return;g.ema=g.ema?g.ema*0.95+dt*0.05:dt;g.pf=(g.pf||0)+1;
+  if(g.pf>90&&g.ema>1/45&&g.pr>1){g.pr=Math.max(1,g.pr-0.25);g.pf=0;g.renderer.setPixelRatio(g.pr);g.composer.setPixelRatio(g.pr);g.w=0;gxResize(g);}
+}
+function gxTick(ms){
+  const g=GX.g;if(!g)return;g.raf=0;if(!g.running)return;
+  const S=g.S;
+  if(document.hidden||g.lost||!S.wrap.isConnected||S.wrap.offsetParent===null||!g.inView){g.running=false;return;}
+  try{
+    const raw=g.lastMs?Math.max(0,(ms-g.lastMs)/1000):0,dt=Math.min(0.1,raw);g.lastMs=ms;
+    g.t+=g.RM?0:dt;
+    gxUpdate(g,dt,Math.min(0.25,raw));   // prelet kamery ide v realnom case aj pri nizkom fps
+    g.composer.render(dt);
+    g.labelR.render(g.scene,g.camera);
+    gxDeclutter(g);
+    if(!g.shown){g.shown=true;S.load.classList.add('done');}
+    gxPerf(g,dt);
+  }catch(e){gxFail(S.wrap.parentNode,g.P,{height:S.wrap.style.height},e,true);return;}
+  g.raf=requestAnimationFrame(gxTick);
+}
+function gxResume(g){
+  if(!g||g.running||g.lost||document.hidden||!g.built)return;
+  const w=g.S.wrap;if(!w.isConnected||w.offsetParent===null)return;
+  g.running=true;g.lastMs=0;g.raf=requestAnimationFrame(gxTick);
+}
+function gxFail(container,P,opts,e,permanent){
+  try{console.warn('[galaxia] 3D nedostupné, zobrazujem 2D:',(e&&e.message)||e);}catch(_){}
+  if(permanent)GX.failed=true;
+  const g=GX.g;GX.g=null;
+  if(g){try{g.running=false;if(g.raf)cancelAnimationFrame(g.raf);if(g.ro)g.ro.disconnect();if(g.io)g.io.disconnect();
+    g.controls.dispose();g.renderer.dispose();g.renderer.forceContextLoss();}catch(_){}}
+  if(GX.shell){try{GX.shell.wrap.remove();}catch(_){}GX.shell=null;}
+  if(!container)return;
+  try{renderGalaxy2D(container,(P||[]).filter(p=>p&&p.name),opts||{});}
+  catch(_){container.innerHTML='<div class="empty">Galaxiu sa nepodarilo zobraziť.</div>';}
+}
+
+/* verejne API — volane zo show('galaxy'); bezpecne opakovane (renderer sa znovu pouzije, scena sa prestavi len pri zmene dat) */
+window.renderGalaxy=function(container,projects,opts){
+  opts=opts||{};
+  try{
+    if(!container)return;
+    const P=(projects||[]).filter(p=>p&&p.name);
+    if(!P.length){
+      if(GX.g)GX.g.running=false;
+      if(GX.shell&&GX.shell.wrap.parentNode===container)GX.shell.wrap.remove();
+      container.innerHTML='<div class="empty">Galaxia sa objaví po načítaní dát.</div>';return;
+    }
+    if(GX.failed||!gxWebGL()){renderGalaxy2D(container,P,opts);return;}
+    if(window._galRaf){cancelAnimationFrame(window._galRaf);window._galRaf=0;}
+    const S=gxShell(container,opts),my=++GX.call;
+    gxLoad().then(L=>{
+      if(my!==GX.call||GX.failed||!S.wrap.isConnected)return;
+      try{const g=gx3d(S,L);gxResize(g);gxBuild(g,P,opts);gxResume(g);}
+      catch(e){gxFail(container,P,opts,e,true);}
+    },e=>{if(my===GX.call)gxFail(container,P,opts,e,false);});
+  }catch(e){gxFail(container,projects,opts,e,true);}
 };
 
 /* ---------------- INFRA ---------------- */
+const TABS=['overview','galaxy','growth','factories','winners','platforms','docs','lumora','comments','spotify','episodary'];
+// URL hash = aktivny tab (#galaxy otvori Galaxiu hned po nacitani; reload/zdielany link ostane na tom istom tabe)
+function tabFromHash(){let h='';try{h=decodeURIComponent((location.hash||'').slice(1));}catch(e){}return TABS.includes(h)?h:null;}
 function show(t){
+  if(!TABS.includes(t))t='overview';
   $$('.tab').forEach(b=>{const on=b.dataset.t===t; b.classList.toggle('on',on); b.setAttribute('aria-selected',on?'true':'false');});
-  ['overview','galaxy','growth','factories','winners','platforms','docs','lumora','comments','spotify','episodary'].forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  TABS.forEach(s=>$('#'+s).classList.toggle('hide-tab',s!==t));
+  if(location.hash.slice(1)!==t){try{history.replaceState(null,'','#'+t);}catch(e){}}
+  if(!DATA)return;   // klik pred nacitanim dat: load() potom vyrenderuje aktivny tab
   if(t==='galaxy')renderGalaxy($('#galaxy'),DATA.projects,{height:'74vh'});
   if(t==='growth')renderGrowth(); if(t==='factories')renderFactories(); if(t==='winners')renderWinners();
   if(t==='platforms')renderPlatforms(); if(t==='docs')renderDocs(); if(t==='lumora')renderLumora(); if(t==='comments')renderComments();
   if(t==='spotify')renderSpotify(); if(t==='episodary')renderEpisodary();
 }
 $$('.tab').forEach(b=>b.onclick=()=>show(b.dataset.t));
+window.addEventListener('hashchange',()=>{const t=tabFromHash();if(t&&t!==$('.tab.on')?.dataset.t)show(t);});
 async function refresh(force){
   const b=$('#refresh'); b.innerHTML='<span class="spin" aria-hidden="true"></span> Obnovujem…'; b.disabled=true;
   // manualne tlacidlo -> ?force=1 (vzdy prezbieraj); automaticky on-load -> mekky (server prezbiera len ak su data stale >REFRESH_HOURS)
@@ -823,7 +1629,7 @@ async function load(){
     return;
   }
   renderOverview();
-  const on=$('.tab.on')?.dataset.t||'overview'; if(on!=='overview')show(on);
+  const on=tabFromHash()||$('.tab.on')?.dataset.t||'overview'; if(on!=='overview')show(on);
 }
 load();
 </script></body></html>
