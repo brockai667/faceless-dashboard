@@ -158,3 +158,36 @@ full pytest suite still green after the `generate.py`/`server.py` changes.
   handling, UI polish.
 
 (Further entries appended as work proceeds.)
+
+## 29.9.2026 — fix-channels (Part 2 views, renamed accounts, connection status)
+
+- `app.html`: "views since 28.9." is now the sum of per-video views with `published` >= Part 2 start
+  (`part2Views(plat)`). The old "live totals minus history row" was always 0 (channel counters and the
+  held maxima never drop after old videos were deleted). New "Stav účtov" card, manual-status chips and a
+  reason text instead of the bare "nepripojené" on factory cards (old `data.json` without `conn` still renders).
+- `generate.py`: tolerant account matching (`_norm_handle`, `resolve_factory`, `IG_ALIASES`; renamed
+  MindBlownDaily accounts and the new ColdCase TikTok), explicit `TIKTOK_HANDLE`, per-platform
+  `p["conn"]` (`ok|no_account|token_error|no_token`) and manual `ACCOUNT_STATUS` -> `p["status"]`.
+- `tiktok.py`: `token_labels(root)` returns the KEYS of `tiktok_tokens.json` only, never token values.
+- `test_instagram.py::test_fetch_all_refreshes_token_near_expiry` was already failing before this change
+  (stale since `refresh_tokens()` was split out of `fetch_all()`).
+
+### Follow-ups (same day)
+
+- YouTube has its own connection notes (`CONN_NOTES_YT`: API key / channel, not account authorisation).
+- TikTok identity: `tiktok.fetch_all` keys accounts by `display_name`, which often differs from the username
+  (`unexplained`, `DisciplineDaily`, `Cold Case Daily`). `stats` now also carries `_label` (token key) and
+  `_username` (parsed from the first video's `share_url`, now a requested field); `resolve_tiktok` tries
+  username -> label -> display name. New aliases, plus a reverse-containment rule in `resolve_factory`
+  (key >= 8 chars contained in a mapping key / factory name; ambiguous -> None).
+- Part-2 sums without list caps: `p["p2"] = {start, youtube, tiktok, instagram}` computed in `generate.py`
+  (start from `DASH_HISTORY_START`, default 2026-09-28). YouTube over the untrimmed list
+  (`yt_videos(out_all=...)`), TikTok via `fetch_all(since=...)` -> `stats["views_since"]` over all pages,
+  Instagram over all fetched media (`MEDIA_LIMIT` 15 -> 50). `app.html` `part2Views` uses `p.p2` when every
+  project has it, else the per-video sum.
+- `tk_labels` / `ig_tokens_status` are defined at the top of `main()`; a failing `annotate_accounts` no longer
+  stops the run.
+- Tests: 143 pass (was 76 before this work), the same 1 pre-existing failure.
+- Limits that remain: YouTube = newest 250 uploads, Instagram = newest 50 posts per account (one page),
+  TikTok = up to 800 videos. Watch the run time: Instagram now makes up to 50 insights calls per account on the
+  daily refresh, and `server.py` `run_generate` kills `generate.py` after 240 s.

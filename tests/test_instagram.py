@@ -112,8 +112,10 @@ def test_fetch_all_media_fetch_failure_still_returns_stats(tmp_root, monkeypatch
     assert out["realname"]["stats"]["followers_count"] == 10
 
 
-def test_fetch_all_refreshes_token_near_expiry(tmp_root, monkeypatch):
-    tokens = {"acct": {"access_token": "old", "_refreshed_at": 0, "expires_in": 100}}
+def test_refresh_tokens_refreshes_token_near_expiry(tmp_root, monkeypatch):
+    """Obnova tokenov je od commitu 620d797 v refresh_tokens() (nie vo fetch_all); token s 5 dnami do konca sa predlzi."""
+    import time
+    tokens = {"acct": {"access_token": "old", "_refreshed_at": time.time() - 55 * 86400, "expires_in": 60 * 86400}}
     _write_tokens(tmp_root, tokens)
 
     def fake_urlopen(req, timeout=30):
@@ -125,7 +127,58 @@ def test_fetch_all_refreshes_token_near_expiry(tmp_root, monkeypatch):
         return make_response({"username": "realname", "followers_count": 1, "media_count": 0})
 
     monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
-    instagram.fetch_all(str(tmp_root))
+    assert instagram.refresh_tokens(str(tmp_root)) == {"acct": "ok"}
 
     saved = json.loads((tmp_root / "ig_tokens.json").read_text(encoding="utf-8"))
     assert saved["acct"]["access_token"] == "new"
+
+
+def test_fetch_all_requests_50_media_per_account(tmp_root, monkeypatch):
+    """Zoznam prispevkov (z neho sa pocita Part-2 sucet) uz nie je orezany na 15 — limit je 50."""
+    assert instagram.MEDIA_LIMIT == 50
+    _write_tokens(tmp_root, {"acct": {
+        "access_token": "tok", "_refreshed_at": 9_999_999_999, "expires_in": 5_184_000,
+    }})
+    seen = []
+
+    def fake_urlopen(req, timeout=30):
+        url = req.full_url if hasattr(req, "full_url") else req
+        seen.append(url)
+        if "me/media" in url:
+            return make_response({"data": []})
+        return make_response({"username": "realname", "followers_count": 1, "media_count": 0})
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    instagram.fetch_all(str(tmp_root))
+    media_urls = [u for u in seen if "/me/media?" in u]
+    assert len(media_urls) == 1 and "limit=50" in media_urls[0]
+
+
+def test_fetch_all_insights_only_for_newest_and_since(tmp_path, monkeypatch):
+    """Zhliadnutia (insights) sa citaju len pre najnovsich 15 videi + videa od 'since' (Part 2)."""
+    import json
+    import instagram
+    (tmp_path / "ig_tokens.json").write_text(
+        json.dumps({"acc": {"access_token": "t", "expires_in": 5184000, "_refreshed_at": 1}}), encoding="utf-8")
+    media = [{"id": f"m{i}", "media_type": "VIDEO", "media_product_type": "REELS",
+              "timestamp": "2026-09-29T10:00:00+0000" if i in (2, 20, 30) else "2026-09-01T10:00:00+0000"}
+             for i in range(40)]
+
+    def fake_get(path, params):
+        if path == "me":
+            return {"username": "acc", "followers_count": 1, "media_count": 40}
+        if path == "me/media":
+            return {"data": [dict(m) for m in media]}
+        raise AssertionError(path)
+
+    calls = []
+    monkeypatch.setattr(instagram, "_get", fake_get)
+    monkeypatch.setattr(instagram, "_media_views", lambda mid, tok: (calls.append(mid), 7)[1])
+    out = instagram.fetch_all(str(tmp_path), since="2026-09-28")
+    got = {m["id"]: m["_views"] for m in out["acc"]["media"]}
+    assert sorted(calls) == sorted([f"m{i}" for i in range(15)] + ["m20", "m30"])
+    assert got["m20"] == 7 and got["m30"] == 7 and got["m16"] == 0
+    calls.clear()
+    instagram.fetch_all(str(tmp_path))                     # bez since = len najnovsich 15
+    assert len(calls) == 15
+

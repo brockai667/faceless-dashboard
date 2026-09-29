@@ -3,8 +3,15 @@
 Cita ig_tokens.json (dlhodobe tokeny per ucet) -> {username: {"stats":{...}, "media":[...]}}.
 Dlhodoby token sam predlzi (ig_refresh_token) ak sa bliz koniec platnosti."""
 import json, os, time, urllib.parse, urllib.request, urllib.error
+from concurrent.futures import ThreadPoolExecutor
 
 GRAPH = "https://graph.instagram.com"
+# Kolko najnovsich prispevkov na ucet stiahneme (1 volanie). Z tohto zoznamu generate.py pocita Part-2 sucet zhliadnuti.
+MEDIA_LIMIT = 50
+# Zhliadnutia (1 insights volanie na video) berieme len pre najnovsich INSIGHTS_FIRST videi + videa od 'since' (Part 2);
+# volania idu paralelne -> generate.py sa zmesti do limitu 240 s (server.py run_generate) aj pri 8+ uctoch.
+INSIGHTS_FIRST = 15
+INSIGHTS_WORKERS = 6
 
 
 def _get(path, params):
@@ -134,7 +141,8 @@ def refresh_tokens(root, force=False):
     return result
 
 
-def fetch_all(root):
+def fetch_all(root, since=None):
+    """since = 'YYYY-MM-DD' (zaciatok Part 2): starsim videam mimo najnovsich INSIGHTS_FIRST sa zhliadnutia necitaju."""
     tpath = os.path.join(root, "ig_tokens.json")
     if not os.path.exists(tpath):
         return {}
@@ -159,14 +167,21 @@ def fetch_all(root):
         try:
             ml = _get("me/media", {
                 "fields": "id,caption,like_count,comments_count,media_type,media_product_type,permalink,timestamp",
-                "limit": "15", "access_token": tok})
+                "limit": str(MEDIA_LIMIT), "access_token": tok})
             media = ml.get("data", [])
         except Exception:
             media = []
 
-        for m in media:
+        want = []
+        for i, m in enumerate(media):
             is_video = (m.get("media_product_type") in ("REELS", "VIDEO")) or m.get("media_type") == "VIDEO"
-            m["_views"] = _media_views(m["id"], tok) if is_video else 0
+            m["_views"] = 0
+            if is_video and (i < INSIGHTS_FIRST or (since and (m.get("timestamp") or "")[:10] >= since)):
+                want.append(m)
+        if want:
+            with ThreadPoolExecutor(max_workers=INSIGHTS_WORKERS) as ex:
+                for m, v in zip(want, ex.map(lambda mm, _t=tok: _media_views(mm["id"], _t), want)):
+                    m["_views"] = v
 
         out[me.get("username", uname)] = {"stats": me, "media": media}
 

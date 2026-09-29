@@ -169,6 +169,11 @@ select.gx-jump option{background:#0d1119;color:var(--tx)}
 .gx-chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
 .gx-chip{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);color:var(--mut);white-space:nowrap}
 .gx-chip.ok{background:#22c55e1f;color:#4ade80}.gx-chip.warn{background:#f59e0b1f;color:#fbbf24}.gx-chip.bad{background:#ef44441f;color:#f87171}
+/* karta "Stav uctov" (tab Fabriky) — zdiela vzhlad .gx-chip */
+.acct-t th,.acct-t td{padding:5px 10px}
+.acct-t td.acct-n{font-weight:700;white-space:nowrap}
+.acct-todo{list-style:none;display:grid;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--bd);font-size:12.5px;line-height:1.5}
+.acct-todo .gx-chip{margin-right:6px}
 .gx-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .gx-kpi{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:8px 10px;min-width:0}
 .gx-kpi span{display:block;color:var(--mut);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
@@ -263,10 +268,22 @@ function todayChip(fn,noNeg){
   if(v===0)return '<div class="dl dl0">dnes +0</div>';
   return `<div class="dl ${v>0?'dlu':'dld'}">dnes ${v>0?'+':'−'}${fmt(Math.abs(v))}</div>`;
 }
-/* PART 2 (od 28.9.2026): zhliadnutia = prirastok od PRVEHO zapisu novej fabriky (server servuje historiu
-   len od DASH_HISTORY_START). Celkove (lifetime) cislo ostava v malom texte — YouTube ho po zmazani videi nenuluje. */
+/* PART 2 (od 28.9.2026): zhliadnutia = SUCET views videi publikovanych od startu Part 2 (v.published >= part2Start()).
+   Lifetime totals (kanalove pocitadla, „held" maximum) po zmazani starych videi neklesnu, takze ich rozdiel
+   oproti historii bol vzdy 0. Celkove (lifetime) cislo ostava v malom texte. Videa bez `published` sa nepocitaju.
+   Prednost maju SERVEROVE sucty p.p2 (generate.py, cez vsetky stiahnute videa — bez stropu 20/15/50 v zozname videi);
+   ak ich nema KAZDA fabrika (stary data.json), pocita sa zo zoznamu videi. */
 function part2Base(){const rows=(HIST||[]);const ok=rows.filter(h=>!h.gap);return ok[0]||rows[0]||null;}
-function part2Gain(fn){const t=DATA&&DATA.totals,b=part2Base();if(!t||!b)return null;return Math.max(0,Math.round(fn(t)-fn(b)));}
+function part2Start(){const b=part2Base();return b&&b.date?b.date:'2026-09-28';}
+function part2Views(plat){   // plat = 'youtube'|'tiktok'|'instagram'; bez neho vsetky tri
+  const P=DATA.projects||[];
+  if(P.length&&P.every(p=>p.p2&&typeof p.p2==='object')){
+    const ks=plat?[plat]:['youtube','tiktok','instagram'];
+    return P.reduce((s,p)=>s+ks.reduce((a,k)=>a+(+p.p2[k]||0),0),0);
+  }
+  const s=part2Start();
+  return allVids().filter(v=>(v.published||'')>=s&&(!plat||(v.platform||'').toLowerCase()===plat))
+    .reduce((a,v)=>a+(v.views||0),0);}
 function part2Label(){const b=part2Base();if(!b)return 'od štartu';const p=b.date.split('-');return `od ${+p[2]}.${+p[1]}.`;}
 function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noNeg=true -> kumulativna
   if(cur==null||prev==null)return '';   // metrika (views/lajky): nemoze klesnut, tak zapornu zmenu
@@ -348,7 +365,7 @@ function renderOverview(){
   const vids=allVids().length;
   const kpis=[
     ['Sledovatelia',fmt(foll),`YT ${fmt(t.yt_subs)} · TT ${fmt(t.tk_foll)} · IG ${fmt(t.ig_foll)}`,todayChip(totFoll)],
-    ['Zhliadnutia (YT+IG)',fmt(part2Gain(totViews)),`${part2Label()} · celkovo ${fmt(views)} (YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)})`,todayChip(totViews,true)],
+    ['Zhliadnutia nových videí',fmt(part2Views()),`${part2Label()} · celkovo ${fmt(views)} (YT ${fmt(t.yt_views)} · IG ${fmt(t.ig_views)})`,todayChip(totViews,true)],
     ['Videá / príspevky',fmt(vids),'',todayChip(h=>h.videos||0,true)],
     ['Fabriky',t.factories,'',''],
   ];
@@ -389,7 +406,7 @@ function renderOverview(){
         ${k[3]}<div class="sm">${k[2]}</div></div>`).join('')}</div>
     <div class="grid k3">${[
       {lab:'Odberatelia',fk:'yt_subs',big:t.yt_subs,unit:'',sub:'noví odberatelia za deň'},
-      {lab:'Zhliadnutia',fk:'yt_views',big:part2Gain(h=>h.yt_views||0),unit:'',sub:`zhliadnutia za deň · ${part2Label()} · celkovo ${fmt(t.yt_views)}`},
+      {lab:'Zhliadnutia',fk:'yt_views',big:part2Views('youtube'),unit:'',sub:`zhliadnutia za deň · ${part2Label()} · celkovo ${fmt(t.yt_views)}`},
       {lab:'Lajky',fk:'yt_likes',big:t.yt_likes||0,unit:'',sub:'lajky za deň'},
     ].map(p=>`<div class="card" style="border-top:3px solid ${PC.youtube}">
       <h2 style="margin-bottom:6px"><span style="color:${PC.youtube}">${PI.youtube} YouTube</span> <small>${p.lab}</small></h2>
@@ -421,7 +438,7 @@ function renderGrowth(){
   $('#growth').innerHTML=`
     <div class="grid k3" style="margin-bottom:16px">
       ${big('Sledovatelia',cf,todayChip(totFoll),'zmena dnes od 00:00')}
-      ${big('Zhliadnutia (YT+IG)',part2Gain(totViews),todayChip(totViews,true),`zmena dnes od 00:00 · ${part2Label()} · celkovo ${fmt(cv)}`)}
+      ${big('Zhliadnutia nových videí',part2Views(),todayChip(totViews,true),`zmena dnes od 00:00 · ${part2Label()} · celkovo ${fmt(cv)}`)}
       ${big('Vydané dnes',pubToday,'',`${pub7} za 7 dní · spolu ${fmt(t.videos)} videí`)}
     </div>
     <div class="grid k2" style="margin-bottom:16px">
@@ -466,11 +483,11 @@ function renderWinners(){
 function renderPlatforms(){
   const t=DATA.totals, PD=DATA.prev||{};   // ▲▼ = od posledného obnovenia (presne, žiaden odhad)
   const cols=[
-    {k:'youtube',  foll:t.yt_subs, pf:PD.yt_subs, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Gain(h=>h.yt_views||0), m2raw:t.yt_views, pm2:PD.yt_views, barLab:'zhliadnutia videí',
+    {k:'youtube',  foll:t.yt_subs, pf:PD.yt_subs, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Views('youtube'), m2raw:t.yt_views, pm2:PD.yt_views, barLab:'zhliadnutia videí',
      extra:`${DATA.projects.reduce((s,p)=>s+(p.yt?.videos||0),0)} videí · celkovo ${fmt(t.yt_views)} zhliadnutí`},
-    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'ZHLIADNUTIA', m2:t.tk_views, m2raw:t.tk_views, pm2:PD.tk_views, barLab:'zhliadnutia videí',
+    {k:'tiktok',   foll:t.tk_foll, pf:PD.tk_foll, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Views('tiktok'), m2raw:t.tk_views, pm2:PD.tk_views, barLab:'zhliadnutia videí',
      extra:`${DATA.projects.reduce((s,p)=>s+(p.tiktok?.videos||0),0)} videí · ${fmt(t.tk_likes)} lajky`},
-    {k:'instagram',foll:t.ig_foll, pf:PD.ig_foll, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Gain(h=>h.ig_views||0), m2raw:t.ig_views, pm2:PD.ig_views, barLab:'zhliadnutia videí',
+    {k:'instagram',foll:t.ig_foll, pf:PD.ig_foll, m2lab:'ZHLIADNUTIA '+part2Label().toUpperCase(), m2:part2Views('instagram'), m2raw:t.ig_views, pm2:PD.ig_views, barLab:'zhliadnutia videí',
      extra:`${t.ig_posts} príspevkov · celkovo ${fmt(t.ig_views)} zhliadnutí`},
   ];
   $('#platforms').innerHTML=`${baselineNote()}<div class="grid k3">${cols.map(c=>{
@@ -480,9 +497,10 @@ function renderPlatforms(){
       .sort((a,b)=>b.v-a.v);
     const mx=Math.max(1,...fac.map(f=>f.v));
     if(c.k==='tiktok'){
-      // TikTok karta: IBA zhliadnutia na kazdom ucte, nic ine (user request).
+      // TikTok karta: IBA zhliadnutia (nove videa od Part 2 + na kazdom ucte), nic ine (user request).
       return `<div class="card">
-        <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span> <span class="muted" style="font-size:11px;font-weight:700;letter-spacing:.04em">ZHLIADNUTIA</span></h2>
+        <h2><span class="pill" style="background:${PC[c.k]}22;color:${PC[c.k]}">${PI[c.k]} ${PN[c.k]}</span> <span class="muted" style="font-size:11px;font-weight:700;letter-spacing:.04em">${c.m2lab}</span></h2>
+        <div style="font-size:22px;font-weight:800;margin:6px 0 10px">${fmt(c.m2)}${dchip(c.m2raw,c.pm2,true)}</div>
         <div class="bars" style="margin-top:8px">${fac.map(f=>`<div class="row" style="grid-template-columns:130px 1fr 74px">
           <span class="nm" style="color:${f.color};font-size:12.5px">${f.name}</span>
           <div class="track"><div class="fill" style="width:${f.v/mx*100}%;background:${f.color}"></div></div>
@@ -530,6 +548,35 @@ function facTrend(name,idx){
     {name:'TikTok',c:PC.tiktok,pts:f('tv')},
     {name:'Instagram',c:PC.instagram,pts:f('iv')}],dates,180)+'</div>';
 }
+/* ---- stav uctov: rucny (p.status z ACCOUNT_STATUS) + odvodeny stav pripojenia (p.conn z generate.py) ---- */
+const ST_CHIP={ok:['ok','OK'],ban:['bad','BAN'],riesit:['warn','TREBA RIEŠIŤ'],nepouziva:['','NEPOUŽÍVA SA']};
+function stChip(st,note){const c=ST_CHIP[st];if(!c)return '';
+  return `<span class="gx-chip ${c[0]}"${note?` title="${esc(note)}"`:''}>${c[1]}</span>`;}
+function connNote(p,plat){const c=p.conn&&p.conn[plat];return esc(c&&c.note)||'nepripojené';}   // dovod, preco platforma nema data (stary data.json bez conn -> 'nepripojené')
+function acctState(p,plat){   // rucny stav ma prednost, inak odvodeny z p.conn; bez oboch null
+  const m=p.status&&p.status[plat];
+  if(m&&ST_CHIP[m.state])return {state:m.state,note:m.note||''};
+  const c=p.conn&&p.conn[plat]; if(!c)return null;
+  const s={ok:'ok',no_account:'nepouziva',token_error:'riesit',no_token:'riesit'}[c.state];
+  return s?{state:s,note:c.note||''}:null;
+}
+function renderAcctCard(){
+  const plats=['youtube','tiktok','instagram'], todo=[]; let known=0;
+  const rows=DATA.projects.map(p=>{
+    const cells=plats.map(k=>{
+      const a=acctState(p,k);
+      if(!a)return '<td class="muted">—</td>';
+      known++;
+      if(a.state==='ban'||a.state==='riesit')todo.push({p,k,a});
+      return `<td>${stChip(a.state,a.note)}</td>`;}).join('');
+    return `<tr><td class="acct-n" style="color:${esc(p.color)}">${esc(p.name)}</td>${cells}</tr>`;}).join('');
+  todo.sort((x,y)=>(x.a.state==='ban'?0:1)-(y.a.state==='ban'?0:1));   // bany prvé (sort je stabilny)
+  const list=todo.length?`<ul class="acct-todo">${todo.map(t=>
+    `<li>${stChip(t.a.state)}<b style="color:${esc(t.p.color)}">${esc(t.p.name)}</b> · ${PN[t.k]} — <span class="muted">${esc(t.a.note)}</span></li>`).join('')}</ul>`
+    :`<div class="muted" style="font-size:12.5px;margin-top:10px">${known?'Nič nevyžaduje zásah.':'Stav účtov sa doplní po najbližšom obnovení dát.'}</div>`;
+  return `<div class="card" style="margin-bottom:16px"><h2>🧾 Stav účtov <small>ručne overené + stav pripojenia</small></h2>
+    <table class="acct-t"><thead><tr><th>Fabrika</th>${plats.map(k=>`<th>${PI[k]} ${PN[k]}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>${list}</div>`;
+}
 function renderFactories(){
   const hrows=DATA.projects.map(p=>{
     const [ic,txt]=facHealth(p);
@@ -548,9 +595,11 @@ function renderFactories(){
     const last=pubs.length?pubs[pubs.length-1]:null;
     const days=last?Math.floor((Date.now()-new Date(last))/864e5):999;
     const dot=last&&days<=3?'🟢':'⚪';
-    const row=(ic,name,col,stat,link)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #131a25">
+    const sc=k=>{const m=p.status&&p.status[k];return m?stChip(m.state,m.note):'';};   // chip rucneho stavu uctu
+    const row=(ic,name,col,stat,link,chip)=>`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #131a25">
       <span style="width:74px;font-weight:700;color:${col}">${ic} ${name}</span>
       <span class="muted" style="flex:1;font-size:12.5px">${stat}</span>
+      ${chip||''}
       ${link?`<a class="btn" style="padding:5px 11px" href="${link}" target="_blank" rel="noopener noreferrer">Otvoriť ↗</a>`:'<span class="muted" style="font-size:12px">—</span>'}</div>`;
     const yt=p.yt, tk=p.tiktok, ig=p.instagram;
     const pf=(prevDay()?.fac||{})[p.name]||{};   // hodnoty fabriky z predoslého dňa
@@ -559,14 +608,14 @@ function renderFactories(){
         <span style="font-size:16px;font-weight:800">${p.name}</span>
         <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
       <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${fmtDate(last)}</div>
-      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv,true)}`:'nepripojené', L.youtube)}
-      ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(tk.likes)} lajkov`:'nepripojené', L.tiktok)}
-      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv,true)}`:'nepripojené', L.instagram)}
+      ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv,true)}`:connNote(p,'youtube'), L.youtube, sc('youtube'))}
+      ${row('🎵','TikTok','#ff5c8a', tk?`${fmt(tk.followers)} sledov.${dchip(tk.followers,pf.tf)} · ${fmt(tk.likes)} lajkov`:connNote(p,'tiktok'), L.tiktok, sc('tiktok'))}
+      ${row('📸','Instagram','#e1306c', ig?`${fmt(ig.followers)} sledov.${dchip(ig.followers,pf.if)} · ${fmt(pvHeld(p,'instagram'))} zhliad.${dchip(pvHeld(p,'instagram'),pf.iv,true)}`:connNote(p,'instagram'), L.instagram, sc('instagram'))}
       ${ytSplit(p)}
       <div style="margin-top:9px"><a class="btn" style="padding:5px 11px;cursor:pointer" onclick="facTrend('${p.name.replace(/'/g,"\\'")}',${pi})">📈 Vývoj po dňoch</a></div>
       <div id="ftr_${pi}"></div>
     </div>`;}).join('');
-  $('#factories').innerHTML=health+`<div class="grid k2">${cards}</div>`;
+  $('#factories').innerHTML=health+renderAcctCard()+`<div class="grid k2">${cards}</div>`;
 }
 
 /* Rozdelenie YT vykonu fabriky na Shorts vs Dokumenty (podla is_long) — zobrazi sa len ak uz ma aj dlhe videa */

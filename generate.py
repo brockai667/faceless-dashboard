@@ -4,7 +4,7 @@ FacelessFactory — CENTRÁLA (lokálny súkromný dashboard).
 Číta Buffer tokeny zo 6 fabrík + (voliteľne) YouTube Data API → generuje dashboard.html.
 Spusti:  python generate.py   (alebo dvojklik run.bat)
 """
-import json, os, time, urllib.request, urllib.error, datetime
+import json, os, re, time, urllib.request, urllib.error, datetime
 from html import escape
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -39,9 +39,12 @@ YT_CHANNELS = {
     "Money Glitch":     "UCq8zz64h1AJaXKQuuuIWlpQ",
 }
 
-# TikTok handle (display_name) -> fabrika
+# TikTok handle / display_name / stitok tokenu -> fabrika (aliasy: stare aj nove nazvy;
+# resolve_factory() navyse toleruje velkost pismen, bodky, podciarkniky a medzery)
 HANDLE_TO_FACTORY = {
-    "insideyourmind007": "MindBlownDaily",
+    "insideyourmind007": "MindBlownDaily",   # stary nazov (do 27.9.2026)
+    "min.dblowndaily": "MindBlownDaily",     # username od 27.9.2026
+    "MindBlownDaily": "MindBlownDaily",      # display_name z TikTok API
     "wealth_mindset34": "WealthMindset",
     "unexplained_daily": "UnexplainedDaily",
     "disciplinedaily667": "BrainHeist",
@@ -50,12 +53,25 @@ HANDLE_TO_FACTORY = {
     # 27.9.2026: TikTok historyuntold667 (ex-NextByte) premenovany na coldcase_daily a pouzity pre ColdCase;
     # povodny TikTok coldcasedaily667 je zabanovany
     "coldcase_daily": "ColdCaseDaily",
+    "Cold Case Daily": "ColdCaseDaily",      # display_name noveho uctu
+    # display_name sa casto lisi od username (overene 29.9.2026)
+    "unexplained": "UnexplainedDaily",       # @unexplained_daily
+    "DisciplineDaily": "BrainHeist",         # @disciplinedaily667
+    "BrainHeist": "BrainHeist",              # display_name po premenovani
 }
 
-# Profilove handle (natvrdo) — odkazy nezavisle od Buffera
-TIKTOK_HANDLE = {fac: h for h, fac in HANDLE_TO_FACTORY.items()}
+# Profilove username (natvrdo, NIE z aliasov) — odkazy nezavisle od Buffera
+TIKTOK_HANDLE = {
+    "MindBlownDaily":   "min.dblowndaily",
+    "WealthMindset":    "wealth_mindset34",
+    "UnexplainedDaily": "unexplained_daily",
+    "BrainHeist":       "disciplinedaily667",
+    "VitalityDaily":    "vitalitydaily667",
+    "HiddenEarth":      "hiddenearth667",
+    "ColdCaseDaily":    "coldcase_daily",
+}
 IG_HANDLE = {
-    "MindBlownDaily":   "th.erealspark",
+    "MindBlownDaily":   "mindblowndaily.official",
     "WealthMindset":    "thewealthmindset.yt667",
     "UnexplainedDaily": "unex.plaineddaily",
     "BrainHeist":       "disciplinedaily667",
@@ -65,6 +81,22 @@ IG_HANDLE = {
     "ColdCaseDaily":    "coldcasedaily667",
     "Curio":            "curi.o667",
     "EyeHeist":         "entropy667",
+}
+# stare IG username -> fabrika (kluc v ig_tokens.json moze mat este povodny nazov)
+IG_ALIASES = {"th.erealspark": "MindBlownDaily"}   # premenovane 27.9.2026
+
+# Rucny stav uctov (overene 29.9.2026). stav: ok | ban | riesit | nepouziva
+ACCOUNT_STATUS = {
+    "MindBlownDaily":   {"tiktok": ("ok", "@min.dblowndaily, premenovany 27.9."), "instagram": ("ok", "@mindblowndaily.official, premenovany 27.9.")},
+    "ColdCaseDaily":    {"tiktok": ("riesit", "novy ucet @coldcase_daily od 27.9. (stary zabanovany) - chyba TikTok autorizacia pre dashboard")},
+    "VitalityDaily":    {"tiktok": ("ban", "@vitalitydaily667 verejne neexistuje (29.9.) - ban alebo zmazany, overit v appke")},
+    "UnexplainedDaily": {"tiktok": ("riesit", "@unexplained_daily existuje - chyba alebo expiroval token")},
+    "BrainHeist":       {"tiktok": ("riesit", "@disciplinedaily667 existuje - premenovat na BrainHeist a autorizovat"),
+                         "instagram": ("riesit", "token expiroval, ucet sa stale vola disciplinedaily667")},
+    "NextByte":         {"tiktok": ("nepouziva", "TikTok ucet presunuty na ColdCase (27.9.)"), "instagram": ("riesit", "@historyuntold667 - token chyba alebo expiroval")},
+    "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - token chyba alebo expiroval")},
+    "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@entropy667 - token chyba alebo expiroval")},
+    "Money Glitch":     {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("nepouziva", "Instagram nezalozeny")},
 }
 
 try:
@@ -77,8 +109,148 @@ try:
 except Exception:
     _instagram = None
 
-# username IG -> fabrika (reverz IG_HANDLE)
+# username IG -> fabrika (reverz IG_HANDLE + stare nazvy z IG_ALIASES)
 IG_TO_FACTORY = {v: k for k, v in IG_HANDLE.items()}
+IG_LOOKUP = {**IG_TO_FACTORY, **IG_ALIASES}
+FACTORY_NAMES = [f[0] for f in FACTORIES]
+
+
+def _norm_handle(s):
+    """Lower-case a iba a-z0-9 (bez bodiek, podciarknikov, medzier)."""
+    return re.sub(r"[^a-z0-9]", "", str(s or "").lower())
+
+
+def resolve_factory(key, mapping, factory_names):
+    """Tolerantne priradenie uctu (handle / display_name / stitok tokenu) k fabrike.
+    Poradie: presny kluc -> normalizovana zhoda s klucom mapy -> normalizovana zhoda s nazvom fabriky
+    -> nazov fabriky (min. 8 znakov) obsiahnuty v kluci ('mindblowndailyofficial')
+    -> normalizovany kluc (min. 8 znakov) obsiahnuty v kluci mapy / nazve fabriky ('unexplained' v 'unexplaineddaily'),
+    ale len ak to vedie k JEDINEJ fabrike (viac roznych -> None). Inak None."""
+    if key in mapping:
+        return mapping[key]
+    nk = _norm_handle(key)
+    if not nk:
+        return None
+    for k, fac in mapping.items():
+        if _norm_handle(k) == nk:
+            return fac
+    for fn in factory_names:
+        if _norm_handle(fn) == nk:
+            return fn
+    for fn in factory_names:
+        nf = _norm_handle(fn)
+        if len(nf) >= 8 and nf in nk:   # kratke nazvy (napr. Curio) by chytali cudzie ucty
+            return fn
+    if len(nk) >= 8:                    # opacna zhoda: kratky display_name je castou dlhsieho nazvu
+        hits = {fac for k, fac in mapping.items() if nk in _norm_handle(k)}
+        hits |= {fn for fn in factory_names if nk in _norm_handle(fn)}
+        if len(hits) == 1:
+            return hits.pop()
+    return None
+
+
+def token_factories(labels, mapping):
+    """Fabriky, ku ktorym sa da priradit niektory ulozeny token (podla stitku/username, nie hodnoty)."""
+    out = set()
+    for lab in labels or []:
+        fac = resolve_factory(lab, mapping, FACTORY_NAMES)
+        if fac:
+            out.add(fac)
+    return out
+
+
+def tiktok_candidates(handle, stats):
+    """Poradie hladania fabriky pre TikTok ucet: username zo share_url -> stitok tokenu -> display_name.
+    (Kluc vysledku tiktok.fetch_all je display_name, ktory sa casto lisi od username.)"""
+    st = stats or {}
+    out = []
+    for c in (st.get("_username"), st.get("_label"), handle):
+        if c and c not in out:
+            out.append(c)
+    return out
+
+
+def resolve_tiktok(handle, stats):
+    """Fabrika pre TikTok ucet: prvy zasah z tiktok_candidates() vyhrava; None ak nic nesedi."""
+    for c in tiktok_candidates(handle, stats):
+        fac = resolve_factory(c, HANDLE_TO_FACTORY, FACTORY_NAMES)
+        if fac:
+            return fac
+    return None
+
+
+CONN_NOTES = {
+    "ok": "",
+    "no_account": "účet nie je založený alebo sa nepoužíva",
+    "token_error": "token neplatný alebo expirovaný – treba znova autorizovať",
+    "no_token": "chýba autorizácia účtu pre dashboard",
+}
+# YouTube nema autorizaciu uctu: kanal je natvrdo v YT_CHANNELS a "token" je API kluc
+CONN_NOTES_YT = {
+    "ok": "",
+    "no_account": "kanál nie je nastavený",
+    "token_error": "kanál sa nepodarilo načítať z YouTube API",
+    "no_token": "chýba YouTube API kľúč",
+}
+
+
+def conn_state(has_data, has_handle, has_token, notes=None):
+    """Preco platforma nema data: ok | no_account (ziadny handle) | token_error (token je, data nie) | no_token.
+    `notes` = tabulka textov (predvolene CONN_NOTES pre TikTok/Instagram, CONN_NOTES_YT pre YouTube)."""
+    if has_data:
+        state = "ok"
+    elif not has_handle:
+        state = "no_account"
+    elif has_token:
+        state = "token_error"
+    else:
+        state = "no_token"
+    return {"state": state, "note": (notes or CONN_NOTES)[state]}
+
+
+def account_status(name):
+    """Rucny stav uctov fabriky z ACCOUNT_STATUS -> {platforma: {"state","note"}} (len uvedene platformy)."""
+    return {plat: {"state": st, "note": note} for plat, (st, note) in ACCOUNT_STATUS.get(name, {}).items()}
+
+
+def annotate_accounts(projects, has_yt_key, tk_labels, ig_labels):
+    """Kazdemu projektu doplni p['conn'] (stav pripojenia per platforma) a p['status'] (rucny stav).
+    Berie len STITKY tokenov (kluce suborov), nikdy hodnoty."""
+    tk_facs = token_factories(tk_labels, HANDLE_TO_FACTORY)
+    ig_facs = token_factories(ig_labels, IG_LOOKUP)
+    for p in projects:
+        n = p["name"]
+        p["conn"] = {
+            # YouTube: kanal je natvrdo v YT_CHANNELS, "token" = API kluc (bez neho no_token, s nim bez dat token_error)
+            "youtube": conn_state(bool(p.get("yt")), n in YT_CHANNELS, bool(has_yt_key), CONN_NOTES_YT),
+            "tiktok": conn_state(bool(p.get("tiktok")), n in TIKTOK_HANDLE, n in tk_facs),
+            "instagram": conn_state(bool(p.get("instagram")), n in IG_HANDLE, n in ig_facs),
+        }
+        p["status"] = account_status(n)
+
+
+# --- Part 2: sucet zhliadnuti videi publikovanych od startu (server-side, bez stropu na pocet videi v UI) ---
+P2_DEFAULT_START = "2026-09-28"
+
+
+def part2_start():
+    """Zaciatok Part 2 (YYYY-MM-DD): env DASH_HISTORY_START (rovnaka premenna a default ako server.py); neplatna -> default."""
+    s = os.environ.get("DASH_HISTORY_START") or P2_DEFAULT_START
+    try:
+        ok = datetime.datetime.strptime(s, "%Y-%m-%d").strftime("%Y-%m-%d") == s
+    except ValueError:
+        ok = False
+    return s if ok else P2_DEFAULT_START
+
+
+def new_p2(start):
+    return {"start": start, "youtube": 0, "tiktok": 0, "instagram": 0}
+
+
+def sum_views_since(videos, since):
+    """Sucet views videi s `published` >= since (YYYY-MM-DD); videa bez `published` sa nepocitaju."""
+    return sum(int(v.get("views", 0) or 0) for v in videos if (v.get("published") or "") >= since)
+
 
 def _load_json_safe(path, default=None):
     """Nacita JSON subor odolne voci chybam (chybajuci/poskodeny subor nesmie
@@ -159,10 +331,11 @@ def _iso_dur(s):
     return h * 3600 + mi * 60 + se
 
 
-def yt_videos(channel_id, key, n=50, deep=0):
+def yt_videos(channel_id, key, n=50, deep=0, out_all=None):
     """Posledných N videí kanála + štatistiky. Ak deep>n: prehľadá HLBŠIE (paginácia
     po 50) a navyše vráti VŠETKY is_long (dokumenty) aj spoza N-okna — inak staré docs
-    vypadnú z okna (kanál chŕli shorts) a dashboard ich prestane vidieť."""
+    vypadnú z okna (kanál chŕli shorts) a dashboard ich prestane vidieť.
+    `out_all` (zoznam) sa naplni CELÝM stiahnutým zoznamom pred orezaním (na Part-2 súčet bez stropu)."""
     if not key or not channel_id or not channel_id.startswith("UC"):
         return []
     pl = "UU" + channel_id[2:]  # uploads playlist
@@ -204,6 +377,8 @@ def yt_videos(channel_id, key, n=50, deep=0):
             "published": it.get("snippet", {}).get("publishedAt", "")[:10],
             "duration": dur, "is_long": dur >= 120,   # >=2 min = dlhy dokument (shorts su <1 min)
         })
+    if out_all is not None:
+        out_all.extend(out)
     if deep:   # drž recent N (grafy) + VŠETKY dokumenty (aj staré) -> data.json nebobtná
         recent = out[:n]
         longs = [v for v in out if v["is_long"]]
@@ -231,6 +406,9 @@ def profile_link(c):
 def main():
     settings = load_settings()
     yt_key = settings.get("youtube_api_key") or os.environ.get("YOUTUBE_API_KEY", "")
+    p2_start = part2_start()   # zaciatok Part 2 pre p["p2"] (server-side sucty zhliadnuti novych videi)
+    # vzdy definovane pred annotate_accounts() — aj ked tiktok/instagram moduly chybaju alebo zlyhaju
+    tk_labels, ig_tokens_status = [], {}
     projects = []
     _cpath = os.path.join(ROOT, "channels_cache.json")
     chan_cache = _load_json_safe(_cpath, {})
@@ -246,7 +424,7 @@ def main():
         proj = {"name": name, "niche": niche, "color": color, "online": False, "alive": False,
                 "sent": 0, "scheduled": 0, "errors": 0, "last_sent": None, "next_due": None,
                 "channels": {}, "yt": None, "videos": [], "yt_recent_views": 0, "tiktok": None,
-                "instagram": None}
+                "instagram": None, "p2": new_p2(p2_start)}
         cfg_path = os.path.join(folder, "config.json")
         # poskodeny config jednej fabriky nesmie zhodit ostatne; ak lokalny chyba (cloud), skus ENV token
         cfg = _load_json_safe(cfg_path, {}) if os.path.exists(cfg_path) else {}
@@ -322,32 +500,40 @@ def main():
         if cid in yt:
             p["yt"] = yt[cid]
         if True:
-            vids = yt_videos(cid, yt_key, n=50, deep=250)   # deep -> nájde aj staré dokumenty (ColdCaseLong)
+            yt_all = []   # CELY stiahnuty zoznam (pred orezanim na 50 + dokumenty) -> Part-2 sucet bez stropu
+            vids = yt_videos(cid, yt_key, n=50, deep=250, out_all=yt_all)   # deep -> nájde aj staré dokumenty (ColdCaseLong)
             for v in vids:
                 v["factory"] = p["name"]; v["color"] = p["color"]
                 v["platform"] = "YouTube"
                 v["link"] = f"https://www.youtube.com/watch?v={v['id']}"
             p["videos"] = vids
             p["yt_recent_views"] = sum(v["views"] for v in vids)
+            p["p2"]["youtube"] = sum_views_since(yt_all, p2_start)
 
     # --- TikTok (per-video + rast uctu) ---
     by_name = {p["name"]: p for p in projects}
     if _tiktok:
         try:
-            tk = _tiktok.fetch_all(ROOT)
+            tk = _tiktok.fetch_all(ROOT, since=p2_start)   # since -> stats["views_since"] cez VSETKY strany videi
         except Exception as e:
             print("  [TikTok] fetch chyba:", e); tk = {}
+        try:
+            tk_labels = _tiktok.token_labels(ROOT)   # len stitky (kluce) tokenov -> stav pripojenia
+        except Exception as e:
+            print("  [TikTok] stitky tokenov sa nedaju precitat:", type(e).__name__)
         for handle, d in tk.items():
-            fac = HANDLE_TO_FACTORY.get(handle) or (handle if handle in by_name else None)
+            st = d.get("stats", {})
+            fac = resolve_tiktok(handle, st)   # username zo share_url -> stitok tokenu -> display_name (prvy zasah)
             p = by_name.get(fac)
             if not p:
-                print(f"  [TikTok] neznámy handle '{handle}' — pridaj do HANDLE_TO_FACTORY")
+                print(f"  [TikTok] neznámy účet '{handle}' (@{st.get('_username') or '?'}, štítok '{st.get('_label') or '?'}')"
+                      f" — pridaj do HANDLE_TO_FACTORY")
                 continue
-            st = d.get("stats", {})
             p["tiktok"] = {"followers": int(st.get("follower_count", 0) or 0),
                            "likes": int(st.get("likes_count", 0) or 0),
                            "views": int(st.get("views_total", 0) or 0),
                            "videos": int(st.get("video_count", 0) or 0), "handle": handle}
+            p["p2"]["tiktok"] += int(st.get("views_since", 0) or 0)
             for v in d.get("videos", []):
                 p["videos"].append({
                     "id": v.get("id"),
@@ -356,7 +542,7 @@ def main():
                     "likes": int(v.get("like_count", 0) or 0),
                     "comments": int(v.get("comment_count", 0) or 0),
                     "factory": p["name"], "color": p["color"], "platform": "TikTok",
-                    "link": f"https://www.tiktok.com/@{handle}/video/{v.get('id')}",
+                    "link": f"https://www.tiktok.com/@{TIKTOK_HANDLE.get(p['name']) or st.get('_username') or handle}/video/{v.get('id')}",
                     "published": (datetime.datetime.utcfromtimestamp(v["create_time"]).strftime("%Y-%m-%d")
                                   if v.get("create_time") else ""),
                 })
@@ -402,7 +588,7 @@ def main():
             print("  [IG] pouzivam dnesny cache (1x/den - setrim IG API)")
         else:
             try:
-                ig = _instagram.fetch_all(ROOT)
+                ig = _instagram.fetch_all(ROOT, since=p2_start)   # insights len pre najnovsie + videa Part 2
             except Exception as e:
                 print("  [IG] fetch chyba:", e); ig = {}
             if ig:
@@ -412,7 +598,7 @@ def main():
                 except Exception:
                     pass
         for uname, d in ig.items():
-            fac = IG_TO_FACTORY.get(uname)
+            fac = resolve_factory(uname, IG_LOOKUP, FACTORY_NAMES)
             p = by_name.get(fac)
             if not p:
                 print(f"  [IG] neznámy účet '{uname}' — pridaj do IG_HANDLE")
@@ -432,6 +618,19 @@ def main():
                     "link": m.get("permalink", f"https://www.instagram.com/{uname}"),
                     "published": (m.get("timestamp", "")[:10] if m.get("timestamp") else ""),
                 })
+
+    # Part-2 sucet IG zo VSETKYCH stiahnutych prispevkov (limit 50/ucet v instagram.py), nie z orezaneho zoznamu v UI
+    for p in projects:
+        p["p2"]["instagram"] = sum_views_since([v for v in p["videos"] if v.get("platform") == "Instagram"], p2_start)
+
+    # stav pripojenia per platforma (preco chyba) + rucny stav uctov -> p["conn"], p["status"]
+    # (tk_labels / ig_tokens_status su definovane uz na zaciatku main(); tu sa este overi ich typ)
+    try:
+        annotate_accounts(projects, bool(yt_key),
+                          list(tk_labels) if isinstance(tk_labels, (list, tuple, set)) else [],
+                          list(ig_tokens_status) if isinstance(ig_tokens_status, dict) else [])
+    except Exception as e:
+        print("  [conn] stav pripojenia sa nepodarilo urcit:", type(e).__name__)
 
     try:
         from zoneinfo import ZoneInfo

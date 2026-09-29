@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Data-layer tests for tiktok.py: token loading, 401/403 auto-refresh flow,
 and aggregation of user info + video list into fetch_all()'s output."""
+import calendar
 import json
 import urllib.error
 
@@ -131,3 +132,93 @@ def test_fetch_all_other_http_error_skips_account_without_refresh_attempt(tmp_ro
     monkeypatch.setattr(tiktok, "_api", fake_api)
     monkeypatch.setattr(tiktok, "_refresh", fake_refresh)
     assert tiktok.fetch_all(str(tmp_root)) == {}
+
+
+# ---------------------------------------------------------------------------
+# `_label` / `_username` (identita uctu) a `views_since` (Part-2 sucet cez VSETKY strany)
+# ---------------------------------------------------------------------------
+
+def _paged_api(pages, display_name="RealName"):
+    """Fake tiktok._api: user/info + video/list rozdelene na strany (cursor = index dalsej strany)."""
+    def fake_api(url, token, method="GET", body=None):
+        if "user/info" in url:
+            return {"data": {"user": {"display_name": display_name, "follower_count": 1,
+                                       "likes_count": 0, "video_count": 3}}}
+        if "video/list" in url:
+            cur = (body or {}).get("cursor")
+            idx = 0 if cur is None else int(cur)
+            return {"data": {"videos": pages[idx], "has_more": idx < len(pages) - 1, "cursor": idx + 1}}
+        raise AssertionError(f"unexpected url: {url}")
+    return fake_api
+
+
+def test_video_list_requests_share_url_field():
+    fields = tiktok.VIDEOLIST.split("fields=")[1].split(",")
+    assert "share_url" in fields and "create_time" in fields and "view_count" in fields
+
+
+def test_fetch_all_adds_label_and_username_from_share_url(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"my_label": {"access_token": "tok"}})
+    vids = [{"id": "1", "view_count": 1, "create_time": 1_700_000_000,
+             "share_url": "https://www.tiktok.com/@coldcase_daily/video/123?utm_campaign=tt4d&utm_source=x"}]
+    monkeypatch.setattr(tiktok, "_api", _paged_api([vids], display_name="Cold Case Daily"))
+    out = tiktok.fetch_all(str(tmp_root))
+    assert list(out) == ["Cold Case Daily"]                      # kluc vysledku ostava display_name
+    st = out["Cold Case Daily"]["stats"]
+    assert st["_label"] == "my_label" and st["_username"] == "coldcase_daily"
+    assert st["follower_count"] == 1                             # povodne polia ostavaju
+
+
+def test_fetch_all_username_is_empty_without_videos(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"my_label": {"access_token": "tok"}})
+    monkeypatch.setattr(tiktok, "_api", _paged_api([[]]))
+    st = tiktok.fetch_all(str(tmp_root))["RealName"]["stats"]
+    assert st["_username"] == "" and st["_label"] == "my_label"
+
+
+def test_fetch_all_username_uses_first_parsable_share_url(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"lbl": {"access_token": "tok"}})
+    vids = [{"id": "1", "view_count": 1},                                                        # bez share_url
+            {"id": "2", "view_count": 1, "share_url": "https://vm.tiktok.com/ZMabc123/"},         # kratky odkaz -> bez username
+            {"id": "3", "view_count": 1, "share_url": "https://www.tiktok.com/@min.dblowndaily/video/3"},
+            {"id": "4", "view_count": 1, "share_url": "https://www.tiktok.com/@somebody_else/video/4"}]
+    monkeypatch.setattr(tiktok, "_api", _paged_api([vids]))
+    assert tiktok.fetch_all(str(tmp_root))["RealName"]["stats"]["_username"] == "min.dblowndaily"
+    monkeypatch.setattr(tiktok, "_api", _paged_api([[vids[0], vids[1]]]))
+    assert tiktok.fetch_all(str(tmp_root))["RealName"]["stats"]["_username"] == ""
+
+
+def test_fetch_all_without_since_keeps_old_behaviour(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"lbl": {"access_token": "tok"}})
+    monkeypatch.setattr(tiktok, "_api", _paged_api([[{"id": "1", "view_count": 7, "create_time": 1_700_000_000}]]))
+    st = tiktok.fetch_all(str(tmp_root))["RealName"]["stats"]
+    assert "views_since" not in st and st["views_total"] == 7
+    for bad in ("garbage", "2026-13-45", ""):                     # neplatne `since` = ako None
+        st = tiktok.fetch_all(str(tmp_root), since=bad)["RealName"]["stats"]
+        assert "views_since" not in st, bad
+
+
+def test_fetch_all_views_since_sums_all_pages(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"lbl": {"access_token": "tok"}})
+    start = calendar.timegm((2026, 9, 28, 0, 0, 0))               # 28.9.2026 00:00 UTC
+    page1 = [{"id": "a", "view_count": 10, "create_time": start + 5},
+             {"id": "b", "view_count": 20, "create_time": start},           # presne o polnoci -> pocita sa
+             {"id": "c", "view_count": 400, "create_time": start - 1}]      # o sekundu skor -> nie
+    page2 = [{"id": "d", "view_count": 5, "create_time": start + 86400},
+             {"id": "e", "view_count": 700},                                # bez create_time -> nie
+             {"id": "f", "view_count": 1000, "create_time": start - 86400}]
+    page3 = [{"id": "g", "view_count": 3, "create_time": start + 10}]       # aj 3. strana sa scita
+    monkeypatch.setattr(tiktok, "_api", _paged_api([page1, page2, page3]))
+    st = tiktok.fetch_all(str(tmp_root), since="2026-09-28")["RealName"]["stats"]
+    assert st["views_since"] == 10 + 20 + 5 + 3
+    assert st["views_total"] == 10 + 20 + 400 + 5 + 700 + 1000 + 3
+
+
+def test_fetch_all_views_since_is_not_capped_by_the_20_video_list(tmp_root, monkeypatch):
+    _write(tmp_root, "tiktok_tokens.json", {"lbl": {"access_token": "tok"}})
+    start = calendar.timegm((2026, 9, 28, 0, 0, 0))
+    pages = [[{"id": f"{p}-{i}", "view_count": 2, "create_time": start + 1} for i in range(20)] for p in range(3)]
+    monkeypatch.setattr(tiktok, "_api", _paged_api(pages))
+    acc = tiktok.fetch_all(str(tmp_root), since="2026-09-28")["RealName"]
+    assert len(acc["videos"]) == 20                               # zoznam videi ostava orezany na 20...
+    assert acc["stats"]["views_since"] == 60 * 2                  # ...ale sucet zahrna vsetkych 60
