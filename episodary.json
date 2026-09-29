@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-09-27T12:23:16.862Z",
+  "generatedAt": "2026-09-28T14:23:53.849Z",
   "users": {
-    "total": 8,
+    "total": 9,
     "premium": 0,
-    "new24h": 0,
-    "new7d": 2,
-    "new30d": 8
+    "new24h": 1,
+    "new7d": 3,
+    "new30d": 9
   },
   "active": {
-    "dau": 0,
-    "wau": 2,
-    "mau": 7,
-    "liveSessions": 9
+    "dau": 2,
+    "wau": 3,
+    "mau": 8,
+    "liveSessions": 10
   },
   "platform": {
-    "webUsers": 8,
+    "webUsers": 9,
     "appUsers": null,
     "installs": 0,
     "storePublished": false,
