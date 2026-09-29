@@ -80,7 +80,7 @@ IG_HANDLE = {
     "NextByte":         "nextbyte667",           # premenovany z historyuntold667
     "ColdCaseDaily":    "coldcasedaily667",
     "Curio":            "curi.o667",
-    "EyeHeist":         "entropy667",
+    "EyeHeist":         "entropy.667",           # ucet sa vola entropy.667 (s bodkou), e-mail +entropyig
 }
 # stare IG username -> fabrika (kluc v ig_tokens.json moze mat este povodny nazov)
 IG_ALIASES = {"th.erealspark": "MindBlownDaily",   # premenovane 27.9.2026
@@ -95,8 +95,8 @@ ACCOUNT_STATUS = {
     "BrainHeist":       {"tiktok": ("riesit", "@disciplinedaily667 existuje - premenovat na BrainHeist a autorizovat"),
                          "instagram": ("riesit", "@brainheistriddles - token expiroval, treba znova autorizovat")},
     "NextByte":         {"tiktok": ("nepouziva", "TikTok ucet presunuty na ColdCase (27.9.)"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
-    "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - token chyba alebo expiroval")},
-    "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "meno IG uctu neoverene (@entropy667 vyzera ako cudzi prazdny ucet) - potvrdit a autorizovat")},
+    "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - tester pridany 29.9., prijat pozvanku a autorizovat")},
+    "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@entropy.667 - pridat ako Instagram Tester v Meta appke a autorizovat")},
     "Money Glitch":     {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("nepouziva", "Instagram nezalozeny")},
 }
 
