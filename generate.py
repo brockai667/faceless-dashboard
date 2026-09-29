@@ -50,8 +50,10 @@ HANDLE_TO_FACTORY = {
     "disciplinedaily667": "BrainHeist",
     "vitalitydaily667": "VitalityDaily",
     "hiddenearth667": "HiddenEarth",
-    # 27.9.2026: TikTok historyuntold667 (ex-NextByte) premenovany na coldcase_daily a pouzity pre ColdCase;
-    # povodny TikTok coldcasedaily667 je zabanovany
+    # ColdCase: NOVY ucet @coldcase_daily zalozeny 27.9.2026 17:28 UTC (overene z verejneho profilu 29.9.);
+    # povodny TikTok coldcasedaily667 je zabanovany - jeho token este odpoveda, ale ucet je vynulovany
+    # (meno user<cislo>, 0 videi) -> tiktok_reset() ho neberie ako pripojeny
+    "nextbyte667": "NextByte",               # povodny HistoryUntold ucet (stitok tokenu 'historyuntold667'), 77 videi
     "coldcase_daily": "ColdCaseDaily",
     "Cold Case Daily": "ColdCaseDaily",      # display_name noveho uctu
     # display_name sa casto lisi od username (overene 29.9.2026)
@@ -68,7 +70,8 @@ TIKTOK_HANDLE = {
     "BrainHeist":       "disciplinedaily667",
     "VitalityDaily":    "vitalitydaily667",
     "HiddenEarth":      "hiddenearth667",
-    "ColdCaseDaily":    "coldcase_daily",
+    "ColdCaseDaily":    "coldcase_daily",        # novy ucet zalozeny 27.9.2026 (stary zabanovany)
+    "NextByte":         "nextbyte667",           # povodny HistoryUntold ucet (stitok tokenu historyuntold667)
 }
 IG_HANDLE = {
     "MindBlownDaily":   "mindblowndaily.official",
@@ -94,7 +97,7 @@ ACCOUNT_STATUS = {
     "UnexplainedDaily": {"tiktok": ("riesit", "@unexplained_daily existuje - chyba alebo expiroval token")},
     "BrainHeist":       {"tiktok": ("riesit", "@disciplinedaily667 existuje - premenovat na BrainHeist a autorizovat"),
                          "instagram": ("riesit", "@brainheistriddles - token expiroval, treba znova autorizovat")},
-    "NextByte":         {"tiktok": ("nepouziva", "TikTok ucet presunuty na ColdCase (27.9.)"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
+    "NextByte":         {"tiktok": ("nepouziva", "@nextbyte667 existuje (77 starych videi bez zhliadnuti), fabrika stoji; ColdCase ma vlastny novy ucet"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
     "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - tester pridany 29.9., prijat pozvanku a autorizovat")},
     "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@entropy.667 - pridat ako Instagram Tester v Meta appke a autorizovat")},
     "Money Glitch":     {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("nepouziva", "Instagram nezalozeny")},
@@ -180,6 +183,17 @@ def resolve_tiktok(handle, stats):
     return None
 
 
+_RESET_NAME = re.compile(r"user\d{6,}", re.I)
+CONN_NOTE_RESET = "pripojený je vynulovaný účet (meno user…, 0 videí) – zrejme starý zabanovaný; treba autorizovať aktuálny účet"
+
+
+def tiktok_reset(handle, stats):
+    """Ucet vynulovany TikTokom (typicky po bane): meno 'user<cislo>' a ziadne videa. Token este funguje,
+    ale data su prazdne - taky ucet sa NEPOCITA ako pripojeny (inak by stary ucet ukazoval falosne OK)."""
+    st = stats or {}
+    return bool(_RESET_NAME.fullmatch(str(handle or "").strip())) and not int(st.get("video_count", 0) or 0)
+
+
 CONN_NOTES = {
     "ok": "",
     "no_account": "účet nie je založený alebo sa nepoužíva",
@@ -239,6 +253,8 @@ def annotate_accounts(projects, has_yt_key, tk_labels, ig_labels):
             "tiktok": conn_state(bool(p.get("tiktok")), n in TIKTOK_HANDLE, n in tk_facs),
             "instagram": conn_state(bool(p.get("instagram")), n in IG_HANDLE, n in ig_facs),
         }
+        if not p.get("tiktok") and p.get("tiktok_reset"):   # token patri vynulovanemu (staremu) uctu
+            p["conn"]["tiktok"] = {"state": "token_error", "note": CONN_NOTE_RESET}
         p["status"] = effective_status(account_status(n), p["conn"])
 
 
@@ -541,6 +557,10 @@ def main():
             if not p:
                 print(f"  [TikTok] neznámy účet '{handle}' (@{st.get('_username') or '?'}, štítok '{st.get('_label') or '?'}')"
                       f" — pridaj do HANDLE_TO_FACTORY")
+                continue
+            if tiktok_reset(handle, st):   # stary/zabanovany ucet: token funguje, ale ucet je prazdny -> nie je to pripojenie
+                p["tiktok_reset"] = handle
+                print(f"  [TikTok] {fac}: token patri vynulovanemu uctu '{handle}' (0 videi) - neberie sa ako pripojeny")
                 continue
             p["tiktok"] = {"followers": int(st.get("follower_count", 0) or 0),
                            "likes": int(st.get("likes_count", 0) or 0),

@@ -354,7 +354,7 @@ def test_handle_maps_are_explicit_and_round_trip():
         "MindBlownDaily": "min.dblowndaily", "WealthMindset": "wealth_mindset34",
         "UnexplainedDaily": "unexplained_daily", "BrainHeist": "disciplinedaily667",
         "VitalityDaily": "vitalitydaily667", "HiddenEarth": "hiddenearth667",
-        "ColdCaseDaily": "coldcase_daily"}
+        "ColdCaseDaily": "coldcase_daily", "NextByte": "nextbyte667"}
     assert generate.IG_HANDLE["MindBlownDaily"] == "mindblowndaily.official"
     assert generate.IG_HANDLE["BrainHeist"] == "brainheistriddles" and generate.IG_HANDLE["NextByte"] == "nextbyte667"
     assert generate.IG_ALIASES == {"th.erealspark": "MindBlownDaily", "disciplinedaily667": "BrainHeist",
@@ -856,3 +856,33 @@ def test_annotate_accounts_coldcase_tiktok_ok_after_authorisation():
     generate.annotate_accounts([q], True, [], [])
     assert q["status"]["tiktok"]["state"] == "riesit"              # bez dat ostava rucna znacka
 
+
+
+# --- vynulovany (zabanovany) TikTok ucet sa nepocita ako pripojeny ---
+@pytest.mark.parametrize("handle,videos,expected", [
+    ("user26658717264", 0, True),        # stary ColdCase ucet po bane
+    ("USER83454462826", 0, True),
+    ("user26658717264", 3, False),       # ma videa -> zivy ucet s predvolenym menom
+    ("Cold Case Daily", 0, False),       # novy ucet pred prvym videom
+    ("username_fan", 0, False),
+    ("user123", 0, False),               # kratke cislo = bezne meno
+    ("", 0, False),
+])
+def test_tiktok_reset_detects_wiped_account(handle, videos, expected):
+    assert generate.tiktok_reset(handle, {"video_count": videos}) is expected
+
+
+def test_annotate_accounts_wiped_tiktok_keeps_manual_riesit():
+    p = _proj("ColdCaseDaily", yt={"subs": 1})
+    p["tiktok_reset"] = "user26658717264"
+    generate.annotate_accounts([p], True, ["coldcasedaily667"], [])
+    assert p["conn"]["tiktok"] == {"state": "token_error", "note": generate.CONN_NOTE_RESET}
+    assert p["status"]["tiktok"]["state"] == "riesit"          # ziadne falosne OK
+
+
+def test_annotate_accounts_live_tiktok_wins_over_wiped_one():
+    p = _proj("ColdCaseDaily", yt={"subs": 1}, tk={"followers": 0, "videos": 0, "handle": "Cold Case Daily"})
+    p["tiktok_reset"] = "user26658717264"
+    generate.annotate_accounts([p], True, ["coldcasedaily667", "Cold Case Daily"], [])
+    assert p["conn"]["tiktok"]["state"] == "ok"
+    assert p["status"]["tiktok"] == {"state": "ok", "note": "pripojene - data chodia"}
