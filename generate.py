@@ -214,6 +214,18 @@ def account_status(name):
     return {plat: {"state": st, "note": note} for plat, (st, note) in ACCOUNT_STATUS.get(name, {}).items()}
 
 
+def effective_status(manual, conn):
+    """Rucny stav 'riesit' sa sam zmeni na 'ok', ked platforma realne dava data (ucet bol medzitym autorizovany).
+    'ban' a 'nepouziva' ostavaju rucne - tie sa z dat spolahlivo spoznat nedaju."""
+    out = {}
+    for plat, st in manual.items():
+        if st["state"] == "riesit" and (conn.get(plat) or {}).get("state") == "ok":
+            out[plat] = {"state": "ok", "note": "pripojene - data chodia"}
+        else:
+            out[plat] = st
+    return out
+
+
 def annotate_accounts(projects, has_yt_key, tk_labels, ig_labels):
     """Kazdemu projektu doplni p['conn'] (stav pripojenia per platforma) a p['status'] (rucny stav).
     Berie len STITKY tokenov (kluce suborov), nikdy hodnoty."""
@@ -227,7 +239,7 @@ def annotate_accounts(projects, has_yt_key, tk_labels, ig_labels):
             "tiktok": conn_state(bool(p.get("tiktok")), n in TIKTOK_HANDLE, n in tk_facs),
             "instagram": conn_state(bool(p.get("instagram")), n in IG_HANDLE, n in ig_facs),
         }
-        p["status"] = account_status(n)
+        p["status"] = effective_status(account_status(n), p["conn"])
 
 
 # --- Part 2: sucet zhliadnuti videi publikovanych od startu (server-side, bez stropu na pocet videi v UI) ---

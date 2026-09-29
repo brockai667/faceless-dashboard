@@ -832,3 +832,27 @@ def test_main_still_writes_data_when_annotate_accounts_fails(tmp_path, monkeypat
     by = _run_main(tmp_path)
     assert "conn" not in by["MindBlownDaily"] and by["MindBlownDaily"]["p2"]["start"] == "2026-09-28"
     assert "stav pripojenia sa nepodarilo urcit" in capsys.readouterr().out
+
+
+def test_effective_status_riesit_turns_ok_when_data_flows():
+    manual = {"tiktok": {"state": "riesit", "note": "chyba autorizacia"}, "instagram": {"state": "riesit", "note": "token"}}
+    conn = {"tiktok": {"state": "ok", "note": ""}, "instagram": {"state": "token_error", "note": "x"}}
+    out = generate.effective_status(manual, conn)
+    assert out["tiktok"]["state"] == "ok" and "data" in out["tiktok"]["note"]
+    assert out["instagram"] == manual["instagram"]                 # bez dat ostava TREBA RIESIT
+
+
+def test_effective_status_keeps_ban_and_unused_even_with_data():
+    manual = {"tiktok": {"state": "ban", "note": "b"}, "instagram": {"state": "nepouziva", "note": "n"}}
+    conn = {"tiktok": {"state": "ok", "note": ""}, "instagram": {"state": "ok", "note": ""}}
+    assert generate.effective_status(manual, conn) == manual
+
+
+def test_annotate_accounts_coldcase_tiktok_ok_after_authorisation():
+    p = {"name": "ColdCaseDaily", "yt": {"subs": 1}, "tiktok": {"followers": 0}, "instagram": None}
+    generate.annotate_accounts([p], True, ["Cold Case Daily"], [])
+    assert p["conn"]["tiktok"]["state"] == "ok" and p["status"]["tiktok"]["state"] == "ok"
+    q = {"name": "ColdCaseDaily", "yt": {"subs": 1}, "tiktok": None, "instagram": None}
+    generate.annotate_accounts([q], True, [], [])
+    assert q["status"]["tiktok"]["state"] == "riesit"              # bez dat ostava rucna znacka
+
