@@ -356,7 +356,11 @@ def test_handle_maps_are_explicit_and_round_trip():
         "VitalityDaily": "vitalitydaily667", "HiddenEarth": "hiddenearth667",
         "ColdCaseDaily": "coldcase_daily"}
     assert generate.IG_HANDLE["MindBlownDaily"] == "mindblowndaily.official"
-    assert generate.IG_ALIASES == {"th.erealspark": "MindBlownDaily"}
+    assert generate.IG_HANDLE["BrainHeist"] == "brainheistriddles" and generate.IG_HANDLE["NextByte"] == "nextbyte667"
+    assert generate.IG_ALIASES == {"th.erealspark": "MindBlownDaily", "disciplinedaily667": "BrainHeist",
+                                   "historyuntold667": "NextByte"}   # stare nazvy = kluce starych tokenov
+    for old, fac in generate.IG_ALIASES.items():
+        assert _ig(old) == fac
     for fac, h in generate.TIKTOK_HANDLE.items():
         assert fac in generate.FACTORY_NAMES and _tk(h) == fac
     for fac, h in generate.IG_HANDLE.items():

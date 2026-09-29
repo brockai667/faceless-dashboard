@@ -74,16 +74,17 @@ IG_HANDLE = {
     "MindBlownDaily":   "mindblowndaily.official",
     "WealthMindset":    "thewealthmindset.yt667",
     "UnexplainedDaily": "unex.plaineddaily",
-    "BrainHeist":       "disciplinedaily667",
+    "BrainHeist":       "brainheistriddles",     # premenovany z disciplinedaily667
     "VitalityDaily":    "vitalitydaily667",
     "HiddenEarth":      "hiddenearth667",
-    "NextByte":         "historyuntold667",
+    "NextByte":         "nextbyte667",           # premenovany z historyuntold667
     "ColdCaseDaily":    "coldcasedaily667",
     "Curio":            "curi.o667",
     "EyeHeist":         "entropy667",
 }
 # stare IG username -> fabrika (kluc v ig_tokens.json moze mat este povodny nazov)
-IG_ALIASES = {"th.erealspark": "MindBlownDaily"}   # premenovane 27.9.2026
+IG_ALIASES = {"th.erealspark": "MindBlownDaily",   # premenovane 27.9.2026
+              "disciplinedaily667": "BrainHeist", "historyuntold667": "NextByte"}   # stare nazvy (kluce starych tokenov)
 
 # Rucny stav uctov (overene 29.9.2026). stav: ok | ban | riesit | nepouziva
 ACCOUNT_STATUS = {
@@ -92,10 +93,10 @@ ACCOUNT_STATUS = {
     "VitalityDaily":    {"tiktok": ("ban", "@vitalitydaily667 verejne neexistuje (29.9.) - ban alebo zmazany, overit v appke")},
     "UnexplainedDaily": {"tiktok": ("riesit", "@unexplained_daily existuje - chyba alebo expiroval token")},
     "BrainHeist":       {"tiktok": ("riesit", "@disciplinedaily667 existuje - premenovat na BrainHeist a autorizovat"),
-                         "instagram": ("riesit", "token expiroval, ucet sa stale vola disciplinedaily667")},
-    "NextByte":         {"tiktok": ("nepouziva", "TikTok ucet presunuty na ColdCase (27.9.)"), "instagram": ("riesit", "@historyuntold667 - token chyba alebo expiroval")},
+                         "instagram": ("riesit", "@brainheistriddles - token expiroval, treba znova autorizovat")},
+    "NextByte":         {"tiktok": ("nepouziva", "TikTok ucet presunuty na ColdCase (27.9.)"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
     "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - token chyba alebo expiroval")},
-    "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@entropy667 - token chyba alebo expiroval")},
+    "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "meno IG uctu neoverene (@entropy667 vyzera ako cudzi prazdny ucet) - potvrdit a autorizovat")},
     "Money Glitch":     {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("nepouziva", "Instagram nezalozeny")},
 }
 
