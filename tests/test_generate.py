@@ -709,7 +709,7 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
 
     assert by["ColdCaseDaily"]["tiktok"]["handle"] == "Cold Case Daily"
     assert by["ColdCaseDaily"]["conn"]["tiktok"]["state"] == "ok"
-    assert by["ColdCaseDaily"]["status"]["tiktok"]["state"] == "riesit"
+    assert by["ColdCaseDaily"]["status"]["tiktok"]["state"] == "ok"      # data chodia -> rucna znacka "riesit" sa sama vyriesi
 
     bh = by["BrainHeist"]
     assert bh["tiktok"]["handle"] == "DisciplineDaily"              # priradene cez username zo share_url
