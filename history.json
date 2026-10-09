@@ -10344,25 +10344,25 @@
     "date": "2026-10-09",
     "factories": 11,
     "yt_subs": 494,
-    "yt_views": 171687,
-    "yt_likes": 398,
+    "yt_views": 171689,
+    "yt_likes": 399,
     "tk_foll": 43,
-    "tk_views": 3479,
-    "tk_likes": 51,
-    "ig_foll": 70,
-    "ig_views": 14630,
-    "ig_posts": 1018,
-    "videos": 739,
-    "ig_videos": 370,
+    "tk_views": 3842,
+    "tk_likes": 57,
+    "ig_foll": 69,
+    "ig_views": 14976,
+    "ig_posts": 1020,
+    "videos": 744,
+    "ig_videos": 372,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 43,
-        "yv": 1378,
+        "yv": 1380,
         "tf": 42,
         "tv": 12771,
         "if": 23,
-        "iv": 5053
+        "iv": 5399
       },
       "WealthMindset": {
         "yf": 28,
@@ -10377,7 +10377,7 @@
         "yv": 62716,
         "tf": 1,
         "tv": 843,
-        "if": 11,
+        "if": 10,
         "iv": 1157
       },
       "BrainHeist": {
@@ -10416,7 +10416,7 @@
         "yf": 55,
         "yv": 252,
         "tf": 0,
-        "tv": 0,
+        "tv": 96,
         "if": 3,
         "iv": 1058
       },
