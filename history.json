@@ -10979,26 +10979,26 @@
   {
     "date": "2026-10-15",
     "factories": 11,
-    "yt_subs": 495,
-    "yt_views": 173257,
-    "yt_likes": 407,
+    "yt_subs": 496,
+    "yt_views": 173444,
+    "yt_likes": 427,
     "tk_foll": 44,
-    "tk_views": 4558,
-    "tk_likes": 77,
-    "ig_foll": 71,
-    "ig_views": 18806,
-    "ig_posts": 1027,
-    "videos": 761,
-    "ig_videos": 379,
+    "tk_views": 5286,
+    "tk_likes": 82,
+    "ig_foll": 70,
+    "ig_views": 19073,
+    "ig_posts": 1029,
+    "videos": 766,
+    "ig_videos": 381,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
-        "yf": 44,
-        "yv": 2708,
+        "yf": 45,
+        "yv": 2858,
         "tf": 43,
         "tv": 12771,
         "if": 23,
-        "iv": 9229
+        "iv": 9496
       },
       "WealthMindset": {
         "yf": 28,
@@ -11018,7 +11018,7 @@
       },
       "BrainHeist": {
         "yf": 22,
-        "yv": 11199,
+        "yv": 11200,
         "tf": 0,
         "tv": 0,
         "if": 6,
@@ -11029,12 +11029,12 @@
         "yv": 32326,
         "tf": 0,
         "tv": 0,
-        "if": 7,
+        "if": 6,
         "iv": 645
       },
       "HiddenEarth": {
         "yf": 17,
-        "yv": 41009,
+        "yv": 41018,
         "tf": 0,
         "tv": 0,
         "if": 5,
@@ -11050,7 +11050,7 @@
       },
       "ColdCaseDaily": {
         "yf": 55,
-        "yv": 366,
+        "yv": 389,
         "tf": 0,
         "tv": 457,
         "if": 4,
@@ -11058,7 +11058,7 @@
       },
       "Curio": {
         "yf": 123,
-        "yv": 73653,
+        "yv": 73657,
         "tf": 0,
         "tv": 0,
         "if": 10,
