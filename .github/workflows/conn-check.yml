@@ -37,3 +37,15 @@ jobs:
                       print("   ", k, {a: b for a, b in x.items() if not isinstance(b, (list, dict))})
           PY
           python c.py
+      - name: data.json ako artefakt (lokalny test UI na realnych datach, 1 den)
+        env:
+          DASH_PASS: ${{ secrets.DASH_PASS }}
+        run: curl -sf -u "dash:$DASH_PASS" -o data.json https://facelessfactory-dashboard.onrender.com/data.json && curl -sf -u "dash:$DASH_PASS" -o history.json https://facelessfactory-dashboard.onrender.com/history.json || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dash-data
+          path: |
+            data.json
+            history.json
+          retention-days: 1
+          if-no-files-found: ignore
