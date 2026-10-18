@@ -699,16 +699,35 @@ def main():
                 pass
         return []
     _max_fac = {}
-    for _snap in _load_hist_all():
+    _hist_all = _load_hist_all()
+    for _snap in _hist_all:
         for _nm, _d in (_snap.get("fac") or {}).items():
             _m = _max_fac.setdefault(_nm, {})
             for _kv in ("yv", "tv", "iv"):
                 _m[_kv] = max(_m.get(_kv, 0), _d.get(_kv, 0) or 0)
     _KV = {"youtube": "yv", "tiktok": "tv", "instagram": "iv"}
+    _today0 = datetime.date.today().isoformat()
+    _prev_fac = (([h for h in _hist_all if h.get("date") != _today0] or [{}])[-1].get("fac") or {})
+
+    def _raw(p, plat):
+        """Surove cislo z API: TikTok = lifetime views uctu (paginovane), inak sucet zoznamu videi."""
+        if plat == "tiktok" and p.get("tiktok") and isinstance(p["tiktok"].get("views"), (int, float)):
+            return p["tiktok"]["views"]
+        return _vv(p, plat)
+
+    def _rawkeep(p, plat):
+        """Surove do historie; vypadok API (0) neulozi, nech zajtra nevznikne falosny skok."""
+        return _raw(p, plat) or (_prev_fac.get(p["name"]) or {}).get(_KV[plat] + "r", 0)
 
     def _held(p, plat):
-        """Zhliadnutia su kumulativne -> drz max(dnes, najvyssie kedy zname per fabrika)."""
-        return max(_vv(p, plat), (_max_fac.get(p["name"]) or {}).get(_KV[plat], 0))
+        """Zhliadnutia su kumulativne a nesmu klesnut. Vcerajsie drzane cislo + dnesny prirastok surovych
+        (kluc tvr/ivr v historii). Stary max-clamp zamrzol cislo, ked surove kleslo (zmazane videa,
+        orezany zoznam) - novy rast sa potom neukazal (MindBlown TikTok 12 771 od 4.10.2026)."""
+        kv, raw = _KV[plat], _raw(p, plat)
+        pv = _prev_fac.get(p["name"]) or {}
+        if kv + "r" in pv:
+            return (pv.get(kv) or 0) + (max(0, raw - pv[kv + "r"]) if raw > 0 else 0)
+        return max(raw, (_max_fac.get(p["name"]) or {}).get(kv, 0))
 
     totals = {
         "factories": len(projects),
@@ -814,6 +833,7 @@ def main():
         "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": (p["yt"]["views"] if p["yt"] else 0),
         "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _held(p, "tiktok"),
         "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _held(p, "instagram"),
+        "tvr": _rawkeep(p, "tiktok"), "ivr": _rawkeep(p, "instagram"),   # surove -> zajtrajsi prirastok
     } for p in projects}
     snap = {"date": today, **totals, "fac": fac_snap}
     # POISTKA proti falosnym nulam: vypadok API (YT kluc, TikTok...) nesmie zapisat 0
