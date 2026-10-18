@@ -46,6 +46,7 @@ HANDLE_TO_FACTORY = {
     "min.dblowndaily": "MindBlownDaily",     # username od 27.9.2026
     "MindBlownDaily": "MindBlownDaily",      # display_name z TikTok API
     "wealth_mindset34": "WealthMindset",
+    "Suddenly Rich": "WealthMindset",     # display_name od 18.10.2026 (seriál Suddenly Rich)
     "unexplained_daily": "UnexplainedDaily",
     "disciplinedaily667": "BrainHeist",
     "vitalitydaily667": "VitalityDaily",
@@ -61,6 +62,9 @@ HANDLE_TO_FACTORY = {
     "DisciplineDaily": "BrainHeist",         # @disciplinedaily667
     "BrainHeist": "BrainHeist",              # display_name po premenovani
 }
+
+# Zobrazované meno na dashboarde (kľúč fabriky ostáva kvôli histórii a grafom)
+DISPLAY_NAME = {"WealthMindset": "Suddenly Rich"}   # premenované 18.10.2026
 
 # Profilove username (natvrdo, NIE z aliasov) — odkazy nezavisle od Buffera
 TIKTOK_HANDLE = {
@@ -450,7 +454,7 @@ def main():
         buffer_tokens_env = {}
     for name, niche, color, folder in FACTORIES:
         print("-", name)
-        proj = {"name": name, "niche": niche, "color": color, "online": False, "alive": False,
+        proj = {"name": name, "label": DISPLAY_NAME.get(name, name), "niche": niche, "color": color, "online": False, "alive": False,
                 "sent": 0, "scheduled": 0, "errors": 0, "last_sent": None, "next_due": None,
                 "channels": {}, "yt": None, "videos": [], "yt_recent_views": 0, "tiktok": None,
                 "instagram": None, "p2": new_p2(p2_start)}

@@ -293,7 +293,7 @@ function dchip(cur,prev,noNeg){   // maly inline odznak (platformy/fabriky). noN
 }
 /* jednotne vysvetlenie casu (user chce: co mame + od kedy + ci je zmena od obnovenia alebo od 00:00) */
 const baselineNote=()=>'';
-const userFac=u=>{const p=DATA.projects.find(p=>p.instagram&&p.instagram.handle===u);return p?{name:p.name,color:p.color}:{name:u,color:'#888'};};
+const userFac=u=>{const p=DATA.projects.find(p=>p.instagram&&p.instagram.handle===u);return p?{name:p.label||p.name,color:p.color}:{name:u,color:'#888'};};
 function barChart(items,h=260){
   const W=760,H=h,pad={l:52,r:14,t:16,b:40},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
   const mx=Math.max(1,...items.map(i=>i.v)),n=items.length;
@@ -397,7 +397,7 @@ function renderOverview(){
   // ALERT: len REALNE problemy (cervene/zlte); "Buffer nedostupny" (siva) NIE JE poplach
   const sick=DATA.projects.map(p=>({p,h:facHealth(p)})).filter(x=>x.h[0]==='🔴'||x.h[0]==='🟡');
   const healthBanner=sick.length?`<div class="card" style="margin-bottom:16px;border-left:4px solid #ef4444;background:#221012;font-size:14px;line-height:1.6">
-    🚦 <b>Pozor — ${sick.length} ${sick.length===1?'fabrika potrebuje':'fabriky potrebujú'} pozornosť:</b> ${sick.map(x=>`<b style="color:${x.p.color}">${x.p.name}</b> (${x.h[1]})`).join(' · ')}
+    🚦 <b>Pozor — ${sick.length} ${sick.length===1?'fabrika potrebuje':'fabriky potrebujú'} pozornosť:</b> ${sick.map(x=>`<b style="color:${x.p.color}">${x.p.label||x.p.name}</b> (${x.h[1]})`).join(' · ')}
     <span class="muted">— detail v tabe Fabriky</span></div>`:'';
   $('#overview').innerHTML=`
     ${baselineNote()}${igBanner}${healthBanner}
@@ -454,7 +454,7 @@ function renderWinners(){
   let vids=allVids();
   if(winFilter!=='all') vids=vids.filter(v=>(v.platform||'').toLowerCase()===winFilter);
   vids=vids.slice().sort((a,b)=>(b.views||0)-(a.views||0));
-  const facs=DATA.projects.map(p=>({name:p.name,color:p.color,
+  const facs=DATA.projects.map(p=>({name:p.label||p.name,color:p.color,
     views:winFilter==='all'?facViews(p):pViews(p,winFilter)})).sort((a,b)=>b.views-a.views);
   const mx=Math.max(1,...facs.map(f=>f.views));
   const chips=['all','youtube','tiktok','instagram'].map(f=>
@@ -491,7 +491,7 @@ function renderPlatforms(){
      extra:`${t.ig_posts} príspevkov · celkovo ${fmt(t.ig_views)} zhliadnutí`},
   ];
   $('#platforms').innerHTML=`${baselineNote()}<div class="grid k3">${cols.map(c=>{
-    const fac=DATA.projects.map(p=>({name:p.name,color:p.color,
+    const fac=DATA.projects.map(p=>({name:p.label||p.name,color:p.color,
       v:(c.k==='tiktok'?(p.tiktok?.views||0):pViews(p,c.k)),   // YT/IG per-video views; TikTok lifetime views (paginovane)
       f:c.k==='youtube'?(p.yt?.subs||0):c.k==='tiktok'?(p.tiktok?.followers||0):(p.instagram?.followers||0)}))
       .sort((a,b)=>b.v-a.v);
@@ -569,10 +569,10 @@ function renderAcctCard(){
       known++;
       if(a.state==='ban'||a.state==='riesit')todo.push({p,k,a});
       return `<td>${stChip(a.state,a.note)}</td>`;}).join('');
-    return `<tr><td class="acct-n" style="color:${esc(p.color)}">${esc(p.name)}</td>${cells}</tr>`;}).join('');
+    return `<tr><td class="acct-n" style="color:${esc(p.color)}">${esc(p.label||p.name)}</td>${cells}</tr>`;}).join('');
   todo.sort((x,y)=>(x.a.state==='ban'?0:1)-(y.a.state==='ban'?0:1));   // bany prvé (sort je stabilny)
   const list=todo.length?`<ul class="acct-todo">${todo.map(t=>
-    `<li>${stChip(t.a.state)}<b style="color:${esc(t.p.color)}">${esc(t.p.name)}</b> · ${PN[t.k]} — <span class="muted">${esc(t.a.note)}</span></li>`).join('')}</ul>`
+    `<li>${stChip(t.a.state)}<b style="color:${esc(t.p.color)}">${esc(t.p.label||t.p.name)}</b> · ${PN[t.k]} — <span class="muted">${esc(t.a.note)}</span></li>`).join('')}</ul>`
     :`<div class="muted" style="font-size:12.5px;margin-top:10px">${known?'Nič nevyžaduje zásah.':'Stav účtov sa doplní po najbližšom obnovení dát.'}</div>`;
   return `<div class="card" style="margin-bottom:16px"><h2>🧾 Stav účtov <small>ručne overené + stav pripojenia</small></h2>
     <table class="acct-t"><thead><tr><th>Fabrika</th>${plats.map(k=>`<th>${PI[k]} ${PN[k]}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>${list}</div>`;
@@ -584,7 +584,7 @@ function renderFactories(){
     const nd=p.next_due?new Date(p.next_due):null;
     const ndTxt=nd?nd.toLocaleDateString('sk-SK',{day:'numeric',month:'numeric'})+' '+nd.toLocaleTimeString('sk-SK',{hour:'2-digit',minute:'2-digit'}):'—';
     return `<div style="display:grid;grid-template-columns:26px 148px 1fr 170px 130px;gap:8px;padding:7px 0;border-top:1px solid #131a25;align-items:center">
-      <span>${ic}</span><span style="font-weight:700;color:${p.color}">${p.name}</span>
+      <span>${ic}</span><span style="font-weight:700;color:${p.color}">${p.label||p.name}</span>
       <span class="muted" style="font-size:12.5px">${txt}</span>
       <span class="muted" style="font-size:12px">posledný post: ${ls}</span>
       <span class="muted" style="font-size:12px">ďalší: ${ndTxt}</span></div>`;}).join('');
@@ -605,7 +605,7 @@ function renderFactories(){
     const pf=(prevDay()?.fac||{})[p.name]||{};   // hodnoty fabriky z predoslého dňa
     return `<div class="card" style="border-top:3px solid ${p.color}">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-        <span style="font-size:16px;font-weight:800">${p.name}</span>
+        <span style="font-size:16px;font-weight:800">${p.label||p.name}</span>
         <span class="muted" style="font-size:12px">${p.niche||''}</span></div>
       <div class="muted" style="font-size:11.5px;margin-bottom:6px">${dot} naposledy: ${fmtDate(last)}</div>
       ${row('📺','YouTube','#ff6b6b', yt?`${fmt(yt.subs)} odber.${dchip(yt.subs,pf.yf)} · ${fmt(pvHeld(p,'youtube'))} zhliad.${dchip(pvHeld(p,'youtube'),pf.yv,true)}`:connNote(p,'youtube'), L.youtube, sc('youtube'))}
@@ -873,7 +873,7 @@ function renderGalaxy2D(container,projects,opts){
     const foll=((p.yt&&p.yt.subs)||0)+((p.tiktok&&p.tiktok.followers)||0)+((p.instagram&&p.instagram.followers)||0);
     const vids=(p.videos||[]), totV=vids.reduce((s,v)=>s+(v.views||0),0);
     const sunR=clamp(12+Math.sqrt(Math.max(foll,totV,1))/6,12,40);
-    const sun={x:cx,y:cy,z:cz,r:sunR,col,name:p.name,niche:p.niche||'',sub:foll,views:totV,isSun:1};
+    const sun={x:cx,y:cy,z:cz,r:sunR,col,name:p.label||p.name,niche:p.niche||'',sub:foll,views:totV,isSun:1};
     nodes.push(sun); suns.push(sun);
     const rng=mulberry32(1000+i*97);
     vids.slice().sort((a,b)=>(b.views||0)-(a.views||0)).slice(0,36).forEach(v=>{
@@ -1047,7 +1047,7 @@ function gxModel(P,hist){
     const pvw={youtube:p.yt?(p.yt.views||0):pv('youtube'),tiktok:p.tiktok?(p.tiktok.views||0):pv('tiktok'),instagram:pv('instagram')};
     const last=vids.map(v=>v.published).filter(Boolean).map(String).sort().pop()||null;
     const idle=last?Math.floor((ref-new Date(last.slice(0,10)+'T12:00:00').getTime())/864e5):Infinity;
-    return {p,i,name:String(p.name),color:gxCol(p.color),foll:facFollowers(p),f,pvw,views:pvw.youtube+pvw.tiktok+pvw.instagram,
+    return {p,i,name:String(p.label||p.name),color:gxCol(p.color),foll:facFollowers(p),f,pvw,views:pvw.youtube+pvw.tiktok+pvw.instagram,
       v28:gxViews28(p.name,hist),vids,top:vids.slice(0,GX.MOONS),last,idle:Math.max(0,idle),dormant:!(idle<=GX.IDLE_DAYS)};
   });
 }
