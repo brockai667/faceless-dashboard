@@ -1,0 +1,31 @@
+name: Stav pripojeni
+
+# Rucna kontrola: stiahne /data.json z Rendera a vypise len stav pripojeni a cisla (ziadne tokeny).
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conn
+        env:
+          DASH_PASS: ${{ secrets.DASH_PASS }}
+          DASH_URL: https://facelessfactory-dashboard.onrender.com
+        run: |
+          cat > c.py <<'PY'
+          import base64, json, os, urllib.request
+          req = urllib.request.Request(os.environ["DASH_URL"] + "/data.json", headers={"User-Agent": "ff-check"})
+          req.add_header("Authorization", "Basic " + base64.b64encode(("dash:" + os.environ["DASH_PASS"]).encode()).decode())
+          d = json.load(urllib.request.urlopen(req, timeout=120))
+          print("generated:", d.get("generated") or d.get("updated") or "?")
+          for p in d.get("projects", d if isinstance(d, list) else []):
+              print("==", p.get("name"), "| status:", json.dumps(p.get("status"))[:200])
+              for k, v in (p.get("conn") or {}).items():
+                  print("   ", k, v.get("state"), "-", (v.get("note") or "")[:160])
+              for k in ("youtube", "tiktok", "instagram"):
+                  x = p.get(k)
+                  if isinstance(x, dict):
+                      print("   ", k, {a: b for a, b in x.items() if not isinstance(b, (list, dict))})
+          PY
+          python c.py
