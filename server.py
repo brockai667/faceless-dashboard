@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Lokalny dashboard server (len Python stdlib, ziadne instalacie).
 Spusti:  python server.py   -> otvori http://localhost:8765
-- servuje app.html + data.json + history.json
+- servuje v2.html (/) + app.html (/old) + data.json + history.json
 - /api/refresh        -> znova zozbiera data (spusti generate.py)
 - /api/comments?user= -> IG prispevky + komentare daneho uctu
 - POST /api/reply      -> odpovie na IG komentar
@@ -305,8 +305,10 @@ class H(BaseHTTPRequestHandler):
     def _route_get(self):
         u = urllib.parse.urlparse(self.path)
         q = urllib.parse.parse_qs(u.query)
-        if u.path in ("/", "/index.html", "/app.html"):
-            return self._file("app.html", "text/html; charset=utf-8")
+        if u.path in ("/", "/index.html", "/v2", "/v2.html"):
+            return self._file("v2.html", "text/html; charset=utf-8")       # nova Centrala (v2)
+        if u.path in ("/old", "/old/", "/app.html"):
+            return self._file("app.html", "text/html; charset=utf-8")      # stare nastroje (komentare, Spotify, ...)
         if u.path == "/data.json":
             if not os.path.exists(os.path.join(ROOT, "data.json")):
                 return self._send(200, json.dumps({"projects": [], "totals": {}, "prev": {}, "gen_at": None}))

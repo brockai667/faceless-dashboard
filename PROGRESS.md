@@ -191,3 +191,19 @@ full pytest suite still green after the `generate.py`/`server.py` changes.
 - Limits that remain: YouTube = newest 250 uploads, Instagram = newest 50 posts per account (one page),
   TikTok = up to 800 videos. Watch the run time: Instagram now makes up to 50 insights calls per account on the
   daily refresh, and `server.py` `run_generate` kills `generate.py` after 240 s.
+
+## v2 Centrala (2026-10-18)
+- `v2.html` is the new main page (`/`, `/index.html`, `/v2.html`); the legacy `app.html` stays at `/old`
+  (and `/app.html`) for Komentare / Spotify / Episodary (`/old#comments` etc.).
+- Reliable metrics only: views = sum of per-video views of videos published in the last 7 days; median per
+  platform over videos from the last 30 days; followers = current vs. the `history.json` row from 7 days ago.
+  History views are used only for the daily-gain sparklines/bars, and only from 2026-10-01 (negative diffs = 0).
+- Layout: hero (followers, this-week views, published count, hit of the week), canvas galaxy (planet size =
+  followers, glow = this-week views, ring = hit of the week, click = detail), cards for active factories
+  (published within 14 days or a fresh TikTok account), inactive ones in one row, detail sheet with tabs
+  Prehlad / Videa / Rast (`#f/<name>` deep link).
+- Rady = the old `renderTips` rules (incl. `ONLY={WealthMindset:['tiktok']}`), but fed by per-video views and
+  follower deltas instead of history views.
+- Optional `p.experiment` = {name, started, hypothesis, metric_before, metric_now, status: running|kept|reverted}
+  renders as "Experiment tyzdna" on the card and in the detail; absent = nothing shown.
+- Tests: `tests/test_server_routes.py` (/ -> v2, /old -> app.html).
