@@ -66,6 +66,33 @@ HANDLE_TO_FACTORY = {
 # Zobrazované meno na dashboarde (kľúč fabriky ostáva kvôli histórii a grafom)
 DISPLAY_NAME = {"WealthMindset": "Suddenly Rich"}   # premenované 18.10.2026
 
+# Experiment tyzdna (samoucenie fabriky, learn.py) - verejny subor v repe fabriky
+EXPERIMENT_URL = {
+    "MindBlownDaily": "https://raw.githubusercontent.com/brockai667/FacelessFactory/main/paper/factory/experiment_status.json",
+    "ColdCaseDaily": "https://raw.githubusercontent.com/brockai667/coldcasedaily667/main/paper/case/experiment_status.json",
+}
+
+
+def experiment_status(name):
+    """{name, started, hypothesis, metric_before, metric_now, status} alebo None (chyba siete nic nezhodi)."""
+    url = EXPERIMENT_URL.get(name)
+    if not url:
+        return None
+    try:
+        d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "ff-dash"}), timeout=8))
+    except Exception:
+        return None
+    if not isinstance(d, dict) or not d.get("name"):
+        return None
+    out = {k: d.get(k) for k in ("name", "started", "hypothesis", "instruction", "metric_before", "metric_now", "status")}
+    for k in ("metric_before", "metric_now"):   # per platforma {youtube: 13.5, ...} -> jeden median (zhliadnutia za 48 h)
+        v = out[k]
+        if isinstance(v, dict):
+            nums = sorted(x for x in v.values() if isinstance(x, (int, float)) and not isinstance(x, bool))
+            out[k] = round(nums[len(nums) // 2]) if nums else None
+    return out
+
+
 # Profilove username (natvrdo, NIE z aliasov) — odkazy nezavisle od Buffera
 TIKTOK_HANDLE = {
     "MindBlownDaily":   "min.dblowndaily",
@@ -458,6 +485,7 @@ def main():
                 "sent": 0, "scheduled": 0, "errors": 0, "last_sent": None, "next_due": None,
                 "channels": {}, "yt": None, "videos": [], "yt_recent_views": 0, "tiktok": None,
                 "instagram": None, "p2": new_p2(p2_start)}
+        proj["experiment"] = experiment_status(name)
         cfg_path = os.path.join(folder, "config.json")
         # poskodeny config jednej fabriky nesmie zhodit ostatne; ak lokalny chyba (cloud), skus ENV token
         cfg = _load_json_safe(cfg_path, {}) if os.path.exists(cfg_path) else {}
