@@ -28,6 +28,9 @@ jobs:
               print("==", p.get("name"), "->", p.get("label"), "| status:", json.dumps(p.get("status"))[:200])
               for k, v in (p.get("conn") or {}).items():
                   print("   ", k, v.get("state"), "-", (v.get("note") or "")[:160])
+              tv = sorted((v for v in p.get("videos") or [] if (v.get("platform") or "").lower() == "tiktok"), key=lambda v: str(v.get("published")))
+              if tv:
+                  print("    tiktok videa:", len(tv), "najnovsie:", [(str(v.get("published"))[:10], v.get("views")) for v in tv[-4:]])
               for k in ("youtube", "tiktok", "instagram"):
                   x = p.get(k)
                   if isinstance(x, dict):
