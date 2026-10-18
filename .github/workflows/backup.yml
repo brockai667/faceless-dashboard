@@ -68,9 +68,32 @@ jobs:
           print("dni v zalohe:", len(merged))
           PY
 
+      - name: Vykon videi pre fabriky (videos.json, verejne - samoucenie fabrik)
+        env:
+          DASH_PASS: ${{ secrets.DASH_PASS }}
+          DASH_URL: https://facelessfactory-dashboard.onrender.com
+        run: |
+          cat > vids.py <<'PY'
+          import base64, datetime, json, os, urllib.request
+          req = urllib.request.Request(os.environ["DASH_URL"].rstrip("/") + "/data.json", headers={"User-Agent": "ff-backup"})
+          req.add_header("Authorization", "Basic " + base64.b64encode(("dash:" + os.environ.get("DASH_PASS", "")).encode()).decode())
+          try:
+              d = json.load(urllib.request.urlopen(req, timeout=90))
+          except Exception as e:
+              print("videos.json preskocene:", e); raise SystemExit(0)
+          keep = ("id", "title", "views", "likes", "comments", "published", "link")
+          fac = {p["name"]: [dict({k: v.get(k) for k in keep}, platform=(v.get("platform") or "").lower())
+                             for v in p.get("videos") or []] for p in d.get("projects") or [] if p.get("name")}
+          if sum(map(len, fac.values())):
+              json.dump({"gen_at": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z", "factories": fac},
+                        open("videos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+              print("videos.json:", {k: len(v) for k, v in fac.items() if v})
+          PY
+          python vids.py
+
       - name: Commitni ak sa zmenila
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add history.json
+          git add history.json videos.json 2>/dev/null || git add history.json
           git diff --cached --quiet || { git commit -m "zaloha: history $(date -u +%F)"; for _i in 1 2 3 4; do git pull --rebase -q origin main && git push -q && break || sleep 4; done; }
