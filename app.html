@@ -445,7 +445,48 @@ function renderGrowth(){
       <div class="card"><h2>Zhliadnutia za deň</h2>${dailyBars(totViews,'#22c55e')}</div>
       <div class="card"><h2>Sledovatelia za deň</h2>${dailyBars(totFoll,'#0ea5e9')}</div>
     </div>
-    <div class="card bars"><h2>Dnes podľa platformy <small>od 00:00</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>`;
+    <div class="card bars"><h2>Dnes podľa platformy <small>od 00:00</small></h2>${['youtube','tiktok','instagram'].map(prow).join('')}</div>
+    ${renderTips()}`;
+}
+
+/* Rady: pravidla nad historiou (7 dni) a novymi videami -> co robit dalej, len pre aktivne fabriky */
+function renderTips(){
+  const rows=(HIST||[]).filter(h=>!h.gap&&h.date&&h.fac);
+  if(rows.length<2) return '';
+  const last=rows[rows.length-1];
+  const ago=d=>{const s=new Date(Date.now()-d*864e5).toISOString().slice(0,10);
+    return [...rows].reverse().find(h=>h.date<=s)||rows[0];};
+  const w7=ago(7), w14=ago(14);
+  const PL=[['youtube','yf','yv'],['tiktok','tf','tv'],['instagram','if','iv']];
+  const ONLY={WealthMindset:['tiktok']};   // Suddenly Rich ide od 19.10.2026 len na TikTok (rucne z mobilu)
+  const tips=[], idle=[];
+  DATA.projects.forEach(p=>{
+    const nm=p.label||p.name, col=p.color;
+    const pubs=(p.videos||[]).map(v=>v.published).filter(Boolean).sort();
+    const lastPub=pubs.length?pubs[pubs.length-1]:null;
+    const days=lastPub?Math.floor((Date.now()-new Date(lastPub))/864e5):999;
+    const a=(last.fac||{})[p.name]||{}, b=(w7.fac||{})[p.name]||{}, c=(w14.fac||{})[p.name]||{};
+    const fresh=(p.tiktok&&p.tiktok.videos&&p.tiktok.videos<=3);   // novy ucet / nova seria
+    if(days>14&&!fresh){idle.push(nm);return;}
+    const add=(lvl,txt)=>tips.push({lvl,html:`<li>${lvl===0?'🔴':lvl===1?'🟠':'💡'} <b style="color:${col}">${esc(nm)}</b> · ${txt}</li>`});
+    if(days>3&&days<999) add(0,`nič nové nevyšlo ${days} dní — skontroluj beh fabriky`);
+    let best=null;
+    PL.filter(([k])=>!ONLY[p.name]||ONLY[p.name].includes(k)).forEach(([k,f,v])=>{
+      const dv=(a[v]||0)-(b[v]||0), df=(a[f]||0)-(b[f]||0), dv14=(a[v]||0)-(c[v]||0);
+      if((a[v]||0)>0&&dv<=0&&dv14<=0) add(0,`${PI[k]} ${PN[k]}: 0 nových zhliadnutí za 14 dní — fabrika tam zrejme neposiela videá`);
+      else if(dv>=300&&df<=0) add(1,`${PI[k]} ${PN[k]}: +${fmt(dv)} zhliadnutí za 7 dní, ale 0 nových sledovateľov — na koniec videa daj dôvod sledovať (séria, „časť 2 zajtra“)`);
+      if(dv>0&&(!best||dv>best.dv)) best={k,dv};
+    });
+    if(best) add(2,`najrýchlejšie rastie ${PI[best.k]} ${PN[best.k]} (+${fmt(best.dv)} zhliadnutí za 7 dní) — tu sa oplatí pridať frekvenciu`);
+    const s7=new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+    const nv=(p.videos||[]).filter(v=>(v.published||'')>=s7&&v.views>0).sort((x,y)=>y.views-x.views);
+    if(nv.length>=3){const top=nv[0], med=nv[Math.floor(nv.length/2)].views||1;
+      if(top.views>=2*med) add(2,`hit týždňa „${esc(String(top.title||'').slice(0,60))}“ (${fmt(top.views)} zhliad., ${Math.round(top.views/med)}× medián) — sprav ďalšie na rovnakú tému/hák`);}
+  });
+  tips.sort((x,y)=>x.lvl-y.lvl);
+  return `<div class="card" style="margin-top:16px"><h2>💡 Rady <small>z dát za posledných 7–14 dní</small></h2>
+    ${tips.length?`<ul style="margin:8px 0 0;padding-left:4px;list-style:none;line-height:1.9">${tips.map(t=>t.html).join('')}</ul>`:'<div class="muted">Žiadne problémy, všetko rastie.</div>'}
+    ${idle.length?`<div class="muted" style="margin-top:10px;font-size:12px">Neaktívne (nič 14+ dní): ${idle.map(esc).join(', ')}</div>`:''}</div>`;
 }
 
 /* ---------------- VITAZI ---------------- */
@@ -578,17 +619,6 @@ function renderAcctCard(){
     <table class="acct-t"><thead><tr><th>Fabrika</th>${plats.map(k=>`<th>${PI[k]} ${PN[k]}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>${list}</div>`;
 }
 function renderFactories(){
-  const hrows=DATA.projects.map(p=>{
-    const [ic,txt]=facHealth(p);
-    const ls=p.last_sent?fmtDate(String(p.last_sent).slice(0,10)):'—';
-    const nd=p.next_due?new Date(p.next_due):null;
-    const ndTxt=nd?nd.toLocaleDateString('sk-SK',{day:'numeric',month:'numeric'})+' '+nd.toLocaleTimeString('sk-SK',{hour:'2-digit',minute:'2-digit'}):'—';
-    return `<div style="display:grid;grid-template-columns:26px 148px 1fr 170px 130px;gap:8px;padding:7px 0;border-top:1px solid #131a25;align-items:center">
-      <span>${ic}</span><span style="font-weight:700;color:${p.color}">${p.label||p.name}</span>
-      <span class="muted" style="font-size:12.5px">${txt}</span>
-      <span class="muted" style="font-size:12px">posledný post: ${ls}</span>
-      <span class="muted" style="font-size:12px">ďalší: ${ndTxt}</span></div>`;}).join('');
-  const health=`<div class="card" style="margin-bottom:16px"><h2>🚦 Zdravie fabrík <small>Buffer fronta a publikovanie</small></h2>${hrows}</div>`;
   const cards=DATA.projects.map((p,pi)=>{
     const L=p.links||{};
     const pubs=p.videos.map(v=>v.published).filter(Boolean).sort();
@@ -615,7 +645,7 @@ function renderFactories(){
       <div style="margin-top:9px"><a class="btn" style="padding:5px 11px;cursor:pointer" onclick="facTrend('${p.name.replace(/'/g,"\\'")}',${pi})">📈 Vývoj po dňoch</a></div>
       <div id="ftr_${pi}"></div>
     </div>`;}).join('');
-  $('#factories').innerHTML=health+renderAcctCard()+`<div class="grid k2">${cards}</div>`;
+  $('#factories').innerHTML=renderAcctCard()+`<div class="grid k2">${cards}</div>`;
 }
 
 /* Rozdelenie YT vykonu fabriky na Shorts vs Dokumenty (podla is_long) — zobrazi sa len ak uz ma aj dlhe videa */
