@@ -25,7 +25,7 @@ jobs:
           d = json.load(urllib.request.urlopen(req, timeout=120))
           print("keys:", list(d) if isinstance(d, dict) else type(d), "gen_at:", d.get("gen_at"), "projects:", len(d.get("projects") or []))
           for p in d.get("projects", d if isinstance(d, list) else []):
-              print("==", p.get("name"), "| status:", json.dumps(p.get("status"))[:200])
+              print("==", p.get("name"), "->", p.get("label"), "| status:", json.dumps(p.get("status"))[:200])
               for k, v in (p.get("conn") or {}).items():
                   print("   ", k, v.get("state"), "-", (v.get("note") or "")[:160])
               for k in ("youtube", "tiktok", "instagram"):
