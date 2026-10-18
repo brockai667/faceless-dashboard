@@ -17,11 +17,6 @@ jobs:
           import base64, json, os, urllib.request
           req = urllib.request.Request(os.environ["DASH_URL"] + "/data.json", headers={"User-Agent": "ff-check"})
           req.add_header("Authorization", "Basic " + base64.b64encode(("dash:" + os.environ["DASH_PASS"]).encode()).decode())
-          try:
-              r = urllib.request.Request(os.environ["DASH_URL"] + "/api/refresh", headers={"User-Agent": "ff-check", "Authorization": req.get_header("Authorization")})
-              print("refresh:", urllib.request.urlopen(r, timeout=280).status)
-          except Exception as e:
-              print("refresh chyba:", e)
           d = json.load(urllib.request.urlopen(req, timeout=120))
           print("keys:", list(d) if isinstance(d, dict) else type(d), "gen_at:", d.get("gen_at"), "projects:", len(d.get("projects") or []))
           for p in d.get("projects", d if isinstance(d, list) else []):

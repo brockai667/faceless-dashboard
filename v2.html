@@ -481,6 +481,7 @@ function tipsFor(P){
     const x=P.per[k], pv=P.vids.filter(v=>v._k===k);
     if(!pv.length&&!x.followers)return;   // platforma nepoužívaná
     const n14=pv.filter(v=>String(v.published||'')>=s14).length;
+    if(k==='tiktok'&&P.tkMissing){add(1,'TikTok: zoznam videí dnes z API nedorazil — čísla TikToku sú neúplné, pozri zajtra');return;}
     if(n14===0)add(0,`${PN[k]}: za 14 dní tam nevyšlo žiadne video — fabrika tam zrejme neposiela`);
     else if(x.wkViews>=300&&x.delta!=null&&x.delta<=0)add(1,`${PN[k]}: +${fmt(x.wkViews)} zhliadnutí nových videí za 7 dní, ale 0 nových sledovateľov — na koniec videa daj dôvod sledovať (séria, „časť 2 zajtra“)`);
     if(x.wkViews>0&&(!best||x.wkViews>best.dv))best={k,dv:x.wkViews};
@@ -532,6 +533,7 @@ function build(){
       follNet,dFollNet:dNetKnown?sumP(allPlats,x=>num(x.delta)):null,
       week,wkViews:week.reduce((s,v)=>s+v._views,0),wkCount:week.length,top:week[0]||null,
       median30:median(vids.filter(v=>plats.includes(v._k)&&String(v.published||'')>=s30).map(v=>v._views)),
+      tkMissing:!!(p.tiktok&&num(p.tiktok.videos)>0&&!vids.some(v=>v._k==='tiktok')),   // TikTok API dnes nevratil videa
       series:series.slice(-30),experiment:(p.experiment&&typeof p.experiment==='object')?p.experiment:null};
     P.tips=tipsFor(P);
     return P;
@@ -615,7 +617,7 @@ function topVideo(v,label){
 function card(P,i){
   return `<article class="fc" style="--c:${P.color};--d:${i*90}ms" data-open="${esc(P.name)}" tabindex="0" aria-label="Detail fabriky ${esc(P.label)}">
     <div class="fh"><span class="orb" aria-hidden="true"></span><div class="fn"><h3>${esc(P.label)}</h3>
-      <div class="ni">${esc(P.niche)}${P.niche?' · ':''}posledné video ${relDay(P.idle)}</div></div><span class="live" title="aktívna"><span class="lt">aktívna</span></span></div>
+      <div class="ni">${esc(P.niche)}${P.niche?' · ':''}posledné video ${P.tkMissing&&P.idle>=999?"— (chýbajú TikTok dáta)":relDay(P.idle)}</div></div><span class="live" title="aktívna"><span class="lt">aktívna</span></span></div>
     <div class="wk"><div><div class="lab">Zhliadnutia · 7 dní</div><div class="big num" data-to="${P.wkViews}">0</div>
       <div class="sub">${P.wkCount} ${P.wkCount===1?'video':P.wkCount>=2&&P.wkCount<=4?'videá':'videí'} · medián ${fmt(P.median30)}/video</div></div>
       <div>${spark(P.series.map(s=>s.v),P.color)}<div class="cap">denný prírastok · 30 d</div></div></div>
@@ -885,7 +887,7 @@ function renderDetail(){
     <div class="dh"><div class="dtop"><span class="orb" aria-hidden="true"></span><div style="min-width:0">
       <div class="eyebrow" style="color:${P.color}">${esc(P.niche||'Fabrika')}</div>
       <h2 id="dtitle">${esc(P.label)}</h2>
-      <div class="ni">${P.active?'<span class="live">aktívna</span>':'<span class="d z">neaktívna</span>'}<span>posledné video ${relDay(P.idle)}</span>${links}</div></div></div>
+      <div class="ni">${P.active?'<span class="live">aktívna</span>':'<span class="d z">neaktívna</span>'}<span>posledné video ${P.tkMissing&&P.idle>=999?"— (chýbajú TikTok dáta)":relDay(P.idle)}</span>${links}</div></div></div>
       <div class="dtabs" role="tablist">${[['prehlad','Prehľad'],['videa','Videá'],['rast','Rast']].map(([k,l])=>`<button type="button" role="tab" aria-selected="${DS.tab===k}" class="${DS.tab===k?'on':''}" data-tab="${k}">${l}</button>`).join('')}</div></div>
     <div class="db">${body}</div>`;
   animateCounts(panel);
