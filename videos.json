@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-10-19T00:02:37Z",
+ "gen_at": "2026-10-19T16:46:24Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "uGad_W-USEE",
+    "title": "Floating in a Pool #shorts",
+    "views": 963,
+    "likes": 12,
+    "comments": 0,
+    "published": "2026-10-19",
+    "link": "https://www.youtube.com/watch?v=uGad_W-USEE",
+    "platform": "youtube"
+   },
+   {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1046,
+    "views": 1054,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -15,7 +25,7 @@
    {
     "id": "9J8-C58QTyM",
     "title": "Cold Water Swim #shorts",
-    "views": 1150,
+    "views": 1155,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-17",
@@ -25,7 +35,7 @@
    {
     "id": "j0csYMAUK5g",
     "title": "Protein Only Diet Effects #shorts",
-    "views": 833,
+    "views": 837,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-16",
@@ -35,7 +45,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1369,
+    "views": 1370,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -181,6 +191,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7698301397183335712",
+    "title": "A cute paper‑craft cartoon shows the surprising bodily changes when you simply float in a pool. #FloatScience #WaterPhysics #BodyEffects Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 272,
+    "likes": 4,
+    "comments": 0,
+    "published": "2026-10-19",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7698301397183335712",
+    "platform": "tiktok"
    },
    {
     "id": "7697930250746858784",
@@ -363,9 +383,19 @@
     "platform": "tiktok"
    },
    {
+    "id": "18034895177846063",
+    "title": "A cute paper‑craft cartoon shows the surprising bodily chang",
+    "views": 137,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-19",
+    "link": "https://www.instagram.com/reel/Deq49K9jC3d/",
+    "platform": "instagram"
+   },
+   {
     "id": "17916921705265478",
     "title": "A paper‑craft explorer climbs a dune while we see the real p",
-    "views": 211,
+    "views": 212,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-18",
@@ -425,7 +455,7 @@
    {
     "id": "18122075827903861",
     "title": "A quick visual look at the physiological changes from an all",
-    "views": 3127,
+    "views": 3128,
     "likes": 13,
     "comments": 0,
     "published": "2026-10-10",
@@ -545,14 +575,34 @@
   ],
   "WealthMindset": [
    {
+    "id": "z23X-beWHXM",
+    "title": "Suddenly Rich · Part 1: The Ticket #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-19",
+    "link": "https://www.youtube.com/watch?v=z23X-beWHXM",
+    "platform": "youtube"
+   },
+   {
     "id": "7698097204703055126",
     "title": "You just won $100 million. Day 1 goes worse than you think. 🎟️ Part 2 drops tomorrow. Follow so you don't miss it. #suddenly  #money  #lottery  #finance",
-    "views": 265,
+    "views": 270,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7698097204703055126",
     "platform": "tiktok"
+   },
+   {
+    "id": "18399199594165591",
+    "title": "You just won $100 million. Day 1 goes worse than you think. ",
+    "views": 5,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-19",
+    "link": "https://www.instagram.com/reel/Derp3oBkhd-/",
+    "platform": "instagram"
    }
   ],
   "UnexplainedDaily": [
@@ -3325,7 +3375,7 @@
    {
     "id": "xClkmJ7Ibjs",
     "title": "Kjeragbolten Hanging Rock #shorts",
-    "views": 498,
+    "views": 501,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-16",
@@ -5209,8 +5259,8 @@
    {
     "id": "rAgdWwHs4yo",
     "title": "Amelia Earhart's Final Flight #shorts",
-    "views": 0,
-    "likes": 0,
+    "views": 8,
+    "likes": 1,
     "comments": 0,
     "published": "2026-10-18",
     "link": "https://www.youtube.com/watch?v=rAgdWwHs4yo",
@@ -5599,7 +5649,7 @@
    {
     "id": "17967439524199154",
     "title": "Explore the enduring mystery of Amelia Earhart's disappearan",
-    "views": 11,
+    "views": 31,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-18",
@@ -5791,7 +5841,7 @@
    {
     "id": "xNQPL8OmO0M",
     "title": "Every Wi‑Fi Generation Explained: From 802.11b to Wi‑Fi 7",
-    "views": 17,
+    "views": 18,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-28",
@@ -6031,7 +6081,7 @@
    {
     "id": "LbRJvpc0v9c",
     "title": "Japan's Martian Moon Sample Probe #shorts",
-    "views": 55,
+    "views": 56,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-14",
