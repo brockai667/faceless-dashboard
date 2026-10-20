@@ -1,11 +1,11 @@
 {
- "gen_at": "2026-10-20T00:59:52Z",
+ "gen_at": "2026-10-20T14:38:34Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "uGad_W-USEE",
     "title": "Floating in a Pool #shorts",
-    "views": 1016,
+    "views": 1022,
     "likes": 13,
     "comments": 0,
     "published": "2026-10-19",
@@ -15,7 +15,7 @@
    {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1055,
+    "views": 1044,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -25,7 +25,7 @@
    {
     "id": "9J8-C58QTyM",
     "title": "Cold Water Swim #shorts",
-    "views": 1161,
+    "views": 1166,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-17",
@@ -35,7 +35,7 @@
    {
     "id": "j0csYMAUK5g",
     "title": "Protein Only Diet Effects #shorts",
-    "views": 837,
+    "views": 840,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-16",
@@ -65,7 +65,7 @@
    {
     "id": "zYdw2s2phaM",
     "title": "Sleeping in a Coffin #shorts",
-    "views": 140,
+    "views": 141,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-11",
@@ -191,6 +191,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7698672478217915681",
+    "title": "A whimsical look at how climbing a tall oak changes your body step by step. # T r e e C l i m b # A l t i t u d e # S c i e n c e Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 258,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7698672478217915681",
+    "platform": "tiktok"
    },
    {
     "id": "7698301397183335712",
@@ -383,9 +393,19 @@
     "platform": "tiktok"
    },
    {
+    "id": "18568228204075159",
+    "title": "A whimsical look at how climbing a tall oak changes your bod",
+    "views": 157,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.instagram.com/reel/DetdreQl7F5/",
+    "platform": "instagram"
+   },
+   {
     "id": "18034895177846063",
     "title": "A cute paper‑craft cartoon shows the surprising bodily chang",
-    "views": 139,
+    "views": 144,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-19",
@@ -395,7 +415,7 @@
    {
     "id": "17916921705265478",
     "title": "A paper‑craft explorer climbs a dune while we see the real p",
-    "views": 212,
+    "views": 213,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-18",
@@ -577,7 +597,7 @@
    {
     "id": "z23X-beWHXM",
     "title": "Suddenly Rich · Part 1: The Ticket #shorts",
-    "views": 5,
+    "views": 9,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-19",
@@ -597,7 +617,7 @@
    {
     "id": "18399199594165591",
     "title": "You just won $100 million. Day 1 goes worse than you think. ",
-    "views": 142,
+    "views": 144,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-19",
@@ -5257,6 +5277,26 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "8XmpMUCuAgY",
+    "title": "The Baghdad Battery Mystery #shorts",
+    "views": 14,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.youtube.com/watch?v=8XmpMUCuAgY",
+    "platform": "youtube"
+   },
+   {
+    "id": "z0lnoYdsV-s",
+    "title": "The Carroll A. Deering Mystery #shorts",
+    "views": 20,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.youtube.com/watch?v=z0lnoYdsV-s",
+    "platform": "youtube"
+   },
+   {
     "id": "rAgdWwHs4yo",
     "title": "Amelia Earhart's Final Flight #shorts",
     "views": 8,
@@ -5457,6 +5497,26 @@
     "platform": "youtube"
    },
    {
+    "id": "7698693762058325281",
+    "title": "Exploring the enigmatic Baghdad Battery and its debated purpose. #unexplained #mystery #archaeology Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "views": 79,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7698693762058325281",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7698690411304455456",
+    "title": "Explore the baffling abandonment of the Carroll A. Deering and the lingering questions. #unexplained #mystery #maritime #history Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7698690411304455456",
+    "platform": "tiktok"
+   },
+   {
     "id": "7697946233314331936",
     "title": "Explore the enduring mystery of Amelia Earhart's disappearance. #unexplained #mystery #history #aviation Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
     "views": 100,
@@ -5637,14 +5697,24 @@
     "platform": "tiktok"
    },
    {
-    "id": "7691039183816690976",
-    "title": "Nine experienced hikers died on a Ural mountainside in 1959, and their tent was cut open from the inside. The Dyatlov Pass case is still argued about today. #unexplained #mystery #dyatlovpass #history #truecrime Paper animation made with code. Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "id": "18217981714357768",
+    "title": "Exploring the enigmatic Baghdad Battery and its debated purp",
     "views": 0,
     "likes": 0,
     "comments": 0,
-    "published": "2026-09-29",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7691039183816690976",
-    "platform": "tiktok"
+    "published": "2026-10-20",
+    "link": "https://www.instagram.com/reel/DetnDHfkVrW/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17968102434188201",
+    "title": "Explore the baffling abandonment of the Carroll A. Deering a",
+    "views": 9,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.instagram.com/reel/DetlqLqDa7-/",
+    "platform": "instagram"
    },
    {
     "id": "17967439524199154",
