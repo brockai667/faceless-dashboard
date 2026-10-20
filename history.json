@@ -11557,24 +11557,24 @@
     "yt_views": 178053,
     "yt_likes": 482,
     "tk_foll": 45,
-    "tk_views": 7196,
-    "tk_likes": 111,
+    "tk_views": 6929,
+    "tk_likes": 105,
     "ig_foll": 71,
-    "ig_views": 20907,
-    "ig_posts": 900,
-    "videos": 743,
-    "ig_videos": 342,
+    "ig_views": 20911,
+    "ig_posts": 899,
+    "videos": 740,
+    "ig_videos": 341,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 50,
         "yv": 7290,
         "tf": 43,
-        "tv": 13303,
+        "tv": 13304,
         "if": 23,
-        "iv": 11153,
-        "tvr": 5359,
-        "ivr": 11153
+        "iv": 11155,
+        "tvr": 5360,
+        "ivr": 11155
       },
       "WealthMindset": {
         "yf": 27,
@@ -11582,9 +11582,9 @@
         "tf": 1,
         "tv": 270,
         "if": 3,
-        "iv": 1816,
+        "iv": 1812,
         "tvr": 270,
-        "ivr": 144
+        "ivr": 140
       },
       "UnexplainedDaily": {
         "yf": 135,
@@ -11640,11 +11640,11 @@
         "yf": 56,
         "yv": 486,
         "tf": 0,
-        "tv": 719,
+        "tv": 721,
         "if": 4,
-        "iv": 1091,
-        "tvr": 719,
-        "ivr": 824
+        "iv": 1097,
+        "tvr": 721,
+        "ivr": 830
       },
       "Curio": {
         "yf": 123,
