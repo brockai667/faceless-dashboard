@@ -590,7 +590,7 @@ const NICK={MindBlownDaily:'Mind Blown',ColdCaseDaily:'Cold Case',UnexplainedDai
   WealthMindset:'Suddenly Rich',BrainHeist:'Brain Heist',HiddenEarth:'Hidden Earth',NextByte:'Next Byte',EyeHeist:'Eye Heist',
   Curio:'Curio','Money Glitch':'Money Glitch'};
 /* Poznámka k fabrike (zámerné obmedzenie, nie chyba dát) */
-const NOTE={WealthMindset:'len TikTok · nahrávané ručne'};
+const NOTE={WealthMindset:'YT + IG automaticky o 10:00 · TikTok ručne'};   // hybrid od 19.10.2026
 const PERS=[1,7,30];
 let PER=7; try{const s0=+localStorage.getItem('ff.per');if(PERS.includes(s0))PER=s0;}catch(e){}
 const perS=n=>n===1?'24 h':n+' d';
@@ -603,7 +603,7 @@ const PS={youtube:'YT',tiktok:'TT',instagram:'IG'};
 const PC={youtube:'#ff5a52',tiktok:'#3fe8e0',instagram:'#e8508a'};
 const HF={youtube:'yf',tiktok:'tf',instagram:'if'};   // history: sledovatelia
 const HV={youtube:'yv',tiktok:'tv',instagram:'iv'};   // history: zhliadnutia
-const ONLY={WealthMindset:['tiktok']};   // Suddenly Rich ide od 18.10.2026 len na TikTok (ručne z mobilu), YT/IG sa nerátajú
+const ONLY={};   // fabriky zámerne len na jednej sieti (Suddenly Rich od 19.10.2026 opäť YT + IG + TT)
 const ACC='#c4f25a';
 const RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 const FINE=!!(window.matchMedia&&matchMedia('(hover: hover) and (pointer: fine)').matches);
