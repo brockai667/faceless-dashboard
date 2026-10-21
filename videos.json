@@ -1,11 +1,11 @@
 {
- "gen_at": "2026-10-21T14:50:08Z",
+ "gen_at": "2026-10-21T19:45:56Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "E7aG6HbL-u0",
     "title": "Calm in Chaos Meditation Countdown #shorts",
-    "views": 12,
+    "views": 14,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -25,7 +25,7 @@
    {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1044,
+    "views": 1045,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -55,7 +55,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1374,
+    "views": 1375,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -205,7 +205,7 @@
    {
     "id": "7699043627137387809",
     "title": "A quick visual guide shows how meditation instantly calms the body during stress. #Meditation #StressRelief #ScienceFacts #MindBlown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 271,
+    "views": 272,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-21",
@@ -405,8 +405,8 @@
    {
     "id": "18139689817722487",
     "title": "A quick visual guide shows how meditation instantly calms th",
-    "views": 152,
-    "likes": 0,
+    "views": 166,
+    "likes": 2,
     "comments": 0,
     "published": "2026-10-21",
     "link": "https://www.instagram.com/reel/DewCftlioK3/",
@@ -613,7 +613,38 @@
     "platform": "instagram"
    }
   ],
-  "WealthMindset": [],
+  "WealthMindset": [
+   {
+    "id": "-AWFpmv6Sr4",
+    "title": "Suddenly Rich · Part 1: The Ticket #shorts",
+    "views": 4,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-21",
+    "link": "https://www.youtube.com/watch?v=-AWFpmv6Sr4",
+    "platform": "youtube"
+   },
+   {
+    "id": "7699190098444815638",
+    "title": "You won $100M. Claim it, and you only get $38M. Part 2 drops tomorrow. Follow so you don't miss it. #suddenly  #money  #lottery  #finance",
+    "views": 98,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-21",
+    "link": "https://www.tiktok.com/@wealth_mindset34/video/7699190098444815638",
+    "platform": "tiktok"
+   },
+   {
+    "id": "17934866376407260",
+    "title": "You won $100M. Claim it, and you only get $38M. CLAIM or WAI",
+    "views": 13,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-21",
+    "link": "https://www.instagram.com/reel/DexAWygkrIx/",
+    "platform": "instagram"
+   }
+  ],
   "UnexplainedDaily": [
    {
     "id": "7667532484342484246",
@@ -2552,7 +2583,7 @@
    {
     "id": "T2hA_V5aBGA",
     "title": "Can a Potato Beat a Banana for Potassium? #shorts",
-    "views": 151,
+    "views": 152,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-07",
@@ -5268,7 +5299,7 @@
    {
     "id": "_2zVdLgAWXM",
     "title": "The Kaspar Hauser Mystery #shorts",
-    "views": 24,
+    "views": 25,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -5278,7 +5309,7 @@
    {
     "id": "8XmpMUCuAgY",
     "title": "The Baghdad Battery Mystery #shorts",
-    "views": 18,
+    "views": 21,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-20",
@@ -5698,7 +5729,7 @@
    {
     "id": "17914232394557425",
     "title": "A brief case file on the enigmatic Kaspar Hauser. #unexplain",
-    "views": 8,
+    "views": 9,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
