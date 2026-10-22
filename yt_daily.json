@@ -6151,7 +6151,7 @@
       }
     },
     "2026-10-17": {
-      "views": 1305,
+      "views": 1303,
       "subs": 2,
       "fac": {
         "UnexplainedDaily": {
@@ -6195,7 +6195,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 1231,
+          "v": 1229,
           "s": 2
         }
       }
@@ -6249,7 +6249,57 @@
           "s": 0
         }
       }
+    },
+    "2026-10-19": {
+      "views": 1074,
+      "subs": 2,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 0,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 0,
+          "s": 0
+        },
+        "Entropy": {
+          "v": 0,
+          "s": 0
+        },
+        "Curio": {
+          "v": 2,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 0,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 4,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 9,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 0,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 1,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 4,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1054,
+          "s": 2
+        }
+      }
     }
   },
-  "generated": "2026-10-21T10:23:44.341766Z"
+  "generated": "2026-10-22T10:21:50.307282Z"
 }
