@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-10-22T00:31:59Z",
+ "gen_at": "2026-10-22T14:51:11Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "qxRukLYIGIQ",
+    "title": "Swap Soda for Tea: Body Changes #shorts",
+    "views": 24,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-22",
+    "link": "https://www.youtube.com/watch?v=qxRukLYIGIQ",
+    "platform": "youtube"
+   },
+   {
     "id": "E7aG6HbL-u0",
     "title": "Calm in Chaos Meditation Countdown #shorts",
-    "views": 14,
+    "views": 17,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -35,7 +45,7 @@
    {
     "id": "9J8-C58QTyM",
     "title": "Cold Water Swim #shorts",
-    "views": 1175,
+    "views": 1174,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-17",
@@ -55,7 +65,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1376,
+    "views": 1379,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -201,6 +211,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7699414771585666336",
+    "title": "A quick look at how swapping soda for tea steadies sugar spikes, calms caffeine, boosts hydration, lowers blood pressure, and feeds gut antioxidants. #TeaSwap #HealthFacts #SodaFree Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 255,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-22",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7699414771585666336",
+    "platform": "tiktok"
    },
    {
     "id": "7699043627137387809",
@@ -393,19 +413,19 @@
     "platform": "tiktok"
    },
    {
-    "id": "7691250772511657249",
-    "title": "Why drinking water faster than your kidneys can clear it dilutes your sodium and swells your cells. #water #hydration #science #health AI-free animation made with code. Not medical advice. Music: \"Echoes of Time\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 253,
-    "likes": 5,
+    "id": "18465148972136768",
+    "title": "A quick look at how swapping soda for tea steadies sugar spi",
+    "views": 123,
+    "likes": 0,
     "comments": 0,
-    "published": "2026-09-30",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7691250772511657249",
-    "platform": "tiktok"
+    "published": "2026-10-22",
+    "link": "https://www.instagram.com/reel/DeynSrVk-p1/",
+    "platform": "instagram"
    },
    {
     "id": "18139689817722487",
     "title": "A quick visual guide shows how meditation instantly calms th",
-    "views": 170,
+    "views": 185,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-21",
@@ -617,7 +637,7 @@
    {
     "id": "-AWFpmv6Sr4",
     "title": "Suddenly Rich · Part 1: The Ticket #shorts",
-    "views": 5,
+    "views": 6,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-21",
@@ -627,7 +647,7 @@
    {
     "id": "7699190098444815638",
     "title": "You won $100M. Claim it, and you only get $38M. Part 2 drops tomorrow. Follow so you don't miss it. #suddenly  #money  #lottery  #finance",
-    "views": 258,
+    "views": 262,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-21",
@@ -637,7 +657,7 @@
    {
     "id": "17934866376407260",
     "title": "You won $100M. Claim it, and you only get $38M. CLAIM or WAI",
-    "views": 29,
+    "views": 33,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -3785,7 +3805,7 @@
    {
     "id": "fJdd23YbFvo",
     "title": "Why Lake Pukaki Shines Like a Sapphire #shorts",
-    "views": 41,
+    "views": 42,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-04",
@@ -5297,9 +5317,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "0wLdlx1nSXk",
+    "title": "Ancient Egyptian 'Light Bulb' Mystery #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-22",
+    "link": "https://www.youtube.com/watch?v=0wLdlx1nSXk",
+    "platform": "youtube"
+   },
+   {
     "id": "_2zVdLgAWXM",
     "title": "The Kaspar Hauser Mystery #shorts",
-    "views": 26,
+    "views": 27,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -5309,7 +5339,7 @@
    {
     "id": "8XmpMUCuAgY",
     "title": "The Baghdad Battery Mystery #shorts",
-    "views": 23,
+    "views": 22,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-20",
@@ -5527,6 +5557,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7699431297445350688",
+    "title": "Explore the mysterious Dendera relief that some claim depicts an ancient light bulb. Case file: The Dendera Light Relief. #unexplained #mystery #ancient #egypt #DenderaLight Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-22",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7699431297445350688",
+    "platform": "tiktok"
+   },
+   {
     "id": "7699063752649493792",
     "title": "A brief case file on the enigmatic Kaspar Hauser. #unexplained #mystery #history Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
     "views": 84,
@@ -5717,14 +5757,14 @@
     "platform": "tiktok"
    },
    {
-    "id": "7691643949450104097",
-    "title": "On August 15, 1977 the Big Ear telescope recorded a 72-second signal from the direction of Sagittarius. It was never detected again. #unexplained #mystery #wowsignal #space #aliens Paper animation made with code. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
+    "id": "18131669458811887",
+    "title": "Explore the mysterious Dendera relief that some claim depict",
+    "views": 5,
     "likes": 0,
     "comments": 0,
-    "published": "2026-10-01",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7691643949450104097",
-    "platform": "tiktok"
+    "published": "2026-10-22",
+    "link": "https://www.instagram.com/reel/DeyummPjqBB/",
+    "platform": "instagram"
    },
    {
     "id": "17914232394557425",
