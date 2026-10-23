@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-10-23T00:29:24Z",
+ "gen_at": "2026-10-23T14:36:58Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "qqT_1so2VxA",
+    "title": "Mimic a Hummingbird's Wing Beat #shorts",
+    "views": 15,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-23",
+    "link": "https://www.youtube.com/watch?v=qqT_1so2VxA",
+    "platform": "youtube"
+   },
+   {
     "id": "qxRukLYIGIQ",
     "title": "Swap Soda for Tea: Body Changes #shorts",
-    "views": 29,
-    "likes": 0,
+    "views": 39,
+    "likes": 1,
     "comments": 0,
     "published": "2026-10-22",
     "link": "https://www.youtube.com/watch?v=qxRukLYIGIQ",
@@ -15,7 +25,7 @@
    {
     "id": "E7aG6HbL-u0",
     "title": "Calm in Chaos Meditation Countdown #shorts",
-    "views": 20,
+    "views": 26,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-21",
@@ -35,7 +45,7 @@
    {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1045,
+    "views": 1046,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -85,7 +95,7 @@
    {
     "id": "zYdw2s2phaM",
     "title": "Sleeping in a Coffin #shorts",
-    "views": 142,
+    "views": 144,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-11",
@@ -211,6 +221,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7699785769614855457",
+    "title": "A quick look at the physiological chaos of flapping your arms at hummingbird speed. #Science #BodyFacts #HummingbirdChallenge Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 255,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-23",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7699785769614855457",
+    "platform": "tiktok"
    },
    {
     "id": "7699414771585666336",
@@ -403,20 +423,20 @@
     "platform": "tiktok"
    },
    {
-    "id": "7691621968453307681",
-    "title": "Can by can: what a day of nothing but soda does to your blood sugar, teeth, weight and sleep. #soda #sugar #science #health AI-free animation made with code. Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 249,
-    "likes": 2,
+    "id": "18168880240475132",
+    "title": "A quick look at the physiological chaos of flapping your arm",
+    "views": 1663,
+    "likes": 12,
     "comments": 0,
-    "published": "2026-10-01",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7691621968453307681",
-    "platform": "tiktok"
+    "published": "2026-10-23",
+    "link": "https://www.instagram.com/reel/De1MDJJjleP/",
+    "platform": "instagram"
    },
    {
     "id": "18465148972136768",
     "title": "A quick look at how swapping soda for tea steadies sugar spi",
-    "views": 128,
-    "likes": 0,
+    "views": 130,
+    "likes": 1,
     "comments": 0,
     "published": "2026-10-22",
     "link": "https://www.instagram.com/reel/DeynSrVk-p1/",
@@ -425,7 +445,7 @@
    {
     "id": "18139689817722487",
     "title": "A quick visual guide shows how meditation instantly calms th",
-    "views": 185,
+    "views": 186,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-21",
@@ -637,7 +657,7 @@
    {
     "id": "-AWFpmv6Sr4",
     "title": "Suddenly Rich · Part 1: The Ticket #shorts",
-    "views": 6,
+    "views": 7,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-21",
@@ -3435,7 +3455,7 @@
    {
     "id": "xClkmJ7Ibjs",
     "title": "Kjeragbolten Hanging Rock #shorts",
-    "views": 501,
+    "views": 502,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-16",
@@ -3555,7 +3575,7 @@
    {
     "id": "0iVYUbAu9Qk",
     "title": "Badain Jaran Singing Sand Dunes #shorts",
-    "views": 154,
+    "views": 155,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-12",
@@ -3775,7 +3795,7 @@
    {
     "id": "JemVqblJphs",
     "title": "Why Mono Lake’s Towering Tufas Defy Time #shorts",
-    "views": 81,
+    "views": 82,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-05",
@@ -5317,9 +5337,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "r8s6_rOGRFg",
+    "title": "The Outback's Mysterious Floating Light #shorts",
+    "views": 60,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-23",
+    "link": "https://www.youtube.com/watch?v=r8s6_rOGRFg",
+    "platform": "youtube"
+   },
+   {
     "id": "0wLdlx1nSXk",
     "title": "Ancient Egyptian 'Light Bulb' Mystery #shorts",
-    "views": 1,
+    "views": 8,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-22",
@@ -5329,7 +5359,7 @@
    {
     "id": "_2zVdLgAWXM",
     "title": "The Kaspar Hauser Mystery #shorts",
-    "views": 28,
+    "views": 29,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -5557,6 +5587,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7699807725169036577",
+    "title": "Explore the century-old mystery of Australia's elusive Min Min Light. Case file: The Min Min Light Phenomenon. #unexplained #mystery #australia #MinMinLight Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-23",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7699807725169036577",
+    "platform": "tiktok"
+   },
+   {
     "id": "7699431297445350688",
     "title": "Explore the mysterious Dendera relief that some claim depicts an ancient light bulb. Case file: The Dendera Light Relief. #unexplained #mystery #ancient #egypt #DenderaLight Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
     "views": 0,
@@ -5747,19 +5787,19 @@
     "platform": "tiktok"
    },
    {
-    "id": "7692013851218382113",
-    "title": "In December 1900, three lighthouse keepers vanished from a remote Scottish island, leaving a stopped clock and an empty lighthouse behind. #unexplained #mystery #flannanisles #lighthouse #truecrime Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
+    "id": "18130812745836753",
+    "title": "Explore the century-old mystery of Australia's elusive Min M",
+    "views": 66,
     "likes": 0,
     "comments": 0,
-    "published": "2026-10-02",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7692013851218382113",
-    "platform": "tiktok"
+    "published": "2026-10-23",
+    "link": "https://www.instagram.com/reel/De1VvzwjlLR/",
+    "platform": "instagram"
    },
    {
     "id": "18131669458811887",
     "title": "Explore the mysterious Dendera relief that some claim depict",
-    "views": 20,
+    "views": 64,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-22",
