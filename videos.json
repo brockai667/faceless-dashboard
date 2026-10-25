@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-10-25T00:08:31Z",
+ "gen_at": "2026-10-25T14:05:04Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "BRTp_uvgt_I",
+    "title": "One Day at Altitude #shorts",
+    "views": 327,
+    "likes": 6,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.youtube.com/watch?v=BRTp_uvgt_I",
+    "platform": "youtube"
+   },
+   {
     "id": "lrOUrk8gtCA",
     "title": "Perfect Posture While Typing #shorts",
-    "views": 705,
-    "likes": 4,
+    "views": 750,
+    "likes": 5,
     "comments": 0,
     "published": "2026-10-24",
     "link": "https://www.youtube.com/watch?v=lrOUrk8gtCA",
@@ -15,7 +25,7 @@
    {
     "id": "qqT_1so2VxA",
     "title": "Mimic a Hummingbird's Wing Beat #shorts",
-    "views": 43,
+    "views": 50,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-23",
@@ -233,6 +243,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7700543303657295136",
+    "title": "A quick look at how a day at high altitude changes your body. # A l t i t u d e # S c i e n c e # B o d y C h a n g e s Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 266,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7700543303657295136",
+    "platform": "tiktok"
+   },
+   {
     "id": "7700156844291018016",
     "title": "A quick look at how perfect posture while typing can transform your body over minutes to months. #Posture #Typing #Health #Science #Wellness Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 266,
@@ -423,19 +443,19 @@
     "platform": "tiktok"
    },
    {
-    "id": "7692363956618317088",
-    "title": "Five things a good daily laugh does for your heart, muscles, brain, mood and even pain. #laughter #happiness #science #health Not medical advice. Music: \"Space Jazz\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 251,
-    "likes": 2,
+    "id": "17880556224554245",
+    "title": "A quick look at how a day at high altitude changes your body",
+    "views": 314,
+    "likes": 0,
     "comments": 0,
-    "published": "2026-10-03",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7692363956618317088",
-    "platform": "tiktok"
+    "published": "2026-10-25",
+    "link": "https://www.instagram.com/reel/De6cZ2ZDMOr/",
+    "platform": "instagram"
    },
    {
     "id": "18146361004579083",
     "title": "A quick look at how perfect posture while typing can transfo",
-    "views": 153,
+    "views": 157,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-24",
@@ -445,7 +465,7 @@
    {
     "id": "18168880240475132",
     "title": "A quick look at the physiological chaos of flapping your arm",
-    "views": 2097,
+    "views": 2098,
     "likes": 18,
     "comments": 0,
     "published": "2026-10-23",
@@ -675,10 +695,20 @@
   ],
   "WealthMindset": [
    {
+    "id": "_nbSHKbjV7E",
+    "title": "Suddenly Rich · Part 3: The Name #shorts",
+    "views": 10,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.youtube.com/watch?v=_nbSHKbjV7E",
+    "platform": "youtube"
+   },
+   {
     "id": "hpm4_23cYSM",
     "title": "Suddenly Rich · Part 2: The Suit #shorts",
-    "views": 81,
-    "likes": 7,
+    "views": 124,
+    "likes": 8,
     "comments": 0,
     "published": "2026-10-24",
     "link": "https://www.youtube.com/watch?v=hpm4_23cYSM",
@@ -687,8 +717,8 @@
    {
     "id": "-AWFpmv6Sr4",
     "title": "Suddenly Rich · Part 1: The Ticket #shorts",
-    "views": 79,
-    "likes": 5,
+    "views": 82,
+    "likes": 6,
     "comments": 0,
     "published": "2026-10-21",
     "link": "https://www.youtube.com/watch?v=-AWFpmv6Sr4",
@@ -705,10 +735,20 @@
     "platform": "tiktok"
    },
    {
+    "id": "18008507540990070",
+    "title": "You grin for the giant check. The world now knows your face.",
+    "views": 147,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.instagram.com/reel/De6XjhqFruB/",
+    "platform": "instagram"
+   },
+   {
     "id": "18082497980416320",
     "title": "You claimed $38M. 38 minutes later, a stranger knew your nam",
-    "views": 59,
-    "likes": 0,
+    "views": 124,
+    "likes": 2,
     "comments": 0,
     "published": "2026-10-24",
     "link": "https://www.instagram.com/reel/De4wevnjmUi/",
@@ -717,7 +757,7 @@
    {
     "id": "17934866376407260",
     "title": "You won $100M. Claim it, and you only get $38M. CLAIM or WAI",
-    "views": 35,
+    "views": 37,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-21",
@@ -3605,7 +3645,7 @@
    {
     "id": "99uI1vbIVU8",
     "title": "Giant's Causeway Hexagonal Column Wonder #shorts",
-    "views": 133,
+    "views": 134,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-12",
@@ -5377,9 +5417,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "uGUWxcCMXiM",
+    "title": "The Footage That Shocked Hollywood #shorts",
+    "views": 81,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.youtube.com/watch?v=uGUWxcCMXiM",
+    "platform": "youtube"
+   },
+   {
     "id": "EdBxjobGIPg",
     "title": "The Code That Remains Uncracked #shorts",
-    "views": 337,
+    "views": 341,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-24",
@@ -5459,7 +5509,7 @@
    {
     "id": "THrS_SHCcz0",
     "title": "The Flannan Isles Lighthouse Mystery #shorts",
-    "views": 14,
+    "views": 16,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-16",
@@ -5635,6 +5685,16 @@
     "published": "2026-09-13",
     "link": "https://www.youtube.com/watch?v=ZDGSCZ5YHbc",
     "platform": "youtube"
+   },
+   {
+    "id": "7700561889398377761",
+    "title": "Explore the controversial 1967 Patterson-Gimlin Bigfoot film and its lingering mysteries. Case file: The Patterson-Gimlin Bigfoot Film. #unexplained #mystery #bigfoot #PattersonGimlin Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7700561889398377761",
+    "platform": "tiktok"
    },
    {
     "id": "7700173019586563360",
@@ -5827,14 +5887,14 @@
     "platform": "tiktok"
    },
    {
-    "id": "7692754102287158561",
-    "title": "In July 1937, Amelia Earhart and navigator Fred Noonan vanished near Howland Island during her attempt to fly around the world. Despite huge searches, their fate is still debated. #unexplained #mystery #ameliaearhart #history #aviation Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
+    "id": "18400772476200756",
+    "title": "Explore the controversial 1967 Patterson-Gimlin Bigfoot film",
+    "views": 68,
     "likes": 0,
     "comments": 0,
-    "published": "2026-10-04",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7692754102287158561",
-    "platform": "tiktok"
+    "published": "2026-10-25",
+    "link": "https://www.instagram.com/reel/De6kqIHgFzg/",
+    "platform": "instagram"
    },
    {
     "id": "17988182859080060",
@@ -5849,7 +5909,7 @@
    {
     "id": "18130812745836753",
     "title": "Explore the century-old mystery of Australia's elusive Min M",
-    "views": 112,
+    "views": 113,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-23",
