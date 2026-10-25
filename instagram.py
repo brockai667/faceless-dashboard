@@ -2,21 +2,48 @@
 """Instagram data fetch pre centralu cez Instagram Graph API (Instagram Login).
 Cita ig_tokens.json (dlhodobe tokeny per ucet) -> {username: {"stats":{...}, "media":[...]}}.
 Dlhodoby token sam predlzi (ig_refresh_token) ak sa bliz koniec platnosti."""
-import json, os, time, urllib.parse, urllib.request, urllib.error
+import datetime, json, os, time, urllib.parse, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 
 GRAPH = "https://graph.instagram.com"
-# Kolko najnovsich prispevkov na ucet stiahneme (1 volanie). Z tohto zoznamu generate.py pocita Part-2 sucet zhliadnuti.
+# Prispevky citame VSETKY (strankovanie paging.next), nie len poslednych 50: user 25.10.2026 - dashboard ukazoval
+# IG zhliadnutia len z 354 z 912 prispevkov. MEDIA_LIMIT = velkost jednej strany, MEDIA_MAX = poistka.
 MEDIA_LIMIT = 50
-# Zhliadnutia (1 insights volanie na video) berieme len pre najnovsich INSIGHTS_FIRST videi + videa od 'since' (Part 2);
-# volania idu paralelne -> generate.py sa zmesti do limitu 240 s (server.py run_generate) aj pri 8+ uctoch.
-INSIGHTS_FIRST = 15
-INSIGHTS_WORKERS = 6
+MEDIA_MAX = 1000
+# Zhliadnutia (1 insights volanie na video) pre VSETKY videa; volania idu paralelne. Cache ig_views_cache.json:
+# videa mladsie ako FRESH_DAYS citame kazdy den, starsie raz za STALE_DAYS (setrime IG API a limit 240 s v server.py).
+INSIGHTS_WORKERS = 8
+FRESH_DAYS = 14
+STALE_DAYS = 7
+INSIGHTS_BUDGET_S = 150   # po tomto case uz nove insights nespustame - ostane hodnota z cache
 
 
 def _get(path, params):
     url = f"{GRAPH}/{path}?" + urllib.parse.urlencode(params)
+    return _get_url(url)
+
+
+def _get_url(url):
     return json.loads(urllib.request.urlopen(urllib.request.Request(url), timeout=30).read().decode())
+
+
+def _all_media(tok):
+    """Vsetky prispevky uctu cez strankovanie. Chyba na dalsej strane = vratime to, co uz mame."""
+    page = _get("me/media", {
+        "fields": "id,caption,like_count,comments_count,media_type,media_product_type,permalink,timestamp",
+        "limit": str(MEDIA_LIMIT), "access_token": tok})
+    media = list(page.get("data", []))
+    while len(media) < MEDIA_MAX:
+        nxt = (page.get("paging") or {}).get("next")
+        if not nxt:
+            break
+        try:
+            page = _get_url(nxt)
+        except Exception as e:
+            print(f"  [IG] dalsia strana prispevkov zlyhala ({type(e).__name__}) - mam {len(media)}")
+            break
+        media.extend(page.get("data", []))
+    return media
 
 
 def _media_views(mid, token):
@@ -141,14 +168,44 @@ def refresh_tokens(root, force=False):
     return result
 
 
+def _load_views_cache(root):
+    try:
+        return json.load(open(os.path.join(root, "ig_views_cache.json"), encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _need_views(m, cache, today):
+    """Treba citat insights? Nove video kazdy den, starsie raz za STALE_DAYS, bez cache vzdy."""
+    c = cache.get(m.get("id"))
+    if not c:
+        return True
+    ts = (m.get("timestamp") or "")[:10]
+    try:
+        age = (today - datetime.date.fromisoformat(ts)).days
+        since_fetch = (today - datetime.date.fromisoformat(c.get("at", "2000-01-01"))).days
+    except ValueError:
+        return True
+    return age <= FRESH_DAYS or since_fetch >= STALE_DAYS
+
+
 def fetch_all(root, since=None):
-    """since = 'YYYY-MM-DD' (zaciatok Part 2): starsim videam mimo najnovsich INSIGHTS_FIRST sa zhliadnutia necitaju."""
+    """Vsetky prispevky vsetkych uctov + zhliadnutia vsetkych videi (cache ig_views_cache.json).
+    since sa uz nepouziva (kedysi orezaval insights na Part 2); ostava kvoli volajucim."""
     tpath = os.path.join(root, "ig_tokens.json")
     if not os.path.exists(tpath):
         return {}
     tokens = json.load(open(tpath, encoding="utf-8"))
     out = {}
     now = time.time()
+    today = datetime.date.today()
+    cache = _load_views_cache(root)
+    t0 = time.time()
+
+    def _views(mid, tok):
+        if time.time() - t0 > INSIGHTS_BUDGET_S:
+            return None   # cas minul -> ostane cache
+        return _media_views(mid, tok)
 
     for uname, t in list(tokens.items()):
         tok = t.get("access_token")
@@ -165,26 +222,32 @@ def fetch_all(root, since=None):
             print(f"  [IG] {uname}: {e}"); continue
 
         try:
-            ml = _get("me/media", {
-                "fields": "id,caption,like_count,comments_count,media_type,media_product_type,permalink,timestamp",
-                "limit": str(MEDIA_LIMIT), "access_token": tok})
-            media = ml.get("data", [])
+            media = _all_media(tok)
         except Exception:
             media = []
 
         want = []
-        for i, m in enumerate(media):
+        for m in media:
             is_video = (m.get("media_product_type") in ("REELS", "VIDEO")) or m.get("media_type") == "VIDEO"
-            m["_views"] = 0
-            if is_video and (i < INSIGHTS_FIRST or (since and (m.get("timestamp") or "")[:10] >= since)):
+            m["_views"] = int((cache.get(m.get("id")) or {}).get("v", 0)) if is_video else 0
+            if is_video and _need_views(m, cache, today):
                 want.append(m)
         if want:
             with ThreadPoolExecutor(max_workers=INSIGHTS_WORKERS) as ex:
-                for m, v in zip(want, ex.map(lambda mm, _t=tok: _media_views(mm["id"], _t), want)):
-                    m["_views"] = v
+                for m, v in zip(want, ex.map(lambda mm, _t=tok: _views(mm["id"], _t), want)):
+                    if v is None:
+                        continue
+                    # zhliadnutia neklesaju: chyba API (0) neprepise znamu hodnotu
+                    m["_views"] = max(v, m["_views"])
+                    cache[m["id"]] = {"v": m["_views"], "at": today.isoformat()}
+        print(f"  [IG] {uname}: {len(media)} prispevkov, insights {len(want)}")
 
         out[me.get("username", uname)] = {"stats": me, "media": media}
 
+    try:
+        json.dump(cache, open(os.path.join(root, "ig_views_cache.json"), "w", encoding="utf-8"))
+    except Exception as e:
+        print(f"  [IG] cache zhliadnuti sa neda ulozit: {e}")
     # Zamerne tu ig_tokens.json NEZAPISUJEME: subor vlastni refresh_tokens().
     # Dva zapisovatelia = riziko, ze sa cerstvy token prepise starym z pamate.
     return out

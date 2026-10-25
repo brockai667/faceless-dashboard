@@ -9,6 +9,7 @@ tiktok_tokens.json
 data.json
 # history.json sa COMMITUJE ako seed -> prezije redeploy Renderu (dočasny disk inak maze historiu)
 ig_cache.json
+ig_views_cache.json
 dashboard.html
 __pycache__/
 *.pyc

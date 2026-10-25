@@ -409,7 +409,7 @@ def test_account_status_table_is_consistent():
         assert fac in generate.FACTORY_NAMES
         for plat, (state, note) in plats.items():
             assert plat in ("youtube", "tiktok", "instagram")
-            assert state in ("ok", "ban", "riesit", "nepouziva")
+            assert state in ("ok", "ban", "riesit", "nepouziva", "cudzi")
             assert note
 
 
@@ -712,8 +712,10 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
     assert by["ColdCaseDaily"]["status"]["tiktok"]["state"] == "ok"      # data chodia -> rucna znacka "riesit" sa sama vyriesi
 
     bh = by["BrainHeist"]
-    assert bh["tiktok"]["handle"] == "DisciplineDaily"              # priradene cez username zo share_url
+    # TikTok ucet BrainHeist je stav "cudzi" (stary obsah Discipline Daily) -> priradeny, ale do fabriky sa nepocita
     assert bh["conn"]["tiktok"]["state"] == "ok"
+    assert bh["status"]["tiktok"]["state"] == "cudzi"
+    assert bh["tiktok"] is None and not [v for v in bh["videos"] if v["platform"] == "TikTok"]
     assert bh["instagram"] is None and bh["conn"]["instagram"]["state"] == "token_error"
 
     assert by["UnexplainedDaily"]["tiktok"]["handle"] == "unexplained"      # cez alias display_name
@@ -728,7 +730,7 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
     assert mg["conn"]["youtube"] == {"state": "no_token", "note": "chýba YouTube API kľúč"}   # bez API kluca
     assert mg["status"]["instagram"]["state"] == "nepouziva"
     # neznamy ucet sa nikam nepriradil
-    assert sum(1 for p in by.values() for v in p["videos"] if v["platform"] == "TikTok") == 3
+    assert sum(1 for p in by.values() for v in p["videos"] if v["platform"] == "TikTok") == 2   # BrainHeist TikTok (cudzi) sa nepocita
 
 
 def test_main_emits_p2_sums_over_everything_fetched(tmp_path, monkeypatch):
@@ -739,7 +741,7 @@ def test_main_emits_p2_sums_over_everything_fetched(tmp_path, monkeypatch):
     monkeypatch.setattr(generate, "yt_stats", lambda ids, key: {
         cid: {"subs": 1, "views": 9, "videos": 120, "title": "t", "hidden": False}})
 
-    def fake_yt_videos(channel_id, key, n=50, deep=0, out_all=None):
+    def fake_yt_videos(channel_id, key, n=50, deep=0, out_all=None, status=None):
         if channel_id != cid:
             return []
         full = [{"id": f"v{i}", "title": "t", "views": 10, "likes": 0, "comments": 0,

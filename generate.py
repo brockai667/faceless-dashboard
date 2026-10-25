@@ -120,13 +120,16 @@ IG_HANDLE = {
 IG_ALIASES = {"th.erealspark": "MindBlownDaily",   # premenovane 27.9.2026
               "disciplinedaily667": "BrainHeist", "historyuntold667": "NextByte"}   # stare nazvy (kluce starych tokenov)
 
-# Rucny stav uctov (overene 29.9.2026). stav: ok | ban | riesit | nepouziva
+# Rucny stav uctov (overene 29.9.2026). stav: ok | ban | riesit | nepouziva | cudzi
+# ban / nepouziva / cudzi -> videa ani zhliadnutia tej platformy sa do fabriky NEPOCITAJU (EXCLUDED_STATES)
+EXCLUDED_STATES = ("ban", "nepouziva", "cudzi")
 ACCOUNT_STATUS = {
     "MindBlownDaily":   {"tiktok": ("ok", "@min.dblowndaily, premenovany 27.9."), "instagram": ("ok", "@mindblowndaily.official, premenovany 27.9.")},
     "ColdCaseDaily":    {"tiktok": ("riesit", "novy ucet @coldcase_daily od 27.9. (stary zabanovany) - chyba TikTok autorizacia pre dashboard")},
     "VitalityDaily":    {"tiktok": ("ban", "@vitalitydaily667 verejne neexistuje (29.9.) - ban alebo zmazany, overit v appke")},
     "UnexplainedDaily": {"tiktok": ("riesit", "@unexplained_daily existuje - chyba alebo expiroval token")},
-    "BrainHeist":       {"tiktok": ("riesit", "@disciplinedaily667 existuje - premenovat na BrainHeist a autorizovat"),
+    # cudzi = token funguje, ale ucet ma obsah inej znacky -> do BrainHeist sa nepocita (user 25.10.2026)
+    "BrainHeist":       {"tiktok": ("cudzi", "@disciplinedaily667 ma stare videa Discipline Daily - premenovat na BrainHeist a vycistit"),
                          "instagram": ("riesit", "@brainheistriddles - token expiroval, treba znova autorizovat")},
     "NextByte":         {"tiktok": ("nepouziva", "@nextbyte667 existuje (77 starych videi bez zhliadnuti), fabrika stoji; ColdCase ma vlastny novy ucet"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
     "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - tester pridany 29.9., prijat pozvanku a autorizovat")},
@@ -289,6 +292,17 @@ def annotate_accounts(projects, has_yt_key, tk_labels, ig_labels):
         p["status"] = effective_status(account_status(n), p["conn"])
 
 
+def exclude_platforms(projects):
+    """Platforma v stave ban / nepouziva / cudzi: jej videa a statistiky z fabriky von (user 25.10.2026:
+    nepripojeny alebo cudzi ucet nesmie fabrike pridavat zhliadnutia)."""
+    key = {"youtube": "yt", "tiktok": "tiktok", "instagram": "instagram"}
+    for p in projects:
+        for plat, st in (p.get("status") or {}).items():
+            if st.get("state") in EXCLUDED_STATES and plat in key:
+                p[key[plat]] = None
+                p["videos"] = [v for v in p.get("videos", []) if (v.get("platform") or "").lower() != plat]
+
+
 # --- Part 2: sucet zhliadnuti videi publikovanych od startu (server-side, bez stropu na pocet videi v UI) ---
 P2_DEFAULT_START = "2026-09-28"
 
@@ -391,11 +405,12 @@ def _iso_dur(s):
     return h * 3600 + mi * 60 + se
 
 
-def yt_videos(channel_id, key, n=50, deep=0, out_all=None):
+def yt_videos(channel_id, key, n=50, deep=0, out_all=None, status=None):
     """Posledných N videí kanála + štatistiky. Ak deep>n: prehľadá HLBŠIE (paginácia
     po 50) a navyše vráti VŠETKY is_long (dokumenty) aj spoza N-okna — inak staré docs
     vypadnú z okna (kanál chŕli shorts) a dashboard ich prestane vidieť.
-    `out_all` (zoznam) sa naplni CELÝM stiahnutým zoznamom pred orezaním (na Part-2 súčet bez stropu)."""
+    `out_all` (zoznam) sa naplni CELÝM stiahnutým zoznamom pred orezaním (na Part-2 súčet bez stropu).
+    `status` (zoznam) dostane "ok", ked zber prebehol bez chyby (aj kanal bez videi) -> odlisi 0 od vypadku API."""
     if not key or not channel_id or not channel_id.startswith("UC"):
         return []
     pl = "UU" + channel_id[2:]  # uploads playlist
@@ -412,6 +427,8 @@ def yt_videos(channel_id, key, n=50, deep=0, out_all=None):
                 break
         ids = ids[:want]
         if not ids:
+            if status is not None:
+                status.append("ok")
             return []
         data = []
         for k in range(0, len(ids), 50):   # videos.list max 50 id/volanie
@@ -421,6 +438,8 @@ def yt_videos(channel_id, key, n=50, deep=0, out_all=None):
     except urllib.error.HTTPError as e:
         if e.code != 404:   # 404 = kanál zatiaľ bez publikovaných videí (nové) — bez chyby
             print("  [YT videos] chyba:", e)
+        elif status is not None:
+            status.append("ok")
         return []
     except Exception as e:
         print("  [YT videos] chyba:", e); return []
@@ -439,6 +458,8 @@ def yt_videos(channel_id, key, n=50, deep=0, out_all=None):
         })
     if out_all is not None:
         out_all.extend(out)
+    if status is not None:
+        status.append("ok")
     if deep:   # drž recent N (grafy) + VŠETKY dokumenty (aj staré) -> data.json nebobtná
         recent = out[:n]
         longs = [v for v in out if v["is_long"]]
@@ -562,7 +583,15 @@ def main():
             p["yt"] = yt[cid]
         if True:
             yt_all = []   # CELY stiahnuty zoznam (pred orezanim na 50 + dokumenty) -> Part-2 sucet bez stropu
-            vids = yt_videos(cid, yt_key, n=50, deep=250, out_all=yt_all)   # deep -> nájde aj staré dokumenty (ColdCaseLong)
+            _ok = []
+            _deep = max(250, int((p.get("yt") or {}).get("videos", 0) or 0))   # vsetky verejne videa kanala
+            vids = yt_videos(cid, yt_key, n=50, deep=_deep, out_all=yt_all, status=_ok)   # deep -> nájde aj staré dokumenty (ColdCaseLong)
+            if _ok and p.get("yt"):
+                # User 25.10.2026: zhliadnutia kanala = sucet jeho EXISTUJUCICH verejnych videi. viewCount kanala
+                # pocita aj zmazane/skryte videa (UnexplainedDaily 62 tis. bez jedineho verejneho videa).
+                p["yt"]["channel_views"] = p["yt"]["views"]
+                p["yt"]["views"] = sum(int(v.get("views", 0) or 0) for v in yt_all)
+                p["yt_ok"] = True
             for v in vids:
                 v["factory"] = p["name"]; v["color"] = p["color"]
                 v["platform"] = "YouTube"
@@ -696,6 +725,7 @@ def main():
                           list(ig_tokens_status) if isinstance(ig_tokens_status, dict) else [])
     except Exception as e:
         print("  [conn] stav pripojenia sa nepodarilo urcit:", type(e).__name__)
+    exclude_platforms(projects)
 
     try:
         from zoneinfo import ZoneInfo
@@ -747,23 +777,33 @@ def main():
         """Surove do historie; vypadok API (0) neulozi, nech zajtra nevznikne falosny skok."""
         return _raw(p, plat) or (_prev_fac.get(p["name"]) or {}).get(_KV[plat] + "r", 0)
 
+    _OKK = {"youtube": "yok", "tiktok": "tok", "instagram": "iok"}
+
+    def _fetched(p, plat):
+        """Prisli dnes realne data tejto platformy? (YT: zber videi bez chyby; TT/IG: ucet nacitany)"""
+        if plat == "youtube":
+            return bool(p.get("yt_ok") and p.get("yt"))
+        return bool(p.get(plat))
+
     def _held(p, plat):
-        """Zhliadnutia su kumulativne a nesmu klesnut. Vcerajsie drzane cislo + dnesny prirastok surovych
-        (kluc tvr/ivr v historii). Stary max-clamp zamrzol cislo, ked surove kleslo (zmazane videa,
-        orezany zoznam) - novy rast sa potom neukazal (MindBlown TikTok 12 771 od 4.10.2026)."""
-        kv, raw = _KV[plat], _raw(p, plat)
-        pv = _prev_fac.get(p["name"]) or {}
-        if kv + "r" in pv:
-            return (pv.get(kv) or 0) + (max(0, raw - pv[kv + "r"]) if raw > 0 else 0)
-        return max(raw, (_max_fac.get(p["name"]) or {}).get(kv, 0))
+        """Zhliadnutia = sucet EXISTUJUCICH videi uctu (v3, user 25.10.2026). Stary 'held' scitaval kazdy
+        kladny skok surovych cisel a nafukoval (WealthMindset IG 2 107 pri videach spolu 308).
+        Bez dnesnych dat: posledna overena hodnota z poslednych 3 dni (vypadok API), inak 0 = nepripojene."""
+        if _fetched(p, plat):
+            return p["yt"]["views"] if plat == "youtube" else _raw(p, plat)
+        for h in reversed([h for h in _hist_all if h.get("date") != _today0][-3:]):
+            f = (h.get("fac") or {}).get(p["name"]) or {}
+            if f.get(_OKK[plat]):
+                return f.get(_KV[plat], 0) or 0
+        return 0
 
     totals = {
         "factories": len(projects),
         "yt_subs": sum((p["yt"]["subs"] for p in projects if p["yt"]), 0),
-        "yt_views": sum((p["yt"]["views"] for p in projects if p["yt"]), 0),   # CELOKANALOVE pocitadlo (presne co ukazuje YT)
+        "yt_views": sum(_held(p, "youtube") for p in projects),   # sucet existujucich verejnych videi (v3)
         "yt_likes": sum(v.get("likes", 0) or 0 for p in projects for v in p["videos"] if (v.get("platform") or "").lower() == "youtube"),
         "tk_foll": sum((p["tiktok"]["followers"] for p in projects if p["tiktok"]), 0),
-        "tk_views": sum((p["tiktok"]["views"] for p in projects if p["tiktok"]), 0),
+        "tk_views": sum(_held(p, "tiktok") for p in projects),
         "tk_likes": sum((p["tiktok"]["likes"] for p in projects if p["tiktok"]), 0),
         "ig_foll": sum((p["instagram"]["followers"] for p in projects if p["instagram"]), 0),
         "ig_views": sum(_held(p, "instagram") for p in projects),
@@ -790,10 +830,11 @@ def main():
         pass
     _prev = _old_totals                     # pre monotonicky clamp nizsie (posledne zname totals)
 
-    # totals zhliadnut nesmu klesnut pod posledny beh (monotonicky aj pre "+X za posledny den")
-    for _k in ("yt_views", "tk_views", "ig_views"):
-        if (_prev or {}).get(_k, 0) > (totals.get(_k, 0) or 0):
-            totals[_k] = _prev[_k]
+    for p in projects:   # pre dashboard: zhliadnutia a stav dat per platforma (v3)
+        p["views"] = {pl: _held(p, pl) for pl in _KV}
+        p["ok"] = {pl: _fetched(p, pl) for pl in _KV}
+    # v3 (25.10.2026): totals uz NEDRZIME monotonicky - drzali by navzdy nafuknute cisla zo starej metody.
+    # Vypadok API rata _held (posledna overena hodnota), zmazane video znizi sucet - to je spravne.
 
     # IG analytika moze byt blokovana Metou ("API access blocked") -> NEUKAZUJ falosny pokles:
     # vezmi posledne ZNAME (nenulove, neblokovane) IG cisla z historie (Gist/lokal), oznac ig_blocked.
@@ -858,12 +899,14 @@ def main():
     hist = [by_date[d] for d in sorted(by_date)]
     today = datetime.date.today().isoformat()
     fac_snap = {p["name"]: {
-        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": (p["yt"]["views"] if p["yt"] else 0),
+        "yf": (p["yt"]["subs"] if p["yt"] else 0), "yv": _held(p, "youtube"),
         "tf": (p["tiktok"]["followers"] if p["tiktok"] else 0), "tv": _held(p, "tiktok"),
         "if": (p["instagram"]["followers"] if p["instagram"] else 0), "iv": _held(p, "instagram"),
         "tvr": _rawkeep(p, "tiktok"), "ivr": _rawkeep(p, "instagram"),   # surove -> zajtrajsi prirastok
+        "yok": _fetched(p, "youtube"), "tok": _fetched(p, "tiktok"), "iok": _fetched(p, "instagram"),
     } for p in projects}
-    snap = {"date": today, **totals, "fac": fac_snap}
+    # v3 = zhliadnutia ako sucet existujucich videi; dashboard ráta prírastok len medzi dvoma v3 dnami
+    snap = {"date": today, **totals, "fac": fac_snap, "v3": True}
     # POISTKA proti falosnym nulam: vypadok API (YT kluc, TikTok...) nesmie zapisat 0
     # tam, kde vcera bola hodnota > 0 -> prenes posledne zname cislo (kumulativne metriky neklesaju).
     def _num(x):
@@ -880,6 +923,8 @@ def main():
             _pm = _pfac.get(_fn) or {}
             for _k, _v in list(_fm.items()):
                 _pv = _pm.get(_k)
+                if _k in ("yv", "tv", "iv"):   # v3: 0 je pravda (nepripojene / ziadne videa), vypadok riesi _held
+                    continue
                 if _num(_v) and _v == 0 and _num(_pv) and _pv > 0:
                     _fm[_k] = _pv
     hist = [h for h in hist if h.get("date") != today] + [snap]   # nahrad dnesny

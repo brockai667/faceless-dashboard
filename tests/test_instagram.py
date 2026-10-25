@@ -154,31 +154,54 @@ def test_fetch_all_requests_50_media_per_account(tmp_root, monkeypatch):
     assert len(media_urls) == 1 and "limit=50" in media_urls[0]
 
 
-def test_fetch_all_insights_only_for_newest_and_since(tmp_path, monkeypatch):
-    """Zhliadnutia (insights) sa citaju len pre najnovsich 15 videi + videa od 'since' (Part 2)."""
-    import json
-    import instagram
+def _paged_account(tmp_path, monkeypatch, media, page=50):
     (tmp_path / "ig_tokens.json").write_text(
         json.dumps({"acc": {"access_token": "t", "expires_in": 5184000, "_refreshed_at": 1}}), encoding="utf-8")
-    media = [{"id": f"m{i}", "media_type": "VIDEO", "media_product_type": "REELS",
-              "timestamp": "2026-09-29T10:00:00+0000" if i in (2, 20, 30) else "2026-09-01T10:00:00+0000"}
-             for i in range(40)]
 
     def fake_get(path, params):
         if path == "me":
-            return {"username": "acc", "followers_count": 1, "media_count": 40}
+            return {"username": "acc", "followers_count": 1, "media_count": len(media)}
         if path == "me/media":
-            return {"data": [dict(m) for m in media]}
+            return fake_url("p0")
         raise AssertionError(path)
 
-    calls = []
+    def fake_url(url):
+        i = int(url[1:])
+        nxt = {"next": f"p{i + page}"} if i + page < len(media) else {}
+        return {"data": [dict(m) for m in media[i:i + page]], "paging": nxt}
+
     monkeypatch.setattr(instagram, "_get", fake_get)
+    monkeypatch.setattr(instagram, "_get_url", fake_url)
+
+
+def test_fetch_all_reads_all_pages_and_all_video_views(tmp_path, monkeypatch):
+    """User 25.10.2026: IG sucet bral len 354 z 912 prispevkov. Teraz vsetky strany a insights pre vsetky videa."""
+    import datetime
+    old = (datetime.date.today() - datetime.timedelta(days=60)).isoformat() + "T10:00:00+0000"
+    media = [{"id": f"m{i}", "media_type": "VIDEO", "media_product_type": "REELS", "timestamp": old} for i in range(120)]
+    media.append({"id": "img", "media_type": "IMAGE", "media_product_type": "FEED", "timestamp": old})
+    _paged_account(tmp_path, monkeypatch, media)
+    calls = []
     monkeypatch.setattr(instagram, "_media_views", lambda mid, tok: (calls.append(mid), 7)[1])
-    out = instagram.fetch_all(str(tmp_path), since="2026-09-28")
-    got = {m["id"]: m["_views"] for m in out["acc"]["media"]}
-    assert sorted(calls) == sorted([f"m{i}" for i in range(15)] + ["m20", "m30"])
-    assert got["m20"] == 7 and got["m30"] == 7 and got["m16"] == 0
+    out = instagram.fetch_all(str(tmp_path))
+    assert len(out["acc"]["media"]) == 121
+    assert len(calls) == 120 and "img" not in calls
+    assert sum(m["_views"] for m in out["acc"]["media"]) == 840
+    # druhy beh v ten isty den: stare videa su v cache -> ziadne nove volania, zhliadnutia ostanu
     calls.clear()
-    instagram.fetch_all(str(tmp_path))                     # bez since = len najnovsich 15
-    assert len(calls) == 15
+    out = instagram.fetch_all(str(tmp_path))
+    assert calls == []
+    assert sum(m["_views"] for m in out["acc"]["media"]) == 840
+
+
+def test_fetch_all_new_videos_refresh_daily_and_errors_keep_cache(tmp_path, monkeypatch):
+    import datetime
+    new = datetime.date.today().isoformat() + "T10:00:00+0000"
+    media = [{"id": "n1", "media_type": "VIDEO", "media_product_type": "REELS", "timestamp": new}]
+    _paged_account(tmp_path, monkeypatch, media)
+    monkeypatch.setattr(instagram, "_media_views", lambda mid, tok: 50)
+    instagram.fetch_all(str(tmp_path))
+    monkeypatch.setattr(instagram, "_media_views", lambda mid, tok: 0)   # API chyba -> 0
+    out = instagram.fetch_all(str(tmp_path))
+    assert out["acc"]["media"][0]["_views"] == 50
 

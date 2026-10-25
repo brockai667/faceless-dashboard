@@ -86,3 +86,11 @@ def test_platform_json_routes_unchanged(srv, path):
     assert status == 200
     assert ctype.startswith("application/json")
     assert '"configured": false' in body
+
+
+def test_v2_new_dashboard_features():
+    """Novy prehlad: prepinac obdobia, detail kanala v URL hashi, spiace kanaly, v3 pravidlo rastu."""
+    html = _v2_html()
+    for needle in ('data-per="1"', 'data-per="7"', 'data-per="30"', "#kanal=", "Spiace kanály",
+                   "/api/refresh?force=1", "prefers-color-scheme:dark", "Najlepšie videá", "r.v3"):
+        assert needle in html, needle
