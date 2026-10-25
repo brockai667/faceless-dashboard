@@ -257,8 +257,9 @@ function fmtStamp(iso){const d=new Date(iso);if(!iso||isNaN(d))return String(iso
 const relDay=d=>d>=999?'nikdy':d===0?'dnes':d===1?'včera':`pred ${d} d`;
 
 /* ======================= história: prírastky ======================= */
-/* Prírastok = súčet max(0, b-a) cez dvojice susedných dní; dvojica sa počíta len ak sú OBA riadky v3
-   (staršie riadky mali inú, nafúknutú metódu – skok pri prvom v3 riadku nie je rast). */
+/* Prírastok = súčet max(0, b-a) cez dvojice susedných dní; dvojica sa počíta len ak majú OBA riadky rovnakú
+   metódu (oba v3 alebo oba staré). Prechod starý -> v3 je skok metódy, nie rast (user 25.10.: rast hneď, nie od zajtra). */
+const sameMethod=(a,b)=>!!a.v3===!!b.v3;
 function prepHist(h){return (Array.isArray(h)?h:[]).filter(r=>r&&typeof r.date==='string').sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0);}
 function windowRows(days){
   if(!HIST.length)return [];
@@ -267,8 +268,8 @@ function windowRows(days){
   if(HIST[i].date>cut&&i>0&&HIST[i-1].date>=addDays(cut,-4))i--;     // chýbajúci základný deň: vezmi najbližší skorší
   return HIST.slice(i);
 }
-function growthHint(){const v3=HIST.filter(r=>r.v3).length;return v3<2?'prírastok od zajtra':'rast nie je z čoho spočítať';}
-function pairsOf(rows){const o=[];for(let i=1;i<rows.length;i++)if(rows[i-1].v3&&rows[i].v3)o.push([rows[i-1],rows[i]]);return o;}
+function growthHint(){const v3=HIST.filter(r=>r.v3).length;return v3<2?'za 24 h od zajtra':'rast nie je z čoho spočítať';}
+function pairsOf(rows){const o=[];for(let i=1;i<rows.length;i++)if(sameMethod(rows[i-1],rows[i]))o.push([rows[i-1],rows[i]]);return o;}
 function facGain(a,b,name,k){
   const x=a.fac&&a.fac[name], y=b.fac&&b.fac[name]; if(!x||!y)return null;
   if(x[HO[k]]===false||y[HO[k]]===false)return null;          // dáta toho dňa nedorazili -> dvojicu nepočítaj
@@ -282,7 +283,7 @@ function dailySeries(rows,names,ks){            // [{date, v:{k:number}|null}]
   const out=[];
   for(let i=1;i<rows.length;i++){
     const a=rows[i-1],b=rows[i];
-    if(!(a.v3&&b.v3)){out.push({date:b.date,v:null});continue;}
+    if(!sameMethod(a,b)){out.push({date:b.date,v:null});continue;}
     const v={};ks.forEach(k=>{let s=0;names.forEach(nm=>{const g=facGain(a,b,nm,k);if(g!=null)s+=g;});v[k]=s;});
     out.push({date:b.date,v});
   }
