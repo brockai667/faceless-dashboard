@@ -12518,34 +12518,34 @@
     "date": "2026-10-27",
     "factories": 11,
     "yt_subs": 507,
-    "yt_views": 182769,
+    "yt_views": 182835,
     "yt_likes": 547,
     "tk_foll": 45,
-    "tk_views": 9318,
+    "tk_views": 9320,
     "tk_likes": 152,
-    "ig_foll": 69,
-    "ig_views": 62191,
-    "ig_posts": 761,
-    "videos": 1142,
-    "ig_videos": 761,
+    "ig_foll": 16,
+    "ig_views": 61795,
+    "ig_posts": 272,
+    "videos": 654,
+    "ig_videos": 272,
     "ig_blocked": false,
     "fac": {
       "MindBlownDaily": {
         "yf": 52,
-        "yv": 10251,
+        "yv": 10276,
         "tf": 43,
-        "tv": 7147,
+        "tv": 7149,
         "if": 23,
-        "iv": 14866,
-        "tvr": 7147,
-        "ivr": 14866,
+        "iv": 14489,
+        "tvr": 7149,
+        "ivr": 14489,
         "yok": true,
         "tok": true,
-        "iok": true
+        "iok": false
       },
       "WealthMindset": {
         "yf": 31,
-        "yv": 673,
+        "yv": 692,
         "tf": 1,
         "tv": 518,
         "if": 3,
@@ -12554,7 +12554,7 @@
         "ivr": 442,
         "yok": true,
         "tok": true,
-        "iok": true
+        "iok": false
       },
       "UnexplainedDaily": {
         "yf": 135,
@@ -12567,7 +12567,7 @@
         "ivr": 4255,
         "yok": true,
         "tok": true,
-        "iok": true
+        "iok": false
       },
       "BrainHeist": {
         "yf": 22,
@@ -12593,11 +12593,11 @@
         "ivr": 3270,
         "yok": true,
         "tok": false,
-        "iok": true
+        "iok": false
       },
       "HiddenEarth": {
         "yf": 18,
-        "yv": 41132,
+        "yv": 41133,
         "tf": 0,
         "tv": 3,
         "if": 5,
@@ -12606,11 +12606,11 @@
         "ivr": 8704,
         "yok": true,
         "tok": true,
-        "iok": true
+        "iok": false
       },
       "NextByte": {
         "yf": 30,
-        "yv": 57,
+        "yv": 71,
         "tf": 0,
         "tv": 0,
         "if": 2,
@@ -12623,20 +12623,20 @@
       },
       "ColdCaseDaily": {
         "yf": 57,
-        "yv": 1419,
+        "yv": 1424,
         "tf": 0,
         "tv": 805,
         "if": 4,
-        "iv": 1319,
+        "iv": 1300,
         "tvr": 805,
-        "ivr": 1319,
+        "ivr": 1300,
         "yok": true,
         "tok": true,
-        "iok": true
+        "iok": false
       },
       "Curio": {
         "yf": 123,
-        "yv": 73691,
+        "yv": 73693,
         "tf": 0,
         "tv": 0,
         "if": 10,
