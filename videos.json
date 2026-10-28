@@ -1,12 +1,12 @@
 {
- "gen_at": "2026-10-28T01:04:31Z",
+ "gen_at": "2026-10-28T16:25:20Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "woGi12ZeTjw",
     "title": "Puzzle Marathon Effects #shorts",
-    "views": 379,
-    "likes": 11,
+    "views": 416,
+    "likes": 12,
     "comments": 0,
     "published": "2026-10-27",
     "link": "https://www.youtube.com/watch?v=woGi12ZeTjw",
@@ -15,7 +15,7 @@
    {
     "id": "EaS_zx2Ol2c",
     "title": "Constant White Noise Effects #shorts",
-    "views": 55,
+    "views": 63,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-26",
@@ -35,7 +35,7 @@
    {
     "id": "lrOUrk8gtCA",
     "title": "Perfect Posture While Typing #shorts",
-    "views": 859,
+    "views": 858,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-24",
@@ -265,7 +265,7 @@
    {
     "id": "7701285649713810720",
     "title": "A rapid visual tour of the body’s response to nonstop puzzle solving. #BrainPower #PuzzleMarathon #ScienceShorts Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 215,
+    "views": 216,
     "likes": 15,
     "comments": 0,
     "published": "2026-10-27",
@@ -467,7 +467,7 @@
    {
     "id": "nGObtGPRlRA",
     "title": "Suddenly Rich · Part 5: The State #shorts",
-    "views": 113,
+    "views": 128,
     "likes": 6,
     "comments": 2,
     "published": "2026-10-27",
@@ -477,8 +477,8 @@
    {
     "id": "1LIY34VskEs",
     "title": "Suddenly Rich · Part 4: The Asks #shorts",
-    "views": 129,
-    "likes": 5,
+    "views": 131,
+    "likes": 6,
     "comments": 1,
     "published": "2026-10-26",
     "link": "https://www.youtube.com/watch?v=1LIY34VskEs",
@@ -487,7 +487,7 @@
    {
     "id": "_nbSHKbjV7E",
     "title": "Suddenly Rich · Part 3: The Name #shorts",
-    "views": 99,
+    "views": 100,
     "likes": 3,
     "comments": 0,
     "published": "2026-10-25",
@@ -513,6 +513,16 @@
     "published": "2026-10-21",
     "link": "https://www.youtube.com/watch?v=-AWFpmv6Sr4",
     "platform": "youtube"
+   },
+   {
+    "id": "7701596899349908758",
+    "title": "Your cousin wants $200,000. \"I'll pay you back.\" Part 5 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
+    "views": 262,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-28",
+    "link": "https://www.tiktok.com/@wealth_mindset34/video/7701596899349908758",
+    "platform": "tiktok"
    },
    {
     "id": "7700629884749483266",
@@ -761,7 +771,7 @@
    {
     "id": "1Zg18CtAQoM",
     "title": "Split Eight Liters Without a Mark #shorts",
-    "views": 14,
+    "views": 15,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-22",
@@ -2595,8 +2605,8 @@
    {
     "id": "HEKdgKcHX6Y",
     "title": "Mystic Icefall of Mount Baker #shorts",
-    "views": 481,
-    "likes": 2,
+    "views": 482,
+    "likes": 1,
     "comments": 0,
     "published": "2026-09-16",
     "link": "https://www.youtube.com/watch?v=HEKdgKcHX6Y",
@@ -2835,7 +2845,7 @@
    {
     "id": "aQP3QZTtyes",
     "title": "Secrets of Komodo Pink Beach #shorts",
-    "views": 45,
+    "views": 46,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-08",
@@ -3265,9 +3275,19 @@
   ],
   "NextByte": [
    {
+    "id": "4TWXOQfqx4k",
+    "title": "Paying not to go",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-28",
+    "link": "https://www.youtube.com/watch?v=4TWXOQfqx4k",
+    "platform": "youtube"
+   },
+   {
     "id": "jfLCHLtd6uo",
     "title": "The watch that sold the other watch",
-    "views": 45,
+    "views": 50,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-27",
@@ -3277,7 +3297,7 @@
    {
     "id": "71e1TrZCG6I",
     "title": "The option nobody picked",
-    "views": 42,
+    "views": 55,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-26",
@@ -3287,9 +3307,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "TjNFKopdhFs",
+    "title": "Viking inscription that baffled scholars #shorts",
+    "views": 11,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-28",
+    "link": "https://www.youtube.com/watch?v=TjNFKopdhFs",
+    "platform": "youtube"
+   },
+   {
     "id": "ETtAcaHinXY",
     "title": "Mystery of the Green Children #shorts",
-    "views": 27,
+    "views": 30,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-27",
@@ -3299,7 +3329,7 @@
    {
     "id": "IRMa0uPHuOU",
     "title": "Desert where signals vanish #shorts",
-    "views": 182,
+    "views": 183,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-26",
@@ -3449,7 +3479,7 @@
    {
     "id": "yd92b5f5hPs",
     "title": "The Phoenix Lights #shorts",
-    "views": 3,
+    "views": 4,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-10",
@@ -4251,7 +4281,7 @@
    {
     "id": "Tpxd6w_PBuQ",
     "title": "Moon Microbes Survived 30‑Day Vacuum Test #shorts",
-    "views": 237,
+    "views": 238,
     "likes": 3,
     "comments": 0,
     "published": "2026-08-30",
