@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-10-30T01:46:14Z",
+ "gen_at": "2026-10-30T16:29:57Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "MPeHlkjTqjI",
+    "title": "Struck By Lightning #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.youtube.com/watch?v=MPeHlkjTqjI",
+    "platform": "youtube"
+   },
+   {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 999,
+    "views": 1003,
     "likes": 18,
     "comments": 1,
     "published": "2026-10-29",
@@ -15,7 +25,7 @@
    {
     "id": "woGi12ZeTjw",
     "title": "Puzzle Marathon Effects #shorts",
-    "views": 427,
+    "views": 429,
     "likes": 12,
     "comments": 0,
     "published": "2026-10-27",
@@ -273,6 +283,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7702494310586912022",
+    "title": "Hotter than the sun, yet most people survive it: what a lightning strike really does. #lightning #storm #weather #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 69,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7702494310586912022",
+    "platform": "tiktok"
+   },
+   {
     "id": "7701285649713810720",
     "title": "A rapid visual tour of the body’s response to nonstop puzzle solving. #BrainPower #PuzzleMarathon #ScienceShorts Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 216,
@@ -461,16 +481,6 @@
     "published": "2026-10-07",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7693848313212210465",
     "platform": "tiktok"
-   },
-   {
-    "id": "7693477296111406369",
-    "title": "From ten minutes to ninety: what different afternoon nap lengths do to your brain. #nap #sleep #brain #science Not medical advice. Music: \"Pamgaea\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 257,
-    "likes": 12,
-    "comments": 1,
-    "published": "2026-10-06",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7693477296111406369",
-    "platform": "tiktok"
    }
   ],
   "WealthMindset": [
@@ -535,9 +545,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7702493725171420438",
+    "title": "You walked away from the $400,000 car. Then everyone sent you the same scary headline. Part 8 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
+    "views": 52,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.tiktok.com/@wealth_mindset34/video/7702493725171420438",
+    "platform": "tiktok"
+   },
+   {
     "id": "7701852643701820695",
     "title": "You wired $48,000 to \"the state\". The state never called. Part 7 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
-    "views": 247,
+    "views": 248,
     "likes": 3,
     "comments": 0,
     "published": "2026-10-28",
@@ -3305,6 +3325,16 @@
   ],
   "NextByte": [
    {
+    "id": "JsksSJ2eoWU",
+    "title": "Three apps for one show",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.youtube.com/watch?v=JsksSJ2eoWU",
+    "platform": "youtube"
+   },
+   {
     "id": "JOhay6Rnhpo",
     "title": "The dress that sold better for more",
     "views": 33,
@@ -3347,9 +3377,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "NEui82PKERU",
+    "title": "Easter Island's puzzling glyphs #shorts",
+    "views": 24,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.youtube.com/watch?v=NEui82PKERU",
+    "platform": "youtube"
+   },
+   {
     "id": "QvzdTbgZHek",
     "title": "Mystery Metal from Deep Time #shorts",
-    "views": 96,
+    "views": 98,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-29",
@@ -3657,6 +3697,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7702494093246516502",
+    "title": "Explore the mystery of Easter Island's undeciphered rongorongo tablets. Case file: The Rongorongo Script Enigma. #unexplained #mystery #history #archaeology #RongorongoMystery Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 23,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7702494093246516502",
+    "platform": "tiktok"
+   },
+   {
     "id": "7701304167398182176",
     "title": "Explore the medieval mystery of Woolpit's green children in under 30 seconds. Case file: The Green Children of Woolpit. #unexplained #mystery #history #GreenChildren Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
     "views": 0,
@@ -3844,16 +3894,6 @@
     "comments": 0,
     "published": "2026-10-08",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7694241575639010593",
-    "platform": "tiktok"
-   },
-   {
-    "id": "7693870751522376993",
-    "title": "On 30 June 1908, a huge explosion flattened about 2,000 square kilometers of Siberian forest, yet no crater or fragments were ever found. Scientists believe it was an asteroid that exploded in mid-air. #unexplained #mystery #tunguska #space #history Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-07",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7693870751522376993",
     "platform": "tiktok"
    }
   ],
@@ -6183,7 +6223,7 @@
    {
     "id": "6HzTNh0DYJ4",
     "title": "Order's Shadow Lurks in Chaos #Shorts",
-    "views": 2,
+    "views": 3,
     "likes": 0,
     "comments": 0,
     "published": "2026-07-19",
@@ -6443,7 +6483,7 @@
    {
     "id": "Fqb4aOgjpQU",
     "title": "Waves Break In Perfect Harmony #Shorts",
-    "views": 88,
+    "views": 89,
     "likes": 0,
     "comments": 0,
     "published": "2026-07-10",
