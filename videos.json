@@ -1,12 +1,12 @@
 {
- "gen_at": "2026-10-31T15:36:08Z",
+ "gen_at": "2026-10-31T19:39:01Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "nipiGHnpv8U",
     "title": "Space Without A Suit #shorts",
-    "views": 1184,
-    "likes": 9,
+    "views": 1223,
+    "likes": 11,
     "comments": 1,
     "published": "2026-10-31",
     "link": "https://www.youtube.com/watch?v=nipiGHnpv8U",
@@ -15,8 +15,8 @@
    {
     "id": "MPeHlkjTqjI",
     "title": "Struck By Lightning #shorts",
-    "views": 59,
-    "likes": 2,
+    "views": 83,
+    "likes": 3,
     "comments": 0,
     "published": "2026-10-30",
     "link": "https://www.youtube.com/watch?v=MPeHlkjTqjI",
@@ -25,7 +25,7 @@
    {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 1047,
+    "views": 1056,
     "likes": 19,
     "comments": 1,
     "published": "2026-10-29",
@@ -35,7 +35,7 @@
    {
     "id": "woGi12ZeTjw",
     "title": "Puzzle Marathon Effects #shorts",
-    "views": 429,
+    "views": 431,
     "likes": 12,
     "comments": 0,
     "published": "2026-10-27",
@@ -45,7 +45,7 @@
    {
     "id": "EaS_zx2Ol2c",
     "title": "Constant White Noise Effects #shorts",
-    "views": 66,
+    "views": 68,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-26",
@@ -55,7 +55,7 @@
    {
     "id": "BRTp_uvgt_I",
     "title": "One Day at Altitude #shorts",
-    "views": 528,
+    "views": 530,
     "likes": 6,
     "comments": 0,
     "published": "2026-10-25",
@@ -65,7 +65,7 @@
    {
     "id": "lrOUrk8gtCA",
     "title": "Perfect Posture While Typing #shorts",
-    "views": 859,
+    "views": 861,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-24",
@@ -75,7 +75,7 @@
    {
     "id": "qqT_1so2VxA",
     "title": "Mimic a Hummingbird's Wing Beat #shorts",
-    "views": 53,
+    "views": 55,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-23",
@@ -85,7 +85,7 @@
    {
     "id": "qxRukLYIGIQ",
     "title": "Swap Soda for Tea: Body Changes #shorts",
-    "views": 64,
+    "views": 66,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-22",
@@ -95,7 +95,7 @@
    {
     "id": "E7aG6HbL-u0",
     "title": "Calm in Chaos Meditation Countdown #shorts",
-    "views": 26,
+    "views": 29,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-21",
@@ -105,7 +105,7 @@
    {
     "id": "uGad_W-USEE",
     "title": "Floating in a Pool #shorts",
-    "views": 1011,
+    "views": 1014,
     "likes": 12,
     "comments": 0,
     "published": "2026-10-19",
@@ -115,7 +115,7 @@
    {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1046,
+    "views": 1049,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -125,7 +125,7 @@
    {
     "id": "9J8-C58QTyM",
     "title": "Cold Water Swim #shorts",
-    "views": 1175,
+    "views": 1177,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-17",
@@ -135,7 +135,7 @@
    {
     "id": "j0csYMAUK5g",
     "title": "Protein Only Diet Effects #shorts",
-    "views": 840,
+    "views": 842,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-16",
@@ -145,7 +145,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1382,
+    "views": 1384,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -155,7 +155,7 @@
    {
     "id": "cb7HnbQBu-A",
     "title": "Ocean Swim Effects #shorts",
-    "views": 1223,
+    "views": 1225,
     "likes": 8,
     "comments": 0,
     "published": "2026-10-12",
@@ -165,7 +165,7 @@
    {
     "id": "zYdw2s2phaM",
     "title": "Sleeping in a Coffin #shorts",
-    "views": 146,
+    "views": 147,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-11",
@@ -293,9 +293,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7702898756634610966",
+    "title": "No food, no water, no bathroom for months: how a bear's body survives the winter. #bears #hibernation #animals #science Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 118,
+    "likes": 4,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7702898756634610966",
+    "platform": "tiktok"
+   },
+   {
     "id": "7702494310586912022",
     "title": "Hotter than the sun, yet most people survive it: what a lightning strike really does. #lightning #storm #weather #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 259,
+    "views": 260,
     "likes": 4,
     "comments": 0,
     "published": "2026-10-30",
@@ -481,23 +491,13 @@
     "published": "2026-10-08",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7694219305675803936",
     "platform": "tiktok"
-   },
-   {
-    "id": "7693848313212210465",
-    "title": "From vitamin D to sunburn, tans and wrinkles: what lying in the sun does to your skin. #sun #skin #sunburn #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 267,
-    "likes": 2,
-    "comments": 0,
-    "published": "2026-10-07",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7693848313212210465",
-    "platform": "tiktok"
    }
   ],
   "WealthMindset": [
    {
     "id": "RMM1JUO4Njc",
     "title": "Suddenly Rich · Part 7: The Curse #shorts",
-    "views": 11,
+    "views": 12,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-30",
@@ -557,7 +557,7 @@
    {
     "id": "-AWFpmv6Sr4",
     "title": "Suddenly Rich · Part 1: The Ticket #shorts",
-    "views": 90,
+    "views": 91,
     "likes": 6,
     "comments": 0,
     "published": "2026-10-21",
@@ -831,7 +831,7 @@
    {
     "id": "5zp9ILUoijI",
     "title": "The Book You Can't Open #shorts",
-    "views": 716,
+    "views": 718,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-24",
@@ -3397,7 +3397,7 @@
    {
     "id": "71e1TrZCG6I",
     "title": "The option nobody picked",
-    "views": 54,
+    "views": 55,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-26",
@@ -3409,8 +3409,8 @@
    {
     "id": "q4f7tej3HLg",
     "title": "The Bronze Age Puzzle of Crete #shorts",
-    "views": 687,
-    "likes": 8,
+    "views": 913,
+    "likes": 6,
     "comments": 0,
     "published": "2026-10-31",
     "link": "https://www.youtube.com/watch?v=q4f7tej3HLg",
@@ -3419,7 +3419,7 @@
    {
     "id": "NEui82PKERU",
     "title": "Easter Island's puzzling glyphs #shorts",
-    "views": 48,
+    "views": 53,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-30",
@@ -3737,6 +3737,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7702898490753469718",
+    "title": "A brief look at the enigmatic Phaistos Disc and its unsolved secrets. Case file: The Phaistos Disc Mystery. #unexplained #mystery #archaeology #PhaistosDisc Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 34,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7702898490753469718",
+    "platform": "tiktok"
+   },
+   {
     "id": "7702494093246516502",
     "title": "Explore the mystery of Easter Island's undeciphered rongorongo tablets. Case file: The Rongorongo Script Enigma. #unexplained #mystery #history #archaeology #RongorongoMystery Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 86,
@@ -3924,16 +3934,6 @@
     "comments": 0,
     "published": "2026-10-09",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7694610025372814624",
-    "platform": "tiktok"
-   },
-   {
-    "id": "7694241575639010593",
-    "title": "Since the 1930s, strange glowing lights have appeared over Norway's Hessdalen valley, peaking in the early 1980s. Scientists still record them, but no explanation is fully confirmed. #unexplained #mystery #hessdalen #norway #ufo Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-08",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7694241575639010593",
     "platform": "tiktok"
    }
   ],
