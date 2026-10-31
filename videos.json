@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-10-31T01:29:16Z",
+ "gen_at": "2026-10-31T15:36:08Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "nipiGHnpv8U",
+    "title": "Space Without A Suit #shorts",
+    "views": 1184,
+    "likes": 9,
+    "comments": 1,
+    "published": "2026-10-31",
+    "link": "https://www.youtube.com/watch?v=nipiGHnpv8U",
+    "platform": "youtube"
+   },
+   {
     "id": "MPeHlkjTqjI",
     "title": "Struck By Lightning #shorts",
-    "views": 0,
-    "likes": 0,
+    "views": 59,
+    "likes": 2,
     "comments": 0,
     "published": "2026-10-30",
     "link": "https://www.youtube.com/watch?v=MPeHlkjTqjI",
@@ -15,8 +25,8 @@
    {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 1028,
-    "likes": 18,
+    "views": 1047,
+    "likes": 19,
     "comments": 1,
     "published": "2026-10-29",
     "link": "https://www.youtube.com/watch?v=jBFEnEA-Xvo",
@@ -45,7 +55,7 @@
    {
     "id": "BRTp_uvgt_I",
     "title": "One Day at Altitude #shorts",
-    "views": 527,
+    "views": 528,
     "likes": 6,
     "comments": 0,
     "published": "2026-10-25",
@@ -65,7 +75,7 @@
    {
     "id": "qqT_1so2VxA",
     "title": "Mimic a Hummingbird's Wing Beat #shorts",
-    "views": 51,
+    "views": 53,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-23",
@@ -285,7 +295,7 @@
    {
     "id": "7702494310586912022",
     "title": "Hotter than the sun, yet most people survive it: what a lightning strike really does. #lightning #storm #weather #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 256,
+    "views": 259,
     "likes": 4,
     "comments": 0,
     "published": "2026-10-30",
@@ -487,8 +497,8 @@
    {
     "id": "RMM1JUO4Njc",
     "title": "Suddenly Rich · Part 7: The Curse #shorts",
-    "views": 8,
-    "likes": 0,
+    "views": 11,
+    "likes": 1,
     "comments": 0,
     "published": "2026-10-30",
     "link": "https://www.youtube.com/watch?v=RMM1JUO4Njc",
@@ -557,7 +567,7 @@
    {
     "id": "7702493725171420438",
     "title": "You walked away from the $400,000 car. Then everyone sent you the same scary headline. Part 8 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
-    "views": 250,
+    "views": 253,
     "likes": 15,
     "comments": 0,
     "published": "2026-10-30",
@@ -2715,7 +2725,7 @@
    {
     "id": "YFfKbbw3njw",
     "title": "Alaska Ice Cave Secrets #shorts",
-    "views": 251,
+    "views": 252,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-14",
@@ -3335,6 +3345,16 @@
   ],
   "NextByte": [
    {
+    "id": "_TARmOa1mXM",
+    "title": "One plan became two bills",
+    "views": 63,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.youtube.com/watch?v=_TARmOa1mXM",
+    "platform": "youtube"
+   },
+   {
     "id": "JsksSJ2eoWU",
     "title": "Three apps for one show",
     "views": 2,
@@ -3387,9 +3407,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "q4f7tej3HLg",
+    "title": "The Bronze Age Puzzle of Crete #shorts",
+    "views": 687,
+    "likes": 8,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.youtube.com/watch?v=q4f7tej3HLg",
+    "platform": "youtube"
+   },
+   {
     "id": "NEui82PKERU",
     "title": "Easter Island's puzzling glyphs #shorts",
-    "views": 47,
+    "views": 48,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-30",
@@ -3399,7 +3429,7 @@
    {
     "id": "QvzdTbgZHek",
     "title": "Mystery Metal from Deep Time #shorts",
-    "views": 98,
+    "views": 99,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-29",
@@ -3699,7 +3729,7 @@
    {
     "id": "ZDGSCZ5YHbc",
     "title": "The D.B. Cooper Hijacking: America's Greatest Unsolved Heist",
-    "views": 12,
+    "views": 13,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-13",
@@ -3709,8 +3739,8 @@
    {
     "id": "7702494093246516502",
     "title": "Explore the mystery of Easter Island's undeciphered rongorongo tablets. Case file: The Rongorongo Script Enigma. #unexplained #mystery #history #archaeology #RongorongoMystery Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 85,
-    "likes": 0,
+    "views": 86,
+    "likes": 1,
     "comments": 0,
     "published": "2026-10-30",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7702494093246516502",
