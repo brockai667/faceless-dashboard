@@ -1,13 +1,23 @@
 {
- "gen_at": "2026-11-02T01:24:04Z",
+ "gen_at": "2026-11-02T19:58:00Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "jDMSrhF56UA",
+    "title": "Eleven Days Awake #shorts",
+    "views": 993,
+    "likes": 23,
+    "comments": 1,
+    "published": "2026-11-02",
+    "link": "https://www.youtube.com/watch?v=jDMSrhF56UA",
+    "platform": "youtube"
+   },
+   {
     "id": "lqb3L3lGMio",
     "title": "Six Months Asleep #shorts",
-    "views": 1060,
-    "likes": 17,
-    "comments": 0,
+    "views": 1118,
+    "likes": 19,
+    "comments": 1,
     "published": "2026-11-01",
     "link": "https://www.youtube.com/watch?v=lqb3L3lGMio",
     "platform": "youtube"
@@ -15,7 +25,7 @@
    {
     "id": "nipiGHnpv8U",
     "title": "Space Without A Suit #shorts",
-    "views": 1397,
+    "views": 1459,
     "likes": 11,
     "comments": 1,
     "published": "2026-10-31",
@@ -35,7 +45,7 @@
    {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 1059,
+    "views": 1061,
     "likes": 19,
     "comments": 1,
     "published": "2026-10-29",
@@ -305,7 +315,7 @@
    {
     "id": "7703283222557363478",
     "title": "From blurry eyes to waking dreams: what eleven days without sleep did to Randy Gardner. Don't try it. #sleep #brain #experiment #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 268,
+    "views": 281,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-01",
@@ -851,8 +861,8 @@
    {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 382,
-    "likes": 6,
+    "views": 571,
+    "likes": 9,
     "comments": 0,
     "published": "2026-11-01",
     "link": "https://www.youtube.com/watch?v=JvforW0Fywg",
@@ -2623,7 +2633,7 @@
    {
     "id": "mWMwsw1LjHo",
     "title": "What Happens If You Drink 2 Cups of Green Tea Every Day? #shorts",
-    "views": 48,
+    "views": 50,
     "likes": 0,
     "comments": 0,
     "published": "2026-08-25",
@@ -2875,7 +2885,7 @@
    {
     "id": "VmPYM8zhoxs",
     "title": "Red Sands of Saudi Arabia #shorts",
-    "views": 45,
+    "views": 46,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-10",
@@ -3385,6 +3395,16 @@
   ],
   "NextByte": [
    {
+    "id": "9AGZ6FoQnmM",
+    "title": "Free beat the pricier chocolate",
+    "views": 16,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.youtube.com/watch?v=9AGZ6FoQnmM",
+    "platform": "youtube"
+   },
+   {
     "id": "EjcpyiVLRy4",
     "title": "The hot dog that sells the membership",
     "views": 21,
@@ -3457,9 +3477,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "Jyn1EWkmsHg",
+    "title": "The forest that whispers danger #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.youtube.com/watch?v=Jyn1EWkmsHg",
+    "platform": "youtube"
+   },
+   {
     "id": "HDsSFs2NUa0",
     "title": "Mystery lights over wartime Los Angeles #shorts",
-    "views": 34,
+    "views": 37,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-01",
@@ -3799,7 +3829,7 @@
    {
     "id": "7703282951735233814",
     "title": "Explore the 1942 Los Angeles anti-aircraft barrage and its lingering unanswered questions. Case file: The Battle of Los Angeles. #unexplained #mystery #history #losangeles #BattleOfLa Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 269,
+    "views": 277,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-01",
@@ -3999,9 +4029,19 @@
   ],
   "Curio": [
    {
+    "id": "LnBkDYg2GLY",
+    "title": "Great Blue Hole from space · ORBIT #001",
+    "views": 1517,
+    "likes": 36,
+    "comments": 1,
+    "published": "2026-11-02",
+    "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
+    "platform": "youtube"
+   },
+   {
     "id": "hH-oQSPO5S4",
     "title": "India's Rocket Revolution: A New Era Begins! #shorts",
-    "views": 383,
+    "views": 384,
     "likes": 3,
     "comments": 0,
     "published": "2026-07-27",
@@ -4011,7 +4051,7 @@
    {
     "id": "k3eBYP6ndN4",
     "title": "Astronomers Find Earth-Like Exoplanet with an Atmosphere! #shorts",
-    "views": 525,
+    "views": 526,
     "likes": 10,
     "comments": 0,
     "published": "2026-07-27",
@@ -4489,14 +4529,14 @@
     "platform": "youtube"
    },
    {
-    "id": "meuZ98I692c",
-    "title": "The Moment Earth is Furthest from the Sun #shorts",
-    "views": 1153,
-    "likes": 27,
-    "comments": 1,
-    "published": "2026-07-08",
-    "link": "https://www.youtube.com/watch?v=meuZ98I692c",
-    "platform": "youtube"
+    "id": "18120726883974942",
+    "title": "This circular hole is three hundred eighteen meters wide, an",
+    "views": 129,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.instagram.com/reel/DfO78jCBDpt/",
+    "platform": "instagram"
    }
   ],
   "EyeHeist": [
