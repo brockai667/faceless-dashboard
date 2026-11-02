@@ -1,12 +1,12 @@
 {
- "gen_at": "2026-11-02T19:58:00Z",
+ "gen_at": "2026-11-02T23:16:01Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "jDMSrhF56UA",
     "title": "Eleven Days Awake #shorts",
-    "views": 993,
-    "likes": 23,
+    "views": 999,
+    "likes": 24,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=jDMSrhF56UA",
@@ -15,7 +15,7 @@
    {
     "id": "lqb3L3lGMio",
     "title": "Six Months Asleep #shorts",
-    "views": 1118,
+    "views": 1129,
     "likes": 19,
     "comments": 1,
     "published": "2026-11-01",
@@ -313,6 +313,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7703684222724148502",
+    "title": "Ten times saltier than the ocean: why you can't sink in the Dead Sea, and why it stings. #deadsea #travel #ocean #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 166,
+    "likes": 7,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7703684222724148502",
+    "platform": "tiktok"
+   },
+   {
     "id": "7703283222557363478",
     "title": "From blurry eyes to waking dreams: what eleven days without sleep did to Randy Gardner. Don't try it. #sleep #brain #experiment #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 281,
@@ -500,16 +510,6 @@
     "comments": 0,
     "published": "2026-10-10",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7694961537403931936",
-    "platform": "tiktok"
-   },
-   {
-    "id": "7694590449952050464",
-    "title": "A quick visual guide to the physical effects of walking on the Moon. #MoonWalk #SpaceScience #LowGravity Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 267,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-10-09",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7694590449952050464",
     "platform": "tiktok"
    }
   ],
@@ -861,8 +861,8 @@
    {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 571,
-    "likes": 9,
+    "views": 579,
+    "likes": 10,
     "comments": 0,
     "published": "2026-11-01",
     "link": "https://www.youtube.com/watch?v=JvforW0Fywg",
@@ -3397,7 +3397,7 @@
    {
     "id": "9AGZ6FoQnmM",
     "title": "Free beat the pricier chocolate",
-    "views": 16,
+    "views": 15,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-02",
@@ -3827,6 +3827,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7703683929802411286",
+    "title": "Explore the eerie reports and unexplained phenomena of Romania's Baciu Forest. Case file: The Hoia Baciu Forest Mystery. #unexplained #mystery #hoiabaciu #HoiaBaciuForest Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 144,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7703683929802411286",
+    "platform": "tiktok"
+   },
+   {
     "id": "7703282951735233814",
     "title": "Explore the 1942 Los Angeles anti-aircraft barrage and its lingering unanswered questions. Case file: The Battle of Los Angeles. #unexplained #mystery #history #losangeles #BattleOfLa Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 277,
@@ -4015,24 +4025,14 @@
     "published": "2026-10-11",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7695349825843367200",
     "platform": "tiktok"
-   },
-   {
-    "id": "7694983110773050656",
-    "title": "On 13 March 1997, thousands of witnesses across Arizona watched a huge V-shaped formation of lights cross the night sky. The military later explained a second set of lights as flares, but the first sighting remains unexplained. #unexplained #mystery #phoenixlights #ufo #arizona Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 101,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-10-10",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7694983110773050656",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 1517,
-    "likes": 36,
+    "views": 1599,
+    "likes": 37,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
