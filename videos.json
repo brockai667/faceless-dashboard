@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-03T03:24:01Z",
+ "gen_at": "2026-11-03T17:29:47Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "KyPwg1FI6PA",
+    "title": "Dead Sea Float #shorts",
+    "views": 145,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-03",
+    "link": "https://www.youtube.com/watch?v=KyPwg1FI6PA",
+    "platform": "youtube"
+   },
+   {
     "id": "jDMSrhF56UA",
     "title": "Eleven Days Awake #shorts",
-    "views": 1034,
+    "views": 1035,
     "likes": 25,
     "comments": 1,
     "published": "2026-11-02",
@@ -15,7 +25,7 @@
    {
     "id": "lqb3L3lGMio",
     "title": "Six Months Asleep #shorts",
-    "views": 1128,
+    "views": 1131,
     "likes": 19,
     "comments": 1,
     "published": "2026-11-01",
@@ -165,7 +175,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1384,
+    "views": 1387,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -185,7 +195,7 @@
    {
     "id": "zYdw2s2phaM",
     "title": "Sleeping in a Coffin #shorts",
-    "views": 147,
+    "views": 149,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-11",
@@ -315,7 +325,7 @@
    {
     "id": "7703684222724148502",
     "title": "Ten times saltier than the ocean: why you can't sink in the Dead Sea, and why it stings. #deadsea #travel #ocean #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 242,
+    "views": 248,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-02",
@@ -859,9 +869,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "UH8FL624BSM",
+    "title": "Everyone says 64 #shorts",
+    "views": 1047,
+    "likes": 16,
+    "comments": 2,
+    "published": "2026-11-03",
+    "link": "https://www.youtube.com/watch?v=UH8FL624BSM",
+    "platform": "youtube"
+   },
+   {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 588,
+    "views": 625,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-01",
@@ -2835,7 +2855,7 @@
    {
     "id": "0iVYUbAu9Qk",
     "title": "Badain Jaran Singing Sand Dunes #shorts",
-    "views": 159,
+    "views": 161,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-12",
@@ -3395,6 +3415,16 @@
   ],
   "NextByte": [
    {
+    "id": "G3HzzKUs8Mo",
+    "title": "The console sold at a loss",
+    "views": 186,
+    "likes": 3,
+    "comments": 1,
+    "published": "2026-11-03",
+    "link": "https://www.youtube.com/watch?v=G3HzzKUs8Mo",
+    "platform": "youtube"
+   },
+   {
     "id": "9AGZ6FoQnmM",
     "title": "Free beat the pricier chocolate",
     "views": 15,
@@ -3407,7 +3437,7 @@
    {
     "id": "EjcpyiVLRy4",
     "title": "The hot dog that sells the membership",
-    "views": 21,
+    "views": 22,
     "likes": 0,
     "comments": 1,
     "published": "2026-11-01",
@@ -3476,6 +3506,16 @@
    }
   ],
   "ColdCaseDaily": [
+   {
+    "id": "jKF8_dZEExE",
+    "title": "The Louvre's missing masterpiece #shorts",
+    "views": 151,
+    "likes": 6,
+    "comments": 0,
+    "published": "2026-11-03",
+    "link": "https://www.youtube.com/watch?v=jKF8_dZEExE",
+    "platform": "youtube"
+   },
    {
     "id": "Jyn1EWkmsHg",
     "title": "The forest that whispers danger #shorts",
@@ -3709,7 +3749,7 @@
    {
     "id": "4H7B56G02EE",
     "title": "Shipton's Yeti Footprint #shorts",
-    "views": 14,
+    "views": 16,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-09",
@@ -3719,7 +3759,7 @@
    {
     "id": "SnclngNRnRg",
     "title": "The Hessdalen Lights #shorts",
-    "views": 69,
+    "views": 70,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-08",
@@ -3829,7 +3869,7 @@
    {
     "id": "7703683929802411286",
     "title": "Explore the eerie reports and unexplained phenomena of Romania's Baciu Forest. Case file: The Hoia Baciu Forest Mystery. #unexplained #mystery #hoiabaciu #HoiaBaciuForest Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 264,
+    "views": 267,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-02",
@@ -4031,8 +4071,8 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 1603,
-    "likes": 37,
+    "views": 1982,
+    "likes": 45,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
@@ -4061,7 +4101,7 @@
    {
     "id": "EwuFLa3lowQ",
     "title": "Mars' Most Stunning Discovery Yet! #shorts",
-    "views": 582,
+    "views": 583,
     "likes": 6,
     "comments": 0,
     "published": "2026-07-26",
@@ -4081,7 +4121,7 @@
    {
     "id": "K317Th_EFsE",
     "title": "Unlocking Mars' Ancient Secrets! #shorts",
-    "views": 569,
+    "views": 570,
     "likes": 7,
     "comments": 0,
     "published": "2026-07-26",
@@ -4091,7 +4131,7 @@
    {
     "id": "a2ho2gpnWYw",
     "title": "Pluto's Surprising Landscapes Revealed! #shorts",
-    "views": 169,
+    "views": 170,
     "likes": 3,
     "comments": 0,
     "published": "2026-07-25",
