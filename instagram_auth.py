@@ -12,8 +12,8 @@ Ucet musi byt v Meta appke pridany ako Instagram Tester (povodne ucty uz su).
 Skript otvori prehliadac -> prihlas sa do daneho Instagram uctu -> Povolit ->
 callback stranka ukaze KOD (alebo skopiruj celu adresu) -> vloz do terminalu.
 Hesla zadavas len ty v prehliadaci. Tokeny sa ukladaju do ig_tokens.json (kluc = username)
-a NIKDY sa nevypisuju. Po skonceni treba obsah ig_tokens.json vlozit do Render premennej
-IG_TOKENS_JSON (Render -> Environment), inak cloud bezi dalej so starymi tokenmi.
+a NIKDY sa nevypisuju. Po skonceni spusti `python ig_push_tokens.py` (zasifrovane do Gistu,
+cloud si ich vezme pri starte); Render premennu IG_TOKENS_JSON uz netreba menit.
 """
 import json, os, sys, time, secrets, urllib.parse, urllib.request, urllib.error
 import webbrowser

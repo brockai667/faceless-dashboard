@@ -44,6 +44,16 @@ def bootstrap_secrets():
                 open(os.path.join(ROOT, fname), "w", encoding="utf-8").write(val)
             except Exception as e:
                 print(f"[bootstrap] {env_key} nie je platny JSON: {e}")
+    try:                                # predlzene/nove IG tokeny z Gistu su novsie nez ENV (docasny disk)
+        sp, tp = os.path.join(ROOT, "settings.json"), os.path.join(ROOT, "ig_tokens.json")
+        settings = json.load(open(sp, encoding="utf-8")) if os.path.exists(sp) else {}
+        local = json.load(open(tp, encoding="utf-8")) if os.path.exists(tp) else {}
+        merged, changed = store.merge_ig_tokens(local, store.load_ig_tokens(settings))
+        if changed:
+            json.dump(merged, open(tp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+            print(f"[bootstrap] IG tokeny z Gistu: {len(merged)} uctov")
+    except Exception as e:
+        print("[bootstrap] IG tokeny z Gistu:", type(e).__name__)
 
 
 def _data_fresh():

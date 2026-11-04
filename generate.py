@@ -657,6 +657,11 @@ def main():
             _bad = [u for u, v in _r.items() if v not in ("ok", "skipped")]
             if _bad:
                 print(f"  [IG] !! tokeny s problemom: {', '.join(_bad)}")
+            if "ok" in _r.values():                   # predlzene tokeny do Gistu, inak ich restart Rendera zabudne
+                import store as _sti
+                _sp = os.path.join(ROOT, "settings.json")
+                _sti.save_ig_tokens(json.load(open(os.path.join(ROOT, "ig_tokens.json"), encoding="utf-8")),
+                                    json.load(open(_sp, encoding="utf-8")) if os.path.exists(_sp) else {})
         except Exception as e:
             print("  [IG] !! obnova tokenov zlyhala:", e)
         try:
