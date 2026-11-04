@@ -6251,7 +6251,7 @@
       }
     },
     "2026-10-19": {
-      "views": 1074,
+      "views": 1065,
       "subs": 2,
       "fac": {
         "UnexplainedDaily": {
@@ -6295,7 +6295,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 1054,
+          "v": 1045,
           "s": 2
         }
       }
@@ -6501,7 +6501,7 @@
       }
     },
     "2026-10-24": {
-      "views": 1204,
+      "views": 1197,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
@@ -6525,11 +6525,11 @@
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 353,
+          "v": 349,
           "s": 1
         },
         "WealthMindset": {
-          "v": 104,
+          "v": 103,
           "s": 1
         },
         "Lumora Music": {
@@ -6545,7 +6545,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 735,
+          "v": 733,
           "s": 1
         }
       }
@@ -6899,7 +6899,57 @@
           "s": 0
         }
       }
+    },
+    "2026-11-01": {
+      "views": 1882,
+      "subs": 3,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 0,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 561,
+          "s": 2
+        },
+        "Entropy": {
+          "v": 0,
+          "s": 0
+        },
+        "Curio": {
+          "v": 3,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 27,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 40,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 3,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 0,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 2,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 6,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 1240,
+          "s": 1
+        }
+      }
     }
   },
-  "generated": "2026-11-03T12:54:58.052386Z"
+  "generated": "2026-11-04T13:08:40.867320Z"
 }
