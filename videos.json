@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-04T02:03:01Z",
+ "gen_at": "2026-11-04T17:42:58Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "kcozWQdc-X0",
+    "title": "Through Thin Ice #shorts",
+    "views": 1051,
+    "likes": 8,
+    "comments": 1,
+    "published": "2026-11-04",
+    "link": "https://www.youtube.com/watch?v=kcozWQdc-X0",
+    "platform": "youtube"
+   },
+   {
     "id": "KyPwg1FI6PA",
     "title": "Dead Sea Float #shorts",
-    "views": 169,
+    "views": 233,
     "likes": 2,
     "comments": 0,
     "published": "2026-11-03",
@@ -15,7 +25,7 @@
    {
     "id": "jDMSrhF56UA",
     "title": "Eleven Days Awake #shorts",
-    "views": 1034,
+    "views": 1038,
     "likes": 25,
     "comments": 1,
     "published": "2026-11-02",
@@ -25,7 +35,7 @@
    {
     "id": "lqb3L3lGMio",
     "title": "Six Months Asleep #shorts",
-    "views": 1140,
+    "views": 1146,
     "likes": 19,
     "comments": 1,
     "published": "2026-11-01",
@@ -35,7 +45,7 @@
    {
     "id": "nipiGHnpv8U",
     "title": "Space Without A Suit #shorts",
-    "views": 1457,
+    "views": 1458,
     "likes": 11,
     "comments": 1,
     "published": "2026-10-31",
@@ -55,7 +65,7 @@
    {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 1060,
+    "views": 1063,
     "likes": 19,
     "comments": 1,
     "published": "2026-10-29",
@@ -323,6 +333,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7704196695554313494",
+    "title": "Water everywhere, but not a drop to drink: why seawater makes you thirstier. #ocean #survival #body #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 263,
+    "likes": 10,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7704196695554313494",
+    "platform": "tiktok"
+   },
+   {
     "id": "7703684222724148502",
     "title": "Ten times saltier than the ocean: why you can't sink in the Dead Sea, and why it stings. #deadsea #travel #ocean #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 249,
@@ -510,16 +530,6 @@
     "comments": 0,
     "published": "2026-10-11",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7695332644522970401",
-    "platform": "tiktok"
-   },
-   {
-    "id": "7694961537403931936",
-    "title": "A quick visual look at the physiological changes from an all‑fruit diet. #FruitDiet #Nutrition #HealthFacts #ScienceShorts Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 284,
-    "likes": 7,
-    "comments": 0,
-    "published": "2026-10-10",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7694961537403931936",
     "platform": "tiktok"
    }
   ],
@@ -869,9 +879,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "_YkVhtAfVLA",
+    "title": "The Ten Second Sum Trick #shorts",
+    "views": 71,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.youtube.com/watch?v=_YkVhtAfVLA",
+    "platform": "youtube"
+   },
+   {
     "id": "UH8FL624BSM",
     "title": "Everyone says 64 #shorts",
-    "views": 1067,
+    "views": 1069,
     "likes": 16,
     "comments": 2,
     "published": "2026-11-03",
@@ -881,7 +901,7 @@
    {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 625,
+    "views": 627,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-01",
@@ -2513,7 +2533,7 @@
    {
     "id": "01IeSkQDc2s",
     "title": "Sardines in a Can: Safe or Risky for Mercury? #shorts",
-    "views": 72,
+    "views": 74,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-01",
@@ -3075,7 +3095,7 @@
    {
     "id": "JemVqblJphs",
     "title": "Why Mono Lake’s Towering Tufas Defy Time #shorts",
-    "views": 82,
+    "views": 83,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-05",
@@ -3175,7 +3195,7 @@
    {
     "id": "ajhcEFMn-DA",
     "title": "Why Lake Hillier Stays Pink All Year #shorts",
-    "views": 71,
+    "views": 72,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-01",
@@ -3415,10 +3435,20 @@
   ],
   "NextByte": [
    {
+    "id": "DUnCGHIrpW0",
+    "title": "The cancel process named after a war",
+    "views": 9,
+    "likes": 0,
+    "comments": 1,
+    "published": "2026-11-04",
+    "link": "https://www.youtube.com/watch?v=DUnCGHIrpW0",
+    "platform": "youtube"
+   },
+   {
     "id": "G3HzzKUs8Mo",
     "title": "The console sold at a loss",
-    "views": 184,
-    "likes": 3,
+    "views": 306,
+    "likes": 5,
     "comments": 1,
     "published": "2026-11-03",
     "link": "https://www.youtube.com/watch?v=G3HzzKUs8Mo",
@@ -3507,9 +3537,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "0n0E7Kdr7sQ",
+    "title": "Missing Masterpieces from a Paris Museum #shorts",
+    "views": 12,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.youtube.com/watch?v=0n0E7Kdr7sQ",
+    "platform": "youtube"
+   },
+   {
     "id": "jKF8_dZEExE",
     "title": "The Louvre's missing masterpiece #shorts",
-    "views": 176,
+    "views": 180,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-03",
@@ -3867,6 +3907,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7704198909849062678",
+    "title": "Explore the daring 1911 theft of the Mona Lisa and its lingering mysteries. Case file: The 1911 Mona Lisa Theft. #unexplained #mystery #artcrime #MonaLisaHeist Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 251,
+    "likes": 10,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7704198909849062678",
+    "platform": "tiktok"
+   },
+   {
     "id": "7703683929802411286",
     "title": "Explore the eerie reports and unexplained phenomena of Romania's Baciu Forest. Case file: The Hoia Baciu Forest Mystery. #unexplained #mystery #hoiabaciu #HoiaBaciuForest Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 267,
@@ -4055,517 +4105,17 @@
     "published": "2026-10-12",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7695721788889763105",
     "platform": "tiktok"
-   },
-   {
-    "id": "7695349825843367200",
-    "title": "In March 1876, chunks of meat reportedly fell from a clear sky over a Kentucky farm. Scientists now think a flock of vultures overhead is the likely explanation. #unexplained #mystery #kentucky #history #weirdnews Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 88,
-    "likes": 6,
-    "comments": 0,
-    "published": "2026-10-11",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7695349825843367200",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2124,
-    "likes": 47,
+    "views": 2206,
+    "likes": 46,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
-    "platform": "youtube"
-   },
-   {
-    "id": "hH-oQSPO5S4",
-    "title": "India's Rocket Revolution: A New Era Begins! #shorts",
-    "views": 384,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-27",
-    "link": "https://www.youtube.com/watch?v=hH-oQSPO5S4",
-    "platform": "youtube"
-   },
-   {
-    "id": "k3eBYP6ndN4",
-    "title": "Astronomers Find Earth-Like Exoplanet with an Atmosphere! #shorts",
-    "views": 526,
-    "likes": 10,
-    "comments": 0,
-    "published": "2026-07-27",
-    "link": "https://www.youtube.com/watch?v=k3eBYP6ndN4",
-    "platform": "youtube"
-   },
-   {
-    "id": "EwuFLa3lowQ",
-    "title": "Mars' Most Stunning Discovery Yet! #shorts",
-    "views": 583,
-    "likes": 6,
-    "comments": 0,
-    "published": "2026-07-26",
-    "link": "https://www.youtube.com/watch?v=EwuFLa3lowQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "b4AJIKsiDnQ",
-    "title": "Astronomical Discoveries Hidden in Plain Sight! #shorts",
-    "views": 306,
-    "likes": 8,
-    "comments": 0,
-    "published": "2026-07-26",
-    "link": "https://www.youtube.com/watch?v=b4AJIKsiDnQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "K317Th_EFsE",
-    "title": "Unlocking Mars' Ancient Secrets! #shorts",
-    "views": 570,
-    "likes": 7,
-    "comments": 0,
-    "published": "2026-07-26",
-    "link": "https://www.youtube.com/watch?v=K317Th_EFsE",
-    "platform": "youtube"
-   },
-   {
-    "id": "a2ho2gpnWYw",
-    "title": "Pluto's Surprising Landscapes Revealed! #shorts",
-    "views": 170,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-25",
-    "link": "https://www.youtube.com/watch?v=a2ho2gpnWYw",
-    "platform": "youtube"
-   },
-   {
-    "id": "lf26cW81lqg",
-    "title": "Astonishing Atmosphere on Exoplanet Discovered! #shorts",
-    "views": 285,
-    "likes": 7,
-    "comments": 0,
-    "published": "2026-07-25",
-    "link": "https://www.youtube.com/watch?v=lf26cW81lqg",
-    "platform": "youtube"
-   },
-   {
-    "id": "GlPFe9-1rCU",
-    "title": "The Truth Behind Pluto's Size! #shorts",
-    "views": 166,
-    "likes": 8,
-    "comments": 1,
-    "published": "2026-07-25",
-    "link": "https://www.youtube.com/watch?v=GlPFe9-1rCU",
-    "platform": "youtube"
-   },
-   {
-    "id": "xlCyCaZplIE",
-    "title": "The Secret of Moon's Water! #shorts",
-    "views": 311,
-    "likes": 12,
-    "comments": 0,
-    "published": "2026-07-24",
-    "link": "https://www.youtube.com/watch?v=xlCyCaZplIE",
-    "platform": "youtube"
-   },
-   {
-    "id": "cOuwLiGICCQ",
-    "title": "The Power of Solar Flares! #shorts",
-    "views": 267,
-    "likes": 10,
-    "comments": 0,
-    "published": "2026-07-24",
-    "link": "https://www.youtube.com/watch?v=cOuwLiGICCQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "sbRfl3Api6c",
-    "title": "Unveiling the Mysteries of Exoplanets #shorts",
-    "views": 151,
-    "likes": 4,
-    "comments": 0,
-    "published": "2026-07-23",
-    "link": "https://www.youtube.com/watch?v=sbRfl3Api6c",
-    "platform": "youtube"
-   },
-   {
-    "id": "ddu-0-cpyPc",
-    "title": "The Secret Life of Meteorites #shorts",
-    "views": 182,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-23",
-    "link": "https://www.youtube.com/watch?v=ddu-0-cpyPc",
-    "platform": "youtube"
-   },
-   {
-    "id": "xl8lqoyxI9g",
-    "title": "Vikram-1: India's Orbital Rocket Success! #shorts",
-    "views": 303,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-22",
-    "link": "https://www.youtube.com/watch?v=xl8lqoyxI9g",
-    "platform": "youtube"
-   },
-   {
-    "id": "ESnL3i0TAn4",
-    "title": "The Truth About Space Mirrors! #shorts",
-    "views": 320,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-22",
-    "link": "https://www.youtube.com/watch?v=ESnL3i0TAn4",
-    "platform": "youtube"
-   },
-   {
-    "id": "6_FsLwvkXt0",
-    "title": "Could a Space Mirror Light Up the Night? #shorts",
-    "views": 947,
-    "likes": 12,
-    "comments": 1,
-    "published": "2026-07-22",
-    "link": "https://www.youtube.com/watch?v=6_FsLwvkXt0",
-    "platform": "youtube"
-   },
-   {
-    "id": "ol2vokcEoLA",
-    "title": "The Fourth Dimension Explained by an Apple! #shorts",
-    "views": 163,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-21",
-    "link": "https://www.youtube.com/watch?v=ol2vokcEoLA",
-    "platform": "youtube"
-   },
-   {
-    "id": "7eVr4p10-VQ",
-    "title": "China's Breakthrough in Rocket Recoveries #shorts",
-    "views": 483,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-21",
-    "link": "https://www.youtube.com/watch?v=7eVr4p10-VQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "NYHXHXHEBFw",
-    "title": "Astronomers Spot Cosmic Sugar for the First Time! #shorts",
-    "views": 252,
-    "likes": 7,
-    "comments": 0,
-    "published": "2026-07-21",
-    "link": "https://www.youtube.com/watch?v=NYHXHXHEBFw",
-    "platform": "youtube"
-   },
-   {
-    "id": "s_lf33eaWTw",
-    "title": "The Mirror That Will Illuminate the Night Sky #shorts",
-    "views": 247,
-    "likes": 1,
-    "comments": 0,
-    "published": "2026-07-20",
-    "link": "https://www.youtube.com/watch?v=s_lf33eaWTw",
-    "platform": "youtube"
-   },
-   {
-    "id": "SrCw3tza9V8",
-    "title": "Our Galaxy Seen from Space! #shorts",
-    "views": 202,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-20",
-    "link": "https://www.youtube.com/watch?v=SrCw3tza9V8",
-    "platform": "youtube"
-   },
-   {
-    "id": "eSy2d5h2OAQ",
-    "title": "Three Facts About Neutron Stars #shorts",
-    "views": 299,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-20",
-    "link": "https://www.youtube.com/watch?v=eSy2d5h2OAQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "jE0_sHMNGKA",
-    "title": "The Secret Behind the Southern Pinwheel Galaxy #shorts",
-    "views": 483,
-    "likes": 7,
-    "comments": 0,
-    "published": "2026-07-19",
-    "link": "https://www.youtube.com/watch?v=jE0_sHMNGKA",
-    "platform": "youtube"
-   },
-   {
-    "id": "eWXx5DnWjMo",
-    "title": "The Visitor From Another Star #shorts",
-    "views": 785,
-    "likes": 16,
-    "comments": 0,
-    "published": "2026-07-19",
-    "link": "https://www.youtube.com/watch?v=eWXx5DnWjMo",
-    "platform": "youtube"
-   },
-   {
-    "id": "bCulFvfzbww",
-    "title": "The Great Wall From Space Myth #shorts",
-    "views": 578,
-    "likes": 9,
-    "comments": 0,
-    "published": "2026-07-19",
-    "link": "https://www.youtube.com/watch?v=bCulFvfzbww",
-    "platform": "youtube"
-   },
-   {
-    "id": "S_dV2yW5aX8",
-    "title": "Nature's Mechanics: How Trees Communicate #shorts",
-    "views": 227,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-19",
-    "link": "https://www.youtube.com/watch?v=S_dV2yW5aX8",
-    "platform": "youtube"
-   },
-   {
-    "id": "f-dEG1Tzq54",
-    "title": "The Sugar Found Floating in Space #shorts",
-    "views": 755,
-    "likes": 10,
-    "comments": 0,
-    "published": "2026-07-18",
-    "link": "https://www.youtube.com/watch?v=f-dEG1Tzq54",
-    "platform": "youtube"
-   },
-   {
-    "id": "e5uyU8MsbxI",
-    "title": "Rocket Reusability Revolutionized #shorts",
-    "views": 1009,
-    "likes": 9,
-    "comments": 0,
-    "published": "2026-07-18",
-    "link": "https://www.youtube.com/watch?v=e5uyU8MsbxI",
-    "platform": "youtube"
-   },
-   {
-    "id": "sn1VaXJp4zA",
-    "title": "The Two-Headed Asteroid That Surprised Us #shorts",
-    "views": 489,
-    "likes": 13,
-    "comments": 0,
-    "published": "2026-07-17",
-    "link": "https://www.youtube.com/watch?v=sn1VaXJp4zA",
-    "platform": "youtube"
-   },
-   {
-    "id": "7V5Rqxwv9j8",
-    "title": "The Rocket That Just Won't Quit #shorts",
-    "views": 985,
-    "likes": 7,
-    "comments": 1,
-    "published": "2026-07-17",
-    "link": "https://www.youtube.com/watch?v=7V5Rqxwv9j8",
-    "platform": "youtube"
-   },
-   {
-    "id": "qJjaXDqVwaE",
-    "title": "The Lake That Mirrors the Milky Way #shorts",
-    "views": 489,
-    "likes": 6,
-    "comments": 1,
-    "published": "2026-07-17",
-    "link": "https://www.youtube.com/watch?v=qJjaXDqVwaE",
-    "platform": "youtube"
-   },
-   {
-    "id": "umxS6YyIBi8",
-    "title": "The Rocket Revolutionizing Space Travel #shorts",
-    "views": 530,
-    "likes": 6,
-    "comments": 0,
-    "published": "2026-07-16",
-    "link": "https://www.youtube.com/watch?v=umxS6YyIBi8",
-    "platform": "youtube"
-   },
-   {
-    "id": "b1v9nskZ1q8",
-    "title": "The Pioneering Discovery by James Webb #shorts",
-    "views": 387,
-    "likes": 6,
-    "comments": 0,
-    "published": "2026-07-16",
-    "link": "https://www.youtube.com/watch?v=b1v9nskZ1q8",
-    "platform": "youtube"
-   },
-   {
-    "id": "LPuyjluZFq8",
-    "title": "The First Image from Tianwen-2 #shorts",
-    "views": 759,
-    "likes": 17,
-    "comments": 0,
-    "published": "2026-07-16",
-    "link": "https://www.youtube.com/watch?v=LPuyjluZFq8",
-    "platform": "youtube"
-   },
-   {
-    "id": "XOcgt_Fvs64",
-    "title": "The Unexpected Treasure on Titan #shorts",
-    "views": 932,
-    "likes": 23,
-    "comments": 0,
-    "published": "2026-07-15",
-    "link": "https://www.youtube.com/watch?v=XOcgt_Fvs64",
-    "platform": "youtube"
-   },
-   {
-    "id": "1Yr3zC3YraY",
-    "title": "The Doctor Who Captured the ISS #shorts",
-    "views": 229,
-    "likes": 8,
-    "comments": 0,
-    "published": "2026-07-15",
-    "link": "https://www.youtube.com/watch?v=1Yr3zC3YraY",
-    "platform": "youtube"
-   },
-   {
-    "id": "1uWQmdmXEZM",
-    "title": "The Asteroid with Two Heads #shorts",
-    "views": 715,
-    "likes": 13,
-    "comments": 0,
-    "published": "2026-07-15",
-    "link": "https://www.youtube.com/watch?v=1uWQmdmXEZM",
-    "platform": "youtube"
-   },
-   {
-    "id": "b6TCAUV7BGE",
-    "title": "The Mini Moon of Earth You Didn't Know About #shorts",
-    "views": 764,
-    "likes": 19,
-    "comments": 0,
-    "published": "2026-07-14",
-    "link": "https://www.youtube.com/watch?v=b6TCAUV7BGE",
-    "platform": "youtube"
-   },
-   {
-    "id": "O2hhrnua0Lk",
-    "title": "A Telescope Captures the Sun's Outer Layers #shorts",
-    "views": 782,
-    "likes": 17,
-    "comments": 0,
-    "published": "2026-07-14",
-    "link": "https://www.youtube.com/watch?v=O2hhrnua0Lk",
-    "platform": "youtube"
-   },
-   {
-    "id": "Uf4u5cLC_sM",
-    "title": "What Happens When You Capture the ISS? #shorts",
-    "views": 273,
-    "likes": 1,
-    "comments": 0,
-    "published": "2026-07-13",
-    "link": "https://www.youtube.com/watch?v=Uf4u5cLC_sM",
-    "platform": "youtube"
-   },
-   {
-    "id": "qmhMQR_llA4",
-    "title": "The Telescope That Captured Andromeda #shorts",
-    "views": 822,
-    "likes": 33,
-    "comments": 0,
-    "published": "2026-07-13",
-    "link": "https://www.youtube.com/watch?v=qmhMQR_llA4",
-    "platform": "youtube"
-   },
-   {
-    "id": "rMd5qNwJWH0",
-    "title": "The Ancient River That Shaped Mars #shorts",
-    "views": 1317,
-    "likes": 29,
-    "comments": 0,
-    "published": "2026-07-13",
-    "link": "https://www.youtube.com/watch?v=rMd5qNwJWH0",
-    "platform": "youtube"
-   },
-   {
-    "id": "TyeexECC0rw",
-    "title": "Why Bees Are Nature's Engineers #shorts",
-    "views": 324,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-12",
-    "link": "https://www.youtube.com/watch?v=TyeexECC0rw",
-    "platform": "youtube"
-   },
-   {
-    "id": "_TLCtum-3pQ",
-    "title": "The Asteroid That Taught Us About Planet Formation #shorts",
-    "views": 742,
-    "likes": 11,
-    "comments": 0,
-    "published": "2026-07-12",
-    "link": "https://www.youtube.com/watch?v=_TLCtum-3pQ",
-    "platform": "youtube"
-   },
-   {
-    "id": "bt5hJ4Jdh_g",
-    "title": "What Did James Webb Find on Titan? #shorts",
-    "views": 1444,
-    "likes": 27,
-    "comments": 0,
-    "published": "2026-07-11",
-    "link": "https://www.youtube.com/watch?v=bt5hJ4Jdh_g",
-    "platform": "youtube"
-   },
-   {
-    "id": "lRo3-gc8ni0",
-    "title": "The Secret of the Strawberry Moon #shorts",
-    "views": 1109,
-    "likes": 10,
-    "comments": 0,
-    "published": "2026-07-11",
-    "link": "https://www.youtube.com/watch?v=lRo3-gc8ni0",
-    "platform": "youtube"
-   },
-   {
-    "id": "dd9ZJm48afo",
-    "title": "How Heat Waves Affect Your Body #shorts",
-    "views": 64,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-07-11",
-    "link": "https://www.youtube.com/watch?v=dd9ZJm48afo",
-    "platform": "youtube"
-   },
-   {
-    "id": "y55SABNgrww",
-    "title": "The Physics Behind Ocean Waves #shorts",
-    "views": 287,
-    "likes": 1,
-    "comments": 0,
-    "published": "2026-07-10",
-    "link": "https://www.youtube.com/watch?v=y55SABNgrww",
-    "platform": "youtube"
-   },
-   {
-    "id": "MXCy0XR6loY",
-    "title": "How Plants Talk to Each Other #shorts",
-    "views": 301,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-07-10",
-    "link": "https://www.youtube.com/watch?v=MXCy0XR6loY",
-    "platform": "youtube"
-   },
-   {
-    "id": "JZBZzuTdFsk",
-    "title": "Why Lightning Strikes More Than Once #shorts",
-    "views": 172,
-    "likes": 5,
-    "comments": 0,
-    "published": "2026-07-09",
-    "link": "https://www.youtube.com/watch?v=JZBZzuTdFsk",
     "platform": "youtube"
    },
    {
