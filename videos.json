@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-05T02:05:25Z",
+ "gen_at": "2026-11-05T17:50:17Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "GXxSTqTHCUA",
+    "title": "Drinking Only Seawater #shorts",
+    "views": 996,
+    "likes": 24,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=GXxSTqTHCUA",
+    "platform": "youtube"
+   },
+   {
     "id": "kcozWQdc-X0",
     "title": "Through Thin Ice #shorts",
-    "views": 1100,
+    "views": 1108,
     "likes": 8,
     "comments": 1,
     "published": "2026-11-04",
@@ -15,8 +25,8 @@
    {
     "id": "KyPwg1FI6PA",
     "title": "Dead Sea Float #shorts",
-    "views": 236,
-    "likes": 2,
+    "views": 270,
+    "likes": 3,
     "comments": 0,
     "published": "2026-11-03",
     "link": "https://www.youtube.com/watch?v=KyPwg1FI6PA",
@@ -25,8 +35,8 @@
    {
     "id": "jDMSrhF56UA",
     "title": "Eleven Days Awake #shorts",
-    "views": 1040,
-    "likes": 25,
+    "views": 1049,
+    "likes": 26,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=jDMSrhF56UA",
@@ -155,7 +165,7 @@
    {
     "id": "iJLdiJDB7N4",
     "title": "Climbing a Sand Dune #shorts",
-    "views": 1049,
+    "views": 1050,
     "likes": 7,
     "comments": 0,
     "published": "2026-10-18",
@@ -333,9 +343,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7704688636700200215",
+    "title": "Faster than sound with no plane around you: what a jump from the edge of space is like. #space #skydiving #extreme #science Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 758,
+    "likes": 15,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7704688636700200215",
+    "platform": "tiktok"
+   },
+   {
     "id": "7704196695554313494",
     "title": "Water everywhere, but not a drop to drink: why seawater makes you thirstier. #ocean #survival #body #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 274,
+    "views": 276,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-04",
@@ -366,7 +386,7 @@
     "id": "7702898756634610966",
     "title": "No food, no water, no bathroom for months: how a bear's body survives the winter. #bears #hibernation #animals #science Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 306,
-    "likes": 9,
+    "likes": 10,
     "comments": 0,
     "published": "2026-10-31",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7702898756634610966",
@@ -521,23 +541,23 @@
     "published": "2026-10-12",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7695703840225578273",
     "platform": "tiktok"
-   },
-   {
-    "id": "7695332644522970401",
-    "title": "A quick look at how a night in a coffin affects your body. #Science #CoffinSleep #BodyEffects Not medical advice. Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 267,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-10-11",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7695332644522970401",
-    "platform": "tiktok"
    }
   ],
   "WealthMindset": [
    {
+    "id": "T6FZqMsCMys",
+    "title": "Suddenly Rich S2 · Part 1: After Closing #shorts",
+    "views": 8,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=T6FZqMsCMys",
+    "platform": "youtube"
+   },
+   {
     "id": "xmTri9rdgHY",
     "title": "Suddenly Rich · Part 8: The Plan #shorts",
-    "views": 1,
+    "views": 2,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-31",
@@ -617,7 +637,7 @@
    {
     "id": "7704435546956762390",
     "title": "Mom has 30 days to save her house. You have $100M. Part 2 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret",
-    "views": 249,
+    "views": 253,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-04",
@@ -889,9 +909,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "uw3EOUD7mhw",
+    "title": "The Golem's Secret Number #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=uw3EOUD7mhw",
+    "platform": "youtube"
+   },
+   {
     "id": "_YkVhtAfVLA",
     "title": "The Ten Second Sum Trick #shorts",
-    "views": 105,
+    "views": 179,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-04",
@@ -901,7 +931,7 @@
    {
     "id": "UH8FL624BSM",
     "title": "Everyone says 64 #shorts",
-    "views": 1070,
+    "views": 1071,
     "likes": 16,
     "comments": 2,
     "published": "2026-11-03",
@@ -3105,7 +3135,7 @@
    {
     "id": "JemVqblJphs",
     "title": "Why Mono Lake’s Towering Tufas Defy Time #shorts",
-    "views": 83,
+    "views": 85,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-05",
@@ -3445,6 +3475,16 @@
   ],
   "NextByte": [
    {
+    "id": "RTUkSbxmPok",
+    "title": "The price that grows at checkout",
+    "views": 19,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=RTUkSbxmPok",
+    "platform": "youtube"
+   },
+   {
     "id": "DUnCGHIrpW0",
     "title": "The cancel process named after a war",
     "views": 9,
@@ -3457,7 +3497,7 @@
    {
     "id": "G3HzzKUs8Mo",
     "title": "The console sold at a loss",
-    "views": 466,
+    "views": 602,
     "likes": 7,
     "comments": 1,
     "published": "2026-11-03",
@@ -3546,6 +3586,16 @@
    }
   ],
   "ColdCaseDaily": [
+   {
+    "id": "qjco-bKoasQ",
+    "title": "Mystery of the Missing French Crown Jewels #shorts",
+    "views": 18,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=qjco-bKoasQ",
+    "platform": "youtube"
+   },
    {
     "id": "0n0E7Kdr7sQ",
     "title": "Missing Masterpieces from a Paris Museum #shorts",
@@ -3917,9 +3967,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7704688157903605014",
+    "title": "Explore the baffling 1792 theft of France's crown jewels and the clues that still puzzle historians. Case file: The 1792 French Crown Jewels Theft. #unexplained #mystery #history #jewels #CrownJewelsHeist Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 654,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7704688157903605014",
+    "platform": "tiktok"
+   },
+   {
     "id": "7704435813655776534",
     "title": "Explore the baffling 2010 Paris art heist and the mysterious CCTV reveal. Case file: The 2010 Paris Modern Art Heist. #unexplained #mystery #arttheft #ParisArtHeist Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 243,
+    "views": 248,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-04",
@@ -4105,23 +4165,23 @@
     "published": "2026-10-15",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7696833042131717408",
     "platform": "tiktok"
-   },
-   {
-    "id": "7696463389794520352",
-    "title": "The Voynich manuscript is a 15th-century book written in an unknown script, filled with strange plants and diagrams nobody has ever explained. Despite a century of attempts, not one page has been reliably translated. #unexplained #mystery #voynichmanuscript #history #codebreaking Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 83,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-14",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7696463389794520352",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
+    "id": "swceKGBOubo",
+    "title": "Vredefort Dome from space · ORBIT #002",
+    "views": 1264,
+    "likes": 14,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.youtube.com/watch?v=swceKGBOubo",
+    "platform": "youtube"
+   },
+   {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2307,
+    "views": 2338,
     "likes": 46,
     "comments": 1,
     "published": "2026-11-02",
