@@ -139,13 +139,31 @@ def unseal(s, key):
     return bytes(a ^ b for a, b in zip(ct, _stream(key, nonce, len(ct))))
 
 
+IG_GIST = GIST or "6a469813654be8dec6bca174ba558b6b"   # ten isty Gist (ig_push_tokens.py)
+
+
+def _get_ig_gist():
+    """Gist s tokenmi; ked GH_TOKEN na Renderi nefunguje (od 2.7.2026 neplatny), cita ho anonymne
+    - secret Gist je citatelny bez prihlasenia, obsah je zasifrovany."""
+    if TOKEN and GIST:
+        try:
+            return _req("GET")
+        except urllib.error.HTTPError as e:
+            if e.code not in (401, 403):
+                raise
+            print(f"[store] GH_TOKEN neplatny ({e.code}) - IG tokeny citam z Gistu anonymne")
+    req = urllib.request.Request(f"https://api.github.com/gists/{IG_GIST}",
+                                 headers={"Accept": "application/vnd.github+json", "User-Agent": "ff-dashboard"})
+    return json.loads(urllib.request.urlopen(req, timeout=30).read().decode())
+
+
 def load_ig_tokens(settings):
-    """{username: token} z Gistu (alebo {} ak vypnute/chyba/iny kluc)."""
+    """{username: token} z Gistu (alebo {} ak chyba kluc/chyba)."""
     key = _ig_key(settings)
-    if not (enabled() and key):
+    if not key:
         return {}
     try:
-        c = _req("GET").get("files", {}).get(IG_FILE, {}).get("content", "")
+        c = _get_ig_gist().get("files", {}).get(IG_FILE, {}).get("content", "")
         raw = unseal(c, key) if c else None
         return json.loads(raw.decode()) if raw else {}
     except Exception as e:
