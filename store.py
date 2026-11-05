@@ -2,7 +2,7 @@
 """Trvale ulozisko historie cez GitHub Gist (zadarmo, prezije restart cloudu).
 Aktivne len ak su nastavene ENV: GH_TOKEN (PAT so scope 'gist') + GIST_ID.
 Lokalne (bez ENV) je no-op -> pouzije sa lokalny history.json subor."""
-import base64, hashlib, hmac, json, os, urllib.request, urllib.error
+import base64, hashlib, hmac, json, os, time, urllib.request, urllib.error
 
 TOKEN = os.environ.get("GH_TOKEN")
 GIST = os.environ.get("GIST_ID")
@@ -142,31 +142,43 @@ def unseal(s, key):
 IG_GIST = GIST or "6a469813654be8dec6bca174ba558b6b"   # ten isty Gist (ig_push_tokens.py)
 
 
-def _get_ig_gist():
-    """Gist s tokenmi; ked GH_TOKEN na Renderi nefunguje (od 2.7.2026 neplatny), cita ho anonymne
-    - secret Gist je citatelny bez prihlasenia, obsah je zasifrovany."""
+IG_DIAG = []   # co sa stalo pri nacitani (bez tokenov) -> /api/ig_diag
+
+
+def _get_ig_sealed():
+    """Obsah ig_tokens.sealed. GH_TOKEN na Renderi nefunguje (Gist od 2.7.2026 nezapisal) a anonymne API
+    ma limit 60/h na zdielanu IP Renderu -> cita sa raw URL secret Gistu (bez limitu, obsah je zasifrovany)."""
     if TOKEN and GIST:
         try:
-            return _req("GET")
-        except urllib.error.HTTPError as e:
-            if e.code not in (401, 403):
-                raise
-            print(f"[store] GH_TOKEN neplatny ({e.code}) - IG tokeny citam z Gistu anonymne")
-    req = urllib.request.Request(f"https://api.github.com/gists/{IG_GIST}",
-                                 headers={"Accept": "application/vnd.github+json", "User-Agent": "ff-dashboard"})
-    return json.loads(urllib.request.urlopen(req, timeout=30).read().decode())
+            c = _req("GET").get("files", {}).get(IG_FILE, {}).get("content", "")
+            if c:
+                IG_DIAG.append("api s tokenom ok")
+                return c
+        except Exception as e:
+            IG_DIAG.append(f"api s tokenom: {type(e).__name__} {getattr(e, 'code', '')}")
+    url = f"https://gist.githubusercontent.com/brockai667/{IG_GIST}/raw/{IG_FILE}?t={int(time.time())}"
+    c = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "ff-dashboard"}),
+                               timeout=30).read().decode().strip()
+    IG_DIAG.append(f"raw url ok ({len(c)} znakov)")
+    return c
 
 
 def load_ig_tokens(settings):
     """{username: token} z Gistu (alebo {} ak chyba kluc/chyba)."""
     key = _ig_key(settings)
     if not key:
+        IG_DIAG.append("chyba ig_app_secret v settings")
         return {}
     try:
-        c = _get_ig_gist().get("files", {}).get(IG_FILE, {}).get("content", "")
+        c = _get_ig_sealed()
         raw = unseal(c, key) if c else None
-        return json.loads(raw.decode()) if raw else {}
+        if c and raw is None:
+            IG_DIAG.append("zly kluc (ig_app_secret v cloude je iny nez lokalne)")
+        out = json.loads(raw.decode()) if raw else {}
+        IG_DIAG.append(f"z Gistu {len(out)} uctov")
+        return out
     except Exception as e:
+        IG_DIAG.append(f"chyba {type(e).__name__} {getattr(e, 'code', '')}")
         print("[store] load_ig_tokens chyba:", type(e).__name__)
         return {}
 

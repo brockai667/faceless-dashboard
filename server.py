@@ -52,6 +52,8 @@ def bootstrap_secrets():
         if changed:
             json.dump(merged, open(tp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
             print(f"[bootstrap] IG tokeny z Gistu: {len(merged)} uctov")
+        store.IG_DIAG.append(f"zlucene {len(merged)} uctov, zmena: {changed}, "
+                             f"novsie z Gistu: {sorted(u for u in merged if merged[u] is not (local.get(u)))}")
     except Exception as e:
         print("[bootstrap] IG tokeny z Gistu:", type(e).__name__)
 
@@ -349,6 +351,8 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, json.dumps({"ok": True}))
             except Exception as e:
                 return self._send(200, json.dumps({"error": str(e)}))
+        if u.path == "/api/ig_diag":        # len stav nacitania IG tokenov (ziadne tokeny)
+            return self._send(200, json.dumps(store.IG_DIAG, ensure_ascii=False))
         if u.path == "/api/comments":
             user = (q.get("user") or [""])[0]
             return self._send(200, json.dumps(fetch_comments(user), ensure_ascii=False))

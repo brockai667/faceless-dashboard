@@ -36,6 +36,7 @@ jobs:
         env:
           DASH_PASS: ${{ secrets.DASH_PASS }}
         run: |
+          echo "ig_diag -> $(curl -s -u "dash:$DASH_PASS" https://facelessfactory-dashboard.onrender.com/api/ig_diag)"
           for u in mindblowndaily.official nextbyte667 brainheistriddles; do
             r=$(curl -s -u "dash:$DASH_PASS" "https://facelessfactory-dashboard.onrender.com/api/comments?user=$u")
             echo "$u -> $(echo "$r" | python -c 'import json,sys; d=json.load(sys.stdin); print(d.get("error") if isinstance(d,dict) else f"ok {len(d)} prispevkov")')"
