@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-11-06T02:07:12Z",
+ "gen_at": "2026-11-06T17:07:38Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "o-Ynqmf0Rjc",
+    "title": "Jump From Space #shorts",
+    "views": 22,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.youtube.com/watch?v=o-Ynqmf0Rjc",
+    "platform": "youtube"
+   },
+   {
     "id": "GXxSTqTHCUA",
     "title": "Drinking Only Seawater #shorts",
-    "views": 1041,
-    "likes": 27,
+    "views": 1054,
+    "likes": 28,
     "comments": 0,
     "published": "2026-11-05",
     "link": "https://www.youtube.com/watch?v=GXxSTqTHCUA",
@@ -15,7 +25,7 @@
    {
     "id": "kcozWQdc-X0",
     "title": "Through Thin Ice #shorts",
-    "views": 1121,
+    "views": 1125,
     "likes": 8,
     "comments": 1,
     "published": "2026-11-04",
@@ -343,9 +353,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7705089091519532310",
+    "title": "You won't sink like in the movies, but you won't pull free either: the physics of quicksand. #quicksand #survival #physics #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 252,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7705089091519532310",
+    "platform": "tiktok"
+   },
+   {
     "id": "7704688636700200215",
     "title": "Faster than sound with no plane around you: what a jump from the edge of space is like. #space #skydiving #extreme #science Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 781,
+    "views": 782,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -355,7 +375,7 @@
    {
     "id": "7704196695554313494",
     "title": "Water everywhere, but not a drop to drink: why seawater makes you thirstier. #ocean #survival #body #science Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 276,
+    "views": 277,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-04",
@@ -533,19 +553,19 @@
     "platform": "tiktok"
    },
    {
-    "id": "7695703840225578273",
-    "title": "A quick look at the body’s real reactions when you plunge into salty sea water. #OceanScience #SwimFacts #BodyReactions Not medical advice. Music: \"Space Jazz\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 258,
-    "likes": 1,
+    "id": "18110356163239441",
+    "title": "Faster than sound with no plane around you: what a jump from",
+    "views": 1221,
+    "likes": 3,
     "comments": 0,
-    "published": "2026-10-12",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7695703840225578273",
-    "platform": "tiktok"
+    "published": "2026-11-06",
+    "link": "https://www.instagram.com/reel/DfZWDWxE5Xz/",
+    "platform": "instagram"
    },
    {
     "id": "18114474119032088",
     "title": "Water everywhere, but not a drop to drink: why seawater make",
-    "views": 2641,
+    "views": 2651,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-05",
@@ -985,6 +1005,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7705088604502068502",
+    "title": "You told Mom about the $100M. She didn't even blink. Part 3 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret Music: \"Deadly Roulette\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
+    "views": 251,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.tiktok.com/@wealth_mindset34/video/7705088604502068502",
+    "platform": "tiktok"
+   },
+   {
     "id": "7704435546956762390",
     "title": "Mom has 30 days to save her house. You have $100M. Part 2 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret",
     "views": 253,
@@ -997,7 +1027,7 @@
    {
     "id": "7702952694411021590",
     "title": "You won $100 million. After taxes, how much can you actually spend every year? The Suddenly Rich finale: the 4% rule. A rule of thumb, not financial advice. Follow for the next story, and comment what it should be. #SuddenlyRich #money #lottery #finance #personalfinance Music: \"Crypto\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 267,
+    "views": 268,
     "likes": 6,
     "comments": 0,
     "published": "2026-10-31",
@@ -1258,6 +1288,16 @@
    }
   ],
   "BrainHeist": [
+   {
+    "id": "_bfkOUlbtqg",
+    "title": "The Meerkat Who Reads Minds #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.youtube.com/watch?v=_bfkOUlbtqg",
+    "platform": "youtube"
+   },
    {
     "id": "uw3EOUD7mhw",
     "title": "The Golem's Secret Number #shorts",
@@ -2693,7 +2733,7 @@
    {
     "id": "Sqh-Ru-8juM",
     "title": "Boost Morning Energy with Simple Hacks #shorts",
-    "views": 127,
+    "views": 129,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-13",
@@ -3255,7 +3295,7 @@
    {
     "id": "99uI1vbIVU8",
     "title": "Giant's Causeway Hexagonal Column Wonder #shorts",
-    "views": 134,
+    "views": 135,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-12",
@@ -3405,7 +3445,7 @@
    {
     "id": "ziORcDSdgXI",
     "title": "Reynisdrangar Sea Stacks Wonder #shorts",
-    "views": 133,
+    "views": 135,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-07",
@@ -3837,7 +3877,7 @@
    {
     "id": "DUnCGHIrpW0",
     "title": "The cancel process named after a war",
-    "views": 9,
+    "views": 10,
     "likes": 0,
     "comments": 1,
     "published": "2026-11-04",
@@ -3847,7 +3887,7 @@
    {
     "id": "G3HzzKUs8Mo",
     "title": "The console sold at a loss",
-    "views": 602,
+    "views": 603,
     "likes": 7,
     "comments": 1,
     "published": "2026-11-03",
@@ -3936,6 +3976,16 @@
    }
   ],
   "ColdCaseDaily": [
+   {
+    "id": "-rZTguQVpNI",
+    "title": "The missing masterpiece vanished in war #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.youtube.com/watch?v=-rZTguQVpNI",
+    "platform": "youtube"
+   },
    {
     "id": "qjco-bKoasQ",
     "title": "Mystery of the Missing French Crown Jewels #shorts",
@@ -4317,9 +4367,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7705088820865273110",
+    "title": "Explore the mystery of the vanished Amber Room and the clues left behind. Case file: The Amber Room. #unexplained #mystery #history #losttreasure #AmberRoom Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 85,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7705088820865273110",
+    "platform": "tiktok"
+   },
+   {
     "id": "7704688157903605014",
     "title": "Explore the baffling 1792 theft of France's crown jewels and the clues that still puzzle historians. Case file: The 1792 French Crown Jewels Theft. #unexplained #mystery #history #jewels #CrownJewelsHeist Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 802,
+    "views": 804,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-05",
@@ -4505,23 +4565,23 @@
     "published": "2026-10-16",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7697205868537990432",
     "platform": "tiktok"
-   },
-   {
-    "id": "7696833042131717408",
-    "title": "Explore the mysterious disappearances of ships and planes in the Bermuda Triangle. #unexplained #mystery #BermudaTriangle #maritime Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-15",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7696833042131717408",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
+    "id": "aDvO8iLSUZo",
+    "title": "Racetrack Playa from space · ORBIT #003",
+    "views": 240,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.youtube.com/watch?v=aDvO8iLSUZo",
+    "platform": "youtube"
+   },
+   {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1295,
+    "views": 1307,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-05",
@@ -4531,12 +4591,22 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2339,
+    "views": 2340,
     "likes": 46,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
     "platform": "youtube"
+   },
+   {
+    "id": "18138657307764127",
+    "title": "Rocks up to three hundred twenty kilograms crawl across this",
+    "views": 133,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.instagram.com/reel/DfZPRj2xHkJ/",
+    "platform": "instagram"
    },
    {
     "id": "18120726883974942",
