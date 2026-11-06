@@ -1,1 +1,24 @@
-{"configured": false, "error": "HTTP Error 500: Internal Server Error"}
+{
+  "generatedAt": "2026-11-06T14:33:05.387Z",
+  "users": {
+    "total": 9,
+    "premium": 0,
+    "new24h": 0,
+    "new7d": 0,
+    "new30d": 0
+  },
+  "active": {
+    "dau": 0,
+    "wau": 0,
+    "mau": 1,
+    "liveSessions": 3
+  },
+  "platform": {
+    "webUsers": 9,
+    "appUsers": null,
+    "installs": 0,
+    "storePublished": false,
+    "storeDownloads": null
+  },
+  "configured": true
+}
