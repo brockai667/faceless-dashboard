@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-11-07T01:44:41Z",
+ "gen_at": "2026-11-07T16:03:29Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "pO5cY8Xg62E",
+    "title": "Stuck In Quicksand #shorts",
+    "views": 1028,
+    "likes": 25,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.youtube.com/watch?v=pO5cY8Xg62E",
+    "platform": "youtube"
+   },
+   {
     "id": "o-Ynqmf0Rjc",
     "title": "Jump From Space #shorts",
-    "views": 28,
-    "likes": 0,
+    "views": 36,
+    "likes": 1,
     "comments": 0,
     "published": "2026-11-06",
     "link": "https://www.youtube.com/watch?v=o-Ynqmf0Rjc",
@@ -15,7 +25,7 @@
    {
     "id": "GXxSTqTHCUA",
     "title": "Drinking Only Seawater #shorts",
-    "views": 1048,
+    "views": 1062,
     "likes": 28,
     "comments": 0,
     "published": "2026-11-05",
@@ -25,8 +35,8 @@
    {
     "id": "kcozWQdc-X0",
     "title": "Through Thin Ice #shorts",
-    "views": 1133,
-    "likes": 8,
+    "views": 1135,
+    "likes": 9,
     "comments": 1,
     "published": "2026-11-04",
     "link": "https://www.youtube.com/watch?v=kcozWQdc-X0",
@@ -353,10 +363,20 @@
     "platform": "youtube"
    },
    {
+    "id": "7705385246417653014",
+    "title": "A quick visual tour of the body’s changes when you spend a night in a hammock. #HammockSleep #ScienceFacts #SleepHealth Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 817,
+    "likes": 6,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7705385246417653014",
+    "platform": "tiktok"
+   },
+   {
     "id": "7705089091519532310",
     "title": "You won't sink like in the movies, but you won't pull free either: the physics of quicksand. #quicksand #survival #physics #science Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 790,
-    "likes": 4,
+    "views": 869,
+    "likes": 5,
     "comments": 0,
     "published": "2026-11-06",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7705089091519532310",
@@ -543,20 +563,20 @@
     "platform": "tiktok"
    },
    {
-    "id": "7696817080569564449",
-    "title": "A character whistles on a mountain, showing how thinning air affects sound and breathing. #physics #altitude #science #whistle Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 274,
-    "likes": 5,
+    "id": "18161358115456211",
+    "title": "You won't sink like in the movies, but you won't pull free e",
+    "views": 2358,
+    "likes": 7,
     "comments": 0,
-    "published": "2026-10-15",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7696817080569564449",
-    "platform": "tiktok"
+    "published": "2026-11-07",
+    "link": "https://www.instagram.com/reel/Dfb62x9jA8y/",
+    "platform": "instagram"
    },
    {
     "id": "18110356163239441",
     "title": "Faster than sound with no plane around you: what a jump from",
-    "views": 1223,
-    "likes": 3,
+    "views": 1260,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-06",
     "link": "https://www.instagram.com/reel/DfZWDWxE5Xz/",
@@ -565,7 +585,7 @@
    {
     "id": "18114474119032088",
     "title": "Water everywhere, but not a drop to drink: why seawater make",
-    "views": 2654,
+    "views": 2662,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-05",
@@ -575,7 +595,7 @@
    {
     "id": "18148614754601982",
     "title": "One minute, ten minutes, one hour: the cold water rule that ",
-    "views": 2415,
+    "views": 2417,
     "likes": 13,
     "comments": 0,
     "published": "2026-11-04",
@@ -835,7 +855,7 @@
    {
     "id": "17993935865842944",
     "title": "From ten minutes to ninety: what different afternoon nap len",
-    "views": 1618,
+    "views": 1619,
     "likes": 13,
     "comments": 0,
     "published": "2026-10-06",
@@ -915,9 +935,19 @@
   ],
   "WealthMindset": [
    {
+    "id": "hZnj3X9d4kY",
+    "title": "Suddenly Rich S2 · Part 2: Two A.M. #shorts",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.youtube.com/watch?v=hZnj3X9d4kY",
+    "platform": "youtube"
+   },
+   {
     "id": "T6FZqMsCMys",
     "title": "Suddenly Rich S2 · Part 1: After Closing #shorts",
-    "views": 10,
+    "views": 12,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-05",
@@ -1289,6 +1319,16 @@
   ],
   "BrainHeist": [
    {
+    "id": "qYdPVuYMqkM",
+    "title": "The Chessboard Nobody Can Cover #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.youtube.com/watch?v=qYdPVuYMqkM",
+    "platform": "youtube"
+   },
+   {
     "id": "_bfkOUlbtqg",
     "title": "The Meerkat Who Reads Minds #shorts",
     "views": 0,
@@ -1321,7 +1361,7 @@
    {
     "id": "UH8FL624BSM",
     "title": "Everyone says 64 #shorts",
-    "views": 1072,
+    "views": 1071,
     "likes": 16,
     "comments": 2,
     "published": "2026-11-03",
@@ -1331,7 +1371,7 @@
    {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 628,
+    "views": 627,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-01",
@@ -3615,7 +3655,7 @@
    {
     "id": "YA9h3j335dc",
     "title": "Why Lake Tekapo Glows Turquoise at Dawn #shorts",
-    "views": 40,
+    "views": 42,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-02",
@@ -3867,7 +3907,7 @@
    {
     "id": "RTUkSbxmPok",
     "title": "The price that grows at checkout",
-    "views": 21,
+    "views": 24,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-05",
@@ -3887,7 +3927,7 @@
    {
     "id": "G3HzzKUs8Mo",
     "title": "The console sold at a loss",
-    "views": 603,
+    "views": 602,
     "likes": 7,
     "comments": 1,
     "published": "2026-11-03",
@@ -3976,6 +4016,16 @@
    }
   ],
   "ColdCaseDaily": [
+   {
+    "id": "k4iWApS46Hk",
+    "title": "The treasure that vanished in Arizona #shorts",
+    "views": 164,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.youtube.com/watch?v=k4iWApS46Hk",
+    "platform": "youtube"
+   },
    {
     "id": "-rZTguQVpNI",
     "title": "The missing masterpiece vanished in war #shorts",
@@ -4369,7 +4419,7 @@
    {
     "id": "7705088820865273110",
     "title": "Explore the mystery of the vanished Amber Room and the clues left behind. Case file: The Amber Room. #unexplained #mystery #history #losttreasure #AmberRoom Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 244,
+    "views": 245,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-06",
@@ -4569,6 +4619,16 @@
   ],
   "Curio": [
    {
+    "id": "_8U8wLB0yuI",
+    "title": "Nazca Lines from space · ORBIT #004",
+    "views": 1073,
+    "likes": 13,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.youtube.com/watch?v=_8U8wLB0yuI",
+    "platform": "youtube"
+   },
+   {
     "id": "aDvO8iLSUZo",
     "title": "Racetrack Playa from space · ORBIT #003",
     "views": 277,
@@ -4581,7 +4641,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1313,
+    "views": 1321,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-05",
@@ -4597,6 +4657,16 @@
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
     "platform": "youtube"
+   },
+   {
+    "id": "18047509790826583",
+    "title": "Who scratched over eight hundred miles of lines into this de",
+    "views": 115,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.instagram.com/reel/Dfbz9myMwFB/",
+    "platform": "instagram"
    },
    {
     "id": "18138657307764127",
