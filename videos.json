@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-11-09T01:32:38Z",
+ "gen_at": "2026-11-09T20:22:28Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "Wybm27gm28o",
+    "title": "Salad Lunch Swap #shorts",
+    "views": 940,
+    "likes": 11,
+    "comments": 1,
+    "published": "2026-11-09",
+    "link": "https://www.youtube.com/watch?v=Wybm27gm28o",
+    "platform": "youtube"
+   },
+   {
     "id": "F4ZgqwOWv-k",
     "title": "Sleeping in a Hammock #shorts",
-    "views": 817,
-    "likes": 11,
+    "views": 840,
+    "likes": 14,
     "comments": 0,
     "published": "2026-11-08",
     "link": "https://www.youtube.com/watch?v=F4ZgqwOWv-k",
@@ -15,7 +25,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1297,
+    "views": 1303,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -35,7 +45,7 @@
    {
     "id": "GXxSTqTHCUA",
     "title": "Drinking Only Seawater #shorts",
-    "views": 1072,
+    "views": 1071,
     "likes": 28,
     "comments": 0,
     "published": "2026-11-05",
@@ -225,7 +235,7 @@
    {
     "id": "E89mbJflRlA",
     "title": "High Altitude Whistle #shorts",
-    "views": 1387,
+    "views": 1388,
     "likes": 20,
     "comments": 0,
     "published": "2026-10-15",
@@ -395,7 +405,7 @@
    {
     "id": "7704688636700200215",
     "title": "Faster than sound with no plane around you: what a jump from the edge of space is like. #space #skydiving #extreme #science Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 782,
+    "views": 783,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -573,9 +583,19 @@
     "platform": "tiktok"
    },
    {
+    "id": "17936626803146330",
+    "title": "A quick look at how swapping lunch for a salad can affect yo",
+    "views": 647,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.instagram.com/reel/DfhEnNZFxOU/",
+    "platform": "instagram"
+   },
+   {
     "id": "18161358115456211",
     "title": "You won't sink like in the movies, but you won't pull free e",
-    "views": 2367,
+    "views": 2368,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-07",
@@ -1328,6 +1348,16 @@
    }
   ],
   "BrainHeist": [
+   {
+    "id": "awkU9D8xTfM",
+    "title": "The Bridge Walk That Cannot Exist #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.youtube.com/watch?v=awkU9D8xTfM",
+    "platform": "youtube"
+   },
    {
     "id": "rLFDtYQloss",
     "title": "The Puzzle Frozen In Ice #shorts",
@@ -2783,7 +2813,7 @@
    {
     "id": "TExj-UomrOA",
     "title": "Green Tea Mood Boost #shorts",
-    "views": 23,
+    "views": 24,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-13",
@@ -2803,7 +2833,7 @@
    {
     "id": "TBexUpBQvS4",
     "title": "Pumpkin Seeds Daily Benefits #shorts",
-    "views": 490,
+    "views": 491,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-12",
@@ -3565,7 +3595,7 @@
    {
     "id": "DlnMsuT2fXY",
     "title": "Hidden Ice Caves of the Austrian Alps #shorts",
-    "views": 150,
+    "views": 151,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-05",
@@ -3705,7 +3735,7 @@
    {
     "id": "CNeBYJ6pmEE",
     "title": "The Deepest Blue Hole on Earth – Dean’s Blue Hole #shorts",
-    "views": 235,
+    "views": 236,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-01",
@@ -3925,9 +3955,19 @@
   ],
   "NextByte": [
    {
+    "id": "Br255CYQiCo",
+    "title": "The shop that stopped faking sales",
+    "views": 26,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.youtube.com/watch?v=Br255CYQiCo",
+    "platform": "youtube"
+   },
+   {
     "id": "wyKgJ84JhNo",
     "title": "The price that climbed while you waited",
-    "views": 46,
+    "views": 47,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -3957,7 +3997,7 @@
    {
     "id": "G3HzzKUs8Mo",
     "title": "The console sold at a loss",
-    "views": 602,
+    "views": 603,
     "likes": 7,
     "comments": 1,
     "published": "2026-11-03",
@@ -4047,9 +4087,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "E4t-dpTrCsM",
+    "title": "Mystery of the Lost War Correspondent #shorts",
+    "views": 54,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.youtube.com/watch?v=E4t-dpTrCsM",
+    "platform": "youtube"
+   },
+   {
     "id": "GcoUBlXyOXI",
     "title": "The Uncracked Secret of Kryptos #shorts",
-    "views": 0,
+    "views": 1,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-08",
@@ -4279,7 +4329,7 @@
    {
     "id": "THrS_SHCcz0",
     "title": "The Flannan Isles Lighthouse Mystery #shorts",
-    "views": 18,
+    "views": 19,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-16",
@@ -4459,8 +4509,8 @@
    {
     "id": "7705908988197604630",
     "title": "Explore the enduring mystery of the Kryptos sculpture and its unsolved cipher. Case file: The Kryptos Sculpture Cipher. #unexplained #mystery #cipher #cryptography #KryptosCipher Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 271,
-    "likes": 2,
+    "views": 786,
+    "likes": 8,
     "comments": 0,
     "published": "2026-11-08",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7705908988197604630",
@@ -4659,10 +4709,20 @@
   ],
   "Curio": [
    {
+    "id": "e6dJINSDFIk",
+    "title": "Lake Hillier from space · ORBIT #006",
+    "views": 972,
+    "likes": 26,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.youtube.com/watch?v=e6dJINSDFIk",
+    "platform": "youtube"
+   },
+   {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 73,
-    "likes": 0,
+    "views": 105,
+    "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
     "link": "https://www.youtube.com/watch?v=rixQVfvTt_I",
@@ -4671,8 +4731,8 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1127,
-    "likes": 14,
+    "views": 1129,
+    "likes": 15,
     "comments": 0,
     "published": "2026-11-07",
     "link": "https://www.youtube.com/watch?v=_8U8wLB0yuI",
@@ -4681,8 +4741,8 @@
    {
     "id": "aDvO8iLSUZo",
     "title": "Racetrack Playa from space · ORBIT #003",
-    "views": 310,
-    "likes": 3,
+    "views": 311,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-06",
     "link": "https://www.youtube.com/watch?v=aDvO8iLSUZo",
@@ -4691,7 +4751,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1348,
+    "views": 1351,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-05",
@@ -4701,12 +4761,22 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2363,
-    "likes": 46,
+    "views": 2373,
+    "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
     "platform": "youtube"
+   },
+   {
+    "id": "18066687029788027",
+    "title": "Six hundred meters of pink water, and the ocean is just past",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.instagram.com/reel/Dfg9tJYOjcr/",
+    "platform": "instagram"
    },
    {
     "id": "18047509790826583",
