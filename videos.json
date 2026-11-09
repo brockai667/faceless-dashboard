@@ -1,11 +1,11 @@
 {
- "gen_at": "2026-11-08T20:02:33Z",
+ "gen_at": "2026-11-09T01:32:38Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "F4ZgqwOWv-k",
     "title": "Sleeping in a Hammock #shorts",
-    "views": 799,
+    "views": 817,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-08",
@@ -15,7 +15,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1305,
+    "views": 1297,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -45,7 +45,7 @@
    {
     "id": "kcozWQdc-X0",
     "title": "Through Thin Ice #shorts",
-    "views": 1142,
+    "views": 1143,
     "likes": 9,
     "comments": 1,
     "published": "2026-11-04",
@@ -595,7 +595,7 @@
    {
     "id": "18114474119032088",
     "title": "Water everywhere, but not a drop to drink: why seawater make",
-    "views": 2662,
+    "views": 2663,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-05",
@@ -635,7 +635,7 @@
    {
     "id": "18096209804482737",
     "title": "No food, no water, no bathroom for months: how a bear's body",
-    "views": 2324,
+    "views": 2325,
     "likes": 39,
     "comments": 0,
     "published": "2026-11-01",
@@ -3605,7 +3605,7 @@
    {
     "id": "iH1lOu-UgPU",
     "title": "The 7‑Color Hot Springs of Iceland’s Landmannalaugar #shorts",
-    "views": 208,
+    "views": 209,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-04",
@@ -3947,7 +3947,7 @@
    {
     "id": "DUnCGHIrpW0",
     "title": "The cancel process named after a war",
-    "views": 11,
+    "views": 10,
     "likes": 0,
     "comments": 1,
     "published": "2026-11-04",
@@ -4457,6 +4457,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7705908988197604630",
+    "title": "Explore the enduring mystery of the Kryptos sculpture and its unsolved cipher. Case file: The Kryptos Sculpture Cipher. #unexplained #mystery #cipher #cryptography #KryptosCipher Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 271,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-11-08",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7705908988197604630",
+    "platform": "tiktok"
+   },
+   {
     "id": "7705088820865273110",
     "title": "Explore the mystery of the vanished Amber Room and the clues left behind. Case file: The Amber Room. #unexplained #mystery #history #losttreasure #AmberRoom Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 245,
@@ -4645,23 +4655,13 @@
     "published": "2026-10-17",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7697581177116445985",
     "platform": "tiktok"
-   },
-   {
-    "id": "7697205868537990432",
-    "title": "The mysterious disappearance of three lighthouse keepers in 1900. #unexplained #mystery #lighthouse #history Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-16",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7697205868537990432",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 43,
+    "views": 73,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-08",
@@ -4671,7 +4671,7 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1123,
+    "views": 1127,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-07",
@@ -4691,7 +4691,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1345,
+    "views": 1348,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-05",
@@ -4701,7 +4701,7 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2358,
+    "views": 2363,
     "likes": 46,
     "comments": 1,
     "published": "2026-11-02",
