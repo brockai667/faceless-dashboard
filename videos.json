@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-10T04:00:55Z",
+ "gen_at": "2026-11-10T17:26:55Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "aAQlG1UAl-U",
+    "title": "Nightly Herbal Tea Effects #shorts",
+    "views": 74,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.youtube.com/watch?v=aAQlG1UAl-U",
+    "platform": "youtube"
+   },
+   {
     "id": "Wybm27gm28o",
     "title": "Salad Lunch Swap #shorts",
-    "views": 1196,
+    "views": 1203,
     "likes": 11,
     "comments": 1,
     "published": "2026-11-09",
@@ -15,7 +25,7 @@
    {
     "id": "F4ZgqwOWv-k",
     "title": "Sleeping in a Hammock #shorts",
-    "views": 861,
+    "views": 873,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-08",
@@ -25,7 +35,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1303,
+    "views": 1306,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -385,8 +395,8 @@
    {
     "id": "7706310927393574166",
     "title": "A cozy bedtime guide shows how nightly herbal tea subtly changes your body, from temperature shifts to deeper sleep. #HerbalTea #SleepScience #NightRitual Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 194,
-    "likes": 1,
+    "views": 727,
+    "likes": 9,
     "comments": 0,
     "published": "2026-11-09",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7706310927393574166",
@@ -583,10 +593,20 @@
     "platform": "tiktok"
    },
    {
+    "id": "18034723619856141",
+    "title": "A cozy bedtime guide shows how nightly herbal tea subtly cha",
+    "views": 192,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.instagram.com/reel/DfjpRrdkoey/",
+    "platform": "instagram"
+   },
+   {
     "id": "17936626803146330",
     "title": "A quick look at how swapping lunch for a salad can affect yo",
-    "views": 697,
-    "likes": 3,
+    "views": 847,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-09",
     "link": "https://www.instagram.com/reel/DfhEnNZFxOU/",
@@ -595,7 +615,7 @@
    {
     "id": "18161358115456211",
     "title": "You won't sink like in the movies, but you won't pull free e",
-    "views": 2369,
+    "views": 2370,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-07",
@@ -967,7 +987,7 @@
    {
     "id": "hZnj3X9d4kY",
     "title": "Suddenly Rich S2 · Part 2: Two A.M. #shorts",
-    "views": 12,
+    "views": 13,
     "likes": 2,
     "comments": 0,
     "published": "2026-11-07",
@@ -1348,6 +1368,16 @@
    }
   ],
   "BrainHeist": [
+   {
+    "id": "fSh_YOv2oLA",
+    "title": "The Monk Who Meets Himself #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.youtube.com/watch?v=fSh_YOv2oLA",
+    "platform": "youtube"
+   },
    {
     "id": "awkU9D8xTfM",
     "title": "The Bridge Walk That Cannot Exist #shorts",
@@ -3375,7 +3405,7 @@
    {
     "id": "NqO6NEvColg",
     "title": "Glowing Waters of a Caribbean Night #shorts",
-    "views": 48,
+    "views": 49,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-13",
@@ -3955,6 +3985,16 @@
   ],
   "NextByte": [
    {
+    "id": "GB4LELWNSHs",
+    "title": "The chocolate bar with wider gaps",
+    "views": 12,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.youtube.com/watch?v=GB4LELWNSHs",
+    "platform": "youtube"
+   },
+   {
     "id": "Br255CYQiCo",
     "title": "The shop that stopped faking sales",
     "views": 27,
@@ -4087,6 +4127,16 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "kUjgCrGQ0D0",
+    "title": "Engine Inventor's Mysterious Vanishing #shorts",
+    "views": 24,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.youtube.com/watch?v=kUjgCrGQ0D0",
+    "platform": "youtube"
+   },
+   {
     "id": "E4t-dpTrCsM",
     "title": "Mystery of the Lost War Correspondent #shorts",
     "views": 56,
@@ -4099,7 +4149,7 @@
    {
     "id": "GcoUBlXyOXI",
     "title": "The Uncracked Secret of Kryptos #shorts",
-    "views": 4,
+    "views": 5,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-08",
@@ -4130,7 +4180,7 @@
     "id": "qjco-bKoasQ",
     "title": "Mystery of the Missing French Crown Jewels #shorts",
     "views": 21,
-    "likes": 0,
+    "likes": 1,
     "comments": 0,
     "published": "2026-11-05",
     "link": "https://www.youtube.com/watch?v=qjco-bKoasQ",
@@ -4509,8 +4559,8 @@
    {
     "id": "7706309711766785282",
     "title": "Explore the baffling disappearance of writer Ambrose Bierce in 1913. Case file: The Disappearance of Ambrose Bierce. #unexplained #mystery #history #BierceVanishes Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 169,
-    "likes": 3,
+    "views": 697,
+    "likes": 14,
     "comments": 0,
     "published": "2026-11-09",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7706309711766785282",
@@ -4709,9 +4759,19 @@
   ],
   "Curio": [
    {
+    "id": "HnR1eDxVjZc",
+    "title": "Danakil Depression from space · ORBIT #007",
+    "views": 4,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.youtube.com/watch?v=HnR1eDxVjZc",
+    "platform": "youtube"
+   },
+   {
     "id": "e6dJINSDFIk",
     "title": "Lake Hillier from space · ORBIT #006",
-    "views": 986,
+    "views": 996,
     "likes": 27,
     "comments": 0,
     "published": "2026-11-09",
@@ -4721,7 +4781,7 @@
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 116,
+    "views": 129,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -4741,7 +4801,7 @@
    {
     "id": "aDvO8iLSUZo",
     "title": "Racetrack Playa from space · ORBIT #003",
-    "views": 311,
+    "views": 310,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-06",
@@ -4769,9 +4829,19 @@
     "platform": "youtube"
    },
    {
+    "id": "17896155198435779",
+    "title": "A valley two hundred kilometers long, and its floor sits bel",
+    "views": 142,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.instagram.com/reel/Dfjieomh65L/",
+    "platform": "instagram"
+   },
+   {
     "id": "18066687029788027",
     "title": "Six hundred meters of pink water, and the ocean is just past",
-    "views": 1,
+    "views": 2,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-09",
