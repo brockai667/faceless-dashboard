@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-13T02:30:01Z",
+ "gen_at": "2026-11-13T17:29:12Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "stmFlvichGc",
+    "title": "Skipping Dessert #shorts",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.youtube.com/watch?v=stmFlvichGc",
+    "platform": "youtube"
+   },
+   {
     "id": "h-kj4TsZ70A",
     "title": "Standing Desk Danger #shorts",
-    "views": 126,
+    "views": 127,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -15,8 +25,8 @@
    {
     "id": "HMJ1wUk_T44",
     "title": "Cold Showers: Shock to the System #shorts",
-    "views": 257,
-    "likes": 3,
+    "views": 277,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-11",
     "link": "https://www.youtube.com/watch?v=HMJ1wUk_T44",
@@ -45,7 +55,7 @@
    {
     "id": "F4ZgqwOWv-k",
     "title": "Sleeping in a Hammock #shorts",
-    "views": 876,
+    "views": 875,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-08",
@@ -55,7 +65,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1308,
+    "views": 1310,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -115,7 +125,7 @@
    {
     "id": "lqb3L3lGMio",
     "title": "Six Months Asleep #shorts",
-    "views": 1146,
+    "views": 1147,
     "likes": 19,
     "comments": 1,
     "published": "2026-11-01",
@@ -415,7 +425,7 @@
    {
     "id": "7707255453763259670",
     "title": "See how skipping dessert reshapes your body from hunger to health. #Health #Science #Diet #MindBlown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 823,
+    "views": 825,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-12",
@@ -613,10 +623,20 @@
     "platform": "tiktok"
    },
    {
+    "id": "17940653235125618",
+    "title": "See how skipping dessert reshapes your body from hunger to h",
+    "views": 269,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.instagram.com/reel/DfrXxWpgmJS/",
+    "platform": "instagram"
+   },
+   {
     "id": "18030261470698558",
     "title": "See why standing all day hurts your body in five surprising ",
-    "views": 453,
-    "likes": 3,
+    "views": 511,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-12",
     "link": "https://www.instagram.com/reel/Dfoy7cGD8U4/",
@@ -635,7 +655,7 @@
    {
     "id": "18034723619856141",
     "title": "A cozy bedtime guide shows how nightly herbal tea subtly cha",
-    "views": 193,
+    "views": 194,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-10",
@@ -645,7 +665,7 @@
    {
     "id": "17936626803146330",
     "title": "A quick look at how swapping lunch for a salad can affect yo",
-    "views": 852,
+    "views": 853,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-09",
@@ -1037,7 +1057,7 @@
    {
     "id": "T6FZqMsCMys",
     "title": "Suddenly Rich S2 · Part 1: After Closing #shorts",
-    "views": 12,
+    "views": 13,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-05",
@@ -1408,6 +1428,16 @@
    }
   ],
   "BrainHeist": [
+   {
+    "id": "rC78h18aw50",
+    "title": "The Paper That Reaches the Moon #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.youtube.com/watch?v=rC78h18aw50",
+    "platform": "youtube"
+   },
    {
     "id": "xVdMooB4-5o",
     "title": "The Stack of Cash That Disappoints #shorts",
@@ -3485,7 +3515,7 @@
    {
     "id": "0iVYUbAu9Qk",
     "title": "Badain Jaran Singing Sand Dunes #shorts",
-    "views": 163,
+    "views": 164,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-12",
@@ -4045,9 +4075,19 @@
   ],
   "NextByte": [
    {
+    "id": "aEBc7V-olXw",
+    "title": "The ring price rule pushed by an ad",
+    "views": 17,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.youtube.com/watch?v=aEBc7V-olXw",
+    "platform": "youtube"
+   },
+   {
     "id": "-WzSQXHSHck",
     "title": "The car price you could barely buy",
-    "views": 33,
+    "views": 35,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -4207,6 +4247,16 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "jQIXpjddSHM",
+    "title": "Yukon's Deadly Manhunt Unsolved #shorts",
+    "views": 15,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.youtube.com/watch?v=jQIXpjddSHM",
+    "platform": "youtube"
+   },
+   {
     "id": "1yaCnePqkR4",
     "title": "The Ship That Swallowed a Daughter #shorts",
     "views": 29,
@@ -4219,7 +4269,7 @@
    {
     "id": "rYb8GzkMiaY",
     "title": "Diplomat vanished without a trace #shorts",
-    "views": 35,
+    "views": 37,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-11",
@@ -4229,7 +4279,7 @@
    {
     "id": "kUjgCrGQ0D0",
     "title": "Engine Inventor's Mysterious Vanishing #shorts",
-    "views": 30,
+    "views": 31,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-10",
@@ -4249,7 +4299,7 @@
    {
     "id": "GcoUBlXyOXI",
     "title": "The Uncracked Secret of Kryptos #shorts",
-    "views": 7,
+    "views": 9,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-08",
@@ -4289,7 +4339,7 @@
    {
     "id": "0n0E7Kdr7sQ",
     "title": "Missing Masterpieces from a Paris Museum #shorts",
-    "views": 15,
+    "views": 16,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-04",
@@ -4859,9 +4909,19 @@
   ],
   "Curio": [
    {
+    "id": "u0ns59oE1fs",
+    "title": "North Sentinel Island from space · ORBIT #010",
+    "views": 1088,
+    "likes": 34,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.youtube.com/watch?v=u0ns59oE1fs",
+    "platform": "youtube"
+   },
+   {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1131,
+    "views": 1148,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -4871,7 +4931,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1049,
+    "views": 1059,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -4881,7 +4941,7 @@
    {
     "id": "HnR1eDxVjZc",
     "title": "Danakil Depression from space · ORBIT #007",
-    "views": 971,
+    "views": 974,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-10",
@@ -4891,7 +4951,7 @@
    {
     "id": "e6dJINSDFIk",
     "title": "Lake Hillier from space · ORBIT #006",
-    "views": 1061,
+    "views": 1064,
     "likes": 30,
     "comments": 0,
     "published": "2026-11-09",
@@ -4901,7 +4961,7 @@
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 145,
+    "views": 147,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -4911,7 +4971,7 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1135,
+    "views": 1138,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-07",
@@ -4921,7 +4981,7 @@
    {
     "id": "aDvO8iLSUZo",
     "title": "Racetrack Playa from space · ORBIT #003",
-    "views": 314,
+    "views": 315,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-06",
@@ -4931,7 +4991,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1366,
+    "views": 1368,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-05",
@@ -4941,7 +5001,7 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2375,
+    "views": 2378,
     "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
@@ -4949,9 +5009,19 @@
     "platform": "youtube"
    },
    {
+    "id": "18113661218522963",
+    "title": "Why may no boat come within three miles of this island?  Nor",
+    "views": 177,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.instagram.com/reel/DfrQ9aJwVoc/",
+    "platform": "instagram"
+   },
+   {
     "id": "18116596373588683",
     "title": "One in three plants on this island grows nowhere else on Ear",
-    "views": 72,
+    "views": 89,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-12",
@@ -5243,7 +5313,7 @@
    {
     "id": "luJ6tj-3kU4",
     "title": "Self-Organization Creates Beauty From Chaos #Shorts",
-    "views": 7,
+    "views": 11,
     "likes": 0,
     "comments": 0,
     "published": "2026-07-14",
