@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-14T02:06:47Z",
+ "gen_at": "2026-11-14T16:20:37Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "QK0AQN8l6dk",
+    "title": "Buried By An Avalanche #shorts",
+    "views": 242,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.youtube.com/watch?v=QK0AQN8l6dk",
+    "platform": "youtube"
+   },
+   {
     "id": "stmFlvichGc",
     "title": "Skipping Dessert #shorts",
-    "views": 6,
+    "views": 9,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-13",
@@ -25,7 +35,7 @@
    {
     "id": "HMJ1wUk_T44",
     "title": "Cold Showers: Shock to the System #shorts",
-    "views": 277,
+    "views": 278,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-11",
@@ -35,7 +45,7 @@
    {
     "id": "aAQlG1UAl-U",
     "title": "Nightly Herbal Tea Effects #shorts",
-    "views": 117,
+    "views": 118,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-10",
@@ -55,7 +65,7 @@
    {
     "id": "F4ZgqwOWv-k",
     "title": "Sleeping in a Hammock #shorts",
-    "views": 875,
+    "views": 876,
     "likes": 14,
     "comments": 0,
     "published": "2026-11-08",
@@ -65,7 +75,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1310,
+    "views": 1312,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -155,7 +165,7 @@
    {
     "id": "jBFEnEA-Xvo",
     "title": "Night On Everest #shorts",
-    "views": 1063,
+    "views": 1064,
     "likes": 19,
     "comments": 1,
     "published": "2026-10-29",
@@ -255,7 +265,7 @@
    {
     "id": "9J8-C58QTyM",
     "title": "Cold Water Swim #shorts",
-    "views": 1178,
+    "views": 1180,
     "likes": 14,
     "comments": 0,
     "published": "2026-10-17",
@@ -423,9 +433,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7707947532533517571",
+    "title": "Discover the immediate physical benefits of a five-minute daily stretch routine. #stretching #health #wellness #shorts Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 789,
+    "likes": 11,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7707947532533517571",
+    "platform": "tiktok"
+   },
+   {
     "id": "7707255453763259670",
     "title": "See how skipping dessert reshapes your body from hunger to health. #Health #Science #Diet #MindBlown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 827,
+    "views": 829,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-12",
@@ -613,19 +633,29 @@
     "platform": "tiktok"
    },
    {
-    "id": "7698301397183335712",
-    "title": "A cute paper‑craft cartoon shows the surprising bodily changes when you simply float in a pool. #FloatScience #WaterPhysics #BodyEffects Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 274,
-    "likes": 4,
+    "id": "18136660798783203",
+    "title": "Buried by an avalanche: the snow sets like concrete. Three t",
+    "views": 1959,
+    "likes": 22,
     "comments": 0,
-    "published": "2026-10-19",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7698301397183335712",
-    "platform": "tiktok"
+    "published": "2026-11-14",
+    "link": "https://www.instagram.com/reel/Dft8PuPkiha/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17882476977553834",
+    "title": "A quick visual tour of the body’s changes when you spend a n",
+    "views": 804,
+    "likes": 6,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.instagram.com/reel/Dft6B5WCkT-/",
+    "platform": "instagram"
    },
    {
     "id": "17940653235125618",
     "title": "See how skipping dessert reshapes your body from hunger to h",
-    "views": 279,
+    "views": 313,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-13",
@@ -635,7 +665,7 @@
    {
     "id": "18030261470698558",
     "title": "See why standing all day hurts your body in five surprising ",
-    "views": 514,
+    "views": 517,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-12",
@@ -1429,10 +1459,20 @@
   ],
   "BrainHeist": [
    {
-    "id": "rC78h18aw50",
-    "title": "The Paper That Reaches the Moon #shorts",
+    "id": "BQIH20hhBpc",
+    "title": "Racing Trains and a Gold Bar #shorts",
     "views": 0,
     "likes": 0,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.youtube.com/watch?v=BQIH20hhBpc",
+    "platform": "youtube"
+   },
+   {
+    "id": "rC78h18aw50",
+    "title": "The Paper That Reaches the Moon #shorts",
+    "views": 101,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-13",
     "link": "https://www.youtube.com/watch?v=rC78h18aw50",
@@ -1551,7 +1591,7 @@
    {
     "id": "KG6BoVie52E",
     "title": "Two Soldiers, Two Kids, One Boat #shorts",
-    "views": 90,
+    "views": 91,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-25",
@@ -1571,7 +1611,7 @@
    {
     "id": "1Zg18CtAQoM",
     "title": "Split Eight Liters Without a Mark #shorts",
-    "views": 20,
+    "views": 21,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-22",
@@ -4075,9 +4115,19 @@
   ],
   "NextByte": [
    {
+    "id": "kODEFok3Z2A",
+    "title": "Why people paid $30 for a brick",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.youtube.com/watch?v=kODEFok3Z2A",
+    "platform": "youtube"
+   },
+   {
     "id": "aEBc7V-olXw",
     "title": "The ring price rule pushed by an ad",
-    "views": 19,
+    "views": 25,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-13",
@@ -4087,7 +4137,7 @@
    {
     "id": "-WzSQXHSHck",
     "title": "The car price you could barely buy",
-    "views": 35,
+    "views": 36,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -4247,9 +4297,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "kmjCSpOk5hE",
+    "title": "The fake fossil that fooled science #shorts",
+    "views": 112,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.youtube.com/watch?v=kmjCSpOk5hE",
+    "platform": "youtube"
+   },
+   {
     "id": "jQIXpjddSHM",
     "title": "Yukon's Deadly Manhunt Unsolved #shorts",
-    "views": 26,
+    "views": 61,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-13",
@@ -4259,7 +4319,7 @@
    {
     "id": "1yaCnePqkR4",
     "title": "The Ship That Swallowed a Daughter #shorts",
-    "views": 30,
+    "views": 53,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -4707,6 +4767,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7707947281307192598",
+    "title": "Explore the Piltdown Man hoax that fooled scientists for decades. #unexplained #mystery #history #PiltdownHoax Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 249,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7707947281307192598",
+    "platform": "tiktok"
+   },
+   {
     "id": "7707255173114023190",
     "title": "A quick look at the mysterious 1813 disappearance of Theodosia Burr Alston. Case file: Theodosia Burr Alston Disappearance. #unexplained #mystery #history #TheodosiaBurr Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 247,
@@ -4895,24 +4965,14 @@
     "published": "2026-10-21",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7699063752649493792",
     "platform": "tiktok"
-   },
-   {
-    "id": "7698693762058325281",
-    "title": "Exploring the enigmatic Baghdad Battery and its debated purpose. #unexplained #mystery #archaeology Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 81,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-10-20",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7698693762058325281",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1223,
-    "likes": 34,
+    "views": 1297,
+    "likes": 36,
     "comments": 0,
     "published": "2026-11-13",
     "link": "https://www.youtube.com/watch?v=u0ns59oE1fs",
@@ -4921,7 +4981,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1153,
+    "views": 1161,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -4931,7 +4991,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1059,
+    "views": 1063,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -4941,7 +5001,7 @@
    {
     "id": "HnR1eDxVjZc",
     "title": "Danakil Depression from space · ORBIT #007",
-    "views": 974,
+    "views": 977,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-10",
@@ -4951,7 +5011,7 @@
    {
     "id": "e6dJINSDFIk",
     "title": "Lake Hillier from space · ORBIT #006",
-    "views": 1065,
+    "views": 1066,
     "likes": 30,
     "comments": 0,
     "published": "2026-11-09",
@@ -5001,7 +5061,7 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2379,
+    "views": 2384,
     "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
@@ -5011,7 +5071,7 @@
    {
     "id": "18113661218522963",
     "title": "Why may no boat come within three miles of this island?  Nor",
-    "views": 182,
+    "views": 185,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-13",
@@ -5031,7 +5091,7 @@
    {
     "id": "17911366332571197",
     "title": "Green acid ponds and yellow crust, with a pH below one.  Dal",
-    "views": 151,
+    "views": 153,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-11",
@@ -5563,7 +5623,7 @@
    {
     "id": "jM8QvMcXbnE",
     "title": "Order Is The Illusion Of Control #Shorts",
-    "views": 438,
+    "views": 439,
     "likes": 2,
     "comments": 0,
     "published": "2026-07-06",
