@@ -35,9 +35,18 @@ jobs:
           YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}
         run: python yt_analytics_daily.py
 
+      - name: Udrzanie divakov po videach (yt_retention.json, verejne - tyzdenny audit fabrik)
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_ANALYTICS_TOKENS: ${{ secrets.YT_ANALYTICS_TOKENS }}
+        run: python yt_retention.py
+
       - name: Commitni ak sa zmenilo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add yt_daily.json
+          git add yt_retention.json 2>/dev/null || true
           git diff --cached --quiet || { git commit -m "yt analytics $(date -u +%F)"; for _i in 1 2 3 4; do git pull --rebase -q origin main && git push -q && break || sleep 4; done; }
