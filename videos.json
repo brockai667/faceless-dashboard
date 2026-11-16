@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-16T01:42:24Z",
+ "gen_at": "2026-11-16T19:59:19Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "pJzXJx7d4S0",
+    "title": "Bitten By A Snake #shorts",
+    "views": 220,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.youtube.com/watch?v=pJzXJx7d4S0",
+    "platform": "youtube"
+   },
+   {
     "id": "D6SNwqMkEWE",
     "title": "Stranded In The Desert #shorts",
-    "views": 1241,
+    "views": 1245,
     "likes": 20,
     "comments": 1,
     "published": "2026-11-15",
@@ -15,7 +25,7 @@
    {
     "id": "QK0AQN8l6dk",
     "title": "Buried By An Avalanche #shorts",
-    "views": 1045,
+    "views": 1050,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-14",
@@ -35,7 +45,7 @@
    {
     "id": "h-kj4TsZ70A",
     "title": "Standing Desk Danger #shorts",
-    "views": 129,
+    "views": 131,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -85,7 +95,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1315,
+    "views": 1314,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -445,7 +455,7 @@
    {
     "id": "7708376949097368854",
     "title": "Stranded in the desert with one bottle of water: save it or drink it? Most people pick wrong. #desert #survival #water #science #mindblown Not medical advice. Music: \"Echoes of Time\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 820,
+    "views": 824,
     "likes": 17,
     "comments": 0,
     "published": "2026-11-15",
@@ -643,6 +653,16 @@
     "platform": "tiktok"
    },
    {
+    "id": "17962836738256764",
+    "title": "Bitten by a snake: suck the venom out or keep still? The mov",
+    "views": 1939,
+    "likes": 13,
+    "comments": 1,
+    "published": "2026-11-16",
+    "link": "https://www.instagram.com/reel/DfzF9STFaSD/",
+    "platform": "instagram"
+   },
+   {
     "id": "18104077478645024",
     "title": "Stranded in the desert with one bottle of water: save it or ",
     "views": 1913,
@@ -665,7 +685,7 @@
    {
     "id": "17882476977553834",
     "title": "A quick visual tour of the body’s changes when you spend a n",
-    "views": 1241,
+    "views": 1242,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-14",
@@ -1095,6 +1115,16 @@
   ],
   "WealthMindset": [
    {
+    "id": "vDB96t0T4YI",
+    "title": "Suddenly Rich S2 · Part 3: Four A.M. #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.youtube.com/watch?v=vDB96t0T4YI",
+    "platform": "youtube"
+   },
+   {
     "id": "hZnj3X9d4kY",
     "title": "Suddenly Rich S2 · Part 2: Two A.M. #shorts",
     "views": 14,
@@ -1479,9 +1509,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "SnU11FD2EjE",
+    "title": "The Bookworm's Secret Tunnel #shorts",
+    "views": 308,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.youtube.com/watch?v=SnU11FD2EjE",
+    "platform": "youtube"
+   },
+   {
     "id": "Cwoc0R7KfQE",
     "title": "The Stranger Who Paid in Gold #shorts",
-    "views": 1052,
+    "views": 1065,
     "likes": 18,
     "comments": 0,
     "published": "2026-11-15",
@@ -1491,7 +1531,7 @@
    {
     "id": "BQIH20hhBpc",
     "title": "Racing Trains and a Gold Bar #shorts",
-    "views": 4,
+    "views": 6,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-14",
@@ -1501,7 +1541,7 @@
    {
     "id": "rC78h18aw50",
     "title": "The Paper That Reaches the Moon #shorts",
-    "views": 757,
+    "views": 768,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-13",
@@ -1521,7 +1561,7 @@
    {
     "id": "S1fCCWTwVQI",
     "title": "The Clock Hands That Rarely Meet #shorts",
-    "views": 3,
+    "views": 2,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-11",
@@ -1531,7 +1571,7 @@
    {
     "id": "fSh_YOv2oLA",
     "title": "The Monk Who Meets Himself #shorts",
-    "views": 0,
+    "views": 1,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-10",
@@ -1611,7 +1651,7 @@
    {
     "id": "JvforW0Fywg",
     "title": "The Butler Who Said Not Enough #shorts",
-    "views": 629,
+    "views": 630,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-01",
@@ -1641,7 +1681,7 @@
    {
     "id": "1Zg18CtAQoM",
     "title": "Split Eight Liters Without a Mark #shorts",
-    "views": 21,
+    "views": 22,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-22",
@@ -3173,7 +3213,7 @@
    {
     "id": "9c5K6i1QWVQ",
     "title": "Does Well‑Done Steak Lose Protein? #shorts",
-    "views": 213,
+    "views": 214,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-05",
@@ -3715,7 +3755,7 @@
    {
     "id": "aQP3QZTtyes",
     "title": "Secrets of Komodo Pink Beach #shorts",
-    "views": 46,
+    "views": 47,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-08",
@@ -3785,7 +3825,7 @@
    {
     "id": "DlnMsuT2fXY",
     "title": "Hidden Ice Caves of the Austrian Alps #shorts",
-    "views": 152,
+    "views": 155,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-05",
@@ -3925,7 +3965,7 @@
    {
     "id": "CNeBYJ6pmEE",
     "title": "The Deepest Blue Hole on Earth – Dean’s Blue Hole #shorts",
-    "views": 237,
+    "views": 239,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-01",
@@ -4145,9 +4185,19 @@
   ],
   "NextByte": [
    {
+    "id": "LHdVFx4W7RQ",
+    "title": "Most Black Friday deals were not special",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.youtube.com/watch?v=LHdVFx4W7RQ",
+    "platform": "youtube"
+   },
+   {
     "id": "jQDLLWtC8Xk",
     "title": "The same wine tasted better with a higher price",
-    "views": 32,
+    "views": 33,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-15",
@@ -4337,9 +4387,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "n8hKVd8UbR4",
+    "title": "Mysterious fireballs blaze over desert #shorts",
+    "views": 55,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.youtube.com/watch?v=n8hKVd8UbR4",
+    "platform": "youtube"
+   },
+   {
     "id": "0ZvifhiT6nE",
     "title": "The gem that haunts history #shorts",
-    "views": 75,
+    "views": 80,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-15",
@@ -4349,7 +4409,7 @@
    {
     "id": "kmjCSpOk5hE",
     "title": "The fake fossil that fooled science #shorts",
-    "views": 169,
+    "views": 173,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-14",
@@ -5021,7 +5081,7 @@
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1381,
+    "views": 1393,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -5031,7 +5091,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1172,
+    "views": 1171,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -5041,7 +5101,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1062,
+    "views": 1063,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -5071,7 +5131,7 @@
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 149,
+    "views": 150,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -5081,7 +5141,7 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1139,
+    "views": 1140,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-07",
@@ -5101,7 +5161,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1375,
+    "views": 1379,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -5111,7 +5171,7 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2385,
+    "views": 2386,
     "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
