@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-17T04:23:54Z",
+ "gen_at": "2026-11-17T18:55:59Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "iW3Nl1LtUvE",
+    "title": "Falling Elevator #shorts",
+    "views": 171,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.youtube.com/watch?v=iW3Nl1LtUvE",
+    "platform": "youtube"
+   },
+   {
     "id": "pJzXJx7d4S0",
     "title": "Bitten By A Snake #shorts",
-    "views": 240,
+    "views": 266,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-16",
@@ -95,7 +105,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1314,
+    "views": 1313,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -245,7 +255,7 @@
    {
     "id": "qxRukLYIGIQ",
     "title": "Swap Soda for Tea: Body Changes #shorts",
-    "views": 67,
+    "views": 68,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-22",
@@ -325,7 +335,7 @@
    {
     "id": "zYdw2s2phaM",
     "title": "Sleeping in a Coffin #shorts",
-    "views": 149,
+    "views": 150,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-11",
@@ -451,6 +461,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7709055191114468630",
+    "title": "The cable snaps and you jump at the last second. Here is how much that actually helps. #elevator #survival #physics #science #mindblown Not medical advice. Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 750,
+    "likes": 11,
+    "comments": 1,
+    "published": "2026-11-17",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7709055191114468630",
+    "platform": "tiktok"
    },
    {
     "id": "7708376949097368854",
@@ -643,14 +663,14 @@
     "platform": "tiktok"
    },
    {
-    "id": "7699414771585666336",
-    "title": "A quick look at how swapping soda for tea steadies sugar spikes, calms caffeine, boosts hydration, lowers blood pressure, and feeds gut antioxidants. #TeaSwap #HealthFacts #SodaFree Not medical advice. Music: \"Hyperfun\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 256,
-    "likes": 2,
+    "id": "18643222189045320",
+    "title": "The cable snaps and you jump at the last second. Here is how",
+    "views": 2592,
+    "likes": 23,
     "comments": 0,
-    "published": "2026-10-22",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7699414771585666336",
-    "platform": "tiktok"
+    "published": "2026-11-17",
+    "link": "https://www.instagram.com/reel/Df1qvB6DfZb/",
+    "platform": "instagram"
    },
    {
     "id": "17962836738256764",
@@ -665,7 +685,7 @@
    {
     "id": "18104077478645024",
     "title": "Stranded in the desert with one bottle of water: save it or ",
-    "views": 1913,
+    "views": 1916,
     "likes": 12,
     "comments": 0,
     "published": "2026-11-15",
@@ -1225,10 +1245,20 @@
     "platform": "youtube"
    },
    {
+    "id": "7709054630738742531",
+    "title": "You knocked. Mom said \"groceries.\" Then a hand took her envelope at 4 a.m. Part 4 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret Music: \"Deadly Roulette\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
+    "views": 1720,
+    "likes": 27,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.tiktok.com/@wealth_mindset34/video/7709054630738742531",
+    "platform": "tiktok"
+   },
+   {
     "id": "7705088604502068502",
     "title": "You told Mom about the $100M. She didn't even blink. Part 3 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret Music: \"Deadly Roulette\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 764,
-    "likes": 11,
+    "views": 768,
+    "likes": 12,
     "comments": 1,
     "published": "2026-11-06",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7705088604502068502",
@@ -1237,8 +1267,8 @@
    {
     "id": "7704435546956762390",
     "title": "Mom has 30 days to save her house. You have $100M. Part 2 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret",
-    "views": 255,
-    "likes": 4,
+    "views": 259,
+    "likes": 5,
     "comments": 0,
     "published": "2026-11-04",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7704435546956762390",
@@ -1247,8 +1277,8 @@
    {
     "id": "7702952694411021590",
     "title": "You won $100 million. After taxes, how much can you actually spend every year? The Suddenly Rich finale: the 4% rule. A rule of thumb, not financial advice. Follow for the next story, and comment what it should be. #SuddenlyRich #money #lottery #finance #personalfinance Music: \"Crypto\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 269,
-    "likes": 6,
+    "views": 272,
+    "likes": 7,
     "comments": 0,
     "published": "2026-10-31",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7702952694411021590",
@@ -1257,8 +1287,8 @@
    {
     "id": "7702493725171420438",
     "title": "You walked away from the $400,000 car. Then everyone sent you the same scary headline. Part 8 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
-    "views": 254,
-    "likes": 15,
+    "views": 256,
+    "likes": 16,
     "comments": 0,
     "published": "2026-10-30",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7702493725171420438",
@@ -1267,7 +1297,7 @@
    {
     "id": "7701852643701820695",
     "title": "You wired $48,000 to \"the state\". The state never called. Part 7 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
-    "views": 252,
+    "views": 253,
     "likes": 3,
     "comments": 0,
     "published": "2026-10-28",
@@ -1277,7 +1307,7 @@
    {
     "id": "7701596899349908758",
     "title": "Your cousin wants $200,000. \"I'll pay you back.\" Part 5 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery #finance",
-    "views": 267,
+    "views": 268,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-28",
@@ -1287,7 +1317,7 @@
    {
     "id": "7700629884749483266",
     "title": "You claimed $38M. 38 minutes later, a stranger knew your name. Part 3 drops tomorrow. Follow so you don't miss it. #SuddenlyRich #money #lottery  #finance  Music: \"Crypto\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 262,
+    "views": 264,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-25",
@@ -1297,7 +1327,7 @@
    {
     "id": "7699190098444815638",
     "title": "You won $100M. Claim it, and you only get $38M. Part 2 drops tomorrow. Follow so you don't miss it. #suddenly  #money  #lottery  #finance",
-    "views": 270,
+    "views": 272,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-21",
@@ -1509,10 +1539,20 @@
   ],
   "BrainHeist": [
    {
+    "id": "LQaqTG-pasY",
+    "title": "The Golden Cube's Clean Heart #shorts",
+    "views": 2,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.youtube.com/watch?v=LQaqTG-pasY",
+    "platform": "youtube"
+   },
+   {
     "id": "SnU11FD2EjE",
     "title": "The Bookworm's Secret Tunnel #shorts",
-    "views": 699,
-    "likes": 12,
+    "views": 829,
+    "likes": 13,
     "comments": 0,
     "published": "2026-11-16",
     "link": "https://www.youtube.com/watch?v=SnU11FD2EjE",
@@ -1521,8 +1561,8 @@
    {
     "id": "Cwoc0R7KfQE",
     "title": "The Stranger Who Paid in Gold #shorts",
-    "views": 1069,
-    "likes": 18,
+    "views": 1087,
+    "likes": 20,
     "comments": 0,
     "published": "2026-11-15",
     "link": "https://www.youtube.com/watch?v=Cwoc0R7KfQE",
@@ -1591,7 +1631,7 @@
    {
     "id": "rLFDtYQloss",
     "title": "The Puzzle Frozen In Ice #shorts",
-    "views": 1,
+    "views": 2,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-08",
@@ -4185,6 +4225,16 @@
   ],
   "NextByte": [
    {
+    "id": "bzNjzf4g-Us",
+    "title": "Wendy's planned prices that move with demand",
+    "views": 66,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.youtube.com/watch?v=bzNjzf4g-Us",
+    "platform": "youtube"
+   },
+   {
     "id": "LHdVFx4W7RQ",
     "title": "Most Black Friday deals were not special",
     "views": 6,
@@ -4197,7 +4247,7 @@
    {
     "id": "jQDLLWtC8Xk",
     "title": "The same wine tasted better with a higher price",
-    "views": 33,
+    "views": 34,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-15",
@@ -4377,7 +4427,7 @@
    {
     "id": "71e1TrZCG6I",
     "title": "The option nobody picked",
-    "views": 55,
+    "views": 56,
     "likes": 2,
     "comments": 0,
     "published": "2026-10-26",
@@ -4387,9 +4437,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "wuV4Zo54yOk",
+    "title": "The cliff that swallowed hikers #shorts",
+    "views": 78,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.youtube.com/watch?v=wuV4Zo54yOk",
+    "platform": "youtube"
+   },
+   {
     "id": "n8hKVd8UbR4",
     "title": "Mysterious fireballs blaze over desert #shorts",
-    "views": 61,
+    "views": 66,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-16",
@@ -4449,7 +4509,7 @@
    {
     "id": "kUjgCrGQ0D0",
     "title": "Engine Inventor's Mysterious Vanishing #shorts",
-    "views": 32,
+    "views": 33,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-10",
@@ -4877,6 +4937,16 @@
     "platform": "youtube"
    },
    {
+    "id": "7709056554770631958",
+    "title": "Explore the baffling Kalahari fireball sightings and a possible secret laser test. Case file: The Kalahari Sky Fireballs. #unexplained #mystery #Kalahari #skyphenomena #KalahariFireballs Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 250,
+    "likes": 8,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7709056554770631958",
+    "platform": "tiktok"
+   },
+   {
     "id": "7708374995965185302",
     "title": "Explore the legend of the Hope Diamond and its alleged curse. Case file: The Hope Diamond Curse. #unexplained #mystery #gemstones #history #HopeDiamondCurse Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
     "views": 267,
@@ -5065,23 +5135,13 @@
     "published": "2026-10-23",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7699807725169036577",
     "platform": "tiktok"
-   },
-   {
-    "id": "7699431297445350688",
-    "title": "Explore the mysterious Dendera relief that some claim depicts an ancient light bulb. Case file: The Dendera Light Relief. #unexplained #mystery #ancient #egypt #DenderaLight Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-22",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7699431297445350688",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1395,
+    "views": 1394,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -5091,7 +5151,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1174,
+    "views": 1175,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -5111,7 +5171,7 @@
    {
     "id": "HnR1eDxVjZc",
     "title": "Danakil Depression from space · ORBIT #007",
-    "views": 980,
+    "views": 981,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-10",
@@ -5795,7 +5855,7 @@
    {
     "id": "Qj1V2x6yWuA",
     "title": "I Found 18 Money Glitches That Sound Illegal",
-    "views": 6,
+    "views": 7,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-10",
