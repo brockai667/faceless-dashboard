@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-18T03:28:43Z",
+ "gen_at": "2026-11-18T18:36:56Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "c1k9LX5xH6I",
+    "title": "Caught In A Rip Current #shorts",
+    "views": 1400,
+    "likes": 23,
+    "comments": 1,
+    "published": "2026-11-18",
+    "link": "https://www.youtube.com/watch?v=c1k9LX5xH6I",
+    "platform": "youtube"
+   },
+   {
     "id": "iW3Nl1LtUvE",
     "title": "Falling Elevator #shorts",
-    "views": 193,
+    "views": 220,
     "likes": 2,
     "comments": 0,
     "published": "2026-11-17",
@@ -15,7 +25,7 @@
    {
     "id": "pJzXJx7d4S0",
     "title": "Bitten By A Snake #shorts",
-    "views": 287,
+    "views": 291,
     "likes": 2,
     "comments": 0,
     "published": "2026-11-16",
@@ -25,7 +35,7 @@
    {
     "id": "D6SNwqMkEWE",
     "title": "Stranded In The Desert #shorts",
-    "views": 1248,
+    "views": 1249,
     "likes": 20,
     "comments": 1,
     "published": "2026-11-15",
@@ -35,7 +45,7 @@
    {
     "id": "QK0AQN8l6dk",
     "title": "Buried By An Avalanche #shorts",
-    "views": 1050,
+    "views": 1048,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-14",
@@ -45,7 +55,7 @@
    {
     "id": "stmFlvichGc",
     "title": "Skipping Dessert #shorts",
-    "views": 21,
+    "views": 23,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-13",
@@ -55,7 +65,7 @@
    {
     "id": "h-kj4TsZ70A",
     "title": "Standing Desk Danger #shorts",
-    "views": 131,
+    "views": 133,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-12",
@@ -65,7 +75,7 @@
    {
     "id": "HMJ1wUk_T44",
     "title": "Cold Showers: Shock to the System #shorts",
-    "views": 276,
+    "views": 278,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-11",
@@ -75,7 +85,7 @@
    {
     "id": "aAQlG1UAl-U",
     "title": "Nightly Herbal Tea Effects #shorts",
-    "views": 118,
+    "views": 119,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-10",
@@ -235,7 +245,7 @@
    {
     "id": "lrOUrk8gtCA",
     "title": "Perfect Posture While Typing #shorts",
-    "views": 865,
+    "views": 866,
     "likes": 5,
     "comments": 0,
     "published": "2026-10-24",
@@ -385,7 +395,7 @@
    {
     "id": "a1Jne9Cp89M",
     "title": "What afternoon naps do #shorts",
-    "views": 27,
+    "views": 29,
     "likes": 1,
     "comments": 0,
     "published": "2026-10-06",
@@ -461,6 +471,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7709546629174512918",
+    "title": "A rip current is dragging you out to sea. Your first move decides everything. Save these three. #ripcurrent #survival #beach #science #mindblown Not medical advice. Music: \"Echoes of Time\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 168,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7709546629174512918",
+    "platform": "tiktok"
    },
    {
     "id": "7709055191114468630",
@@ -653,19 +673,19 @@
     "platform": "tiktok"
    },
    {
-    "id": "7699785769614855457",
-    "title": "A quick look at the physiological chaos of flapping your arms at hummingbird speed. #Science #BodyFacts #HummingbirdChallenge Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 259,
-    "likes": 2,
+    "id": "17990723196084884",
+    "title": "A rip current is dragging you out to sea. Your first move de",
+    "views": 1930,
+    "likes": 9,
     "comments": 0,
-    "published": "2026-10-23",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7699785769614855457",
-    "platform": "tiktok"
+    "published": "2026-11-18",
+    "link": "https://www.instagram.com/reel/Df4Pev8EUA2/",
+    "platform": "instagram"
    },
    {
     "id": "18643222189045320",
     "title": "The cable snaps and you jump at the last second. Here is how",
-    "views": 2594,
+    "views": 2605,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-17",
@@ -685,7 +705,7 @@
    {
     "id": "18104077478645024",
     "title": "Stranded in the desert with one bottle of water: save it or ",
-    "views": 1917,
+    "views": 1918,
     "likes": 12,
     "comments": 0,
     "published": "2026-11-15",
@@ -1539,6 +1559,16 @@
   ],
   "BrainHeist": [
    {
+    "id": "9Cm_rSWppCs",
+    "title": "The Digit That Climbed Up #shorts",
+    "views": 18,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.youtube.com/watch?v=9Cm_rSWppCs",
+    "platform": "youtube"
+   },
+   {
     "id": "LQaqTG-pasY",
     "title": "The Golden Cube's Clean Heart #shorts",
     "views": 12,
@@ -1551,8 +1581,8 @@
    {
     "id": "SnU11FD2EjE",
     "title": "The Bookworm's Secret Tunnel #shorts",
-    "views": 865,
-    "likes": 13,
+    "views": 986,
+    "likes": 15,
     "comments": 0,
     "published": "2026-11-16",
     "link": "https://www.youtube.com/watch?v=SnU11FD2EjE",
@@ -1561,7 +1591,7 @@
    {
     "id": "Cwoc0R7KfQE",
     "title": "The Stranger Who Paid in Gold #shorts",
-    "views": 1087,
+    "views": 1088,
     "likes": 20,
     "comments": 0,
     "published": "2026-11-15",
@@ -1581,7 +1611,7 @@
    {
     "id": "rC78h18aw50",
     "title": "The Paper That Reaches the Moon #shorts",
-    "views": 770,
+    "views": 767,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-13",
@@ -2026,16 +2056,6 @@
     "comments": 0,
     "published": "2026-06-29",
     "link": "https://www.youtube.com/watch?v=hoY6p3npT70",
-    "platform": "youtube"
-   },
-   {
-    "id": "Lza4XqZX7yw",
-    "title": "4 Ways to Beat Procrastination #shorts",
-    "views": 525,
-    "likes": 12,
-    "comments": 0,
-    "published": "2026-06-26",
-    "link": "https://www.youtube.com/watch?v=Lza4XqZX7yw",
     "platform": "youtube"
    },
    {
@@ -3063,7 +3083,7 @@
    {
     "id": "40MChtnPm8U",
     "title": "Raw Steel Cut Oats Myth #shorts",
-    "views": 36,
+    "views": 37,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-14",
@@ -3585,7 +3605,7 @@
    {
     "id": "A9j6PaJmOCE",
     "title": "Japan's Pink Sand Dunes #shorts",
-    "views": 63,
+    "views": 64,
     "likes": 1,
     "comments": 0,
     "published": "2026-09-15",
@@ -3805,7 +3825,7 @@
    {
     "id": "ziORcDSdgXI",
     "title": "Reynisdrangar Sea Stacks Wonder #shorts",
-    "views": 135,
+    "views": 136,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-07",
@@ -3815,8 +3835,8 @@
    {
     "id": "L2ZZcaYNAMo",
     "title": "Hidden Ice Caves of Mutnovsky #shorts",
-    "views": 212,
-    "likes": 0,
+    "views": 213,
+    "likes": 1,
     "comments": 0,
     "published": "2026-09-07",
     "link": "https://www.youtube.com/watch?v=L2ZZcaYNAMo",
@@ -4225,9 +4245,19 @@
   ],
   "NextByte": [
    {
+    "id": "pS0MTRI0fBY",
+    "title": "MoviePass sold a movie a day for $9.95 a month",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.youtube.com/watch?v=pS0MTRI0fBY",
+    "platform": "youtube"
+   },
+   {
     "id": "bzNjzf4g-Us",
     "title": "Wendy's planned prices that move with demand",
-    "views": 67,
+    "views": 68,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-17",
@@ -4237,7 +4267,7 @@
    {
     "id": "LHdVFx4W7RQ",
     "title": "Most Black Friday deals were not special",
-    "views": 7,
+    "views": 9,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-16",
@@ -4247,7 +4277,7 @@
    {
     "id": "jQDLLWtC8Xk",
     "title": "The same wine tasted better with a higher price",
-    "views": 34,
+    "views": 33,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-15",
@@ -4267,7 +4297,7 @@
    {
     "id": "aEBc7V-olXw",
     "title": "The ring price rule pushed by an ad",
-    "views": 30,
+    "views": 31,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-13",
@@ -4437,6 +4467,16 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "6LyQhjV50bc",
+    "title": "Mysterious lights over Mongolia's desert #shorts",
+    "views": 45,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.youtube.com/watch?v=6LyQhjV50bc",
+    "platform": "youtube"
+   },
+   {
     "id": "wuV4Zo54yOk",
     "title": "The cliff that swallowed hikers #shorts",
     "views": 78,
@@ -4449,7 +4489,7 @@
    {
     "id": "n8hKVd8UbR4",
     "title": "Mysterious fireballs blaze over desert #shorts",
-    "views": 67,
+    "views": 68,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-16",
@@ -4469,7 +4509,7 @@
    {
     "id": "kmjCSpOk5hE",
     "title": "The fake fossil that fooled science #shorts",
-    "views": 173,
+    "views": 167,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-14",
@@ -4819,7 +4859,7 @@
    {
     "id": "4H7B56G02EE",
     "title": "Shipton's Yeti Footprint #shorts",
-    "views": 22,
+    "views": 27,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-09",
@@ -4937,9 +4977,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7709546269613624598",
+    "title": "A brief look at the puzzling Gobi Desert light sightings and the theories behind them. Case file: The Gobi Desert Lights Mystery. #unexplained #mystery #GobiLights Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 140,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7709546269613624598",
+    "platform": "tiktok"
+   },
+   {
     "id": "7709228148126207254",
     "title": "A brief look at the baffling disappearance of five hikers on Montserrat. Case file: The Montserrat Vanishing Hikers. #unexplained #mystery #Montserrat #hiking #MontserratHikers Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 252,
+    "views": 254,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-17",
@@ -5125,23 +5175,13 @@
     "published": "2026-10-25",
     "link": "https://www.tiktok.com/@coldcase_daily/video/7700561889398377761",
     "platform": "tiktok"
-   },
-   {
-    "id": "7700173019586563360",
-    "title": "A quick look at the baffling Somerton Man case and its lingering mysteries. Case file: The Somerton Man Mystery. #unexplained #mystery #coldcase #SomertonMan Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
-    "likes": 0,
-    "comments": 0,
-    "published": "2026-10-24",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7700173019586563360",
-    "platform": "tiktok"
    }
   ],
   "Curio": [
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1399,
+    "views": 1398,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -5161,7 +5201,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1063,
+    "views": 1067,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -5221,7 +5261,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1383,
+    "views": 1384,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -5613,7 +5653,7 @@
    {
     "id": "H991ACKYufo",
     "title": "Order Hides In The Dance Of Chaos #Shorts",
-    "views": 5,
+    "views": 6,
     "likes": 0,
     "comments": 0,
     "published": "2026-07-12",
