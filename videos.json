@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-19T03:01:38Z",
+ "gen_at": "2026-11-19T18:48:22Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "bUjobjE2qZQ",
+    "title": "Night In Antarctica #shorts",
+    "views": 555,
+    "likes": 14,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.youtube.com/watch?v=bUjobjE2qZQ",
+    "platform": "youtube"
+   },
+   {
     "id": "c1k9LX5xH6I",
     "title": "Caught In A Rip Current #shorts",
-    "views": 1446,
+    "views": 1489,
     "likes": 23,
     "comments": 1,
     "published": "2026-11-18",
@@ -15,7 +25,7 @@
    {
     "id": "iW3Nl1LtUvE",
     "title": "Falling Elevator #shorts",
-    "views": 248,
+    "views": 270,
     "likes": 3,
     "comments": 0,
     "published": "2026-11-17",
@@ -35,7 +45,7 @@
    {
     "id": "D6SNwqMkEWE",
     "title": "Stranded In The Desert #shorts",
-    "views": 1249,
+    "views": 1242,
     "likes": 20,
     "comments": 1,
     "published": "2026-11-15",
@@ -45,7 +55,7 @@
    {
     "id": "QK0AQN8l6dk",
     "title": "Buried By An Avalanche #shorts",
-    "views": 1048,
+    "views": 1049,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-14",
@@ -473,9 +483,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7709895379981995286",
+    "title": "You're freezing and someone hands you a drink. Does it warm you up or cool you down? #hypothermia #survival #cold #science #mindblown Not medical advice. Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 234,
+    "likes": 11,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7709895379981995286",
+    "platform": "tiktok"
+   },
+   {
     "id": "7709546629174512918",
     "title": "A rip current is dragging you out to sea. Your first move decides everything. Save these three. #ripcurrent #survival #beach #science #mindblown Not medical advice. Music: \"Echoes of Time\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 248,
+    "views": 249,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-18",
@@ -663,14 +683,14 @@
     "platform": "tiktok"
    },
    {
-    "id": "7700156844291018016",
-    "title": "A quick look at how perfect posture while typing can transform your body over minutes to months. #Posture #Typing #Health #Science #Wellness Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 266,
-    "likes": 1,
+    "id": "18133684444882883",
+    "title": "You're freezing and someone hands you a drink. Does it warm ",
+    "views": 741,
+    "likes": 3,
     "comments": 0,
-    "published": "2026-10-24",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7700156844291018016",
-    "platform": "tiktok"
+    "published": "2026-11-19",
+    "link": "https://www.instagram.com/reel/Df60Sa9JUPT/",
+    "platform": "instagram"
    },
    {
     "id": "17990723196084884",
@@ -685,7 +705,7 @@
    {
     "id": "18643222189045320",
     "title": "The cable snaps and you jump at the last second. Here is how",
-    "views": 2607,
+    "views": 2612,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-17",
@@ -1267,7 +1287,7 @@
    {
     "id": "7709054630738742531",
     "title": "You knocked. Mom said \"groceries.\" Then a hand took her envelope at 4 a.m. Part 4 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret Music: \"Deadly Roulette\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 1721,
+    "views": 1722,
     "likes": 27,
     "comments": 0,
     "published": "2026-11-17",
@@ -1353,6 +1373,106 @@
     "published": "2026-10-21",
     "link": "https://www.tiktok.com/@wealth_mindset34/video/7699190098444815638",
     "platform": "tiktok"
+   },
+   {
+    "id": "18197155762393493",
+    "title": "You knocked. Mom said \"groceries.\" Then a hand took her enve",
+    "views": 35,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.instagram.com/reel/DfzB2NkAQWo/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18133946356749727",
+    "title": "You told Mom about the $100M. She didn't even blink. Now she",
+    "views": 150,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.instagram.com/reel/Dfb2Ll1jz-d/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18058958351567462",
+    "title": "You won $100 million. After taxes, how much can you actually",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.instagram.com/reel/DfLF7N3Em1j/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18017115959976736",
+    "title": "You walked away from the $400,000 car. Then everyone sent yo",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.instagram.com/reel/DfIFbAPicJr/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18119599858771280",
+    "title": "You wired $48,000 to \"the state\". The state never called. SP",
+    "views": 30,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-28",
+    "link": "https://www.instagram.com/reel/DfC9_YJlXf1/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18135148159666987",
+    "title": "Moving to Florida won't save you. And now \"the state\" is cal",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-27",
+    "link": "https://www.instagram.com/reel/DfAfZstDROC/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18105947072573775",
+    "title": "Your cousin wants $200,000. \"I'll pay you back.\" BUY or NO? ",
+    "views": 125,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-10-26",
+    "link": "https://www.instagram.com/reel/De87PJnFHtw/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18008507540990070",
+    "title": "You grin for the giant check. The world now knows your face.",
+    "views": 153,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-25",
+    "link": "https://www.instagram.com/reel/De6XjhqFruB/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18082497980416320",
+    "title": "You claimed $38M. 38 minutes later, a stranger knew your nam",
+    "views": 125,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-10-24",
+    "link": "https://www.instagram.com/reel/De4wevnjmUi/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17934866376407260",
+    "title": "You won $100M. Claim it, and you only get $38M. CLAIM or WAI",
+    "views": 39,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-21",
+    "link": "https://www.instagram.com/reel/DexAWygkrIx/",
+    "platform": "instagram"
    }
   ],
   "UnexplainedDaily": [
@@ -1559,9 +1679,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "ZSSObWvz0dw",
+    "title": "Four Cuts, Eleven Slices #shorts",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.youtube.com/watch?v=ZSSObWvz0dw",
+    "platform": "youtube"
+   },
+   {
     "id": "9Cm_rSWppCs",
     "title": "The Digit That Climbed Up #shorts",
-    "views": 62,
+    "views": 102,
     "likes": 1,
     "comments": 1,
     "published": "2026-11-18",
@@ -1571,7 +1701,7 @@
    {
     "id": "LQaqTG-pasY",
     "title": "The Golden Cube's Clean Heart #shorts",
-    "views": 12,
+    "views": 14,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-17",
@@ -1591,7 +1721,7 @@
    {
     "id": "Cwoc0R7KfQE",
     "title": "The Stranger Who Paid in Gold #shorts",
-    "views": 1088,
+    "views": 1086,
     "likes": 20,
     "comments": 0,
     "published": "2026-11-15",
@@ -1631,7 +1761,7 @@
    {
     "id": "S1fCCWTwVQI",
     "title": "The Clock Hands That Rarely Meet #shorts",
-    "views": 2,
+    "views": 3,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-11",
@@ -1871,7 +2001,7 @@
    {
     "id": "S4ApfywSrDQ",
     "title": "10 Hats, One Word Each — Save 9 People or Lose $700,000 #shorts",
-    "views": 245,
+    "views": 247,
     "likes": 10,
     "comments": 0,
     "published": "2026-08-15",
@@ -2049,14 +2179,154 @@
     "platform": "youtube"
    },
    {
-    "id": "hoY6p3npT70",
-    "title": "Michael Jordan’s journey shows that setbacks can lead to greatness. Follow for daily disci #shorts",
-    "views": 307,
+    "id": "7709895687441239318",
+    "title": "\"Two days ago I was 25. Next year I'll turn 28.\" He never lies, and a $700,000 gold bar says you can't explain it. Can you? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 623,
+    "likes": 8,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7709895687441239318",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7709055513752915222",
+    "title": "101 - 102 = 1 is wrong. Move exactly ONE digit to make it true and win $1,000,000 in diamonds. Can you see it? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 714,
+    "likes": 7,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7709055513752915222",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7708375811853782294",
+    "title": "A bookworm eats from page one of volume one to the last page of volume three. Everyone says 18 cm and loses $500,000 in gold bars. Can you see why the tunnel is only 7 cm? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 835,
+    "likes": 8,
+    "comments": 0,
+    "published": "2026-11-15",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7708375811853782294",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7707947849912274198",
+    "title": "One hunter has 5 loaves, the other has 3. A hungry stranger shares the bread and pays 8 coins. Split it 5:3 and you lose a $1,000,000 cube of cash. What's the fair split? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 742,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7707947849912274198",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7707255750141218070",
+    "title": "Fold a 0.1 mm sheet of paper 42 times. How thick does it get? One guess wins a $5,000,000 vault. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 790,
+    "likes": 9,
+    "comments": 1,
+    "published": "2026-11-12",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7707255750141218070",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7706792140466064662",
+    "title": "$2,000,000 in temple gold for one answer: how many times do a clock's hands overlap in a day? Everyone says 24. They're wrong. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 792,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-11",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7706792140466064662",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7706310604927077654",
+    "title": "A monk climbs up one day and walks down the next. Is there one spot he passes at the exact same time both days? Solve it for $500,000 in gold. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 886,
+    "likes": 12,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7706310604927077654",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7705909949620047126",
+    "title": "Seven bridges, four pieces of land, and a king offering $1,000,000 for one walk that crosses every bridge exactly once. Thousands tried and got stuck. Can you see why before taking a single step? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 973,
+    "likes": 9,
+    "comments": 2,
+    "published": "2026-11-08",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7705909949620047126",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7705385819313327382",
+    "title": "Nine glowing dots frozen in a wall of ice. Cross every one of them with four straight lines in a single stroke, and a $700,000 gold bar is yours. Can you spot the trick before the ice closes? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 801,
+    "likes": 5,
+    "comments": 2,
+    "published": "2026-11-07",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7705385819313327382",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7705089471036869910",
+    "title": "Two corners are cut off a chessboard. Can 31 dominoes cover the 62 squares left? $500,000 in gold says you have one answer. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 492,
+    "likes": 11,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7705089471036869910",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7704689164092230934",
+    "title": "Pick any number from 1 to 31, point at the cards that hold it, and I name it in 3 seconds. Can you crack the trick before the vault slams shut? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 779,
+    "likes": 7,
+    "comments": 1,
+    "published": "2026-11-05",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7704689164092230934",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7704197019354664194",
+    "title": "A stone golem picks a number from 1 to 1,000,000. Name it and $1,000,000 in diamonds is yours - but you only get 20 yes/no questions. Can you always find it? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 261,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7704197019354664194",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7703283591672761622",
+    "title": "Everyone says 64. A cube of cash worth $1,000,000 says you're wrong. How many squares are really on a chessboard? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 323,
+    "likes": 4,
+    "comments": 0,
+    "published": "2026-11-01",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7703283591672761622",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7702966470774377731",
+    "title": "Three kids, ages multiply to 36, sum on the door - and the butler still can't tell. One hint about cake wins a gold bar worth $700,000. Can you name all three ages? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 82,
     "likes": 1,
     "comments": 0,
-    "published": "2026-06-29",
-    "link": "https://www.youtube.com/watch?v=hoY6p3npT70",
-    "platform": "youtube"
+    "published": "2026-10-31",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7702966470774377731",
+    "platform": "tiktok"
+   },
+   {
+    "id": "7702494736963276034",
+    "title": "A chest of diamonds worth a million is yours if all four of them reach the far bank. Each soldier weighs 100 kg, each kid weighs 50, the boat holds exactly 100 kg, and nobody can swim. Nine crossings do it. Can you see how? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
+    "views": 1011,
+    "likes": 7,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.tiktok.com/@disciplinedaily667/video/7702494736963276034",
+    "platform": "tiktok"
    },
    {
     "id": "17987459925025065",
@@ -3063,7 +3333,7 @@
    {
     "id": "E9A2G7i2Qsc",
     "title": "Dairy Longevity Myth #shorts",
-    "views": 22,
+    "views": 23,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-15",
@@ -3183,7 +3453,7 @@
    {
     "id": "ikP4SrK1800",
     "title": "Zero Fat Yogurt Health Myth #shorts",
-    "views": 58,
+    "views": 59,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-09",
@@ -4297,7 +4567,7 @@
    {
     "id": "aEBc7V-olXw",
     "title": "The ring price rule pushed by an ad",
-    "views": 31,
+    "views": 32,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-13",
@@ -4467,9 +4737,19 @@
   ],
   "ColdCaseDaily": [
    {
+    "id": "l0CcsC85wZ0",
+    "title": "Mysterious lights over Wisconsin forest #shorts",
+    "views": 71,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.youtube.com/watch?v=l0CcsC85wZ0",
+    "platform": "youtube"
+   },
+   {
     "id": "6LyQhjV50bc",
     "title": "Mysterious lights over Mongolia's desert #shorts",
-    "views": 51,
+    "views": 58,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-18",
@@ -4479,7 +4759,7 @@
    {
     "id": "wuV4Zo54yOk",
     "title": "The cliff that swallowed hikers #shorts",
-    "views": 78,
+    "views": 79,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-17",
@@ -4499,7 +4779,7 @@
    {
     "id": "0ZvifhiT6nE",
     "title": "The gem that haunts history #shorts",
-    "views": 80,
+    "views": 79,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-15",
@@ -4509,7 +4789,7 @@
    {
     "id": "kmjCSpOk5hE",
     "title": "The fake fossil that fooled science #shorts",
-    "views": 167,
+    "views": 169,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-14",
@@ -4957,16 +5237,6 @@
     "platform": "youtube"
    },
    {
-    "id": "xqCxil70VlU",
-    "title": "The Dyatlov Pass case #shorts",
-    "views": 19,
-    "likes": 1,
-    "comments": 0,
-    "published": "2026-09-29",
-    "link": "https://www.youtube.com/watch?v=xqCxil70VlU",
-    "platform": "youtube"
-   },
-   {
     "id": "ZDGSCZ5YHbc",
     "title": "The D.B. Cooper Hijacking: America's Greatest Unsolved Heist",
     "views": 13,
@@ -4977,9 +5247,19 @@
     "platform": "youtube"
    },
    {
+    "id": "7709894944751652098",
+    "title": "A couple's 2022 video of lights over Kettle Moraine sparks new questions. Case file: Kettle Moraine UFO Sightings. #unexplained #mystery #UFO #wisconsin #KettleMoraineUfo Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 202,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.tiktok.com/@coldcase_daily/video/7709894944751652098",
+    "platform": "tiktok"
+   },
+   {
     "id": "7709546269613624598",
     "title": "A brief look at the puzzling Gobi Desert light sightings and the theories behind them. Case file: The Gobi Desert Lights Mystery. #unexplained #mystery #GobiLights Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 227,
+    "views": 228,
     "likes": 3,
     "comments": 0,
     "published": "2026-11-18",
@@ -5167,21 +5447,521 @@
     "platform": "tiktok"
    },
    {
-    "id": "7700561889398377761",
-    "title": "Explore the controversial 1967 Patterson-Gimlin Bigfoot film and its lingering mysteries. Case file: The Patterson-Gimlin Bigfoot Film. #unexplained #mystery #bigfoot #PattersonGimlin Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0 🔍 Full case documentaries on our YouTube → @coldcasedaily667",
-    "views": 0,
+    "id": "18120129050521609",
+    "title": "A couple's 2022 video of lights over Kettle Moraine sparks n",
+    "views": 23,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.instagram.com/reel/Df69TighC65/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18360353569172471",
+    "title": "A brief look at the puzzling Gobi Desert light sightings and",
+    "views": 50,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-18",
+    "link": "https://www.instagram.com/reel/Df4W-4bszM6/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18267666652307805",
+    "title": "A brief look at the baffling disappearance of five hikers on",
+    "views": 55,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-17",
+    "link": "https://www.instagram.com/reel/Df1zfDgs7aq/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18121427602989306",
+    "title": "Explore the baffling Kalahari fireball sightings and a possi",
+    "views": 111,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-16",
+    "link": "https://www.instagram.com/reel/DfzPETOC3ap/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18037361813669988",
+    "title": "Explore the legend of the Hope Diamond and its alleged curse",
+    "views": 95,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-15",
+    "link": "https://www.instagram.com/reel/Dfwom37ssGG/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18353935609249483",
+    "title": "Explore the Piltdown Man hoax that fooled scientists for dec",
+    "views": 110,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-14",
+    "link": "https://www.instagram.com/reel/DfuEL7tBJWX/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18029858822696388",
+    "title": "A brief look at the 1931 Yukon chase of the mysterious Mad T",
+    "views": 110,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-13",
+    "link": "https://www.instagram.com/reel/DfrfXJBse0j/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18647747671034966",
+    "title": "A quick look at the mysterious 1813 disappearance of Theodos",
+    "views": 110,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-12",
+    "link": "https://www.instagram.com/reel/Dfo7Gn9Btyx/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18134325628746627",
+    "title": "A British diplomat vanished in 1809 near Königsberg, sparkin",
+    "views": 89,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-11",
+    "link": "https://www.instagram.com/reel/DfmWZ2iBktN/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17880471360565265",
+    "title": "Explore the mysterious 1913 disappearance of engine inventor",
+    "views": 100,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-10",
+    "link": "https://www.instagram.com/reel/DfjyYQPtTZu/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17967440376239994",
+    "title": "Explore the baffling disappearance of writer Ambrose Bierce ",
+    "views": 4,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-09",
+    "link": "https://www.instagram.com/reel/DfhMH9MDqr1/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17918797161467297",
+    "title": "Explore the baffling clues surrounding Arizona's Lost Dutchm",
+    "views": 127,
+    "likes": 2,
+    "comments": 0,
+    "published": "2026-11-07",
+    "link": "https://www.instagram.com/reel/DfcD6LwDyWM/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17893701177616327",
+    "title": "Explore the mystery of the vanished Amber Room and the clues",
+    "views": 45,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-06",
+    "link": "https://www.instagram.com/reel/DfZfCXQDMnU/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17987938463892041",
+    "title": "Explore the baffling 1792 theft of France's crown jewels and",
+    "views": 3,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-05",
+    "link": "https://www.instagram.com/reel/DfW6p73gZZn/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18141710995626006",
+    "title": "Explore the baffling 2010 Paris art heist and the mysterious",
+    "views": 115,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-04",
+    "link": "https://www.instagram.com/reel/DfUVmlxDOrJ/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18465082825142287",
+    "title": "Explore the daring 1911 theft of the Mona Lisa and its linge",
+    "views": 155,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-03",
+    "link": "https://www.instagram.com/reel/DfRw_F6lMKJ/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17968104168195868",
+    "title": "Explore the eerie reports and unexplained phenomena of Roman",
+    "views": 73,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-02",
+    "link": "https://www.instagram.com/reel/DfPLclfGUY_/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18174401077480753",
+    "title": "Explore the 1942 Los Angeles anti-aircraft barrage and its l",
+    "views": 116,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-11-01",
+    "link": "https://www.instagram.com/reel/DfMn4fBmAZa/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18077638673743770",
+    "title": "A brief look at the enigmatic Phaistos Disc and its unsolved",
+    "views": 123,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-31",
+    "link": "https://www.instagram.com/reel/DfKBOtTFG5u/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18027931001864494",
+    "title": "Explore the mystery of Easter Island's undeciphered rongoron",
+    "views": 30,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-30",
+    "link": "https://www.instagram.com/reel/DfHd8wDicFQ/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17962821191998003",
+    "title": "Explore the puzzling Coso Artifact found in a 500,000-year-o",
+    "views": 44,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-29",
+    "link": "https://www.instagram.com/reel/DfE4KLvjIyZ/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18096176609174517",
+    "title": "Explore the mysterious Kensington Runestone and the debate o",
+    "views": 40,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-28",
+    "link": "https://www.instagram.com/reel/DfCS9dQCSSx/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17909256429580634",
+    "title": "Explore the medieval mystery of Woolpit's green children in ",
+    "views": 87,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-27",
+    "link": "https://www.instagram.com/reel/De_uTr_E64l/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18106916444630253",
+    "title": "Explore the mysterious Mexican Zone where radios mysteriousl",
+    "views": 43,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-26",
+    "link": "https://www.instagram.com/reel/De9IoW5AU5J/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18400772476200756",
+    "title": "Explore the controversial 1967 Patterson-Gimlin Bigfoot film",
+    "views": 113,
     "likes": 0,
     "comments": 0,
     "published": "2026-10-25",
-    "link": "https://www.tiktok.com/@coldcase_daily/video/7700561889398377761",
-    "platform": "tiktok"
+    "link": "https://www.instagram.com/reel/De6kqIHgFzg/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17988182859080060",
+    "title": "A quick look at the baffling Somerton Man case and its linge",
+    "views": 129,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-24",
+    "link": "https://www.instagram.com/reel/De33-vviUmE/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18130812745836753",
+    "title": "Explore the century-old mystery of Australia's elusive Min M",
+    "views": 113,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-23",
+    "link": "https://www.instagram.com/reel/De1VvzwjlLR/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18131669458811887",
+    "title": "Explore the mysterious Dendera relief that some claim depict",
+    "views": 64,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-22",
+    "link": "https://www.instagram.com/reel/DeyummPjqBB/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17914232394557425",
+    "title": "A brief case file on the enigmatic Kaspar Hauser. #unexplain",
+    "views": 13,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-21",
+    "link": "https://www.instagram.com/reel/DewLXCRgWSA/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18217981714357768",
+    "title": "Exploring the enigmatic Baghdad Battery and its debated purp",
+    "views": 7,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.instagram.com/reel/DetnDHfkVrW/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17968102434188201",
+    "title": "Explore the baffling abandonment of the Carroll A. Deering a",
+    "views": 15,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-20",
+    "link": "https://www.instagram.com/reel/DetlqLqDa7-/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17967439524199154",
+    "title": "Explore the enduring mystery of Amelia Earhart's disappearan",
+    "views": 31,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-18",
+    "link": "https://www.instagram.com/reel/DeobH-Qj5E7/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18099015629398152",
+    "title": "A baffling 1945 house fire left five Sodder children vanishe",
+    "views": 17,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-17",
+    "link": "https://www.instagram.com/reel/Del48z2jmaB/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18356777035168829",
+    "title": "The mysterious disappearance of three lighthouse keepers in ",
+    "views": 98,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-16",
+    "link": "https://www.instagram.com/reel/DejSTBDoAyk/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18394316419161579",
+    "title": "Explore the mysterious disappearances of ships and planes in",
+    "views": 70,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-15",
+    "link": "https://www.instagram.com/reel/Degs2CKAonG/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18130265113773843",
+    "title": "The Voynich manuscript is a 15th-century book written in an ",
+    "views": 17,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-14",
+    "link": "https://www.instagram.com/reel/DeeIlRBDVfU/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17963610717247930",
+    "title": "In December 1980, US airmen at an English airbase reported l",
+    "views": 89,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-12",
+    "link": "https://www.instagram.com/reel/DeY-obwj1ue/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18076367084487646",
+    "title": "In March 1876, chunks of meat reportedly fell from a clear s",
+    "views": 2,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-11",
+    "link": "https://www.instagram.com/reel/DeWaCMmDA8o/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18095949101431073",
+    "title": "On 13 March 1997, thousands of witnesses across Arizona watc",
+    "views": 110,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-10",
+    "link": "https://www.instagram.com/reel/DeT3MOfAsZ4/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17988190593118456",
+    "title": "In 1951, explorer Eric Shipton photographed a huge footprint",
+    "views": 139,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-09",
+    "link": "https://www.instagram.com/reel/DeRRgNSDOdZ/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18167563018415288",
+    "title": "Since the 1930s, strange glowing lights have appeared over N",
+    "views": 119,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-08",
+    "link": "https://www.instagram.com/reel/DeOt8A3D9ff/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18117564076924325",
+    "title": "On 30 June 1908, a huge explosion flattened about 2,000 squa",
+    "views": 34,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-07",
+    "link": "https://www.instagram.com/reel/DeMJM05ldhV/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18150012703578058",
+    "title": "In 1845, Sir John Franklin led an Arctic expedition of 129 m",
+    "views": 9,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-06",
+    "link": "https://www.instagram.com/reel/DeJj3hlCO2K/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18082553120344337",
+    "title": "Abandoned in Arctic ice in 1931, the cargo ship SS Baychimo ",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-05",
+    "link": "https://www.instagram.com/reel/DeG-0-UE7NG/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18198712423383200",
+    "title": "In July 1937, Amelia Earhart and navigator Fred Noonan vanis",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-04",
+    "link": "https://www.instagram.com/reel/DeEZTJqlF-K/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17978203112919100",
+    "title": "In December 1945, five Navy bombers vanished over the Atlant",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-03",
+    "link": "https://www.instagram.com/reel/DeB08CSAhRh/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17939117832379575",
+    "title": "In December 1900, three lighthouse keepers vanished from a r",
+    "views": 41,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-10-02",
+    "link": "https://www.instagram.com/reel/Dd_Qkg9D82R/",
+    "platform": "instagram"
+   },
+   {
+    "id": "17946767454065097",
+    "title": "On August 15, 1977 the Big Ear telescope recorded a 72-secon",
+    "views": 12,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-10-01",
+    "link": "https://www.instagram.com/reel/Dd8sSqNk1Op/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18113237254829931",
+    "title": "In December 1872 the Mary Celeste was found drifting in the ",
+    "views": 6,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-09-30",
+    "link": "https://www.instagram.com/reel/Dd6HjcvFZNB/",
+    "platform": "instagram"
+   },
+   {
+    "id": "18447796522133547",
+    "title": "Nine experienced hikers died on a Ural mountainside in 1959,",
+    "views": 13,
+    "likes": 1,
+    "comments": 0,
+    "published": "2026-09-29",
+    "link": "https://www.instagram.com/reel/Dd3iGNkkeDu/",
+    "platform": "instagram"
    }
   ],
   "Curio": [
    {
+    "id": "AAXU0UZx2AE",
+    "title": "Surtsey from space · ORBIT #011",
+    "views": 1130,
+    "likes": 10,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.youtube.com/watch?v=AAXU0UZx2AE",
+    "platform": "youtube"
+   },
+   {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1402,
+    "views": 1413,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -5191,7 +5971,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1179,
+    "views": 1182,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -5201,7 +5981,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1067,
+    "views": 1068,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -5211,7 +5991,7 @@
    {
     "id": "HnR1eDxVjZc",
     "title": "Danakil Depression from space · ORBIT #007",
-    "views": 981,
+    "views": 982,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-10",
@@ -5221,7 +6001,7 @@
    {
     "id": "e6dJINSDFIk",
     "title": "Lake Hillier from space · ORBIT #006",
-    "views": 1069,
+    "views": 1070,
     "likes": 30,
     "comments": 0,
     "published": "2026-11-09",
@@ -5231,7 +6011,7 @@
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 151,
+    "views": 152,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -5241,7 +6021,7 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1142,
+    "views": 1143,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-07",
@@ -5271,12 +6051,22 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2387,
+    "views": 2388,
     "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
     "link": "https://www.youtube.com/watch?v=LnBkDYg2GLY",
     "platform": "youtube"
+   },
+   {
+    "id": "18072131408785078",
+    "title": "This island did not exist before nineteen sixty-three.  This",
+    "views": 204,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-19",
+    "link": "https://www.instagram.com/reel/Df6tjRFhQce/",
+    "platform": "instagram"
    },
    {
     "id": "18113661218522963",
