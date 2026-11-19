@@ -354,7 +354,8 @@ def test_handle_maps_are_explicit_and_round_trip():
         "MindBlownDaily": "min.dblowndaily", "WealthMindset": "wealth_mindset34",
         "UnexplainedDaily": "unexplained_daily", "BrainHeist": "disciplinedaily667",
         "VitalityDaily": "vitalitydaily667", "HiddenEarth": "hiddenearth667",
-        "ColdCaseDaily": "coldcase_daily", "NextByte": "nextbyte667"}
+        "ColdCaseDaily": "coldcase_daily", "NextByte": "nextbyte667", "Curio": "curio6673"}
+    assert generate.resolve_tiktok("Curio", {"_username": "curio6673"}) == "Curio"
     assert generate.IG_HANDLE["MindBlownDaily"] == "mindblowndaily.official"
     assert generate.IG_HANDLE["BrainHeist"] == "brainheistriddles" and generate.IG_HANDLE["NextByte"] == "nextbyte667"
     assert generate.IG_ALIASES == {"th.erealspark": "MindBlownDaily", "disciplinedaily667": "BrainHeist",
@@ -678,6 +679,26 @@ def _tk_acc(vid, username, label, views=30):
                         "comment_count": 0, "create_time": _TS}]}
 
 
+def _bh_acc():
+    """Zdedeny ucet: 1 nove video v zozname + 1 nove na dalsej strane (len v _by_time) + stare Discipline Daily."""
+    old = calendar.timegm((2026, 5, 1, 12, 0, 0))
+    acc = _tk_acc("333", "disciplinedaily667", "whatever")
+    acc["stats"].update(views_total=30 + 7 + 900, video_count=3, likes_count=50,
+                        _by_time=[[_TS, 30, 1], [_TS + 86400, 7, 2], [old, 900, 47]])
+    acc["videos"].append({"id": "334", "title": "old", "view_count": 900, "like_count": 47,
+                          "comment_count": 0, "create_time": old})
+    return acc
+
+
+def test_tiktok_count_from_falls_back_to_video_list():
+    vids = [{"id": "a", "view_count": 4, "like_count": 1, "create_time": _TS},
+            {"id": "b", "view_count": 9, "like_count": 3, "create_time": calendar.timegm((2026, 8, 1, 23, 59, 59))},
+            {"id": "c", "view_count": 5}]                                  # bez create_time sa nepocita
+    assert generate.tiktok_count_from({}, vids, "2026-08-02") == (4, 1, 1, vids[:1])
+    assert generate.tiktok_count_from({"_by_time": []}, vids, "2026-08-02") == (0, 0, 0, vids[:1])
+    assert set(generate.TIKTOK_COUNT_FROM) <= set(generate.TIKTOK_HANDLE)
+
+
 def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeypatch):
     """Cely main(): display_name casto nie je username -> fabrika sa hlada podla username, stitku, az potom display_name."""
     _setup_main(monkeypatch, tmp_path, ["MindBlownDaily", "ColdCaseDaily", "BrainHeist", "UnexplainedDaily",
@@ -685,7 +706,7 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
     monkeypatch.setattr(generate._tiktok, "fetch_all", lambda root, since=None: {
         "MindBlownDaily": _tk_acc("111", "min.dblowndaily", "mindblowndaily"),
         "Cold Case Daily": _tk_acc("222", "coldcase_daily", "cc"),
-        "DisciplineDaily": _tk_acc("333", "disciplinedaily667", "whatever"),          # display_name != username
+        "DisciplineDaily": _bh_acc(),                                                 # display_name != username
         "unexplained": {"stats": {"_label": "", "_username": ""}, "videos": []},        # bez videi -> alias display_name
         "Totally Unknown": _tk_acc("444", "nobody_here", "acc9"),                       # nesedi nikam -> zahodi sa
     })
@@ -712,10 +733,11 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
     assert by["ColdCaseDaily"]["status"]["tiktok"]["state"] == "ok"      # data chodia -> rucna znacka "riesit" sa sama vyriesi
 
     bh = by["BrainHeist"]
-    # TikTok ucet BrainHeist je stav "cudzi" (stary obsah Discipline Daily) -> priradeny, ale do fabriky sa nepocita
-    assert bh["conn"]["tiktok"]["state"] == "ok"
-    assert bh["status"]["tiktok"]["state"] == "cudzi"
-    assert bh["tiktok"] is None and not [v for v in bh["videos"] if v["platform"] == "TikTok"]
+    # TikTok ucet BrainHeist je zdedeny po Discipline Daily -> pocitaju sa len videa od TIKTOK_COUNT_FROM (2.8.2026)
+    assert bh["conn"]["tiktok"]["state"] == "ok" and bh["status"]["tiktok"]["state"] == "ok"
+    assert bh["tiktok"]["views"] == 30 + 7 and bh["tiktok"]["likes"] == 1 + 2 and bh["tiktok"]["videos"] == 2
+    assert bh["tiktok"]["followers"] == 5 and bh["tiktok"]["since"] == "2026-08-02"
+    assert [v["id"] for v in bh["videos"] if v["platform"] == "TikTok"] == ["333"]      # stare video 334 vypadlo
     assert bh["instagram"] is None and bh["conn"]["instagram"]["state"] == "token_error"
 
     assert by["UnexplainedDaily"]["tiktok"]["handle"] == "unexplained"      # cez alias display_name
@@ -730,7 +752,7 @@ def test_main_maps_accounts_by_username_label_and_display_name(tmp_path, monkeyp
     assert mg["conn"]["youtube"] == {"state": "no_token", "note": "chýba YouTube API kľúč"}   # bez API kluca
     assert mg["status"]["instagram"]["state"] == "nepouziva"
     # neznamy ucet sa nikam nepriradil
-    assert sum(1 for p in by.values() for v in p["videos"] if v["platform"] == "TikTok") == 2   # BrainHeist TikTok (cudzi) sa nepocita
+    assert sum(1 for p in by.values() for v in p["videos"] if v["platform"] == "TikTok") == 3   # MindBlown + ColdCase + BrainHeist (len nove video)
 
 
 def test_main_emits_p2_sums_over_everything_fetched(tmp_path, monkeypatch):

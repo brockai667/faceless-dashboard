@@ -222,3 +222,4 @@ def test_fetch_all_views_since_is_not_capped_by_the_20_video_list(tmp_root, monk
     acc = tiktok.fetch_all(str(tmp_root), since="2026-09-28")["RealName"]
     assert len(acc["videos"]) == 20                               # zoznam videi ostava orezany na 20...
     assert acc["stats"]["views_since"] == 60 * 2                  # ...ale sucet zahrna vsetkych 60
+    assert len(acc["stats"]["_by_time"]) == 60 and all(len(r) == 3 for r in acc["stats"]["_by_time"])   # riadok za kazde video

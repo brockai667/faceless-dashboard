@@ -4,7 +4,7 @@ FacelessFactory — CENTRÁLA (lokálny súkromný dashboard).
 Číta Buffer tokeny zo 6 fabrík + (voliteľne) YouTube Data API → generuje dashboard.html.
 Spusti:  python generate.py   (alebo dvojklik run.bat)
 """
-import json, os, re, time, urllib.request, urllib.error, datetime
+import calendar, json, os, re, time, urllib.request, urllib.error, datetime
 from html import escape
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -49,6 +49,7 @@ HANDLE_TO_FACTORY = {
     "Suddenly Rich": "WealthMindset",     # display_name od 18.10.2026 (seriál Suddenly Rich)
     "unexplained_daily": "UnexplainedDaily",
     "disciplinedaily667": "BrainHeist",
+    "curio6673": "Curio",                    # ucet od 1.11.2026 (videa nahrava TikTok appka)
     "vitalitydaily667": "VitalityDaily",
     "hiddenearth667": "HiddenEarth",
     # ColdCase: NOVY ucet @coldcase_daily zalozeny 27.9.2026 17:28 UTC (overene z verejneho profilu 29.9.);
@@ -103,6 +104,7 @@ TIKTOK_HANDLE = {
     "HiddenEarth":      "hiddenearth667",
     "ColdCaseDaily":    "coldcase_daily",        # novy ucet zalozeny 27.9.2026 (stary zabanovany)
     "NextByte":         "nextbyte667",           # povodny HistoryUntold ucet (stitok tokenu historyuntold667)
+    "Curio":            "curio6673",             # zalozeny 1.11.2026, videa nahrava TikTok appka
 }
 IG_HANDLE = {
     "MindBlownDaily":   "mindblowndaily.official",
@@ -128,14 +130,32 @@ ACCOUNT_STATUS = {
     "ColdCaseDaily":    {"tiktok": ("riesit", "novy ucet @coldcase_daily od 27.9. (stary zabanovany) - chyba TikTok autorizacia pre dashboard")},
     "VitalityDaily":    {"tiktok": ("ban", "@vitalitydaily667 verejne neexistuje (29.9.) - ban alebo zmazany, overit v appke")},
     "UnexplainedDaily": {"tiktok": ("riesit", "@unexplained_daily existuje - chyba alebo expiroval token")},
-    # cudzi = token funguje, ale ucet ma obsah inej znacky -> do BrainHeist sa nepocita (user 25.10.2026)
-    "BrainHeist":       {"tiktok": ("cudzi", "@disciplinedaily667 ma stare videa Discipline Daily - premenovat na BrainHeist a vycistit"),
+    # cudzi = token funguje, ale ucet ma obsah inej znacky -> do fabriky sa nepocita (user 25.10.2026).
+    # BrainHeist (19.11.2026): ucet je zdedeny, ale hadanky tam chodia denne -> pocitaju sa len videa od TIKTOK_COUNT_FROM
+    "BrainHeist":       {"tiktok": ("ok", "@disciplinedaily667 - pocitaju sa len videa od 2.8.2026 (BrainHeist), starsie Discipline Daily nie"),
                          "instagram": ("riesit", "@brainheistriddles - token expiroval, treba znova autorizovat")},
     "NextByte":         {"tiktok": ("nepouziva", "@nextbyte667 existuje (77 starych videi bez zhliadnuti), fabrika stoji; ColdCase ma vlastny novy ucet"), "instagram": ("riesit", "@nextbyte667 - token chyba alebo expiroval")},
-    "Curio":            {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@curi.o667 - tester pridany 29.9., prijat pozvanku a autorizovat")},
+    "Curio":            {"tiktok": ("riesit", "@curio6673 (od 1.11.) - chyba TikTok autorizacia pre dashboard"), "instagram": ("riesit", "@curi.o667 - tester pridany 29.9., prijat pozvanku a autorizovat")},
     "EyeHeist":         {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("riesit", "@entropy.667 - pridat ako Instagram Tester v Meta appke a autorizovat")},
     "Money Glitch":     {"tiktok": ("nepouziva", "TikTok nezalozeny"), "instagram": ("nepouziva", "Instagram nezalozeny")},
 }
+
+# TikTok ucet zdedeny po starsej znacke: do fabriky idu len videa zverejnene od tohto dna (YYYY-MM-DD, UTC).
+# Sledovatelia ostavaju z uctu; zhliadnutia, lajky a pocet videi sa rataju len z novych videi.
+TIKTOK_COUNT_FROM = {"BrainHeist": "2026-08-02"}
+
+
+def tiktok_count_from(stats, videos, since):
+    """(views, likes, pocet, videa) len z videi zverejnenych od `since`. Berie stats["_by_time"]
+    ([create_time, views, likes] za vsetky strany); bez neho len zoznam `videos` (prvych 20)."""
+    ep = calendar.timegm(time.strptime(since, "%Y-%m-%d"))
+    keep = [v for v in videos or [] if int(v.get("create_time", 0) or 0) >= ep]
+    rows = (stats or {}).get("_by_time")
+    if rows is None:
+        rows = [[v.get("create_time"), v.get("view_count"), v.get("like_count")] for v in keep]
+    rows = [r for r in rows if int(r[0] or 0) >= ep]
+    return sum(int(r[1] or 0) for r in rows), sum(int(r[2] or 0) for r in rows), len(rows), keep
+
 
 try:
     import tiktok as _tiktok
@@ -623,12 +643,16 @@ def main():
                 p["tiktok_reset"] = handle
                 print(f"  [TikTok] {fac}: token patri vynulovanemu uctu '{handle}' (0 videi) - neberie sa ako pripojeny")
                 continue
+            tk_vids = d.get("videos", [])
             p["tiktok"] = {"followers": int(st.get("follower_count", 0) or 0),
                            "likes": int(st.get("likes_count", 0) or 0),
                            "views": int(st.get("views_total", 0) or 0),
                            "videos": int(st.get("video_count", 0) or 0), "handle": handle}
+            if fac in TIKTOK_COUNT_FROM:   # zdedeny ucet: stare videa inej znacky sa nepocitaju
+                _v, _l, _n, tk_vids = tiktok_count_from(st, tk_vids, TIKTOK_COUNT_FROM[fac])
+                p["tiktok"].update(views=_v, likes=_l, videos=_n, since=TIKTOK_COUNT_FROM[fac])
             p["p2"]["tiktok"] += int(st.get("views_since", 0) or 0)
-            for v in d.get("videos", []):
+            for v in tk_vids:
                 p["videos"].append({
                     "id": v.get("id"),
                     "title": (v.get("title") or "").strip() or "(bez titulku)",
@@ -640,7 +664,7 @@ def main():
                     "published": (datetime.datetime.utcfromtimestamp(v["create_time"]).strftime("%Y-%m-%d")
                                   if v.get("create_time") else ""),
                 })
-            p["yt_recent_views"] += sum(int(v.get("view_count", 0) or 0) for v in d.get("videos", []))
+            p["yt_recent_views"] += sum(int(v.get("view_count", 0) or 0) for v in tk_vids)
 
     # --- Instagram (per-prispevok + sledovatelia) cez Instagram Graph API ---
     # IG API setrime: stiahneme MAX 1x za den (cache). Caste volanie 8 uctov Meta flagne

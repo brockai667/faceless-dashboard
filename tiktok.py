@@ -100,6 +100,7 @@ def fetch_all(root, since=None):
         # Paginuj cez VSETKY videa -> sucet view_count = realne ZHLIADNUTIA (lifetime).
         # Do 'videos' nechaj len prvych 20 (na winners/zobrazenie), zvysok len scitaj.
         vids, views_total, views_since, cursor = [], 0, 0, None
+        by_time = []   # [create_time, view_count, like_count] za KAZDE video (vsetky strany) -> generate.TIKTOK_COUNT_FROM
         for _pg in range(40):   # bezpecnostny strop: 40 * 20 = 800 videi
             body = {"max_count": 20}
             if cursor is not None:
@@ -115,6 +116,8 @@ def fetch_all(root, since=None):
             if len(vids) < 20:
                 vids.extend(page[:20 - len(vids)])
             views_total += sum(int(v.get("view_count", 0) or 0) for v in page)
+            by_time.extend([int(v.get("create_time", 0) or 0), int(v.get("view_count", 0) or 0),
+                            int(v.get("like_count", 0) or 0)] for v in page)
             if since_ep is not None:   # Part-2 sucet: len videa od `since` (bez `create_time` sa nepocitaju), cez vsetky strany
                 views_since += sum(int(v.get("view_count", 0) or 0) for v in page
                                    if int(v.get("create_time", 0) or 0) >= since_ep)
@@ -123,7 +126,8 @@ def fetch_all(root, since=None):
             cursor = data.get("cursor")
             if cursor is None:
                 break
-        stats = {**user, "views_total": views_total, "_label": label, "_username": _username_from_videos(vids)}
+        stats = {**user, "views_total": views_total, "_label": label, "_username": _username_from_videos(vids),
+                 "_by_time": by_time}
         if since_ep is not None:
             stats["views_since"] = views_since
         out[name] = {"stats": stats, "videos": vids}
