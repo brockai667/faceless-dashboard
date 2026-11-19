@@ -7301,7 +7301,7 @@
       }
     },
     "2026-11-09": {
-      "views": 2384,
+      "views": 2380,
       "subs": 7,
       "fac": {
         "UnexplainedDaily": {
@@ -7317,7 +7317,7 @@
           "s": 0
         },
         "Curio": {
-          "v": 1037,
+          "v": 1039,
           "s": 3
         },
         "NextByte": {
@@ -7325,7 +7325,7 @@
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 61,
+          "v": 60,
           "s": 0
         },
         "WealthMindset": {
@@ -7345,7 +7345,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 1259,
+          "v": 1254,
           "s": 4
         }
       }
@@ -7371,7 +7371,7 @@
           "s": 0
         },
         "NextByte": {
-          "v": 11,
+          "v": 12,
           "s": 0
         },
         "coldcasedaily667": {
@@ -7395,13 +7395,13 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 118,
+          "v": 117,
           "s": 0
         }
       }
     },
     "2026-11-11": {
-      "views": 1914,
+      "views": 1912,
       "subs": 4,
       "fac": {
         "UnexplainedDaily": {
@@ -7445,13 +7445,13 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 249,
+          "v": 247,
           "s": 1
         }
       }
     },
     "2026-11-12": {
-      "views": 1500,
+      "views": 1496,
       "subs": 2,
       "fac": {
         "UnexplainedDaily": {
@@ -7467,7 +7467,7 @@
           "s": 0
         },
         "Curio": {
-          "v": 1236,
+          "v": 1233,
           "s": 2
         },
         "NextByte": {
@@ -7495,13 +7495,13 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 162,
+          "v": 161,
           "s": 0
         }
       }
     },
     "2026-11-13": {
-      "views": 1458,
+      "views": 1451,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
@@ -7517,7 +7517,7 @@
           "s": 0
         },
         "Curio": {
-          "v": 1327,
+          "v": 1321,
           "s": 3
         },
         "NextByte": {
@@ -7545,13 +7545,13 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 19,
+          "v": 18,
           "s": 0
         }
       }
     },
     "2026-11-14": {
-      "views": 1658,
+      "views": 1631,
       "subs": 3,
       "fac": {
         "UnexplainedDaily": {
@@ -7559,7 +7559,7 @@
           "s": 0
         },
         "DisciplineDaily": {
-          "v": 516,
+          "v": 510,
           "s": 2
         },
         "Entropy": {
@@ -7567,15 +7567,15 @@
           "s": 0
         },
         "Curio": {
-          "v": 88,
+          "v": 85,
           "s": 0
         },
         "NextByte": {
-          "v": 28,
+          "v": 26,
           "s": 0
         },
         "coldcasedaily667": {
-          "v": 166,
+          "v": 161,
           "s": 1
         },
         "WealthMindset": {
@@ -7595,7 +7595,7 @@
           "s": 0
         },
         "MindBlownDaily": {
-          "v": 852,
+          "v": 841,
           "s": 0
         }
       }
@@ -7649,7 +7649,57 @@
           "s": 1
         }
       }
+    },
+    "2026-11-16": {
+      "views": 1186,
+      "subs": 1,
+      "fac": {
+        "UnexplainedDaily": {
+          "v": 0,
+          "s": 0
+        },
+        "DisciplineDaily": {
+          "v": 800,
+          "s": 1
+        },
+        "Entropy": {
+          "v": 0,
+          "s": 0
+        },
+        "Curio": {
+          "v": 26,
+          "s": 0
+        },
+        "NextByte": {
+          "v": 28,
+          "s": 0
+        },
+        "coldcasedaily667": {
+          "v": 68,
+          "s": 0
+        },
+        "WealthMindset": {
+          "v": 0,
+          "s": 0
+        },
+        "Lumora Music": {
+          "v": 2,
+          "s": 0
+        },
+        "VitalityDaily": {
+          "v": 5,
+          "s": 0
+        },
+        "HiddenEarth667": {
+          "v": 5,
+          "s": 0
+        },
+        "MindBlownDaily": {
+          "v": 252,
+          "s": 0
+        }
+      }
     }
   },
-  "generated": "2026-11-18T14:23:40.621407Z"
+  "generated": "2026-11-19T14:34:37.318258Z"
 }
