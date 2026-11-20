@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-20T02:54:53Z",
+ "gen_at": "2026-11-20T18:15:21Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "axsW-6jLtPY",
+    "title": "Into A Black Hole #shorts",
+    "views": 434,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.youtube.com/watch?v=axsW-6jLtPY",
+    "platform": "youtube"
+   },
+   {
     "id": "bUjobjE2qZQ",
     "title": "Night In Antarctica #shorts",
-    "views": 719,
+    "views": 947,
     "likes": 19,
     "comments": 0,
     "published": "2026-11-19",
@@ -15,7 +25,7 @@
    {
     "id": "c1k9LX5xH6I",
     "title": "Caught In A Rip Current #shorts",
-    "views": 1490,
+    "views": 1493,
     "likes": 23,
     "comments": 1,
     "published": "2026-11-18",
@@ -25,7 +35,7 @@
    {
     "id": "iW3Nl1LtUvE",
     "title": "Falling Elevator #shorts",
-    "views": 270,
+    "views": 271,
     "likes": 3,
     "comments": 0,
     "published": "2026-11-17",
@@ -45,7 +55,7 @@
    {
     "id": "D6SNwqMkEWE",
     "title": "Stranded In The Desert #shorts",
-    "views": 1242,
+    "views": 1243,
     "likes": 20,
     "comments": 1,
     "published": "2026-11-15",
@@ -175,7 +185,7 @@
    {
     "id": "jDMSrhF56UA",
     "title": "Eleven Days Awake #shorts",
-    "views": 1048,
+    "views": 1049,
     "likes": 26,
     "comments": 1,
     "published": "2026-11-02",
@@ -485,7 +495,7 @@
    {
     "id": "7709895379981995286",
     "title": "You're freezing and someone hands you a drink. Does it warm you up or cool you down? #hypothermia #survival #cold #science #mindblown Not medical advice. Music: \"Lightless Dawn\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 293,
+    "views": 311,
     "likes": 12,
     "comments": 0,
     "published": "2026-11-19",
@@ -515,7 +525,7 @@
    {
     "id": "7708376949097368854",
     "title": "Stranded in the desert with one bottle of water: save it or drink it? Most people pick wrong. #desert #survival #water #science #mindblown Not medical advice. Music: \"Echoes of Time\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 824,
+    "views": 831,
     "likes": 17,
     "comments": 0,
     "published": "2026-11-15",
@@ -683,10 +693,20 @@
     "platform": "tiktok"
    },
    {
+    "id": "18109555217368930",
+    "title": "You cross the edge of our galaxy's black hole. How many seco",
+    "views": 843,
+    "likes": 6,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.instagram.com/reel/Df9ZGnSkvqt/",
+    "platform": "instagram"
+   },
+   {
     "id": "18133684444882883",
     "title": "You're freezing and someone hands you a drink. Does it warm ",
-    "views": 1233,
-    "likes": 8,
+    "views": 1468,
+    "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
     "link": "https://www.instagram.com/reel/Df60Sa9JUPT/",
@@ -695,7 +715,7 @@
    {
     "id": "17990723196084884",
     "title": "A rip current is dragging you out to sea. Your first move de",
-    "views": 1933,
+    "views": 1936,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-18",
@@ -705,7 +725,7 @@
    {
     "id": "18643222189045320",
     "title": "The cable snaps and you jump at the last second. Here is how",
-    "views": 2612,
+    "views": 2613,
     "likes": 23,
     "comments": 0,
     "published": "2026-11-17",
@@ -805,7 +825,7 @@
    {
     "id": "18161358115456211",
     "title": "You won't sink like in the movies, but you won't pull free e",
-    "views": 2371,
+    "views": 2372,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-07",
@@ -865,7 +885,7 @@
    {
     "id": "18096209804482737",
     "title": "No food, no water, no bathroom for months: how a bear's body",
-    "views": 2325,
+    "views": 2326,
     "likes": 39,
     "comments": 0,
     "published": "2026-11-01",
@@ -1287,7 +1307,7 @@
    {
     "id": "7709054630738742531",
     "title": "You knocked. Mom said \"groceries.\" Then a hand took her envelope at 4 a.m. Part 4 tomorrow. Follow so you don't miss it. #SuddenlyRich #story #family #lottery #secret Music: \"Deadly Roulette\" - Kevin MacLeod (incompetech.com) · Licensed under CC BY 4.0",
-    "views": 1722,
+    "views": 1723,
     "likes": 27,
     "comments": 0,
     "published": "2026-11-17",
@@ -1679,9 +1699,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "SMzO3PkMykw",
+    "title": "The Man Who Never Lies #shorts",
+    "views": 2,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.youtube.com/watch?v=SMzO3PkMykw",
+    "platform": "youtube"
+   },
+   {
     "id": "ZSSObWvz0dw",
     "title": "Four Cuts, Eleven Slices #shorts",
-    "views": 13,
+    "views": 20,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-19",
@@ -1691,8 +1721,8 @@
    {
     "id": "9Cm_rSWppCs",
     "title": "The Digit That Climbed Up #shorts",
-    "views": 105,
-    "likes": 1,
+    "views": 111,
+    "likes": 2,
     "comments": 1,
     "published": "2026-11-18",
     "link": "https://www.youtube.com/watch?v=9Cm_rSWppCs",
@@ -2169,16 +2199,6 @@
     "platform": "youtube"
    },
    {
-    "id": "pDn4i1iM-C4",
-    "title": "The Power of Consistency #shorts",
-    "views": 1277,
-    "likes": 22,
-    "comments": 0,
-    "published": "2026-06-29",
-    "link": "https://www.youtube.com/watch?v=pDn4i1iM-C4",
-    "platform": "youtube"
-   },
-   {
     "id": "7709895687441239318",
     "title": "\"Two days ago I was 25. Next year I'll turn 28.\" He never lies, and a $700,000 gold bar says you can't explain it. Can you? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
     "views": 629,
@@ -2271,7 +2291,7 @@
    {
     "id": "7705089471036869910",
     "title": "Two corners are cut off a chessboard. Can 31 dominoes cover the 62 squares left? $500,000 in gold says you have one answer. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
-    "views": 492,
+    "views": 493,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-06",
@@ -3613,7 +3633,7 @@
    {
     "id": "01IeSkQDc2s",
     "title": "Sardines in a Can: Safe or Risky for Mercury? #shorts",
-    "views": 74,
+    "views": 76,
     "likes": 0,
     "comments": 0,
     "published": "2026-09-01",
@@ -4295,7 +4315,7 @@
    {
     "id": "CNeBYJ6pmEE",
     "title": "The Deepest Blue Hole on Earth – Dean’s Blue Hole #shorts",
-    "views": 241,
+    "views": 243,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-01",
@@ -4514,6 +4534,16 @@
    }
   ],
   "NextByte": [
+   {
+    "id": "8JlapArdIso",
+    "title": "The hotel line that makes you book fast",
+    "views": 8,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.youtube.com/watch?v=8JlapArdIso",
+    "platform": "youtube"
+   },
    {
     "id": "pS0MTRI0fBY",
     "title": "MoviePass sold a movie a day for $9.95 a month",
@@ -4749,7 +4779,7 @@
    {
     "id": "6LyQhjV50bc",
     "title": "Mysterious lights over Mongolia's desert #shorts",
-    "views": 58,
+    "views": 59,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-18",
@@ -4759,7 +4789,7 @@
    {
     "id": "wuV4Zo54yOk",
     "title": "The cliff that swallowed hikers #shorts",
-    "views": 79,
+    "views": 80,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-17",
@@ -4789,7 +4819,7 @@
    {
     "id": "kmjCSpOk5hE",
     "title": "The fake fossil that fooled science #shorts",
-    "views": 169,
+    "views": 170,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-14",
@@ -5249,7 +5279,7 @@
    {
     "id": "7709894944751652098",
     "title": "A couple's 2022 video of lights over Kettle Moraine sparks new questions. Case file: Kettle Moraine UFO Sightings. #unexplained #mystery #UFO #wisconsin #KettleMoraineUfo Music: \"Cut and Run\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 205,
+    "views": 206,
     "likes": 5,
     "comments": 0,
     "published": "2026-11-19",
@@ -5449,7 +5479,7 @@
    {
     "id": "18120129050521609",
     "title": "A couple's 2022 video of lights over Kettle Moraine sparks n",
-    "views": 28,
+    "views": 35,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-19",
@@ -5949,9 +5979,19 @@
   ],
   "Curio": [
    {
+    "id": "s0NQc2OCiA8",
+    "title": "Grand Prismatic Spring from space · ORBIT #012",
+    "views": 605,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.youtube.com/watch?v=s0NQc2OCiA8",
+    "platform": "youtube"
+   },
+   {
     "id": "AAXU0UZx2AE",
     "title": "Surtsey from space · ORBIT #011",
-    "views": 1168,
+    "views": 1202,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
@@ -5961,7 +6001,7 @@
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1413,
+    "views": 1416,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -5971,7 +6011,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1182,
+    "views": 1183,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -6011,7 +6051,7 @@
    {
     "id": "rixQVfvTt_I",
     "title": "Area 51 from space · ORBIT #005",
-    "views": 152,
+    "views": 153,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-08",
@@ -6041,7 +6081,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1385,
+    "views": 1386,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -6059,9 +6099,19 @@
     "platform": "youtube"
    },
    {
+    "id": "18144112597725591",
+    "title": "This rainbow is real, and it is hot enough to burn you.  Thi",
+    "views": 119,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-20",
+    "link": "https://www.instagram.com/reel/Df9SV2ZsyzS/",
+    "platform": "instagram"
+   },
+   {
     "id": "18072131408785078",
     "title": "This island did not exist before nineteen sixty-three.  This",
-    "views": 210,
+    "views": 212,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-19",
