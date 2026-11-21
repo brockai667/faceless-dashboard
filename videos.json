@@ -1,12 +1,22 @@
 {
- "gen_at": "2026-11-21T03:02:47Z",
+ "gen_at": "2026-11-21T17:04:50Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "gTcEOJSuZd4",
+    "title": "Holding Your Breath #shorts",
+    "views": 1181,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.youtube.com/watch?v=gTcEOJSuZd4",
+    "platform": "youtube"
+   },
+   {
     "id": "axsW-6jLtPY",
     "title": "Into A Black Hole #shorts",
-    "views": 462,
-    "likes": 5,
+    "views": 516,
+    "likes": 6,
     "comments": 0,
     "published": "2026-11-20",
     "link": "https://www.youtube.com/watch?v=axsW-6jLtPY",
@@ -693,9 +703,19 @@
     "platform": "tiktok"
    },
    {
+    "id": "18113499329239387",
+    "title": "Hold your breath with me for ten seconds. That burn is not w",
+    "views": 2279,
+    "likes": 20,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.instagram.com/reel/Df_95R3CAWB/",
+    "platform": "instagram"
+   },
+   {
     "id": "18109555217368930",
     "title": "You cross the edge of our galaxy's black hole. How many seco",
-    "views": 926,
+    "views": 1319,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-20",
@@ -735,7 +755,7 @@
    {
     "id": "17962836738256764",
     "title": "Bitten by a snake: suck the venom out or keep still? The mov",
-    "views": 1943,
+    "views": 1944,
     "likes": 13,
     "comments": 1,
     "published": "2026-11-16",
@@ -1699,9 +1719,19 @@
   ],
   "BrainHeist": [
    {
+    "id": "CwkDwJc4rTs",
+    "title": "The Shepherd's Trick Question #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.youtube.com/watch?v=CwkDwJc4rTs",
+    "platform": "youtube"
+   },
+   {
     "id": "SMzO3PkMykw",
     "title": "The Man Who Never Lies #shorts",
-    "views": 5,
+    "views": 7,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-20",
@@ -1711,7 +1741,7 @@
    {
     "id": "ZSSObWvz0dw",
     "title": "Four Cuts, Eleven Slices #shorts",
-    "views": 24,
+    "views": 28,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-19",
@@ -2189,16 +2219,6 @@
     "platform": "youtube"
    },
    {
-    "id": "XI7TM6cn0_4",
-    "title": "How Serena Williams Defied the Odds #shorts",
-    "views": 255,
-    "likes": 3,
-    "comments": 0,
-    "published": "2026-06-30",
-    "link": "https://www.youtube.com/watch?v=XI7TM6cn0_4",
-    "platform": "youtube"
-   },
-   {
     "id": "7709895687441239318",
     "title": "\"Two days ago I was 25. Next year I'll turn 28.\" He never lies, and a $700,000 gold bar says you can't explain it. Can you? #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
     "views": 629,
@@ -2241,7 +2261,7 @@
    {
     "id": "7707255750141218070",
     "title": "Fold a 0.1 mm sheet of paper 42 times. How thick does it get? One guess wins a $5,000,000 vault. #riddle #brainteaser #puzzle #logicpuzzle #brainheist  Music: Sneaky Snitch - Kevin MacLeod (incompetech.com), CC BY 4.0",
-    "views": 790,
+    "views": 791,
     "likes": 9,
     "comments": 1,
     "published": "2026-11-12",
@@ -4115,7 +4135,7 @@
    {
     "id": "ziORcDSdgXI",
     "title": "Reynisdrangar Sea Stacks Wonder #shorts",
-    "views": 136,
+    "views": 138,
     "likes": 3,
     "comments": 0,
     "published": "2026-09-07",
@@ -4535,9 +4555,19 @@
   ],
   "NextByte": [
    {
+    "id": "a1L_UxDzBjc",
+    "title": "When the $1 price went up",
+    "views": 131,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.youtube.com/watch?v=a1L_UxDzBjc",
+    "platform": "youtube"
+   },
+   {
     "id": "8JlapArdIso",
     "title": "The hotel line that makes you book fast",
-    "views": 8,
+    "views": 7,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-20",
@@ -5979,10 +6009,20 @@
   ],
   "Curio": [
    {
+    "id": "TfFnTz7kTHI",
+    "title": "Palm Jumeirah from space · ORBIT #013",
+    "views": 1000,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.youtube.com/watch?v=TfFnTz7kTHI",
+    "platform": "youtube"
+   },
+   {
     "id": "s0NQc2OCiA8",
     "title": "Grand Prismatic Spring from space · ORBIT #012",
-    "views": 720,
-    "likes": 7,
+    "views": 1072,
+    "likes": 8,
     "comments": 0,
     "published": "2026-11-20",
     "link": "https://www.youtube.com/watch?v=s0NQc2OCiA8",
@@ -5991,7 +6031,7 @@
    {
     "id": "AAXU0UZx2AE",
     "title": "Surtsey from space · ORBIT #011",
-    "views": 1203,
+    "views": 1209,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
@@ -6001,7 +6041,7 @@
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1416,
+    "views": 1417,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -6021,7 +6061,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1068,
+    "views": 1069,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -6061,7 +6101,7 @@
    {
     "id": "_8U8wLB0yuI",
     "title": "Nazca Lines from space · ORBIT #004",
-    "views": 1145,
+    "views": 1148,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-07",
@@ -6081,7 +6121,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1386,
+    "views": 1387,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -6099,9 +6139,19 @@
     "platform": "youtube"
    },
    {
+    "id": "17947509819381713",
+    "title": "This giant palm tree is an island, and people built all of i",
+    "views": 804,
+    "likes": 7,
+    "comments": 0,
+    "published": "2026-11-21",
+    "link": "https://www.instagram.com/reel/Df_3SL7puh9/",
+    "platform": "instagram"
+   },
+   {
     "id": "18144112597725591",
     "title": "This rainbow is real, and it is hot enough to burn you.  Thi",
-    "views": 121,
+    "views": 122,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-20",
