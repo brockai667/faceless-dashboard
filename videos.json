@@ -1,11 +1,21 @@
 {
- "gen_at": "2026-11-22T01:59:46Z",
+ "gen_at": "2026-11-22T17:35:02Z",
  "factories": {
   "MindBlownDaily": [
    {
+    "id": "48aKDSJDu08",
+    "title": "Tornado On The Highway #shorts",
+    "views": 977,
+    "likes": 13,
+    "comments": 1,
+    "published": "2026-11-22",
+    "link": "https://www.youtube.com/watch?v=48aKDSJDu08",
+    "platform": "youtube"
+   },
+   {
     "id": "gTcEOJSuZd4",
     "title": "Holding Your Breath #shorts",
-    "views": 1217,
+    "views": 1212,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-21",
@@ -15,7 +25,7 @@
    {
     "id": "axsW-6jLtPY",
     "title": "Into A Black Hole #shorts",
-    "views": 560,
+    "views": 564,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-20",
@@ -25,7 +35,7 @@
    {
     "id": "bUjobjE2qZQ",
     "title": "Night In Antarctica #shorts",
-    "views": 949,
+    "views": 951,
     "likes": 19,
     "comments": 0,
     "published": "2026-11-19",
@@ -145,7 +155,7 @@
    {
     "id": "pO5cY8Xg62E",
     "title": "Stuck In Quicksand #shorts",
-    "views": 1317,
+    "views": 1318,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-07",
@@ -493,20 +503,10 @@
     "platform": "youtube"
    },
    {
-    "id": "nKWn_9J4zCc",
-    "title": "What going without food does #shorts",
-    "views": 42,
-    "likes": 2,
-    "comments": 0,
-    "published": "2026-09-29",
-    "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
-    "platform": "youtube"
-   },
-   {
     "id": "7710795020227448086",
     "title": "Hold your breath with me for ten seconds. That burn is not what you think it is. #breathhold #humanbody #biology #science #mindblown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 99,
-    "likes": 3,
+    "views": 441,
+    "likes": 8,
     "comments": 0,
     "published": "2026-11-22",
     "link": "https://www.tiktok.com/@min.dblowndaily/video/7710795020227448086",
@@ -703,9 +703,19 @@
     "platform": "tiktok"
    },
    {
+    "id": "18134716348687695",
+    "title": "A tornado is coming and you're on the highway. The overpass ",
+    "views": 805,
+    "likes": 5,
+    "comments": 0,
+    "published": "2026-11-22",
+    "link": "https://www.instagram.com/reel/DgCiqNNiDDZ/",
+    "platform": "instagram"
+   },
+   {
     "id": "18113499329239387",
     "title": "Hold your breath with me for ten seconds. That burn is not w",
-    "views": 2287,
+    "views": 2288,
     "likes": 20,
     "comments": 0,
     "published": "2026-11-21",
@@ -715,7 +725,7 @@
    {
     "id": "18109555217368930",
     "title": "You cross the edge of our galaxy's black hole. How many seco",
-    "views": 1319,
+    "views": 1320,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-20",
@@ -735,7 +745,7 @@
    {
     "id": "17990723196084884",
     "title": "A rip current is dragging you out to sea. Your first move de",
-    "views": 1937,
+    "views": 1938,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-18",
@@ -1719,6 +1729,16 @@
   ],
   "BrainHeist": [
    {
+    "id": "okFjoqVrZsA",
+    "title": "Seven Sisters, One Brother #shorts",
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-22",
+    "link": "https://www.youtube.com/watch?v=okFjoqVrZsA",
+    "platform": "youtube"
+   },
+   {
     "id": "CwkDwJc4rTs",
     "title": "The Shepherd's Trick Question #shorts",
     "views": 0,
@@ -1731,7 +1751,7 @@
    {
     "id": "SMzO3PkMykw",
     "title": "The Man Who Never Lies #shorts",
-    "views": 7,
+    "views": 8,
     "likes": 0,
     "comments": 0,
     "published": "2026-11-20",
@@ -1902,7 +1922,7 @@
     "id": "UH8FL624BSM",
     "title": "Everyone says 64 #shorts",
     "views": 1071,
-    "likes": 16,
+    "likes": 15,
     "comments": 2,
     "published": "2026-11-03",
     "link": "https://www.youtube.com/watch?v=UH8FL624BSM",
@@ -2206,16 +2226,6 @@
     "comments": 0,
     "published": "2026-07-06",
     "link": "https://www.youtube.com/watch?v=cfImySgwaQU",
-    "platform": "youtube"
-   },
-   {
-    "id": "p-KY9Zp4DVI",
-    "title": "How Transformation Happened: 238lbs to 137lbs #shorts",
-    "views": 1292,
-    "likes": 8,
-    "comments": 0,
-    "published": "2026-07-05",
-    "link": "https://www.youtube.com/watch?v=p-KY9Zp4DVI",
     "platform": "youtube"
    },
    {
@@ -4335,7 +4345,7 @@
    {
     "id": "CNeBYJ6pmEE",
     "title": "The Deepest Blue Hole on Earth – Dean’s Blue Hole #shorts",
-    "views": 244,
+    "views": 245,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-01",
@@ -4889,7 +4899,7 @@
    {
     "id": "kUjgCrGQ0D0",
     "title": "Engine Inventor's Mysterious Vanishing #shorts",
-    "views": 34,
+    "views": 35,
     "likes": 1,
     "comments": 0,
     "published": "2026-11-10",
@@ -4919,7 +4929,7 @@
    {
     "id": "k4iWApS46Hk",
     "title": "The treasure that vanished in Arizona #shorts",
-    "views": 192,
+    "views": 193,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-07",
@@ -6009,10 +6019,20 @@
   ],
   "Curio": [
    {
+    "id": "cI_gd3U1pis",
+    "title": "Mir Mine from space · ORBIT #014",
+    "views": 1328,
+    "likes": 16,
+    "comments": 0,
+    "published": "2026-11-22",
+    "link": "https://www.youtube.com/watch?v=cI_gd3U1pis",
+    "platform": "youtube"
+   },
+   {
     "id": "TfFnTz7kTHI",
     "title": "Palm Jumeirah from space · ORBIT #013",
-    "views": 1073,
-    "likes": 3,
+    "views": 1172,
+    "likes": 4,
     "comments": 0,
     "published": "2026-11-21",
     "link": "https://www.youtube.com/watch?v=TfFnTz7kTHI",
@@ -6021,7 +6041,7 @@
    {
     "id": "s0NQc2OCiA8",
     "title": "Grand Prismatic Spring from space · ORBIT #012",
-    "views": 1144,
+    "views": 1156,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-20",
@@ -6031,7 +6051,7 @@
    {
     "id": "AAXU0UZx2AE",
     "title": "Surtsey from space · ORBIT #011",
-    "views": 1213,
+    "views": 1214,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
@@ -6041,7 +6061,7 @@
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1418,
+    "views": 1422,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -6051,7 +6071,7 @@
    {
     "id": "FBXi-g4vNoc",
     "title": "Socotra from space · ORBIT #009",
-    "views": 1183,
+    "views": 1184,
     "likes": 24,
     "comments": 0,
     "published": "2026-11-12",
@@ -6061,7 +6081,7 @@
    {
     "id": "ZL5z5ujPlK0",
     "title": "Dallol from space · ORBIT #008",
-    "views": 1069,
+    "views": 1072,
     "likes": 26,
     "comments": 0,
     "published": "2026-11-11",
@@ -6121,7 +6141,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1388,
+    "views": 1390,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -6139,10 +6159,20 @@
     "platform": "youtube"
    },
    {
+    "id": "18018894518966843",
+    "title": "This hole beside a city is more than five hundred meters dee",
+    "views": 251,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-22",
+    "link": "https://www.instagram.com/reel/DgCb94rt2MH/",
+    "platform": "instagram"
+   },
+   {
     "id": "17947509819381713",
     "title": "This giant palm tree is an island, and people built all of i",
-    "views": 1032,
-    "likes": 11,
+    "views": 1301,
+    "likes": 19,
     "comments": 0,
     "published": "2026-11-21",
     "link": "https://www.instagram.com/reel/Df_3SL7puh9/",
