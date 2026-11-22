@@ -1,11 +1,11 @@
 {
- "gen_at": "2026-11-21T21:16:46Z",
+ "gen_at": "2026-11-22T01:59:46Z",
  "factories": {
   "MindBlownDaily": [
    {
     "id": "gTcEOJSuZd4",
     "title": "Holding Your Breath #shorts",
-    "views": 1212,
+    "views": 1217,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-21",
@@ -15,7 +15,7 @@
    {
     "id": "axsW-6jLtPY",
     "title": "Into A Black Hole #shorts",
-    "views": 539,
+    "views": 560,
     "likes": 7,
     "comments": 0,
     "published": "2026-11-20",
@@ -25,7 +25,7 @@
    {
     "id": "bUjobjE2qZQ",
     "title": "Night In Antarctica #shorts",
-    "views": 948,
+    "views": 949,
     "likes": 19,
     "comments": 0,
     "published": "2026-11-19",
@@ -365,7 +365,7 @@
    {
     "id": "cb7HnbQBu-A",
     "title": "Ocean Swim Effects #shorts",
-    "views": 1225,
+    "views": 1228,
     "likes": 8,
     "comments": 0,
     "published": "2026-10-12",
@@ -501,6 +501,16 @@
     "published": "2026-09-29",
     "link": "https://www.youtube.com/watch?v=nKWn_9J4zCc",
     "platform": "youtube"
+   },
+   {
+    "id": "7710795020227448086",
+    "title": "Hold your breath with me for ten seconds. That burn is not what you think it is. #breathhold #humanbody #biology #science #mindblown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
+    "views": 99,
+    "likes": 3,
+    "comments": 0,
+    "published": "2026-11-22",
+    "link": "https://www.tiktok.com/@min.dblowndaily/video/7710795020227448086",
+    "platform": "tiktok"
    },
    {
     "id": "7709895379981995286",
@@ -693,19 +703,9 @@
     "platform": "tiktok"
    },
    {
-    "id": "7700543303657295136",
-    "title": "A quick look at how a day at high altitude changes your body. # A l t i t u d e # S c i e n c e # B o d y C h a n g e s Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 270,
-    "likes": 2,
-    "comments": 0,
-    "published": "2026-10-25",
-    "link": "https://www.tiktok.com/@min.dblowndaily/video/7700543303657295136",
-    "platform": "tiktok"
-   },
-   {
     "id": "18113499329239387",
     "title": "Hold your breath with me for ten seconds. That burn is not w",
-    "views": 2285,
+    "views": 2287,
     "likes": 20,
     "comments": 0,
     "published": "2026-11-21",
@@ -735,7 +735,7 @@
    {
     "id": "17990723196084884",
     "title": "A rip current is dragging you out to sea. Your first move de",
-    "views": 1936,
+    "views": 1937,
     "likes": 9,
     "comments": 0,
     "published": "2026-11-18",
@@ -4335,7 +4335,7 @@
    {
     "id": "CNeBYJ6pmEE",
     "title": "The Deepest Blue Hole on Earth – Dean’s Blue Hole #shorts",
-    "views": 243,
+    "views": 244,
     "likes": 2,
     "comments": 0,
     "published": "2026-09-01",
@@ -6011,7 +6011,7 @@
    {
     "id": "TfFnTz7kTHI",
     "title": "Palm Jumeirah from space · ORBIT #013",
-    "views": 1049,
+    "views": 1073,
     "likes": 3,
     "comments": 0,
     "published": "2026-11-21",
@@ -6021,7 +6021,7 @@
    {
     "id": "s0NQc2OCiA8",
     "title": "Grand Prismatic Spring from space · ORBIT #012",
-    "views": 1138,
+    "views": 1144,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-20",
@@ -6031,7 +6031,7 @@
    {
     "id": "AAXU0UZx2AE",
     "title": "Surtsey from space · ORBIT #011",
-    "views": 1210,
+    "views": 1213,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
@@ -6041,7 +6041,7 @@
    {
     "id": "u0ns59oE1fs",
     "title": "North Sentinel Island from space · ORBIT #010",
-    "views": 1417,
+    "views": 1418,
     "likes": 38,
     "comments": 0,
     "published": "2026-11-13",
@@ -6121,7 +6121,7 @@
    {
     "id": "swceKGBOubo",
     "title": "Vredefort Dome from space · ORBIT #002",
-    "views": 1387,
+    "views": 1388,
     "likes": 15,
     "comments": 0,
     "published": "2026-11-05",
@@ -6141,8 +6141,8 @@
    {
     "id": "17947509819381713",
     "title": "This giant palm tree is an island, and people built all of i",
-    "views": 942,
-    "likes": 9,
+    "views": 1032,
+    "likes": 11,
     "comments": 0,
     "published": "2026-11-21",
     "link": "https://www.instagram.com/reel/Df_3SL7puh9/",
