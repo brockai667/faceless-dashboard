@@ -1,5 +1,5 @@
 {
- "gen_at": "2026-11-24T05:48:32Z",
+ "gen_at": "2026-11-24T20:29:25Z",
  "factories": {
   "MindBlownDaily": [
    {
@@ -15,7 +15,7 @@
    {
     "id": "gTcEOJSuZd4",
     "title": "Holding Your Breath #shorts",
-    "views": 1262,
+    "views": 1263,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-21",
@@ -515,7 +515,7 @@
    {
     "id": "7710795020227448086",
     "title": "Hold your breath with me for ten seconds. That burn is not what you think it is. #breathhold #humanbody #biology #science #mindblown Not medical advice. Music: \"Inspired\" - Kevin MacLeod (incompetech.com), licensed under CC BY 4.0",
-    "views": 578,
+    "views": 579,
     "likes": 10,
     "comments": 0,
     "published": "2026-11-22",
@@ -705,7 +705,7 @@
    {
     "id": "18134716348687695",
     "title": "A tornado is coming and you're on the highway. The overpass ",
-    "views": 1278,
+    "views": 1282,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-22",
@@ -735,7 +735,7 @@
    {
     "id": "18133684444882883",
     "title": "You're freezing and someone hands you a drink. Does it warm ",
-    "views": 1471,
+    "views": 1475,
     "likes": 11,
     "comments": 0,
     "published": "2026-11-19",
@@ -775,7 +775,7 @@
    {
     "id": "18104077478645024",
     "title": "Stranded in the desert with one bottle of water: save it or ",
-    "views": 1921,
+    "views": 1922,
     "likes": 12,
     "comments": 0,
     "published": "2026-11-15",
@@ -1729,6 +1729,16 @@
   ],
   "BrainHeist": [
    {
+    "id": "mpOVQeu3sKc",
+    "title": "The Brick That Weighs Itself #shorts",
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "published": "2026-11-24",
+    "link": "https://www.youtube.com/watch?v=mpOVQeu3sKc",
+    "platform": "youtube"
+   },
+   {
     "id": "NMli2Yw-yT8",
     "title": "The Father's Twenty-Year Clue #shorts",
     "views": 0,
@@ -2216,16 +2226,6 @@
     "comments": 0,
     "published": "2026-07-08",
     "link": "https://www.youtube.com/watch?v=FGXp8RFwk48",
-    "platform": "youtube"
-   },
-   {
-    "id": "dl8W_n9QL3U",
-    "title": "Integrity is What Defines You #shorts",
-    "views": 175,
-    "likes": 2,
-    "comments": 0,
-    "published": "2026-07-07",
-    "link": "https://www.youtube.com/watch?v=dl8W_n9QL3U",
     "platform": "youtube"
    },
    {
@@ -6029,9 +6029,19 @@
   ],
   "Curio": [
    {
+    "id": "h06XaDQyBSA",
+    "title": "Great Salt Lake from space · ORBIT #016",
+    "views": 1178,
+    "likes": 22,
+    "comments": 0,
+    "published": "2026-11-24",
+    "link": "https://www.youtube.com/watch?v=h06XaDQyBSA",
+    "platform": "youtube"
+   },
+   {
     "id": "PtmzSIXwhbI",
     "title": "Hashima Island from space · ORBIT #015",
-    "views": 1101,
+    "views": 1120,
     "likes": 16,
     "comments": 0,
     "published": "2026-11-23",
@@ -6041,7 +6051,7 @@
    {
     "id": "cI_gd3U1pis",
     "title": "Mir Mine from space · ORBIT #014",
-    "views": 1485,
+    "views": 1499,
     "likes": 17,
     "comments": 0,
     "published": "2026-11-22",
@@ -6051,7 +6061,7 @@
    {
     "id": "TfFnTz7kTHI",
     "title": "Palm Jumeirah from space · ORBIT #013",
-    "views": 1257,
+    "views": 1259,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-21",
@@ -6061,7 +6071,7 @@
    {
     "id": "s0NQc2OCiA8",
     "title": "Grand Prismatic Spring from space · ORBIT #012",
-    "views": 1172,
+    "views": 1174,
     "likes": 8,
     "comments": 0,
     "published": "2026-11-20",
@@ -6151,7 +6161,7 @@
    {
     "id": "aDvO8iLSUZo",
     "title": "Racetrack Playa from space · ORBIT #003",
-    "views": 315,
+    "views": 316,
     "likes": 4,
     "comments": 0,
     "published": "2026-11-06",
@@ -6171,7 +6181,7 @@
    {
     "id": "LnBkDYg2GLY",
     "title": "Great Blue Hole from space · ORBIT #001",
-    "views": 2389,
+    "views": 2391,
     "likes": 47,
     "comments": 1,
     "published": "2026-11-02",
@@ -6179,9 +6189,19 @@
     "platform": "youtube"
    },
    {
+    "id": "18020889536744668",
+    "title": "This lake has two colors, split by a perfectly straight line",
+    "views": 767,
+    "likes": 11,
+    "comments": 0,
+    "published": "2026-11-24",
+    "link": "https://www.instagram.com/reel/DgHlvwugXUo/",
+    "platform": "instagram"
+   },
+   {
     "id": "18100816130650073",
     "title": "Thousands of people once lived on this tiny concrete island.",
-    "views": 884,
+    "views": 903,
     "likes": 6,
     "comments": 0,
     "published": "2026-11-23",
